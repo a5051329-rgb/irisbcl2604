@@ -23,13 +23,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 /* Header */
 .header{background:var(--surface);border-bottom:1px solid var(--border-md);padding:0 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .header-brand{display:flex;align-items:center;}
 .brand-tag{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;color:var(--text3);padding:20px 16px 20px 0;border-right:1px solid var(--border-md);margin-right:16px;}
 .brand-name{font-size:14px;font-weight:500;}
 .header-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.05em;}
 
 /* Tab nav — sticky below header */
-.tab-nav{background:var(--surface);border-bottom:1px solid var(--border-md);padding:0 28px;display:flex;position:sticky;top:57px;z-index:190;}
+.tab-nav{background:var(--surface);border-bottom:1px solid var(--border-md);padding:0;position:sticky;top:57px;z-index:190;}
+.tab-nav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;}
 .tab-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;color:var(--text3);padding:13px 18px;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .18s,border-color .18s;white-space:nowrap;}
 .tab-btn:hover{color:var(--text2);}
 .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
@@ -40,7 +42,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 #backTop:hover{background:var(--accent);}
 
 /* Page */
-.page{display:none;padding:24px 28px 60px;}
+.page{display:none;padding:24px 28px 60px;max-width:1280px;margin:0 auto;}
 .page.active{display:block;}
 
 /* Section label */
@@ -198,17 +200,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <body>
 
 <header class="header">
-  <div class="header-brand">
-    <div class="brand-tag">BCL DB</div>
-    <div class="brand-name">資料庫分析儀表板</div>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="brand-tag">BCL DB</div>
+      <div class="brand-name">資料庫分析儀表板</div>
+    </div>
+    <div class="header-meta">截至 2026 年 3 月</div>
   </div>
-  <div class="header-meta">截至 2026 年 3 月</div>
 </header>
 
 <nav class="tab-nav">
-  <button class="tab-btn active" onclick="goTab('overview',this)">整體現況分析</button>
-  <button class="tab-btn" onclick="goTab('monthly',this)">近期蒐集分析（2025/04–2026/03）</button>
-  <button class="tab-btn" onclick="goTab('consume',this)">異業管道消費分析</button>
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="goTab('overview',this)">整體現況分析</button>
+    <button class="tab-btn" onclick="goTab('monthly',this)">近期蒐集分析（2025/04–2026/03）</button>
+    <button class="tab-btn" onclick="goTab('consume',this)">異業管道消費分析</button>
+  </div>
 </nav>
 
 <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂端">↑</button>
@@ -636,10 +642,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
               <td style="padding:3px 8px;text-align:center;font-weight:600;color:var(--green);">85.5%</td>
             </tr>
             <tr>
-              <td style="padding:3px 8px 3px 0;color:var(--text2);">孕期佔比</td>
-              <td style="padding:3px 8px;text-align:center;color:var(--text2);">0.0%</td>
-              <td style="padding:3px 8px;text-align:center;color:var(--text2);">17.4%</td>
-              <td style="padding:3px 8px;text-align:center;font-weight:600;color:var(--green);">32.3%</td>
+              <td style="padding:3px 8px 3px 0;color:var(--text2);">SS+S 級佔比</td>
+              <td style="padding:3px 8px;text-align:center;font-weight:600;color:var(--ss);">50.3%</td>
+              <td style="padding:3px 8px;text-align:center;font-weight:600;color:var(--ss);">43.5%</td>
+              <td style="padding:3px 8px;text-align:center;color:var(--text2);">38.5%</td>
             </tr>
             <tr>
               <td style="padding:3px 8px 3px 0;color:var(--text2);">平均標籤數</td>
@@ -730,13 +736,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <tbody id="cmpTbody"></tbody>
       </table>
     </div>
-    <div class="notice" style="margin-top:14px;background:var(--surface2);border-left-color:var(--border-md);font-size:13px;line-height:1.9;">
-      🏷️ <strong>標籤數高的客戶，消費轉換率明顯更高</strong>：三場有消費的 BCL，平均標籤數（22.5 / 11.8 / 10.6）均遠高於各場全體平均（12.7 / 10.0 / 8.5）。這符合預期——對品牌黏著度越高、互動越頻繁的客戶，轉換消費的機率確實更大<br>
-      🆕 <strong>婦幼展是純新血來源</strong>：三場純新客佔比高達 96–98%，幾乎不與既有訂閱客重疊，是品牌觸及新生兒家庭最直接的管道之一<br>
-      📈 <strong>有效率逐場提升</strong>：72.3%（2507）→ 79.9%（2512）→ 85.5%（2602），每場蒐集品質持續改善<br>
-      👶 <strong>月齡結構越來越年輕</strong>：2507 以 S 13-24M 為主（39%），2602 孕期佔比已達 32%，愈來愈多孕婦或新生兒家庭在展場當下就綁定，代表蒐集時機越抓越準<br>
-      💰 <strong>BCL 後消費仍在持續釋放</strong>：2602 目前 BCL 後消費佔比僅 20%，但這批客群綁定均齡 10.3M，孩子月齡正在快速增長中，未來幾個月仍是消費的重要觀察窗口
-    </div>
   </div>
 
   <!-- 婦幼展整體小節 -->
@@ -745,8 +744,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;">🎪 三場婦幼展共蒐集 1,906 位 BCL，幾乎全為純新客，是品牌觸及新生兒家庭最直接的管道之一。</div>
     <div style="font-size:13px;color:var(--text2);line-height:2.1;">
       🏷️ <strong>高標籤數 = 高消費機率，這個規律在三場都成立</strong>：有消費的 BCL 標籤數平均值，在三場中分別比全體平均高出 9.8、1.8、2.1 個標籤。這不只是相關，更接近因果——與品牌互動越深的客戶，在有需求時更傾向選擇我們的商品<br>
+      🆕 <strong>婦幼展是純新血來源</strong>：三場純新客佔比高達 96–98%，幾乎不與既有訂閱客重疊，是品牌觸及新生兒家庭最直接的管道之一<br>
+      📈 <strong>有效率逐場提升</strong>：72.3%（2507）→ 79.9%（2512）→ 85.5%（2602），每場蒐集品質持續改善<br>
       🛒 <strong>多數消費發生在成為 BCL 之前</strong>：三場均有超過一半的消費記錄來自 BCL 前，表示這些客戶在參加婦幼展前就已經是品牌的既有消費者，婦幼展讓我們成功把「已消費但尚未綁定」的客戶納入 BCL 資料庫<br>
-      🎯 <strong>2602 的孕期比例最高（32.3%），但現在均齡已達 11.9M</strong>：代表孕期綁定的客戶，孩子陸續出生並進入購買黃金期，2602 的後續消費轉換值得持續追蹤
+      👶 <strong>月齡結構越來越年輕</strong>：2507 以 S 13-24M 為主（39%），2602 孕期佔比已達 32%，愈來愈多孕婦或新生兒家庭在展場當下就綁定，代表蒐集時機越抓越準<br>
+      💰 <strong>BCL 後消費仍在持續釋放</strong>：2602 目前 BCL 後消費佔比僅 20%，但這批客群綁定均齡 10.3M，孩子月齡正在快速增長中，後續消費轉換值得持續追蹤
     </div>
   </div>
 
@@ -1347,8 +1349,14 @@ function renderTrendChart(){
       {label:'有效率 %',   data:[72.3,79.9,85.5], borderColor:P.green, backgroundColor:'rgba(26,122,74,.06)',  pointRadius:5,pointBackgroundColor:P.green, tension:.3,fill:false,yAxisID:'y2',borderDash:[5,3]},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},boxWidth:12}},
-        tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y+'%'}}},
+      plugins:{
+        legend:{
+          display:true,position:'bottom',
+          labels:{font:{size:11},boxWidth:14,usePointStyle:true,pointStyle:'circle'},
+          onClick:()=>{}
+        },
+        tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y+'%'}}
+      },
       scales:{
         x:{grid:{display:false},ticks:{font:{size:11}}},
         y:{min:0,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%',font:{size:10}},title:{display:true,text:'純新客 / 訂閱佔比',font:{size:9}}},
