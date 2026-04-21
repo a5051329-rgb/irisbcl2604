@@ -214,6 +214,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="tab-btn active" onclick="goTab('overview',this)">整體現況分析</button>
     <button class="tab-btn" onclick="goTab('monthly',this)">近期蒐集分析（2025/04–2026/03）</button>
     <button class="tab-btn" onclick="goTab('consume',this)">異業管道消費分析</button>
+    <button class="tab-btn" onclick="goTab('fair',this)" style="color:#b82020;">婦幼展 BCL 蒐集與銷售分析</button>
   </div>
 </nav>
 
@@ -789,6 +790,371 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 </div>
 
+<!-- ═══════════════════════════════════════════════════
+     分頁四：婦幼展 BCL 蒐集與銷售分析
+════════════════════════════════════════════════════ -->
+<div id="page-fair" class="page">
+<style>
+#pf{
+  --pt:#2E7D6E;--ptb:#EAF5F3;--ptd:#1a5048;
+  --pb:#2E6388;--pbb:#EAF1F7;
+  --pm:#8ECFC9;--pl:#A8CBCA;
+  --pr:#C0392B;--prb:#FDF0EE;
+  --pg:#7A5C00;--pgb:#FDF8EE;
+  --pw:#A05000;--pwb:#FFF7EE;
+  font-size:15px;
+}
+#pf .pw{max-width:900px;margin:0 auto;padding:24px 0 38px;}
+#pf h1{font-size:21px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:3px;}
+#pf .sub{font-size:14px;color:#555;margin-bottom:16px;}
+/* KPI */
+#pf .ks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+#pf .kc{background:#fff;border:1px solid rgba(46,125,110,.2);border-radius:10px;padding:13px 15px;box-shadow:0 2px 6px rgba(46,125,110,.08);}
+#pf .kl{font-size:12px;color:#666;margin-bottom:4px;}
+#pf .kv{font-size:26px;font-weight:700;line-height:1.15;}
+#pf .kn{font-size:12px;color:#666;margin-top:3px;}
+/* Grid */
+#pf .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+#pf .sc{background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:16px 16px 17px;box-shadow:0 2px 6px rgba(46,125,110,.07);}
+/* Section header */
+#pf .sh{font-size:14px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin-bottom:12px;padding-bottom:9px;border-bottom:2px solid currentColor;display:flex;align-items:center;gap:7px;}
+#pf .sh-dot{width:9px;height:9px;border-radius:50%;background:currentColor;flex-shrink:0;}
+/* Sub-label row (with optional toggle slot) */
+#pf .sl-row{display:flex;align-items:center;justify-content:space-between;margin:12px 0 7px;}
+#pf .sl-row:first-of-type{margin-top:0;}
+#pf .sl{font-size:13px;font-weight:600;color:#333;padding:5px 10px;background:linear-gradient(90deg,rgba(142,207,201,.2),rgba(142,207,201,.04));border-radius:5px;border-left:3px solid var(--pm);flex:1;}
+/* Toggle button */
+#pf .tgl-wrap{display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;flex-shrink:0;margin-left:10px;}
+#pf .tgl-btn{font-size:11px;font-weight:600;padding:4px 10px;border-radius:18px;border:none;cursor:pointer;transition:all .18s;color:#666;background:transparent;}
+#pf .tgl-btn.active{background:#fff;color:var(--pb);box-shadow:0 1px 4px rgba(0,0,0,.12);}
+/* Tables */
+#pf table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;border-radius:8px;overflow:hidden;border:1px solid rgba(46,125,110,.18);}
+#pf thead tr{background:linear-gradient(135deg,#cde8e4,#bfdfda);}
+#pf th{padding:8px 10px;border-bottom:2px solid rgba(46,125,110,.22);color:#1a4a42;font-weight:600;text-align:right;white-space:nowrap;font-size:13px;}
+#pf th:first-child{text-align:left;}
+#pf td{padding:7px 10px;border-bottom:1px solid rgba(46,125,110,.1);text-align:right;font-size:13px;color:#222;}
+#pf td:first-child{text-align:left;}
+#pf tbody tr:last-child td{border-bottom:none;}
+#pf tbody tr:hover td{background:rgba(142,207,201,.07)!important;}
+#pf .tot td{font-weight:700;background:linear-gradient(135deg,#c5e2de,#b5d8d3)!important;color:#1a4a42;}
+#pf .rss td{background:linear-gradient(90deg,#fdecea,#fae3e0)!important;color:var(--pr);font-weight:600;}
+#pf .rs0 td{background:#fef5f4!important;color:#8B2A20;}
+#pf .rs1 td{background:linear-gradient(90deg,#fdecea,#fae3e0)!important;color:var(--pr);font-weight:600;}
+#pf .nil td{color:#aaa;background:#fafaf9!important;}
+#pf .red{color:var(--pr);font-weight:600;}
+#pf .dim{color:#aaa;font-size:12px;}
+/* Footnotes */
+#pf .fn{font-size:12px;color:#555;margin-top:5px;line-height:1.6;padding:3px 0;}
+#pf .fn-warn{font-size:12px;color:var(--pw);margin-top:7px;padding:7px 10px;background:var(--pwb);border-radius:6px;border-left:2px solid var(--pw);line-height:1.6;}
+/* Chart */
+#pf .chart-wrap{position:relative;height:162px;margin-top:6px;}
+/* Paired section */
+#pf .pair-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:8px;overflow:hidden;border:1px solid rgba(46,125,110,.18);}
+#pf .pair-left{border-right:1px solid rgba(46,125,110,.2);}
+#pf .pair-subhead{padding:8px 12px 7px;border-bottom:1px solid rgba(46,125,110,.15);}
+#pf .pair-wrap table{border:none;border-radius:0;}
+#pf .pair-wrap td{border-bottom:1px solid rgba(46,125,110,.1);}
+#pf .pair-wrap tbody tr:last-child td{border-bottom:none;}
+#pf .pair-wrap thead tr{background:linear-gradient(135deg,#cde8e4,#bfdfda);}
+/* Narrative */
+#pf .narr{font-size:13px;color:#333;line-height:1.85;padding:14px 16px;background:linear-gradient(135deg,var(--ptb),#f4fbf9);border-radius:8px;margin-bottom:14px;border:1px solid rgba(46,125,110,.15);}
+#pf .narr b{color:var(--ptd);}
+#pf .narr .hl{color:var(--pr);font-weight:600;}
+/* Strategy */
+#pf .strat{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+#pf .sc-strat{background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:14px 15px;box-shadow:0 2px 6px rgba(46,125,110,.07);}
+#pf .sc-strat-head{font-size:14px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+#pf .snum{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;}
+#pf .sc-strat-body{font-size:13px;color:#444;line-height:1.8;}
+</style>
+
+<div id="pf"><div class="pw">
+  <h1>婦幼展 BCL 蒐集與銷售分析</h1>
+  <div class="sub">資料截止：2026/03　三場：2507 台北婦幼展 ・ 2512 婦幼展 ・ 2602 婦幼展</div>
+
+  <!-- KPI -->
+  <div class="ks">
+    <div class="kc" style="border-top:3px solid var(--pb);">
+      <div class="kl">三場 BCL 總人數</div>
+      <div class="kv" style="color:var(--pb);">1,906</div>
+      <div class="kn">572 ＋ 610 ＋ 724</div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--pr);">
+      <div class="kl">SS+S 人數（現況月齡）</div>
+      <div class="kv" style="color:var(--pr);">1,154</div>
+      <div class="kn">佔整體 60.5%（202603 基準）</div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--pt);">
+      <div class="kl">總購買人數</div>
+      <div class="kv" style="color:var(--pt);">51</div>
+      <div class="kn">整體轉換率 2.7%</div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--pg);">
+      <div class="kl">總銷售金額</div>
+      <div class="kv" style="color:var(--pg);">$249,517</div>
+      <div class="kn">均價 $4,893</div>
+    </div>
+  </div>
+
+  <!-- 重點1 ＋ 重點2 -->
+  <div class="row">
+
+    <!-- 重點1 -->
+    <div class="sc">
+      <div class="sh" style="color:var(--pb);"><span class="sh-dot"></span>重點 1 ── 蒐集成果</div>
+
+      <!-- sub-label + toggle -->
+      <div class="sl-row">
+        <div class="sl" id="pf-tbl-label">各場次蒐集概況（現況月齡，202603 基準）</div>
+        <div class="tgl-wrap">
+          <button class="tgl-btn active" id="pf-tgl-now" onclick="pfToggle('now')">現況</button>
+          <button class="tgl-btn" id="pf-tgl-bind" onclick="pfToggle('bind')">綁定時</button>
+        </div>
+      </div>
+
+      <!-- 現況表 -->
+      <div id="pf-tbl-now">
+        <table>
+          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th></tr></thead>
+          <tbody>
+            <tr><td>2507</td><td>572</td><td class="red">426</td><td class="red">74.5%</td><td>0</td><td>0.0%</td></tr>
+            <tr><td>2512</td><td>610</td><td class="red">378</td><td class="red">62.0%</td><td>106</td><td>17.4%</td></tr>
+            <tr><td>2602</td><td>724</td><td class="red">350</td><td class="red">48.3%</td><td>234</td><td>32.3%</td></tr>
+            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">1,154</td><td class="red">60.5%</td><td>340</td><td>17.8%</td></tr>
+          </tbody>
+        </table>
+        <div class="fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；2507 最小現況月齡為 1M，孕期為 0</div>
+      </div>
+
+      <!-- 綁定時表（預設隱藏） -->
+      <div id="pf-tbl-bind" style="display:none;">
+        <table>
+          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th></tr></thead>
+          <tbody>
+            <tr><td>2507</td><td>572</td><td class="red">320</td><td class="red">55.9%</td><td class="red">163</td><td class="red">28.5%</td></tr>
+            <tr><td>2512</td><td>610</td><td class="red">318</td><td class="red">52.1%</td><td class="red">194</td><td class="red">31.8%</td></tr>
+            <tr><td>2602</td><td>724</td><td class="red">334</td><td class="red">46.1%</td><td class="red">251</td><td class="red">34.7%</td></tr>
+            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">972</td><td class="red">51.0%</td><td class="red">608</td><td class="red">31.9%</td></tr>
+          </tbody>
+        </table>
+        <div class="fn">綁定時月齡 ＝ 客戶加入 LINE 當下的孩子月齡；孕期佔比逐場提升反映手冊門檻的篩選效果</div>
+      </div>
+
+      <!-- 月齡分布圖 -->
+      <div class="sl-row" style="margin-top:13px;">
+        <div class="sl" id="pf-chart-label">1,906 人現況月齡分布</div>
+      </div>
+      <div class="chart-wrap"><canvas id="gradeChart"></canvas></div>
+    </div>
+
+    <!-- 重點2 -->
+    <div class="sc">
+      <div class="sh" style="color:var(--pt);"><span class="sh-dot"></span>重點 2 ── 銷售成果</div>
+      <div class="sl-row"><div class="sl">各場次銷售概況</div></div>
+      <table>
+        <thead><tr><th>場次</th><th>購買人</th><th>轉換率</th><th>總金額</th><th>均價</th></tr></thead>
+        <tbody>
+          <tr><td>2507</td><td>21</td><td>3.7%</td><td>$117,983</td><td>$5,618</td></tr>
+          <tr><td>2512</td><td>13</td><td>2.1%</td><td>$73,915</td><td>$5,685</td></tr>
+          <tr><td>2602</td><td>17</td><td>2.3%</td><td>$57,619</td><td>$3,389</td></tr>
+          <tr class="tot"><td>合計</td><td>51</td><td>2.7%</td><td>$249,517</td><td>$4,893</td></tr>
+        </tbody>
+      </table>
+      <div class="fn-warn">※ 婦幼展現場僅蒐集 BCL 名單，不銷售商品。以下數據均為綁定後透過線上通路的後續下單。</div>
+      <div class="sl-row" style="margin-top:13px;"><div class="sl">三場熱銷商品 TOP 5（依購買人數）</div></div>
+      <table>
+        <thead><tr><th>名次</th><th>商品名稱</th><th>購買人數</th><th>銷售金額</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;">🥇 <b>1</b></td><td>巧虎手偶互動遊戲組</td><td>9</td><td>$81,770</td></tr>
+          <tr><td style="text-align:left;">🥈 <b>2</b></td><td>巧虎雙語點讀圖鑑</td><td>8</td><td>$64,078</td></tr>
+          <tr><td style="text-align:left;">🥉 <b>3</b></td><td>(團購)英語 PLUS⁺ 初階版</td><td>7</td><td>$104,977</td></tr>
+          <tr><td style="text-align:left;color:#888;">　<b>4</b></td><td>語彙表達－智育學習套組</td><td>5</td><td>$78,880</td></tr>
+          <tr><td style="text-align:left;color:#888;">　<b>5</b></td><td>(團購)寶寶生活好習慣套組</td><td>5</td><td>$87,278</td></tr>
+        </tbody>
+      </table>
+      <div class="fn">銷售金額為商品表各列金額加總口徑</div>
+    </div>
+  </div>
+
+  <!-- 重點3 -->
+  <div class="sc" style="margin-bottom:12px;">
+    <div class="sh" style="color:var(--pg);"><span class="sh-dot"></span>重點 3 ── 月齡與銷售關係分析（三場合計）</div>
+    <div class="pair-wrap">
+      <div class="pair-left">
+        <div class="pair-subhead" style="background:linear-gradient(135deg,var(--pgb),#faf3de);">
+          <span style="font-size:13px;font-weight:600;color:var(--pg);">消費時月齡</span>
+          <span style="font-size:12px;color:#666;margin-left:6px;">下單當月月齡（銷貨年月－出生年月）</span>
+        </div>
+        <table style="border:none;border-radius:0;">
+          <thead><tr><th>等級</th><th>人數</th><th>訂單</th><th>金額</th><th>均價/單</th></tr></thead>
+          <tbody>
+            <tr><td>A 孕期（&lt;0M）</td><td>12</td><td>14</td><td>$37,364</td><td>$2,669</td></tr>
+            <tr class="rs0"><td>S（0～6M）</td><td>12</td><td>14</td><td>$66,416</td><td>$4,744</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>8</td><td>9</td><td>$41,850</td><td>$4,650</td></tr>
+            <tr class="rs1"><td>★ S（13～24M）</td><td>18</td><td>19</td><td>$72,278</td><td>$3,804</td></tr>
+            <tr><td>AA（25～36M）</td><td>4</td><td>4</td><td>$12,814</td><td>$3,204</td></tr>
+            <tr class="nil"><td>A（37～60M）</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td></tr>
+            <tr class="nil"><td>B（61M+）</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td></tr>
+          </tbody>
+        </table>
+        <div class="fn" style="padding:6px 10px 5px;">★ 0~24M 佔全部訂單 93%；A/B 級無消費紀錄</div>
+      </div>
+      <div>
+        <div class="pair-subhead" style="background:linear-gradient(135deg,var(--pbb),#d5e6f5);">
+          <span style="font-size:13px;font-weight:600;color:var(--pb);">現況月齡 × 消費</span>
+          <span style="font-size:12px;color:#666;margin-left:6px;">以 202603 為基準的現在月齡</span>
+        </div>
+        <table style="border:none;border-radius:0;">
+          <thead><tr><th>等級</th><th>人數</th><th>已購</th><th>轉換率</th><th>營收</th><th>營收%</th></tr></thead>
+          <tbody>
+            <tr><td>A 孕期</td><td>340</td><td>4</td><td>1.2%</td><td>$8,035</td><td>3.2%</td></tr>
+            <tr class="rs0"><td>S（0～6M）</td><td>341</td><td>4</td><td>1.2%</td><td>$10,694</td><td>4.3%</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>256</td><td>6</td><td>2.3%</td><td>$63,575</td><td>25.5%</td></tr>
+            <tr class="rs1"><td>★ S（13～24M）</td><td>557</td><td>16</td><td>2.9%</td><td>$83,069</td><td>33.3%</td></tr>
+            <tr><td>AA（25～36M）</td><td>194</td><td>11</td><td>5.7%</td><td>$33,849</td><td>13.6%</td></tr>
+            <tr><td>A（37～60M）</td><td>106</td><td>6</td><td>5.7%</td><td>$34,713</td><td>13.9%</td></tr>
+            <tr><td>B（61M+）</td><td>112</td><td>1</td><td>0.9%</td><td>$4,500</td><td>1.8%</td></tr>
+          </tbody>
+        </table>
+        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FY26 策略 -->
+  <div class="sc" style="margin-bottom:0;">
+    <div class="sh" style="color:var(--pt);"><span class="sh-dot"></span>FY26 婦幼展策略</div>
+    <div class="narr">
+      <b>【名單蒐集成果】</b>三場合計蒐集 1,906 人，SS+S 現況佔比 <span class="hl">60.5%</span>，整體成效符合預期。從<b>綁定當下的月齡</b>來看，自 <b>2512 起活動設計要求攜帶寶寶手冊或媽媽手冊才能參加</b>，使得孕期佔比從 2507 的 <span class="hl">28.5%</span> 逐步提升至 2512 的 <span class="hl">31.8%</span>、2602 的 <span class="hl">34.7%</span>（可切換上方表格至「綁定時」查看），每場穩定上升，直接反映手冊門檻有效鎖定了更早期的受眾。
+      <br><br>
+      <b>【銷售 × 月齡分析成果】</b>購買率整體僅 <b>2.7%</b>，轉換仍屬低度。從消費時月齡來看，0~24M 貢獻超過 93% 的訂單，與目標族群吻合；然而 BCL 前消費比例偏高，代表蒐集到的部分客戶原本已認識品牌，<b>BCL 後新增轉換空間仍大，需要更完整的綁定後互動機制</b>來驅動。
+    </div>
+    <div class="strat" style="grid-template-columns:1fr 1fr 1fr;">
+      <div class="sc-strat">
+        <div class="sc-strat-head" style="color:var(--pt);">
+          <span class="snum" style="background:var(--ptb);color:var(--pt);">01</span>蒐集後持續互動，累積標籤數提升轉換
+        </div>
+        <div class="sc-strat-body">標籤數高低與消費轉換高度相關。綁定後應規劃系統性互動機制（育兒內容、月齡提醒、小遊戲活動），讓客戶持續累積標籤，自然提升 2.7% 的轉換率。</div>
+      </div>
+      <div class="sc-strat">
+        <div class="sc-strat-head" style="color:var(--pt);">
+          <span class="snum" style="background:var(--ptb);color:var(--pt);">02</span>以 2602 SOP 為基準，複製最佳執行模式
+        </div>
+        <div class="sc-strat-body">2602 有效率 85.5%、孕期佔比 34.7%（綁定時），三場最佳。應將 2602 的合作方式、手冊門檻設計、贈品選擇文件化為 SOP，讓下次執行有參考依據。</div>
+      </div>
+      <div class="sc-strat">
+        <div class="sc-strat-head" style="color:var(--pb);">
+          <span class="snum" style="background:var(--pbb);color:var(--pb);">03</span>活動設計限定目標對象，質量重於數量
+        </div>
+        <div class="sc-strat-body">透過手冊門檻等活動設計限定孕婦或有嬰幼兒媽媽參與，同時改善現場綁定流程，降低中途流失率，確保每一筆名單都有後續轉換潛力。</div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<script>
+/* ── Page Fair: toggle & chart ── */
+(function(){
+  /* Toggle 現況 / 綁定時 */
+  window.pfToggle = function(mode){
+    var isNow = mode === 'now';
+    document.getElementById('pf-tbl-now').style.display  = isNow ? '' : 'none';
+    document.getElementById('pf-tbl-bind').style.display = isNow ? 'none' : '';
+    document.getElementById('pf-tgl-now').classList.toggle('active', isNow);
+    document.getElementById('pf-tgl-bind').classList.toggle('active', !isNow);
+    document.getElementById('pf-tbl-label').textContent = isNow
+      ? '各場次蒐集概況（現況月齡，202603 基準）'
+      : '各場次蒐集概況（綁定時月齡）';
+    /* update chart */
+    pfUpdateChart(mode);
+  };
+
+  /* Chart data */
+  var NOW_DATA  = [340,341,256,557,194,106,112];
+  var BIND_DATA = [608,183,425,364,144,78,93];
+  var NOW_PCTS  = ['17.8%','17.9%','13.4%','29.2%','10.2%','5.6%','5.9%'];
+  var BIND_PCTS = ['31.9%','9.6%','22.3%','19.1%','7.6%','4.1%','4.9%'];
+  var LABELS = ['A孕期','S(0~6M)','SS(7~12M)','S(13~24M)','AA(25~36M)','A(37~60M)','B(61M+)'];
+  var COLORS = [
+    'rgba(142,207,201,.85)','rgba(168,203,202,.8)',
+    'rgba(192,57,43,.88)','rgba(192,57,43,.65)',
+    'rgba(46,99,136,.75)','rgba(46,125,110,.65)','rgba(175,180,188,.65)'
+  ];
+
+  var _chart = null;
+  var _mode  = 'now';
+
+  function buildChart(){
+    var el = document.getElementById('gradeChart');
+    if(!el || typeof Chart === 'undefined') return;
+    /* destroy existing instance to avoid "Canvas is already in use" error */
+    if(_chart){ _chart.destroy(); _chart = null; }
+    var data = _mode === 'now' ? NOW_DATA : BIND_DATA;
+    var pcts = _mode === 'now' ? NOW_PCTS  : BIND_PCTS;
+    _chart = new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: LABELS,
+        datasets: [{data: data, backgroundColor: COLORS, borderRadius: 5, borderSkipped: false}]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: {display: false},
+          tooltip: {callbacks: {label: function(c){ return ' '+c.raw+' 人 ('+pcts[c.dataIndex]+')'; }}}
+        },
+        scales: {
+          x: {grid:{display:false}, ticks:{font:{size:11},color:'#555'}},
+          y: {grid:{color:'rgba(0,0,0,0.04)'}, ticks:{font:{size:11},color:'#555'}, afterDataLimits:function(s){s.max=s.max*1.14;}}
+        }
+      },
+      plugins:[{
+        id:'lbl',
+        afterDatasetsDraw: function(chart){
+          var ctx = chart.ctx;
+          var pcts2 = _mode === 'now' ? NOW_PCTS : BIND_PCTS;
+          chart.data.datasets.forEach(function(ds,i){
+            chart.getDatasetMeta(i).data.forEach(function(bar,j){
+              ctx.save();
+              ctx.fillStyle = (j===2||j===3) ? '#C0392B' : '#444';
+              ctx.font = 'bold 10px sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText(pcts2[j], bar.x, bar.y-5);
+              ctx.restore();
+            });
+          });
+        }
+      }]
+    });
+  }
+
+  window.pfUpdateChart = function(mode){
+    _mode = mode;
+    if(!_chart) return;
+    var data = mode === 'now' ? NOW_DATA : BIND_DATA;
+    _chart.data.datasets[0].data = data;
+    _chart.update();
+    document.getElementById('pf-chart-label').textContent =
+      mode === 'now' ? '1,906 人現況月齡分布' : '1,906 人綁定時月齡分布';
+  };
+
+  var t=0, iv=setInterval(function(){
+    t++;
+    if(typeof Chart !== 'undefined'){ clearInterval(iv); buildChart(); }
+    if(t > 40) clearInterval(iv);
+  }, 100);
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('tab-btn')){
+      setTimeout(function(){
+        /* only rebuild if page-fair is currently visible */
+        var pg = document.getElementById('page-fair');
+        if(pg && pg.classList.contains('active')) buildChart();
+      }, 80);
+    }
+  });
+})();
+</script>
 <script>
 /* ─── Palette ─── */
 const P={
