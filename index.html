@@ -983,7 +983,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </tbody>
       </table>
       <div class="fn-warn">※ 婦幼展現場僅蒐集 BCL 名單，不銷售商品。以下數據均為綁定後透過線上通路的後續下單。</div>
-      <div class="sl-row" style="margin-top:13px;"><div class="sl">三場熱銷商品 TOP 5（依購買人數）</div></div>
+      <div class="sl-row" style="margin-top:13px;">
+  <div class="sl">三場熱銷商品 TOP 5（依購買人數）</div>
+  <span class="pf-info" style="background:var(--pt);margin-left:8px;flex-shrink:0;" onclick="pfTip(this,'tip-channel')" title="點擊查看購買通路分布">ℹ</span>
+</div>
+<div class="pf-tip" id="tip-channel" style="right:0;left:auto;">
+  <div style="font-size:12px;font-weight:600;color:var(--pt);margin-bottom:8px;">48 位購買者的銷售通路分布</div>
+  <table style="width:100%;font-size:11px;border-collapse:collapse;">
+    <thead><tr style="background:rgba(46,125,110,.12);">
+      <th style="padding:5px 10px;text-align:left;border:1px solid rgba(46,125,110,.2);">通路</th>
+      <th style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.2);">人數</th>
+      <th style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.2);">佔比</th>
+    </tr></thead>
+    <tbody>
+      <tr><td style="padding:5px 10px;border:1px solid rgba(46,125,110,.15);">Shopline</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">39</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">81.2%</td></tr>
+      <tr style="background:rgba(46,125,110,.04);"><td style="padding:5px 10px;border:1px solid rgba(46,125,110,.15);">CRM</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">12</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">25.0%</td></tr>
+      <tr><td style="padding:5px 10px;border:1px solid rgba(46,125,110,.15);">Wabay</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">3</td><td style="padding:5px 10px;text-align:right;border:1px solid rgba(46,125,110,.15);">6.2%</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:10px;color:#888;margin-top:5px;">同一人可跨多通路下單，故佔比加總超過 100%</div>
+</div>
       <table>
         <thead><tr><th>名次</th><th>商品名稱</th><th>購買人數</th><th>銷售金額</th></tr></thead>
         <tbody>
@@ -1008,7 +1027,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span style="font-size:12px;color:#666;margin-left:6px;">下單當月月齡（銷貨年月－出生年月）</span>
         </div>
         <table style="border:none;border-radius:0;">
-          <thead><tr><th>等級</th><th>人數</th><th>訂單</th><th>金額</th><th>均價/單</th></tr></thead>
+          <thead><tr><th>等級</th><th>人數</th><th>訂單數</th><th>金額</th><th>AOV</th></tr></thead>
           <tbody>
             <tr><td>A 孕期（&lt;0M）</td><td>12</td><td>14</td><td>$37,364</td><td>$2,669</td></tr>
             <tr class="rs0"><td>S（0～6M）</td><td>12</td><td>14</td><td>$66,416</td><td>$4,744</td></tr>
@@ -1039,7 +1058,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
             <tr class="nil"><td style="color:#aaa;">無生日</td><td style="color:#aaa;">11</td><td style="color:#aaa;">0</td><td style="color:#aaa;">0%</td><td style="color:#aaa;">—</td><td style="color:#aaa;">0%</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高<br>各欄人數為現況月齡去重唯一人數；三場合計實際購買人頭為 48 人（同一人可能橫跨多月齡級距）</div>
+        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高<br>各欄人數為現況月齡去重唯一人數</div>
       </div>
     </div>
   </div>
@@ -1081,7 +1100,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <br>三場純新客比例高達 96–98%，幾乎每一筆都是從未訂閱巧連智或周邊商品的新家庭。
 </div>
-          <div style="margin-bottom:7px;"><b>2. 現場 TA 天然對齊目標族群</b><br>婦幼展參加者本就是孕婦或嬰幼兒家長，綁定時 S+SS（0~12M）佔比平均達 31.9%，加上手冊門檻後孕期佔比逐場穩定提升（28.5%→31.8%→34.7%）。</div>
+          <div style="margin-bottom:7px;"><b>2. 現場 TA 天然對齊目標族群</b><br>婦幼展參加者本就是孕婦或嬰幼兒家長，綁定時 SS+S（0~24M）佔比平均達 51.0%，加上手冊門檻後孕期佔比逐場穩定提升（28.5%→31.8%→34.7%）。</div>
           <div style="margin-bottom:7px;"><b>3. 庫存活化，無新增採購壓力</b><br>贈品選用減價品或庫存品，變相清庫存，成本更低。</div>
           <div><b>4. 合作模式成熟，有效率逐場提升</b><br>72.3% → 79.9% → 85.5%，透過手冊門檻等活動設計限定孕婦或有嬰幼兒媽媽參與，同時改善現場綁定流程，降低中途流失率，確保每一筆名單都有後續轉換潛力。</div>
         </div>
