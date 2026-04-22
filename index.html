@@ -796,6 +796,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <div id="page-fair" class="page">
 <style>
 #pf{
+  position:relative;
   --pt:#2E7D6E;--ptb:#EAF5F3;--ptd:#1a5048;
   --pb:#2E6388;--pbb:#EAF1F7;
   --pm:#8ECFC9;--pl:#A8CBCA;
@@ -804,7 +805,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   --pw:#A05000;--pwb:#FFF7EE;
   font-size:15px;
 }
-#pf .pw{max-width:900px;margin:0 auto;padding:24px 0 38px;}
+#pf .pw{max-width:980px;margin:0 auto;padding:24px 0 38px;}
 #pf h1{font-size:21px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:3px;}
 #pf .sub{font-size:14px;color:#555;margin-bottom:16px;}
 /* KPI */
@@ -860,6 +861,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 #pf .narr{font-size:13px;color:#333;line-height:1.85;padding:14px 16px;background:linear-gradient(135deg,var(--ptb),#f4fbf9);border-radius:8px;margin-bottom:14px;border:1px solid rgba(46,125,110,.15);}
 #pf .narr b{color:var(--ptd);}
 #pf .narr .hl{color:var(--pr);font-weight:600;}
+/* Tooltip */
+/* ── Tooltip ── */
+#pf .pf-info{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--pt);color:#fff;font-size:10px;font-weight:700;
+  cursor:pointer;margin-left:5px;vertical-align:middle;
+  user-select:none;flex-shrink:0;
+  transition:background .15s;
+}
+#pf .pf-info:hover{background:var(--ptd);}
+#pf .pf-tip{
+  display:none;position:absolute;z-index:99;
+  background:#fff;border:1px solid rgba(46,125,110,.25);
+  border-radius:8px;padding:10px;
+  box-shadow:0 4px 16px rgba(0,0,0,.13);
+  min-width:320px;max-width:400px;
+  margin-top:6px;
+}
+#pf .pf-tip.show{display:block;}
+
 /* Strategy */
 #pf .strat{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 #pf .sc-strat{background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:14px 15px;box-shadow:0 2px 6px rgba(46,125,110,.07);}
@@ -886,13 +908,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="kc" style="border-top:3px solid var(--pt);">
       <div class="kl">總購買人數</div>
-      <div class="kv" style="color:var(--pt);">51</div>
-      <div class="kn">整體轉換率 2.7%</div>
+      <div class="kv" style="color:var(--pt);">48</div>
+      <div class="kn">整體轉換率 2.5%</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pg);">
       <div class="kl">總銷售金額</div>
       <div class="kv" style="color:var(--pg);">$249,517</div>
-      <div class="kn">均價 $4,893</div>
+      <div class="kn">均價 $5,198</div>
     </div>
   </div>
 
@@ -915,29 +937,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <!-- 現況表 -->
       <div id="pf-tbl-now">
         <table>
-          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th></tr></thead>
+          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th><th>有效率</th></tr></thead>
           <tbody>
-            <tr><td>2507</td><td>572</td><td class="red">426</td><td class="red">74.5%</td><td>0</td><td>0.0%</td></tr>
-            <tr><td>2512</td><td>610</td><td class="red">378</td><td class="red">62.0%</td><td>106</td><td>17.4%</td></tr>
-            <tr><td>2602</td><td>724</td><td class="red">350</td><td class="red">48.3%</td><td>234</td><td>32.3%</td></tr>
-            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">1,154</td><td class="red">60.5%</td><td>340</td><td>17.8%</td></tr>
+            <tr><td>2507</td><td>572</td><td class="red">426</td><td class="red">74.5%</td><td>0</td><td>0.0%</td><td>72.3%</td></tr>
+            <tr><td>2512</td><td>610</td><td class="red">378</td><td class="red">62.0%</td><td>106</td><td>17.4%</td><td>79.9%</td></tr>
+            <tr><td>2602</td><td>724</td><td class="red">350</td><td class="red">48.3%</td><td>234</td><td>32.3%</td><td>85.5%</td></tr>
+            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">1,154</td><td class="red">60.5%</td><td>340</td><td>17.8%</td><td>79.8%</td></tr>
           </tbody>
         </table>
-        <div class="fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；2507 最小現況月齡為 1M，孕期為 0</div>
+        <div class="fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）。2507 最小現況月齡為 1M，孕期為 0。有效率＝未封鎖比率（截至目前的靜態數值，不區分綁定時/現況）</div>
       </div>
 
       <!-- 綁定時表（預設隱藏） -->
       <div id="pf-tbl-bind" style="display:none;">
         <table>
-          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th></tr></thead>
+          <thead><tr><th>場次</th><th>BCL 數量</th><th>SS+S 人數</th><th>SS+S 比例</th><th>孕期人數</th><th>孕期比例</th><th>有效率</th></tr></thead>
           <tbody>
-            <tr><td>2507</td><td>572</td><td class="red">320</td><td class="red">55.9%</td><td class="red">163</td><td class="red">28.5%</td></tr>
-            <tr><td>2512</td><td>610</td><td class="red">318</td><td class="red">52.1%</td><td class="red">194</td><td class="red">31.8%</td></tr>
-            <tr><td>2602</td><td>724</td><td class="red">334</td><td class="red">46.1%</td><td class="red">251</td><td class="red">34.7%</td></tr>
-            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">972</td><td class="red">51.0%</td><td class="red">608</td><td class="red">31.9%</td></tr>
+            <tr><td>2507</td><td>572</td><td class="red">320</td><td class="red">55.9%</td><td class="red">163</td><td class="red">28.5%</td><td>72.3%</td></tr>
+            <tr><td>2512</td><td>610</td><td class="red">318</td><td class="red">52.1%</td><td class="red">194</td><td class="red">31.8%</td><td>79.9%</td></tr>
+            <tr><td>2602</td><td>724</td><td class="red">334</td><td class="red">46.1%</td><td class="red">251</td><td class="red">34.7%</td><td>85.5%</td></tr>
+            <tr class="tot"><td>合計</td><td>1,906</td><td class="red">972</td><td class="red">51.0%</td><td class="red">608</td><td class="red">31.9%</td><td>79.8%</td></tr>
           </tbody>
         </table>
-        <div class="fn">綁定時月齡 ＝ 客戶加入 LINE 當下的孩子月齡；孕期佔比逐場提升反映手冊門檻的篩選效果</div>
+        <div class="fn">綁定時月齡 ＝ 客戶加入 LINE 當下的孩子月齡；孕期佔比逐場提升反映手冊門檻的篩選效果。有效率＝未封鎖比率（靜態數值，兩種模式相同）</div>
       </div>
 
       <!-- 月齡分布圖 -->
@@ -957,7 +979,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <tr><td>2507</td><td>21</td><td>3.7%</td><td>$117,983</td><td>$5,618</td></tr>
           <tr><td>2512</td><td>13</td><td>2.1%</td><td>$73,915</td><td>$5,685</td></tr>
           <tr><td>2602</td><td>17</td><td>2.3%</td><td>$57,619</td><td>$3,389</td></tr>
-          <tr class="tot"><td>合計</td><td>51</td><td>2.7%</td><td>$249,517</td><td>$4,893</td></tr>
+          <tr class="tot"><td>合計</td><td>48</td><td>2.5%</td><td>$249,517</td><td>$5,198</td></tr>
         </tbody>
       </table>
       <div class="fn-warn">※ 婦幼展現場僅蒐集 BCL 名單，不銷售商品。以下數據均為綁定後透過線上通路的後續下單。</div>
@@ -997,7 +1019,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
             <tr class="nil"><td>B（61M+）</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:6px 10px 5px;">★ 0~24M 佔全部訂單 93%；A/B 級無消費紀錄</div>
+        <div class="fn" style="padding:6px 10px 5px;">★ 0~24M 佔全部訂單 93%；A/B 級無消費紀錄<br>人數為各月齡級距唯一購買人數；同一人若跨月齡多次下單則分別計入，故各欄人數加總可能超過實際購買人頭數</div>
       </div>
       <div>
         <div class="pair-subhead" style="background:linear-gradient(135deg,var(--pbb),#d5e6f5);">
@@ -1007,16 +1029,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <table style="border:none;border-radius:0;">
           <thead><tr><th>等級</th><th>人數</th><th>已購</th><th>轉換率</th><th>營收</th><th>營收%</th></tr></thead>
           <tbody>
-            <tr><td>A 孕期</td><td>340</td><td>4</td><td>1.2%</td><td>$8,035</td><td>3.2%</td></tr>
-            <tr class="rs0"><td>S（0～6M）</td><td>341</td><td>4</td><td>1.2%</td><td>$10,694</td><td>4.3%</td></tr>
-            <tr class="rss"><td>★ SS（7～12M）</td><td>256</td><td>6</td><td>2.3%</td><td>$63,575</td><td>25.5%</td></tr>
-            <tr class="rs1"><td>★ S（13～24M）</td><td>557</td><td>16</td><td>2.9%</td><td>$83,069</td><td>33.3%</td></tr>
-            <tr><td>AA（25～36M）</td><td>194</td><td>11</td><td>5.7%</td><td>$33,849</td><td>13.6%</td></tr>
-            <tr><td>A（37～60M）</td><td>106</td><td>6</td><td>5.7%</td><td>$34,713</td><td>13.9%</td></tr>
-            <tr><td>B（61M+）</td><td>112</td><td>1</td><td>0.9%</td><td>$4,500</td><td>1.8%</td></tr>
+            <tr><td>A 孕期</td><td>340</td><td>4</td><td>1.2%</td><td>$8,035</td><td>3.4%</td></tr>
+            <tr class="rs0"><td>S（0～6M）</td><td>341</td><td>4</td><td>1.2%</td><td>$10,694</td><td>4.5%</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>256</td><td>6</td><td>2.3%</td><td>$63,575</td><td>26.6%</td></tr>
+            <tr class="rs1"><td>★ S（13～24M）</td><td>557</td><td>16</td><td>2.9%</td><td>$83,069</td><td>34.8%</td></tr>
+            <tr><td>AA（25～36M）</td><td>194</td><td>11</td><td>5.7%</td><td>$33,849</td><td>14.2%</td></tr>
+            <tr><td>A（37～60M）</td><td>106</td><td>6</td><td>5.7%</td><td>$34,713</td><td>14.6%</td></tr>
+            <tr><td>B（61M+）</td><td>112</td><td>1</td><td>0.9%</td><td>$4,500</td><td>1.9%</td></tr>
+            <tr class="nil"><td style="color:#aaa;">無生日</td><td style="color:#aaa;">11</td><td style="color:#aaa;">0</td><td style="color:#aaa;">0%</td><td style="color:#aaa;">—</td><td style="color:#aaa;">0%</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高</div>
+        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高<br>各欄人數為現況月齡去重唯一人數；三場合計實際購買人頭為 48 人（同一人可能橫跨多月齡級距）</div>
       </div>
     </div>
   </div>
@@ -1027,7 +1050,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="narr">
       <b>【名單蒐集成果】</b>三場合計蒐集 1,906 人，SS+S 現況佔比 <span class="hl">60.5%</span>，整體成效符合預期。從<b>綁定當下的月齡</b>來看，自 <b>2512 起活動設計要求攜帶寶寶手冊或媽媽手冊才能參加</b>，使得孕期佔比從 2507 的 <span class="hl">28.5%</span> 逐步提升至 2512 的 <span class="hl">31.8%</span>、2602 的 <span class="hl">34.7%</span>（可切換上方表格至「綁定時」查看），每場穩定上升，直接反映手冊門檻有效鎖定了更早期的受眾。
       <br><br>
-      <b>【銷售 × 月齡分析成果】</b>購買率整體僅 <b>2.7%</b>，轉換仍屬低度。從消費時月齡來看，0~24M 貢獻超過 93% 的訂單，與目標族群吻合；然而 BCL 前消費比例偏高，代表蒐集到的部分客戶原本已認識品牌，<b>BCL 後新增轉換空間仍大，需要更完整的綁定後互動機制</b>來驅動。
+      <b>【銷售 × 月齡分析成果】</b>購買率整體僅 <b>2.5%</b>，轉換仍屬低度。從消費時月齡來看，0~24M 貢獻超過 93% 的訂單，與目標族群吻合；然而 BCL 前消費比例偏高，代表蒐集到的部分客戶原本已認識品牌，<b>BCL 後新增轉換空間仍大，需要更完整的綁定後互動機制</b>來驅動。
     </div>
     <!-- 好處 + 風險 兩欄 -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
@@ -1038,7 +1061,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span style="font-size:16px;">✅</span> 參加婦幼展的好處
         </div>
         <div style="font-size:12.5px;color:#333;line-height:1.85;">
-          <div style="margin-bottom:7px;"><b>1. 純新客來源，不與現有訂戶重疊</b><br>三場純新客比例高達 96–98%，幾乎每一筆都是從未訂閱的新家庭。</div>
+          <div style="margin-bottom:7px;">
+  <b>1. 純新客來源，不與現有訂戶重疊</b>
+  <span class="pf-info" onclick="pfTip(this,'tip-newcust')" title="點擊查看各場數據">ℹ</span>
+  <div class="pf-tip" id="tip-newcust">
+    <table style="width:100%;font-size:11px;border-collapse:collapse;">
+      <thead><tr style="background:rgba(46,125,110,.12);">
+        <th style="padding:4px 8px;text-align:left;border:1px solid rgba(46,125,110,.2);">場次</th>
+        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(46,125,110,.2);">純新客比例</th>
+        <th style="padding:4px 8px;text-align:left;border:1px solid rgba(46,125,110,.2);">說明</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">2507</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,125,110,.15);">96.7%</td><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">553 / 572 人</td></tr>
+        <tr style="background:rgba(46,125,110,.04);"><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">2512</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,125,110,.15);">98.0%</td><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">598 / 610 人</td></tr>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">2602</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,125,110,.15);">97.5%</td><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.15);">706 / 724 人</td></tr>
+        <tr style="background:rgba(46,125,110,.1);font-weight:600;"><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.2);">三場平均</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,125,110,.2);">97.4%</td><td style="padding:4px 8px;border:1px solid rgba(46,125,110,.2);">從未訂閱巧連智或周邊</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <br>三場純新客比例高達 96–98%，幾乎每一筆都是從未訂閱巧連智或周邊商品的新家庭。
+</div>
           <div style="margin-bottom:7px;"><b>2. 現場 TA 天然對齊目標族群</b><br>婦幼展參加者本就是孕婦或嬰幼兒家長，綁定時 S+SS（0~12M）佔比平均達 31.9%，加上手冊門檻後孕期佔比逐場穩定提升（28.5%→31.8%→34.7%）。</div>
           <div style="margin-bottom:7px;"><b>3. 庫存活化，無新增採購壓力</b><br>贈品選用減價品或庫存品，變相清庫存，成本更低。</div>
           <div><b>4. 合作模式成熟，有效率逐場提升</b><br>72.3% → 79.9% → 85.5%，透過手冊門檻等活動設計限定孕婦或有嬰幼兒媽媽參與，同時改善現場綁定流程，降低中途流失率，確保每一筆名單都有後續轉換潛力。</div>
@@ -1051,7 +1093,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span style="font-size:16px;">⚠️</span> 需注意的風險
         </div>
         <div style="font-size:12.5px;color:#333;line-height:1.85;">
-          <div style="margin-bottom:7px;"><b>1. BCL 後轉換率極低，名單容易沉睡</b><br>整體購買率僅 2.7%，BCL 後實際新增轉換只有 17 筆。綁定後需努力進行月齡活化，讓客戶持續累積標籤，自然提升後續轉換率。</div>
+          <div style="margin-bottom:7px;">
+  <b>1. BCL 後轉換率極低，名單容易沉睡</b>
+  <span class="pf-info" onclick="pfTip(this,'tip-bcltiming')" title="點擊查看各場BCL前後數據">ℹ</span>
+  <div class="pf-tip" id="tip-bcltiming">
+    <table style="width:100%;font-size:11px;border-collapse:collapse;">
+      <thead><tr style="background:rgba(160,80,0,.1);">
+        <th style="padding:4px 8px;text-align:left;border:1px solid rgba(160,80,0,.15);">場次</th>
+        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">BCL前（筆/金額）</th>
+        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">BCL後（筆/金額）</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2507</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">16筆 / $66,402</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $51,581</td></tr>
+        <tr style="background:rgba(160,80,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2512</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $52,823</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">4筆 / $21,092</td></tr>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2602</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">15筆 / $46,124</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">3筆 / $11,495</td></tr>
+        <tr style="background:rgba(160,80,0,.1);font-weight:600;"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">43筆 / $165,349</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">19筆 / $84,168</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:10px;color:#888;margin-top:4px;">BCL前＝銷貨年月早於綁定年月；BCL後＝銷貨年月等於或晚於綁定年月</div>
+  </div>
+  <br>整體購買率僅 2.5%，BCL 後實際新增轉換只有 19 筆。綁定後需努力進行月齡活化，讓客戶持續累積標籤，自然提升後續轉換率。
+</div>
           <div style="margin-bottom:7px;"><b>2. 超過 60% 的消費發生在成為 BCL 之前</b><br>部分被蒐集者本來已認識品牌，需思考新客轉換方式，設計差異化的溝通內容來驅動真正的新購行為。</div>
           <div style="margin-bottom:7px;"><b>3. 「拿禮就封鎖」的結構性流失</b><br>2507 無效率高達 27.7%，雖 2602 已降至 14.5%，問題改善但未根本解決。未來可加強推廣 LINE 綁定好處，讓人願意留著不封鎖。</div>
           <div><b>4. 孕期名單溝通距離遙遠，需持續互動維持溫度</b><br>綁定時孕期佔比逐場提升，但孕期到實際有消費需求距離遙遠（目前僅有 babymine 話題可溝通），為避免名單冷卻，需持續透過孕期專屬溝通達成與這群客戶的持續互動。</div>
@@ -1179,6 +1241,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       }, 80);
     }
   });
+
+  /* Tooltip */
+window.pfTip = function(el, tipId){
+  // close all others first
+  document.querySelectorAll('#pf .pf-tip').forEach(function(t){
+    if(t.id !== tipId) t.classList.remove('show');
+  });
+  var tip = document.getElementById(tipId);
+  if(!tip) return;
+  var show = tip.classList.toggle('show');
+  if(show){
+    // position near the ℹ icon
+    var rect = el.getBoundingClientRect();
+    var pfRect = document.getElementById('pf').getBoundingClientRect();
+    tip.style.left = Math.max(0, rect.left - pfRect.left - 8) + 'px';
+  }
+};
+// click outside to close
+document.addEventListener('click', function(e){
+  if(!e.target.classList.contains('pf-info')){
+    document.querySelectorAll('#pf .pf-tip').forEach(function(t){ t.classList.remove('show'); });
+  }
+});
 })();
 </script>
 <script>
