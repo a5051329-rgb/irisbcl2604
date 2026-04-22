@@ -598,6 +598,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="ch-big-pill active" data-event="2602" onclick="switchEvent('2602',this)" style="background:var(--text);color:#fff;border-color:transparent;">2602 婦幼展</button>
     <button class="ch-big-pill" data-event="2512" onclick="switchEvent('2512',this)">2512 婦幼展</button>
     <button class="ch-big-pill" data-event="2507" onclick="switchEvent('2507',this)">2507 台北婦幼展</button>
+    <button class="ch-big-pill" data-event="all" onclick="switchEvent('all',this)">整體</button>
   </div>
 
   <!-- KPI -->
@@ -1068,7 +1069,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="narr">
       <b>【名單蒐集成果】</b>三場合計蒐集 1,906 人，SS+S 現況佔比 <span class="hl">60.5%</span>，整體成效符合預期。從<b>綁定當下的月齡</b>來看，自 <b>2512 起活動設計要求攜帶寶寶手冊或媽媽手冊才能參加</b>，使得孕期佔比從 2507 的 <span class="hl">28.5%</span> 逐步提升至 2512 的 <span class="hl">31.8%</span>、2602 的 <span class="hl">34.7%</span>（可切換上方表格至「綁定時」查看），每場穩定上升，直接反映手冊門檻有效鎖定了更早期的受眾。
       <br><br>
-      <b>【銷售 × 月齡分析成果】</b>購買率整體僅 <b>2.5%</b>，轉換仍屬低度。從消費時月齡來看，0~24M 貢獻超過 93% 的訂單，與目標族群吻合；然而 BCL 前消費比例偏高，代表蒐集到的部分客戶原本已認識品牌，<b>BCL 後新增轉換空間仍大，需要更完整的綁定後互動機制</b>來驅動。
+      <b>【銷售 × 月齡分析成果】</b>購買率整體僅 <b>2.5%</b>，轉換仍屬低度。從消費時月齡來看，0~24M 貢獻超過 93% 的訂單，與目標族群吻合；然而客戶在綁定前就有消費紀錄的比例偏高，代表部分客戶綁定前就已認識品牌，而綁定後才開始購買商品的新增轉換空間仍大，需要更完整的綁定後互動機制來驅動。<span class="pf-info" onclick="pfTip(this,'tip-bcltiming')" title="點擊查看各場綁定前後消費數據">ℹ</span>
+      <div class="pf-tip" id="tip-bcltiming">
+    <table style="width:100%;font-size:11px;border-collapse:collapse;">
+      <thead><tr style="background:rgba(160,80,0,.1);">
+        <th style="padding:4px 8px;text-align:left;border:1px solid rgba(160,80,0,.15);">場次</th>
+        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">綁定前（筆/金額）</th>
+        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">綁定後（筆/金額）</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2507</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">16筆 / $66,402</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $51,581</td></tr>
+        <tr style="background:rgba(160,80,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2512</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $52,823</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">4筆 / $21,092</td></tr>
+        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2602</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">15筆 / $46,124</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">3筆 / $11,495</td></tr>
+        <tr style="background:rgba(160,80,0,.1);font-weight:600;"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">43筆 / $165,349</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">19筆 / $84,168</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:10px;color:#888;margin-top:4px;">綁定前＝銷貨年月早於綁定年月；綁定後＝銷貨年月等於或晚於綁定年月</div>
+  </div>
     </div>
     <!-- 好處 + 風險 兩欄 -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
@@ -1113,23 +1130,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div style="font-size:12.5px;color:#333;line-height:1.85;">
           <div style="margin-bottom:7px;">
   <b>1. BCL 後轉換率極低，名單容易沉睡</b>
-  <span class="pf-info" onclick="pfTip(this,'tip-bcltiming')" title="點擊查看各場BCL前後數據">ℹ</span>
-  <div class="pf-tip" id="tip-bcltiming">
-    <table style="width:100%;font-size:11px;border-collapse:collapse;">
-      <thead><tr style="background:rgba(160,80,0,.1);">
-        <th style="padding:4px 8px;text-align:left;border:1px solid rgba(160,80,0,.15);">場次</th>
-        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">BCL前（筆/金額）</th>
-        <th style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">BCL後（筆/金額）</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2507</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">16筆 / $66,402</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $51,581</td></tr>
-        <tr style="background:rgba(160,80,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2512</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">12筆 / $52,823</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">4筆 / $21,092</td></tr>
-        <tr><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.12);">2602</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">15筆 / $46,124</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.12);">3筆 / $11,495</td></tr>
-        <tr style="background:rgba(160,80,0,.1);font-weight:600;"><td style="padding:4px 8px;border:1px solid rgba(160,80,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">43筆 / $165,349</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(160,80,0,.15);">19筆 / $84,168</td></tr>
-      </tbody>
-    </table>
-    <div style="font-size:10px;color:#888;margin-top:4px;">BCL前＝銷貨年月早於綁定年月；BCL後＝銷貨年月等於或晚於綁定年月</div>
-  </div>
   <br>整體購買率僅 2.5%，BCL 後實際新增轉換只有 19 筆。綁定後需努力進行月齡活化，讓客戶持續累積標籤，自然提升後續轉換率。
 </div>
           <div style="margin-bottom:7px;"><b>2. 超過 60% 的消費發生在成為 BCL 之前</b><br>部分被蒐集者本來已認識品牌，需思考新客轉換方式，設計差異化的溝通內容來驅動真正的新購行為。</div>
@@ -1655,6 +1655,19 @@ renderCh6();
 /* ═══ Tab 3 — 婦幼展多場次消費分析 ═══ */
 
 const ALL_EVENTS={
+  'all':{
+    label:'三場整體', total:1906, buyCount:48, totalAmt:249517, avgAmt:5198,
+    avgTagsAll:10.2, avgTagsBuy:15.8,
+    tagsLabels:['5','6-7','8-9','10-11','12-14','15-19','20+'],
+    tagsAll:[59,641,293,191,167,141,129], tagsBuy:[0,2,5,4,5,6,13],
+    profile:{
+      sub:[{label:'純新客',val:1869,pct:98.1},{label:'僅巧連智',val:31,pct:1.6},{label:'僅周邊商品',val:14,pct:0.7},{label:'巧連智＋周邊',val:4,pct:0.2}],
+      grade:[{label:'S 13-24M',val:557,pct:29.2},{label:'S 0-6M',val:341,pct:17.9},{label:'A 孕期',val:340,pct:17.8},{label:'SS 7-12M',val:256,pct:13.4},{label:'AA 25-36M',val:194,pct:10.2},{label:'A 37-60M',val:106,pct:5.6},{label:'B 61M+',val:99,pct:5.2},{label:'無生日',val:13,pct:0.7}],
+      validRate:79.7, totalPeople:1918,
+    },
+    top5:['巧虎手偶互動遊戲組','巧虎雙語點讀圖鑑','(團購)英語 PLUS⁺ 初階版','語彙表達-智育學習套組','(團購)寶寶生活好習慣套組'],
+    data:[],
+  },
   '2602':{
     label:'2602 婦幼展', total:724, buyCount:17, totalAmt:57619, avgAmt:3389,
     avgTagsAll:8.5, avgTagsBuy:10.6,
@@ -1949,6 +1962,12 @@ function renderEventPage(){
 
 function renderSaleTable(){
   const ev=ALL_EVENTS[curEvent];
+  if(!ev.data || ev.data.length===0){
+    document.getElementById('saletable').querySelector('tbody').innerHTML=
+      `<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:20px;">整體檢視請切換至各場次查看明細</td></tr>`;
+    document.getElementById('saleExpandBtn') && (document.getElementById('saleExpandBtn').style.display='none');
+    return;
+  }
   const sorted=[...ev.data].sort((a,b)=>{
     const va=a[saleSortKey],vb=b[saleSortKey];
     if(va===null&&vb===null) return 0;
@@ -1996,6 +2015,14 @@ function renderSaleTable(){
 
 function renderProdChart(){
   const ev=ALL_EVENTS[curEvent];
+  if(!ev.data || ev.data.length===0){
+    // use top5 list for aggregate view
+    const wrap=document.getElementById('prodChartWrap');
+    if(wrap){ wrap.innerHTML=`<div style="font-size:13px;color:var(--text2);padding:10px 0;">`+
+      ev.top5.map((p,i)=>`<div style="margin-bottom:6px;"><span style="color:var(--accent);font-weight:600;">${i+1}. </span>${p}</div>`).join('')+
+      `</div>`; }
+    return;
+  }
   const cnt={};
   ev.data.forEach(r=>r.products.split('、').forEach(p=>{const k=p.trim();cnt[k]=(cnt[k]||0)+1;}));
   const sorted=Object.entries(cnt).sort((a,b)=>b[1]-a[1]);
