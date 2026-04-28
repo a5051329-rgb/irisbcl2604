@@ -215,6 +215,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="tab-btn active" onclick="goTab('overview',this)">整體現況分析</button>
     <button class="tab-btn" onclick="goTab('monthly',this)">近期蒐集分析（2025/04–2026/03）</button>
     <button class="tab-btn" onclick="goTab('consume',this)">異業管道消費分析</button>
+    <button class="tab-btn" onclick="goTab('self',this)" style="color:#c45c00;font-weight:500;">自辦活動 BCL 蒐集與銷售分析</button>
     <button class="tab-btn" onclick="goTab('partner',this)" style="color:#1a3a5c;font-weight:500;">異業合作 BCL 蒐集與銷售分析</button>
     <button class="tab-btn" onclick="goTab('fair',this)" style="color:#b82020;">婦幼展 BCL 蒐集與銷售分析</button>
   </div>
@@ -794,7 +795,248 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <!-- ═══════════════════════════════════════════════════
-     分頁四：異業合作 BCL 蒐集與銷售分析
+     分頁四：自辦活動 BCL 蒐集與銷售分析
+════════════════════════════════════════════════════ -->
+<div id="page-self" class="page">
+<style>
+#ps{
+  --ps-org:#c45c00;--ps-org-bg:#fff4ec;--ps-org-d:#8a3d00;
+  --ps-teal:#2E7D6E;--ps-teal-bg:#EAF5F3;--ps-teal-d:#1a5048;
+  --ps-blue:#2E6388;--ps-blue-bg:#EAF1F7;
+  --ps-gold:#7a5c00;--ps-gold-bg:#FDF8EE;
+  --ps-warn:#a05000;--ps-warn-bg:#FFF7EE;
+  --ps-ss:#b82020;--ps-ss-bg:#fff0f0;
+  font-size:14px;
+}
+#ps .pw{max-width:980px;margin:0 auto;padding:22px 0 36px;}
+#ps h1{font-size:19px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:3px;}
+#ps .sub{font-size:13px;color:#555;margin-bottom:16px;}
+#ps .ks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+#ps .kc{background:#fff;border:1px solid rgba(196,92,0,.2);border-radius:10px;padding:12px 14px;box-shadow:0 2px 6px rgba(196,92,0,.07);}
+#ps .kl{font-size:11.5px;color:#666;margin-bottom:4px;}
+#ps .kv{font-size:24px;font-weight:700;line-height:1.15;}
+#ps .kn{font-size:11px;color:#666;margin-top:3px;}
+#ps .ch-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+#ps .ch-tab{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid rgba(196,92,0,.25);background:#fff;color:var(--ps-org);cursor:pointer;transition:all .15s;}
+#ps .ch-tab.active{background:var(--ps-org);color:#fff;border-color:var(--ps-org);}
+#ps .ch-tab:hover:not(.active){background:var(--ps-org-bg);}
+#ps .row{display:grid;grid-template-columns:3fr 2fr;gap:12px;margin-bottom:12px;}
+#ps .sc{background:#fff;border:1px solid rgba(196,92,0,.18);border-radius:10px;padding:15px 15px 16px;box-shadow:0 2px 6px rgba(196,92,0,.06);}
+#ps .sh{font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin-bottom:11px;padding-bottom:8px;border-bottom:2px solid currentColor;display:flex;align-items:center;gap:6px;}
+#ps .sh-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}
+#ps .sl-row{display:flex;align-items:center;justify-content:space-between;margin:10px 0 6px;}
+#ps .sl{font-size:12px;font-weight:600;color:#333;padding:4px 9px;background:linear-gradient(90deg,rgba(196,92,0,.1),rgba(196,92,0,.03));border-radius:5px;border-left:3px solid rgba(196,92,0,.3);flex:1;}
+#ps table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;border-radius:8px;overflow:hidden;border:1px solid rgba(196,92,0,.18);}
+#ps thead tr{background:linear-gradient(135deg,#f5d9c0,#eec8a8);}
+#ps th{padding:7px 9px;border-bottom:2px solid rgba(196,92,0,.2);color:#6b2e00;font-weight:600;text-align:right;font-size:12px;}
+#ps th:first-child{text-align:left;}
+#ps td{padding:6px 9px;border-bottom:1px solid rgba(196,92,0,.1);text-align:right;font-size:12px;color:#222;}
+#ps td:first-child{text-align:left;}
+#ps tbody tr:last-child td{border-bottom:none;}
+#ps tbody tr:hover td{background:rgba(196,92,0,.04)!important;}
+#ps .tot td{font-weight:700;background:linear-gradient(135deg,#f0c9a8,#e8b890)!important;color:#6b2e00;}
+#ps .rss td{background:var(--ps-ss-bg)!important;color:var(--ps-ss);font-weight:600;}
+#ps .rs1 td{background:var(--ps-ss-bg)!important;color:var(--ps-ss);}
+#ps .nil td{color:#bbb;background:#fafaf9!important;}
+#ps .red{color:var(--ps-ss);font-weight:600;}
+#ps .fn{font-size:11px;color:#666;margin-top:5px;line-height:1.6;}
+#ps .fn-warn{font-size:11.5px;color:var(--ps-warn);margin-top:6px;padding:6px 9px;background:var(--ps-warn-bg);border-radius:6px;border-left:2px solid var(--ps-warn);line-height:1.6;}
+#ps .pair-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:8px;overflow:hidden;border:1px solid rgba(196,92,0,.18);}
+#ps .pair-left{border-right:1px solid rgba(196,92,0,.2);}
+#ps .pair-subhead{padding:7px 11px 6px;border-bottom:1px solid rgba(196,92,0,.15);}
+#ps .pair-wrap table{border:none;border-radius:0;}
+#ps .pair-wrap td{border-bottom:1px solid rgba(196,92,0,.1);}
+#ps .pair-wrap tbody tr:last-child td{border-bottom:none;}
+#ps .pair-wrap thead tr{background:linear-gradient(135deg,#f5d9c0,#eec8a8);}
+#ps .chart-wrap{position:relative;height:155px;margin-top:6px;}
+#ps .tgl-wrap{display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;flex-shrink:0;margin-left:8px;}
+#ps .tgl-btn{font-size:11px;font-weight:600;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;transition:all .15s;color:#666;background:transparent;}
+#ps .tgl-btn.active{background:#fff;color:var(--ps-org);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+</style>
+
+<div id="ps"><div class="pw">
+  <h1>自辦活動 BCL 蒐集與銷售分析</h1>
+  <div class="sub">資料截止：2026/03　管道：全管道、舞台劇、Happy Go、24心測活動</div>
+
+  <!-- KPI -->
+  <div class="ks">
+    <div class="kc" style="border-top:3px solid var(--ps-org);">
+      <div class="kl">自辦 BCL 總人數</div>
+      <div class="kv" style="color:var(--ps-org);">162,058</div>
+      <div class="kn">僅統計有效會員；有效率 65.1%<br><span style="font-size:10px;color:#aaa;">含無效會員共 249,087 人</span></div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--ps-ss);">
+      <div class="kl">SS+S 人數（現況）</div>
+      <div class="kv" style="color:var(--ps-ss);">13,766</div>
+      <div class="kn">佔整體 5.5%</div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--ps-teal);">
+      <div class="kl">總購買人數</div>
+      <div class="kv" style="color:var(--ps-teal);">33,281</div>
+      <div class="kn">整體轉換率 20.5%（有效會員口徑）</div>
+    </div>
+    <div class="kc" style="border-top:3px solid var(--ps-gold);">
+      <div class="kl">總銷售金額</div>
+      <div class="kv" style="color:var(--ps-gold);">$186,855,718</div>
+      <div class="kn">均價 $5,614</div>
+    </div>
+  </div>
+
+  <!-- 管道切換 -->
+  <div class="ch-tabs">
+    <button class="ch-tab active" onclick="psSwitch('all',this)">整體</button>
+    <button class="ch-tab" onclick="psSwitch('全管道',this)">全管道</button>
+    <button class="ch-tab" onclick="psSwitch('舞台劇',this)">舞台劇</button>
+    <button class="ch-tab" onclick="psSwitch('24心測活動',this)">24心測活動</button>
+    <button class="ch-tab" onclick="psSwitch('酷必後台',this)" style="color:#888;">酷必後台</button>
+  </div>
+
+  <!-- 重點1 + 重點2 -->
+  <div class="row">
+    <div class="sc">
+      <div class="sh" style="color:var(--ps-org);"><span class="sh-dot"></span>重點 1 ── 蒐集成果</div>
+      <div class="sl-row">
+        <div class="sl" id="ps-tbl-label">各管道蒐集概況（現況月齡，202603 基準）</div>
+        <div class="tgl-wrap">
+          <button class="tgl-btn active" id="ps-tgl-now" onclick="psToggle('now')">現況</button>
+          <button class="tgl-btn" id="ps-tgl-bind" onclick="psToggle('bind')">綁定時</button>
+        </div>
+      </div>
+      <div id="ps-collect-table"></div>
+      <div class="fn" id="ps-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）</div>
+      <div class="sl-row" style="margin-top:12px;">
+        <div class="sl" id="ps-chart-label">月齡分布</div>
+      </div>
+      <div class="chart-wrap"><canvas id="psGradeChart"></canvas></div>
+    </div>
+    <div class="sc">
+      <div class="sh" style="color:var(--ps-teal);"><span class="sh-dot"></span>重點 2 ── 銷售成果</div>
+      <div class="sl-row"><div class="sl">各管道銷售概況</div></div>
+      <div id="ps-sale-table"></div>
+      <div class="fn-warn">※ 商品金額來源：銷售商品表；口徑為個人總消費加總</div>
+      <div class="sl-row" style="margin-top:12px;">
+  <div class="sl" id="ps-prod-label">熱銷商品 TOP 5（依購買人數）</div>
+  <div id="ps-tip-ch-wrap" style="display:inline-block;position:relative;vertical-align:middle;">
+    <span onclick="psTipToggle('ps-tip-ch')" title="點擊查看銷售管道占比" style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--ps-org);color:#fff;font-size:10px;font-weight:700;cursor:pointer;margin-left:8px;">ℹ</span>
+    <div id="ps-tip-ch" style="display:none;position:absolute;z-index:999;right:0;top:22px;background:#fff;border:1px solid rgba(196,92,0,.25);border-radius:8px;padding:10px;box-shadow:0 4px 16px rgba(0,0,0,.13);min-width:300px;">
+      <div style="font-size:12px;font-weight:600;color:var(--ps-org);margin-bottom:8px;">整體銷售管道占比（訂單筆數）</div>
+      <table style="width:100%;font-size:11px;border-collapse:collapse;">
+        <thead><tr style="background:rgba(196,92,0,.1);"><th style="padding:4px 8px;text-align:left;border:1px solid rgba(196,92,0,.2);">管道</th><th style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.2);">筆數</th><th style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.2);">占比</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:4px 8px;border:1px solid rgba(196,92,0,.12);">CRM</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">55,888</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">65.7%</td></tr>
+          <tr style="background:rgba(196,92,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(196,92,0,.12);">Shopline WEB</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">20,083</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">23.6%</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid rgba(196,92,0,.12);">Shopline（團購）</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">6,164</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">7.2%</td></tr>
+          <tr style="background:rgba(196,92,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(196,92,0,.12);">Wabay</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">2,497</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(196,92,0,.12);">2.9%</td></tr>
+        </tbody>
+      </table>
+      <div style="font-size:10px;color:#888;margin-top:4px;">Shopline 合計 26,247 筆（30.8%）；以訂單筆數計算</div>
+    </div>
+  </div>
+</div>
+      <div id="ps-prod-table"></div>
+    </div>
+  </div>
+
+  <!-- 重點3 月齡分析 -->
+  <div class="sc" style="margin-bottom:12px;">
+    <div class="sh" style="color:var(--ps-gold);"><span class="sh-dot"></span>重點 3 ── 月齡與銷售關係分析</div>
+    <div class="pair-wrap">
+      <div class="pair-left">
+        <div class="pair-subhead" style="background:var(--ps-gold-bg);">
+          <span style="font-size:12px;font-weight:600;color:var(--ps-gold);">消費時月齡</span>
+          <span style="font-size:11px;color:#666;margin-left:6px;">下單當月月齡（銷貨年月－出生年月）</span>
+          <div style="display:inline-block;position:relative;vertical-align:middle;">
+            <span onclick="psTipToggle('ps-tip-timing')" title="點擊查看各管道綁定前後消費" style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:var(--ps-gold);color:#fff;font-size:9px;font-weight:700;cursor:pointer;margin-left:6px;">ℹ</span>
+            <div id="ps-tip-timing" style="display:none;position:absolute;z-index:999;left:-10px;top:20px;background:#fff;border:1px solid rgba(122,92,0,.25);border-radius:8px;padding:10px;box-shadow:0 4px 16px rgba(0,0,0,.13);min-width:400px;">
+              <div style="font-size:12px;font-weight:600;color:var(--ps-gold);margin-bottom:8px;">各管道綁定前後消費</div>
+              <table style="width:100%;font-size:11px;border-collapse:collapse;">
+                <thead><tr style="background:rgba(122,92,0,.1);"><th style="padding:4px 8px;text-align:left;border:1px solid rgba(122,92,0,.15);">管道</th><th style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.15);">綁定前</th><th style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.15);">綁定後</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:4px 8px;border:1px solid rgba(122,92,0,.1);">全管道</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">6,331筆 / $20,217,210</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">50,235筆 / $179,261,039</td></tr>
+                  <tr style="background:rgba(122,92,0,.04);"><td style="padding:4px 8px;border:1px solid rgba(122,92,0,.1);">舞台劇</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">130筆 / $476,919</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">29筆 / $135,003</td></tr>
+                  <tr><td style="padding:4px 8px;border:1px solid rgba(122,92,0,.1);">24心測活動</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">561筆 / $2,007,912</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.1);">1,497筆 / $5,999,300</td></tr>
+                  <tr style="font-weight:700;background:rgba(122,92,0,.08);"><td style="padding:4px 8px;border:1px solid rgba(122,92,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.15);">7,022筆 / $22,702,041</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(122,92,0,.15);">51,761筆 / $185,395,342</td></tr>
+                </tbody>
+              </table>
+              <div style="font-size:10px;color:#888;margin-top:4px;">綁定後佔整體消費 89.1%；舞台劇綁定前比例偏高，反映現場消費者特性</div>
+            </div>
+          </div>
+        </div>
+        <table style="border:none;border-radius:0;">
+          <thead><tr><th>等級</th><th>人數</th><th>訂單數</th><th>金額</th><th>AOV</th></tr></thead>
+          <tbody>
+            <tr><td>A 孕期（&lt;0M）</td><td>1,260</td><td>1,585</td><td>$5,242,978</td><td>$3,309</td></tr>
+            <tr class="rs1"><td>S（0～6M）</td><td>1,951</td><td>2,113</td><td>$7,814,399</td><td>$3,699</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>2,797</td><td>3,061</td><td>$13,476,884</td><td>$4,403</td></tr>
+            <tr class="rss"><td>★ S（13～24M）</td><td>10,684</td><td>12,336</td><td>$61,592,384</td><td>$4,994</td></tr>
+            <tr><td>AA（25～36M）</td><td>14,775</td><td>17,142</td><td>$93,289,553</td><td>$5,442</td></tr>
+            <tr><td>A（37～60M）</td><td>13,567</td><td>16,393</td><td>$94,186,774</td><td>$5,745</td></tr>
+            <tr><td>B（61M+）</td><td>5,006</td><td>5,768</td><td>$34,266,804</td><td>$5,940</td></tr>
+          </tbody>
+        </table>
+        <div class="fn" style="padding:5px 9px 4px;">★ 0~24M 合計佔 29.1% 訂單；各欄人數可能跨月齡重複</div>
+      </div>
+      <div>
+        <div class="pair-subhead" style="background:var(--ps-blue-bg);">
+          <span style="font-size:12px;font-weight:600;color:var(--ps-blue);">現況月齡 × 消費</span>
+          <span style="font-size:11px;color:#666;margin-left:6px;">以 202603 為基準</span>
+        </div>
+        <table style="border:none;border-radius:0;">
+          <thead><tr><th>等級</th><th>人數</th><th>已購</th><th>轉換率</th><th>營收%</th></tr></thead>
+          <tbody>
+            <tr><td>A 孕期</td><td>1,178</td><td>53</td><td>4.5%</td><td>0.1%</td></tr>
+            <tr class="rs1"><td>S（0～6M）</td><td>1,725</td><td>175</td><td>10.1%</td><td>0.4%</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>2,119</td><td>361</td><td>17.0%</td><td>0.9%</td></tr>
+            <tr class="rss"><td>★ S（13～24M）</td><td>9,922</td><td>2,216</td><td>22.3%</td><td>5.5%</td></tr>
+            <tr><td>AA（25～36M）</td><td>11,581</td><td>4,133</td><td>35.7%</td><td>10.2%</td></tr>
+            <tr><td>A（37～60M）</td><td>54,137</td><td>12,164</td><td>22.5%</td><td>30.1%</td></tr>
+            <tr><td>B（61M+）</td><td>168,487</td><td>21,317</td><td>12.7%</td><td>52.8%</td></tr>
+            <tr class="nil"><td style="color:#aaa;">無出生年月</td><td style="color:#aaa;">3,990</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td></tr>
+          </tbody>
+        </table>
+        <div class="fn" style="padding:5px 9px 4px;">B(61M+) 佔人數最多但月齡最大；AA+A(25~60M) 轉換率最高<br>3,990 人缺乏出生年月，主要來自酷必後台（2,223人）與24心測活動（1,719人）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FY26 策略 -->
+  <div class="sc" style="margin-bottom:0;">
+    <div class="sh" style="color:var(--ps-teal);"><span class="sh-dot"></span>FY26 自辦活動策略</div>
+    <div style="font-size:13px;color:#333;line-height:1.85;padding:13px 15px;background:linear-gradient(135deg,#fff4ec,#fff9f4);border-radius:8px;margin-bottom:12px;border:1px solid rgba(196,92,0,.15);">
+      <b style="color:var(--ps-org-d);">【蒐集與轉換成果】</b>自辦活動整體轉換率高達 16.2%，遠高於異業管道（2.4%）和婦幼展（2.5%），代表自辦管道蒐集到的名單品質和品牌親近度顯著較高。全管道（232,720 人）是規模最大的管道，但純新客比例僅 15.4%，代表多數為已有接觸的客戶；24心測活動純新客 93.6%、轉換率 10.5%，是相對精準的新客觸及管道。舞台劇和 Happy Go 規模小但均標籤高（14.2、8.8），客群黏著度較強。<br><br>
+      <b style="color:var(--ps-org-d);">【月齡結構特點】</b>整體名單月齡偏大（B 61M+ 佔 67%），這是自辦管道累積多年客戶的自然結果。綁定後消費比例在全管道達 88.8%，24心測活動 72.1%，說明透過自辦活動接觸的客戶，綁定後的轉換動能強。
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <div style="background:#fff;border:1px solid rgba(196,92,0,.18);border-radius:10px;padding:13px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--ps-org);margin-bottom:6px;display:flex;align-items:center;gap:7px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ps-org-bg);font-size:11px;font-weight:700;">01</span>
+          持續設計高精準度的自辦活動
+        </div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">育兒小調查系列、育兒四季等自辦活動的純新客比例高達 96.5%，均標籤達 14.3，轉換率依活動不同從 3~15% 不等。應持續設計以精準 TA 為核心的自辦活動，讓每次活動都能帶進有後續互動潛力的名單。</div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(196,92,0,.18);border-radius:10px;padding:13px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--ps-org);margin-bottom:6px;display:flex;align-items:center;gap:7px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ps-org-bg);font-size:11px;font-weight:700;">02</span>
+          舞台劇蒐集精準，深化後續轉換
+        </div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">舞台劇均標籤 14.2（各管道最高）、純新客 87.5%，蒐集品質優異。舞台劇為售票活動，面向品牌鐵粉，均標籤 14.2 為各管道最高、AOV $6,444 也最高。綁定前消費比例偏高（14.3%），正反映這群鐵粉本就認識品牌。應聚焦在維繫這批高黏著度客戶，並設計更多適合高月齡族群的商品溝通。</div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:13px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--ps-teal);margin-bottom:6px;display:flex;align-items:center;gap:7px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ps-teal-bg);font-size:11px;font-weight:700;color:var(--ps-teal);">03</span>
+          全管道孕期&amp;小月齡名單活化
+        </div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">全管道孕期佔 5.9%（13,745 人）、0~24M 佔 53.1%，這批小月齡名單的轉換率（SS 17%、S13~24M 22.3%）遠低於 AA+（35.7%），代表他們還在培育期。應設計月齡對應的系統性溝通，在正確時機推送對應商品。</div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     分頁五：異業合作 BCL 蒐集與銷售分析
 ════════════════════════════════════════════════════ -->
 <div id="page-partner" class="page">
 <style>
@@ -2485,6 +2727,189 @@ document.getElementById('cmpTbody').innerHTML=CMP_ROWS.map(row=>{
 }).join('');
 
 renderEventPage();
+
+/* ═══════════════════════════════════
+   Self Page JS
+═══════════════════════════════════ */
+const PS_GRADES=['A孕期','S(0~6M)','SS(7~12M)','S(13~24M)','AA(25~36M)','A(37~60M)','B(61M+)','無生日'];
+const PS_COLORS=['rgba(196,92,0,.75)','rgba(244,160,80,.8)','rgba(185,32,32,.9)','rgba(185,32,32,.65)','rgba(46,99,136,.7)','rgba(46,125,110,.65)','rgba(175,180,188,.65)','rgba(200,200,200,.5)'];
+
+const PS_DATA={
+  all:{label:'整體（有效會員）',n:162058,buyers:33281,amt:186855718,avgAmt:5614,avgTagsAll:9.6,avgTagsBuy:13.8,isNew:20.5,noBirth:2939,validRate:65.1,
+    cur:[1058,1460,1792,8105,9568,41393,98682],bind:[10533,12363,26222,53554,22119,18028,18638],
+    top5:['ENGLISH TOGETHER','巧虎注音拼音學習套組','和巧虎一起說英語 進階版','和巧虎一起說英語 PLUS⁺ 初階版','九九乘法偵探套組'],
+    top5n:[13712,6586,6493,4562,4153]},
+  '全管道':{label:'全管道',n:8896,buyers:561,amt:2897391,avgAmt:5165,avgTagsAll:14.6,avgTagsBuy:21.4,isNew:96.6,noBirth:37,validRate:88.9,
+    cur:[1053,1271,1147,2056,1521,765,1083],bind:[1340,1338,1198,2035,1335,604,1046],
+    top5:['巧虎雙語點讀圖鑑','巧虎手偶','和巧虎一起說英語 PLUS⁺ 初階版','好情緒EQX品格人際套組','巧虎手偶互動遊戲組'],
+    top5n:[125,88,87,87,84],
+    subtags:[
+      {name:'育兒知識王',n:3636,buyers:113,rate:3.1,avgTags:12.1,preg:10.5,ss:52.3},
+      {name:'我的育兒超能力',n:1948,buyers:73,rate:3.7,avgTags:13.9,preg:37.1,ss:46.3},
+      {name:'我的育兒四季',n:1781,buyers:138,rate:7.7,avgTags:17.7,preg:8.5,ss:54.1},
+      {name:'育兒小調查4-3',n:691,buyers:32,rate:4.6,avgTags:13.8,preg:17.7,ss:44.0},
+      {name:'育兒小調查4-2',n:570,buyers:49,rate:8.6,avgTags:14.8,preg:8.1,ss:42.3},
+      {name:'育兒小調查4-4',n:566,buyers:75,rate:13.3,avgTags:16.0,preg:5.8,ss:62.5},
+      {name:'育兒小調查4-5',n:440,buyers:37,rate:8.4,avgTags:13.0,preg:13.6,ss:49.5},
+      {name:'育兒小調查4-1',n:379,buyers:57,rate:15.0,avgTags:19.4,preg:9.5,ss:54.9},
+    ]},
+  '舞台劇':{label:'舞台劇',n:1337,buyers:142,amt:930736,avgAmt:6554,avgTagsAll:14.5,avgTagsBuy:18.1,isNew:87.5,noBirth:1,validRate:88.9,
+    cur:[0,6,3,71,246,602,409],bind:[2,4,9,94,285,574,369],
+    top5:['好情緒EQX品格人際套組','和巧虎一起說英語 PLUS⁺ 初階版','和巧虎一起說英語 進階版','ENGLISH TOGETHER','數位典藏1年'],
+    top5n:[30,29,27,26,14]},
+  '24心測活動':{label:'24心測活動',n:11678,buyers:1452,amt:8213866,avgAmt:5657,avgTagsAll:13.8,avgTagsBuy:21.0,isNew:92.7,noBirth:1274,validRate:78.6,
+    cur:[4,159,527,4222,3139,1842,1785],bind:[1166,2445,1738,2995,1166,620,1548],
+    top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','巧虎手偶互動遊戲組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑'],
+    top5n:[378,342,302,234,177]},
+  '酷必後台':{label:'酷必後台',n:140147,buyers:31126,amt:174813725,avgAmt:5616,avgTagsAll:9.6,avgTagsBuy:12.1,isNew:9.8,noBirth:1627,validRate:62.9,
+    cur:[1,24,115,1756,4662,38184,95405],bind:[8025,8576,23277,48430,19333,16830,15676],
+    top5:['ENGLISH TOGETHER','巧虎注音拼音學習套組','和巧虎一起說英語 進階版','和巧虎一起說英語 PLUS⁺ 初階版','九九乘法偵探套組'],
+    top5n:[13699,6574,6405,4173,4144]},
+};
+
+let psCurCh='all', psTglMode='now', psChart=null;
+
+function psSwitch(ch,el){
+  psCurCh=ch;
+  document.querySelectorAll('#ps .ch-tab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  psRender();
+}
+
+function psToggle(mode){
+  psTglMode=mode;
+  document.getElementById('ps-tgl-now').classList.toggle('active',mode==='now');
+  document.getElementById('ps-tgl-bind').classList.toggle('active',mode==='bind');
+  document.getElementById('ps-tbl-label').textContent=mode==='now'
+    ?'各管道蒐集概況（現況月齡，202603 基準）':'各管道蒐集概況（綁定時月齡）';
+  document.getElementById('ps-collect-fn').textContent=mode==='now'
+    ?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）'
+    :'綁定時月齡＝客戶加入 LINE 當下的孩子月齡';
+  psRenderCollect(); psRenderChart();
+}
+
+function psRender(){psRenderCollect();psRenderSale();psRenderProd();psRenderChart();}
+
+
+function psRenderCollect(){
+  const CHNLS=['全管道','舞台劇','24心測活動','酷必後台'];
+  let rows='';
+  if(psCurCh==='all'){
+    CHNLS.forEach(ch=>{
+      const r=PS_DATA[ch];
+      const dist=psTglMode==='now'?r.cur:r.bind;
+      const sss=dist[1]+dist[2]+dist[3],preg=dist[0],tot=r.n;
+      const isKubi=ch==='酷必後台';
+      const gray=isKubi?'color:#aaa;':'';
+      const validCell=`<td style="${gray}">${r.validRate?r.validRate.toFixed(1)+'%':'—'}</td>`;
+      if(ch==='全管道'&&r.subtags){
+        rows+=`<tr><td><span onclick="var e=document.getElementById('ps-subtag-rows');var open=e.style.display==='none';e.style.display=open?'':'none';this.textContent=open?'▲ 全管道':'▼ 全管道';" style="cursor:pointer;font-size:11px;color:var(--ps-org);font-weight:600;">▼ 全管道</span></td><td>${tot.toLocaleString()}</td><td class="red">${sss.toLocaleString()}</td><td class="red">${(sss/tot*100).toFixed(1)}%</td><td>${preg.toLocaleString()}</td><td>${(preg/tot*100).toFixed(1)}%</td><td>${r.avgTagsAll.toFixed(1)}</td>${validCell}</tr>`;
+        rows+=`<tr id="ps-subtag-rows" style="display:none;"><td colspan="8" style="padding:0;background:#fdf8f4;"><table style="width:100%;border:none;font-size:11.5px;"><thead><tr style="background:rgba(196,92,0,.08);"><th style="text-align:left;padding:5px 9px 5px 20px;">活動</th><th>有效人數</th><th>SS+S人數</th><th>SS+S比例</th><th>孕期人數</th><th>孕期比例</th><th>均標籤</th><th>—</th></tr></thead><tbody>${r.subtags.map(s=>{const sssN=Math.round(s.n*s.ss/100);const pregN=Math.round(s.n*s.preg/100);return`<tr><td style="padding:4px 9px 4px 20px;">${s.name}</td><td>${s.n.toLocaleString()}</td><td class="red">${sssN.toLocaleString()}</td><td class="red">${s.ss.toFixed(1)}%</td><td>${pregN.toLocaleString()}</td><td>${s.preg.toFixed(1)}%</td><td>${s.avgTags.toFixed(1)}</td><td>—</td></tr>`}).join('')}</tbody></table></td></tr>`;
+      } else {
+        rows+=`<tr style="${gray}"><td>${ch}${isKubi?' <span style="font-size:10px;color:#bbb;">（舊系統）</span>':''}</td><td>${tot.toLocaleString()}</td><td class="${isKubi?'':'red'}">${sss.toLocaleString()}</td><td class="${isKubi?'':'red'}">${(sss/tot*100).toFixed(1)}%</td><td style="${gray}">${preg.toLocaleString()}</td><td style="${gray}">${(preg/tot*100).toFixed(1)}%</td><td style="${gray}">${r.avgTagsAll.toFixed(1)}</td>${validCell}</tr>`;
+      }
+    });
+    const totDist=CHNLS.reduce((acc,ch)=>{const r=PS_DATA[ch];const dist=psTglMode==='now'?r.cur:r.bind;dist.forEach((v,i)=>{acc[i]=(acc[i]||0)+v;});return acc;},[]);
+    const tSss=totDist[1]+totDist[2]+totDist[3],tPreg=totDist[0];
+    const tTags=(CHNLS.reduce((s,ch)=>s+PS_DATA[ch].avgTagsAll*PS_DATA[ch].n,0)/162058).toFixed(1);
+    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>162,058</td><td class="red">${tSss.toLocaleString()}</td><td class="red">${(tSss/162058*100).toFixed(1)}%</td><td>${tPreg.toLocaleString()}</td><td>${(tPreg/162058*100).toFixed(1)}%</td><td>${tTags}</td><td>65.1%</td></tr>`;
+  } else {
+    const d=PS_DATA[psCurCh];
+    const dist=psTglMode==='now'?d.cur:d.bind;
+    const sss=dist[1]+dist[2]+dist[3],preg=dist[0];
+    rows=`<tr><td style="font-weight:600;">${d.label}</td><td>${d.n.toLocaleString()}</td><td class="red">${sss.toLocaleString()}</td><td class="red">${(sss/d.n*100).toFixed(1)}%</td><td>${preg.toLocaleString()}</td><td>${(preg/d.n*100).toFixed(1)}%</td><td>${d.avgTagsAll.toFixed(1)}</td><td>${d.validRate?d.validRate.toFixed(1)+'%':'—'}</td></tr>`;
+    if(psCurCh==='全管道'&&d.subtags){
+      rows+=`<tr><td colspan="8" style="padding:6px 9px;background:#fdf8f4;"><details><summary style="cursor:pointer;font-size:11.5px;font-weight:600;color:var(--ps-org);">▶ 各活動細部數字</summary><table style="width:100%;margin-top:6px;border:none;font-size:11.5px;"><thead><tr style="background:rgba(196,92,0,.06);"><th style="text-align:left;padding:4px 8px;">活動</th><th>人數</th><th>購買</th><th>轉換率</th><th>均標籤</th><th>孕期%</th><th>SS+S%</th><th>—</th></tr></thead><tbody>${d.subtags.map(s=>`<tr><td style="padding:4px 8px;">${s.name}</td><td>${s.n.toLocaleString()}</td><td>${s.buyers}</td><td>${s.rate.toFixed(1)}%</td><td>${s.avgTags.toFixed(1)}</td><td>${s.preg.toFixed(1)}%</td><td>${s.ss.toFixed(1)}%</td><td>—</td></tr>`).join('')}</tbody></table></details></td></tr>`;
+    }
+  }
+  document.getElementById('ps-collect-table').innerHTML=`<table><thead><tr><th>管道</th><th>有效人數</th><th>SS+S人數</th><th>SS+S比例</th><th>孕期人數</th><th>孕期比例</th><th>均標籤</th><th>有效率</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function psRenderSale(){
+  const CHNLS=['全管道','舞台劇','24心測活動','酷必後台'];
+  let rows='';
+  if(psCurCh==='all'){
+    CHNLS.forEach(ch=>{
+      const r=PS_DATA[ch];
+      const isKubi=ch==='酷必後台';
+      const gray=isKubi?'color:#aaa;':'';
+      rows+=`<tr style="${gray}"><td>${ch}${isKubi?' <span style="font-size:10px;color:#bbb;">（舊系統）</span>':''}</td><td>${r.buyers.toLocaleString()}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+Math.round(r.amt/r.buyers).toLocaleString():'—'}</td></tr>`;
+    });
+    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>33,281</td><td>20.5%</td><td>$186,855,718</td><td>$5,614</td></tr>`;
+  } else {
+    const r=PS_DATA[psCurCh];
+    rows=`<tr><td style="font-weight:600;">${r.label}</td><td>${r.buyers.toLocaleString()}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+Math.round(r.amt/r.buyers).toLocaleString():'—'}</td></tr>`;
+  }
+  document.getElementById('ps-sale-table').innerHTML=`<table><thead><tr><th>管道</th><th>購買人</th><th>轉換率</th><th>總金額</th><th>均價</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function psRenderProd(){
+  const d=PS_DATA[psCurCh];
+  const medals=['🥇','🥈','🥉','　','　'];
+  let rows='';
+  if(!d.top5||d.top5.length===0){
+    rows='<tr><td colspan="3" style="text-align:center;color:#aaa;padding:12px;">尚無商品資料</td></tr>';
+  } else {
+    d.top5.forEach((p,i)=>{rows+=`<tr><td style="text-align:left;">${medals[i]||'　'} <b>${i+1}</b></td><td>${p}</td><td>${d.top5n[i]}</td></tr>`;});
+  }
+  document.getElementById('ps-prod-label').textContent=psCurCh==='all'?'各管道合計熱銷商品 TOP 5（依購買人數）':`${d.label} 熱銷商品 TOP 5`;
+  var psTipChWrap=document.getElementById('ps-tip-ch-wrap');
+  if(psTipChWrap) psTipChWrap.style.display=psCurCh==='all'?'inline-block':'none';
+  document.getElementById('ps-prod-table').innerHTML=`<table><thead><tr><th>名次</th><th>商品名稱（標準品名）</th><th>購買人數</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function psRenderChart(){
+  const d=PS_DATA[psCurCh];
+  const rawData=psTglMode==='now'?d.cur:d.bind;const data=[...rawData,...(d.noBirth?[d.noBirth]:[0])];
+  const total=data.reduce((a,b)=>a+b,0);
+  const pcts=data.map(v=>total>0?(v/total*100).toFixed(1)+'%':'0%');
+  document.getElementById('ps-chart-label').textContent=psTglMode==='now'?`${d.label} 現況月齡分布`:`${d.label} 綁定時月齡分布`;
+  const el=document.getElementById('psGradeChart');
+  if(!el||typeof Chart==='undefined') return;
+  if(psChart){psChart.destroy();psChart=null;}
+  psChart=new Chart(el,{type:'bar',
+    data:{labels:PS_GRADES,datasets:[{data:data,backgroundColor:PS_COLORS,borderRadius:4,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw.toLocaleString()} 人 (${pcts[c.dataIndex]})`}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#555'}},
+              y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#555'},afterDataLimits:s=>{s.max=s.max*1.15;}}}},
+    plugins:[{id:'psLbl',afterDatasetsDraw(chart){
+      const ctx=chart.ctx;
+      chart.data.datasets.forEach((ds,i)=>{
+        chart.getDatasetMeta(i).data.forEach((bar,j)=>{
+          if(data[j]===0) return;
+          ctx.save();ctx.fillStyle=(j===2||j===3)?'#b82020':'#444';
+          ctx.font='bold 9.5px sans-serif';ctx.textAlign='center';
+          ctx.fillText(pcts[j],bar.x,bar.y-5);ctx.restore();
+        });
+      });
+    }}]
+  });
+}
+
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.classList.contains('tab-btn')){
+    setTimeout(function(){
+      const pg=document.getElementById('page-self');
+      if(pg&&pg.classList.contains('active')) psRender();
+    },80);
+  }
+});
+(function(){var t=0,iv=setInterval(function(){t++;if(typeof Chart!=='undefined'){clearInterval(iv);}if(t>40)clearInterval(iv);},100);})();
+
+function psTipToggle(id){
+  ['ps-tip-ch','ps-tip-timing'].forEach(function(tid){
+    if(tid!==id){var e=document.getElementById(tid);if(e)e.style.display='none';}
+  });
+  var el=document.getElementById(id);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
+}
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.getAttribute&&e.target.getAttribute('onclick')&&e.target.getAttribute('onclick').indexOf('psTipToggle')>=0) return;
+  ['ps-tip-ch','ps-tip-timing'].forEach(function(tid){
+    var e=document.getElementById(tid);if(e)e.style.display='none';
+  });
+});
 
 /* ═══════════════════════════════════
    Partner Page JS
