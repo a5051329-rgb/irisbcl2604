@@ -207,17 +207,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="brand-tag">BCL DB</div>
       <div class="brand-name">資料庫分析儀表板</div>
     </div>
-    <div class="header-meta">截至 2026 年 3 月</div>
+    <div class="header-meta">截至 2026 年 5 月</div>
   </div>
 </header>
 
 <nav class="tab-nav">
   <div class="tab-nav-inner">
-    <button class="tab-btn active" onclick="goTab('overview',this)">整體現況分析</button>
-    <button class="tab-btn" onclick="goTab('monthly',this)">近期蒐集分析（2025/04–2026/03）</button>
-    <button class="tab-btn" onclick="goTab('self',this)" style="color:#c45c00;font-weight:500;">自辦活動 BCL 蒐集與銷售分析</button>
-    <button class="tab-btn" onclick="goTab('partner',this)" style="color:#1a3a5c;font-weight:500;">異業合作 BCL 蒐集與銷售分析</button>
-    <button class="tab-btn" onclick="goTab('fair',this)" style="color:#b82020;">婦幼展 BCL 蒐集與銷售分析</button>
+    <button class="tab-btn active" onclick="goTab('overview',this)">DB現況分析</button>
+    <button class="tab-btn" onclick="goTab('weekly',this)">周月報告分析</button>
+    <button class="tab-btn" onclick="goTab('monthly',this)">FY25分析</button>
+    <button class="tab-btn" onclick="goTab('self',this)" style="color:#c45c00;font-weight:500;">自辦活動分析</button>
+    <button class="tab-btn" onclick="goTab('partner',this)" style="color:#1a3a5c;font-weight:500;">異業合作分析</button>
+    <button class="tab-btn" onclick="goTab('fair',this)" style="color:#b82020;">婦幼展分析</button>
     <button class="tab-btn" onclick="goTab('meta',this)" style="color:#1877f2;font-weight:500;">Meta 廣告成效分析</button>
   </div>
 </nav>
@@ -229,30 +230,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
   <div class="sec">現況摘要</div>
   <div class="card" style="margin-bottom:4px;">
-    <p style="font-size:14px;color:var(--text2);line-height:1.9;">有效 BCL 共 <strong>178,431 人</strong>，有效率 66.1%。名單老化明顯，B（61M+）佔 58.3%，SS 黃金名單僅 2,911 人（1.6%）。保有率自 2023 年起下滑，近兩年出生組仍有大量未蒐集空間。巧連智停刊後，純新客比例快速提升，名單結構正健康轉型中。</p>
+    <p style="font-size:14px;color:var(--text2);line-height:1.9;">有效 BCL 共 <strong>178,789 人</strong>，有效率 66.0%。名單老化明顯，B（61M+）佔 59.1%，SS 黃金名單僅 2,820 人（1.6%）。保有率自 2023 年起下滑，近兩年出生組仍有大量未蒐集空間。巧連智停刊後，純新客比例快速提升，名單結構正健康轉型中。</p>
   </div>
 
   <div class="sec">關鍵指標</div>
   <div class="g4" style="margin-bottom:20px;">
     <div class="kpi">
       <div class="kpi-label">有效 BCL 總數</div>
-      <div class="kpi-val">178,431</div>
-      <div class="kpi-sub">含無效共 269,964 人</div>
+      <div class="kpi-val">178,789</div>
+      <div class="kpi-sub">含無效共 270,869 人</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">整體有效率</div>
-      <div class="kpi-val">66.1%</div>
-      <div class="vbar"><div class="vbar-v" style="width:66.3%"></div><div class="vbar-i" style="width:33.7%"></div></div>
-      <div class="vbar-labels"><span style="color:var(--green);font-weight:500;">有效 178,431</span><span style="color:var(--text3);">無效 91,533</span></div>
+      <div class="kpi-val">66.0%</div>
+      <div class="vbar"><div class="vbar-v" style="width:66.0%"></div><div class="vbar-i" style="width:34.0%"></div></div>
+      <div class="vbar-labels"><span style="color:var(--green);font-weight:500;">有效 178,789</span><span style="color:var(--text3);">無效 92,080</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-label">無巧連智＋無周邊佔比</div>
-      <div class="kpi-val" style="color:var(--teal);">27.9%</div>
-      <div class="kpi-sub">共 49,745 人｜停刊後比例持續成長中</div>
+      <div class="kpi-val" style="color:var(--teal);">28.2%</div>
+      <div class="kpi-sub">共 50,368 人｜停刊後比例持續成長中</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">SS 黃金名單（現況）</div>
-      <div class="kpi-val" style="color:var(--ss);">2,911</div>
+      <div class="kpi-val" style="color:var(--ss);">2,820</div>
       <div class="kpi-sub">7–12M，佔有效 1.6%</div>
     </div>
   </div>
@@ -313,10 +314,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
     </div>
     <div class="grade-row" style="grid-template-columns:repeat(9,minmax(0,1fr));">
-      <div class="gp active-grade" data-g="all" onclick="selGrade('all',this)"><div class="gp-label">全部</div><div class="gp-val">179,844</div><div class="gp-pct">100%</div></div>
+      <div class="gp active-grade" data-g="all" onclick="selGrade('all',this)"><div class="gp-label">全部</div><div class="gp-val">178,789</div><div class="gp-pct">100%</div></div>
       <div class="gp" data-g="preg" onclick="selGrade('preg',this)"><div class="gp-label">A 孕期</div><div class="gp-val">2,026</div><div class="gp-pct">1.1%</div></div>
       <div class="gp" data-g="s06" onclick="selGrade('s06',this)"><div class="gp-label">S 0–6M</div><div class="gp-val">3,207</div><div class="gp-pct">1.8%</div></div>
-      <div class="gp ss-grade" data-g="ss" onclick="selGrade('ss',this)"><div class="gp-label">★ SS 7–12M</div><div class="gp-val">2,863</div><div class="gp-pct">1.6%</div></div>
+      <div class="gp ss-grade" data-g="ss" onclick="selGrade('ss',this)"><div class="gp-label">★ SS 7–12M</div><div class="gp-val">2,820</div><div class="gp-pct">1.6%</div></div>
       <div class="gp" data-g="s1324" onclick="selGrade('s1324',this)"><div class="gp-label">S 13–24M</div><div class="gp-val">10,978</div><div class="gp-pct">6.1%</div></div>
       <div class="gp" data-g="aa" onclick="selGrade('aa',this)"><div class="gp-label">AA 25–36M</div><div class="gp-val">11,783</div><div class="gp-pct">6.6%</div></div>
       <div class="gp" data-g="a" onclick="selGrade('a',this)"><div class="gp-label">A 37–60M</div><div class="gp-val">43,659</div><div class="gp-pct">24.3%</div></div>
@@ -328,7 +329,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div style="font-size:11px;color:var(--text3);margin-bottom:10px;">等級分布總覽</div>
         <div class="donut-wrap" style="height:230px;">
           <canvas id="c2" role="img" aria-label="月齡等級分布圓餅圖"></canvas>
-          <div class="donut-center"><div class="dc-val" id="donutVal">179,844</div><div class="dc-sub" id="donutSub">有效會員</div></div>
+          <div class="donut-center"><div class="dc-val" id="donutVal">178,789</div><div class="dc-sub" id="donutSub">有效會員</div></div>
         </div>
       </div>
       <div>
@@ -435,13 +436,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
   <div class="sec">現況摘要</div>
   <div class="card" style="margin-bottom:4px;">
-    <p style="font-size:14px;color:var(--text2);line-height:1.9;">過去 12 個月共蒐集 <strong>26,682 位有效 BCL</strong>，月均 2,223 人。自動管道（SHOPLINE）自 2025/09 起新增，2026/02–03 快速成長；主動管道穩步貢獻。2025/04 與 2026/03 因特定合作帶來蒐集高峰，屬機會型爆量，這兩個月可視為我們的<strong>努力目標與天花板</strong>。</p>
+    <p style="font-size:14px;color:var(--text2);line-height:1.9;">過去 12 個月共蒐集 <strong>24,153 位有效 BCL</strong>，月均 2,223 人。自動管道（SHOPLINE）自 2025/09 起新增，2026/02–03 快速成長；主動管道穩步貢獻。2025/04 與 2026/03 因特定合作帶來蒐集高峰，屬機會型爆量，這兩個月可視為我們的<strong>努力目標與天花板</strong>。</p>
   </div>
 
   <div class="sec">關鍵指標（2025/04–2026/03，共 12 個月）</div>
   <div class="g4" style="margin-bottom:20px;">
-    <div class="kpi"><div class="kpi-label">期間有效 BCL 總計</div><div class="kpi-val">27,078</div><div class="kpi-sub">含無效共 32,526</div></div>
-    <div class="kpi"><div class="kpi-label">期間有效率</div><div class="kpi-val">83.3%</div><div class="kpi-sub">無效 5,448 人</div></div>
+    <div class="kpi"><div class="kpi-label">期間有效 BCL 總計</div><div class="kpi-val">26,682</div><div class="kpi-sub">含無效共 32,526</div></div>
+    <div class="kpi"><div class="kpi-label">期間有效率</div><div class="kpi-val">83.3%</div><div class="kpi-sub">無效 5,724 人</div></div>
     <div class="kpi"><div class="kpi-label">月均有效蒐集</div><div class="kpi-val">2,256</div><div class="kpi-sub">最高：2026/03 共 5,003 人</div></div>
     <div class="kpi"><div class="kpi-label">SS 黃金名單（期間）</div><div class="kpi-val" style="color:var(--ss);">2,937</div><div class="kpi-sub">佔期間有效 10.8%</div></div>
   </div>
@@ -496,8 +497,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="kpi-sub" style="margin-bottom:8px;">有效 BCL（含無效共 5,327）</div>
       <div class="chip-row">
         <span class="chip" style="background:var(--purple-bg);color:var(--purple);border-color:rgba(82,56,176,.2);">自辦 3,428</span>
-        <span class="chip" style="background:#fff8f0;color:var(--amber);border-color:rgba(160,92,16,.2);">主動 503</span>
-        <span class="chip" style="background:#eaf5f3;color:#2e7d6e;border-color:rgba(46,125,110,.2);">自動 649</span>
+        <span class="chip" style="background:#fff8f0;color:var(--amber);border-color:rgba(160,92,16,.2);">主動 218</span>
+        <span class="chip" style="background:#eaf5f3;color:#2e7d6e;border-color:rgba(46,125,110,.2);">自動 323</span>
         <span class="chip" style="background:var(--ss-bg);color:var(--ss);border-color:rgba(201,48,48,.2);">異業 413</span>
       </div>
     </div>
@@ -548,8 +549,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div style="display:flex;gap:10px;align-items:flex-start;">
         <span style="font-size:11px;font-weight:600;color:var(--green);background:rgba(26,122,74,.08);border-radius:30px;padding:2px 9px;flex-shrink:0;margin-top:2px;">04</span>
         <div>
-          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">維持近期有效率優勢（82.7%），勿以量換質</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.7;">相較整體 DB 的 66.3%，近期品質明顯較優，持續維持此標準是蒐集策略的核心原則。</div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">維持近期有效率優勢（83.3%），勿以量換質</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.7;">相較整體 DB 的 66.0%，近期品質明顯較優，持續維持此標準是蒐集策略的核心原則。</div>
         </div>
       </div>
     </div>
@@ -559,7 +560,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <!-- ═══════════════════════ TAB 3 ═══════════════════════ -->
 <!-- ═══════════════════════════════════════════════════
-     分頁四：自辦活動 BCL 蒐集與銷售分析
+     分頁四：自辦活動分析
 ════════════════════════════════════════════════════ -->
 <div id="page-self" class="page">
 <style>
@@ -619,15 +620,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </style>
 
 <div id="ps"><div class="pw">
-  <h1>自辦活動 BCL 蒐集與銷售分析</h1>
-  <div class="sub">資料截止：2026/03　管道：全管道、舞台劇、Happy Go、24心測活動</div>
+  <h1>自辦活動分析</h1>
+  <div class="sub">資料截止：2026/05　管道：全管道、舞台劇、Happy Go、24心測活動</div>
 
   <!-- KPI -->
   <div class="ks">
     <div class="kc" style="border-top:3px solid var(--ps-org);">
       <div class="kl">自辦 BCL 總人數</div>
-      <div class="kv" style="color:var(--ps-org);">162,125</div>
-      <div class="kn">僅統計有效會員；有效率 65.1%<br><span style="font-size:10px;color:#aaa;">含無效會員共 249,468 人</span></div>
+      <div class="kv" style="color:var(--ps-org);">161,743</div>
+      <div class="kn">僅統計有效會員；有效率 65.1%<br><span style="font-size:10px;color:#aaa;">含無效會員共 250,800 人</span></div>
     </div>
     <div class="kc" style="border-top:3px solid var(--ps-ss);">
       <div class="kl">SS+S 人數（現況）</div>
@@ -641,8 +642,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="kc" style="border-top:3px solid var(--ps-gold);">
       <div class="kl">總銷售金額</div>
-      <div class="kv" style="color:var(--ps-gold);">$185,816,562</div>
-      <div class="kn">均價 $5,606</div>
+      <div class="kv" style="color:var(--ps-gold);">$186,296,025</div>
+      <div class="kn">均價 $5,616</div>
     </div>
   </div>
 
@@ -660,14 +661,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="sc">
       <div class="sh" style="color:var(--ps-org);"><span class="sh-dot"></span>重點 1 ── 蒐集成果</div>
       <div class="sl-row">
-        <div class="sl" id="ps-tbl-label">各管道蒐集概況（現況月齡，202603 基準）</div>
+        <div class="sl" id="ps-tbl-label">各管道蒐集概況（現況月齡，202605 基準）</div>
         <div class="tgl-wrap">
           <button class="tgl-btn active" id="ps-tgl-now" onclick="psToggle('now')">現況</button>
           <button class="tgl-btn" id="ps-tgl-bind" onclick="psToggle('bind')">綁定時</button>
         </div>
       </div>
       <div id="ps-collect-table"></div>
-      <div class="fn" id="ps-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）<br>流失率 ＝ 有填問卷但未完成手機簡訊驗證的比例；全管道整體流失率 9.5%（1,084 人 / 11,354 人）</div>
+      <div class="fn" id="ps-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）<br>流失率 ＝ 有填問卷但未完成手機簡訊驗證的比例；全管道整體流失率 9.5%（1,084 人 / 11,354 人）</div>
       <div class="sl-row" style="margin-top:12px;">
         <div class="sl" id="ps-chart-label">月齡分布</div>
       </div>
@@ -800,7 +801,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <!-- ═══════════════════════════════════════════════════
-     分頁五：異業合作 BCL 蒐集與銷售分析
+     分頁五：異業合作分析
 ════════════════════════════════════════════════════ -->
 <div id="page-partner" class="page">
 <style>
@@ -855,8 +856,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 
 <div id="pp"><div class="pw">
-  <h1>異業合作 BCL 蒐集與銷售分析</h1>
-  <div class="sub">資料截止：2026/03　管道：大樹、六甲村、永生、明治、芳茲、揆眾婦幼展、樂飛發票、聯盟網</div>
+  <h1>異業合作分析</h1>
+  <div class="sub">資料截止：2026/05　管道：大樹、六甲村、永生、明治、芳茲、揆眾婦幼展、樂飛發票、聯盟網</div>
 
   <!-- KPI -->
   <div class="ks">
@@ -877,8 +878,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <div class="kc" style="border-top:3px solid var(--pp-gold);">
       <div class="kl">總銷售金額</div>
-      <div class="kv" style="color:var(--pp-gold);">$1,439,517</div>
-      <div class="kn">均價 $5,141</div>
+      <div class="kv" style="color:var(--pp-gold);">$1,412,943</div>
+      <div class="kn">均價 $5,010</div>
     </div>
   </div>
 
@@ -893,6 +894,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="ch-tab" onclick="ppSwitch('揆眾婦幼展',this)">揆眾婦幼展</button>
     <button class="ch-tab" onclick="ppSwitch('樂飛發票',this)">樂飛發票</button>
     <button class="ch-tab" onclick="ppSwitch('聯盟網',this)">聯盟網</button>
+    <button class="ch-tab" onclick="ppSwitch('小村日和',this)">小村日和</button>
   </div>
 
   <!-- 重點1 + 重點2 -->
@@ -901,14 +903,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="sc">
       <div class="sh" style="color:var(--pp-blue);"><span class="sh-dot"></span>重點 1 ── 蒐集成果</div>
       <div class="sl-row">
-        <div class="sl" id="pp-tbl-label">各管道蒐集概況（現況月齡，202603 基準）</div>
+        <div class="sl" id="pp-tbl-label">各管道蒐集概況（現況月齡，202605 基準）</div>
         <div class="tgl-wrap">
           <button class="tgl-btn active" id="pp-tgl-now" onclick="ppToggle('now')">現況</button>
           <button class="tgl-btn" id="pp-tgl-bind" onclick="ppToggle('bind')">綁定時</button>
         </div>
       </div>
       <div id="pp-collect-table"></div>
-      <div class="fn" id="pp-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）</div>
+      <div class="fn" id="pp-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）</div>
       <div class="sl-row" style="margin-top:12px;">
         <div class="sl" id="pp-chart-label">月齡分布</div>
       </div>
@@ -998,13 +1000,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <table style="border:none;border-radius:0;">
           <thead><tr><th>等級</th><th>人數</th><th>已購</th><th>轉換率</th><th>營收</th><th>營收%</th></tr></thead>
           <tbody>
-            <tr><td>A 孕期</td><td>1,128</td><td>6</td><td>0.5%</td><td>$12,364</td><td>0.9%</td></tr>
-            <tr class="rs1"><td>S（0～6M）</td><td>2,006</td><td>14</td><td>0.7%</td><td>$86,322</td><td>6.0%</td></tr>
-            <tr class="rss"><td>★ SS（7～12M）</td><td>991</td><td>24</td><td>2.4%</td><td>$158,849</td><td>11.0%</td></tr>
-            <tr class="rss"><td>★ S（13～24M）</td><td>1,648</td><td>84</td><td>5.1%</td><td>$412,329</td><td>28.6%</td></tr>
-            <tr><td>AA（25～36M）</td><td>893</td><td>67</td><td>7.5%</td><td>$382,766</td><td>26.6%</td></tr>
-            <tr><td>A（37～60M）</td><td>838</td><td>39</td><td>4.7%</td><td>$215,303</td><td>15.0%</td></tr>
-            <tr><td>B（61M+）</td><td>4,029</td><td>46</td><td>1.1%</td><td>$171,584</td><td>11.9%</td></tr>
+            <tr><td>A 孕期</td><td>1,171</td><td>5</td><td>0.4%</td><td>$12,364</td><td>0.9%</td></tr>
+            <tr class="rs1"><td>S（0～6M）</td><td>1,998</td><td>14</td><td>0.7%</td><td>$86,322</td><td>6.1%</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>987</td><td>24</td><td>2.4%</td><td>$158,849</td><td>11.2%</td></tr>
+            <tr class="rss"><td>★ S（13～24M）</td><td>1,643</td><td>84</td><td>5.1%</td><td>$412,329</td><td>29.2%</td></tr>
+            <tr><td>AA（25～36M）</td><td>889</td><td>67</td><td>7.5%</td><td>$382,766</td><td>27.1%</td></tr>
+            <tr><td>A（37～60M）</td><td>837</td><td>39</td><td>4.7%</td><td>$215,303</td><td>15.2%</td></tr>
+            <tr><td>B（61M+）</td><td>4,031</td><td>47</td><td>1.2%</td><td>$171,584</td><td>12.1%</td></tr>
             <tr class="nil"><td style="color:#aaa;">無出生年月</td><td style="color:#aaa;">2,416</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td></tr>
           </tbody>
         </table>
@@ -1094,7 +1096,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </div>
 
 <!-- ═══════════════════════════════════════════════════
-     分頁五：婦幼展 BCL 蒐集與銷售分析
+     分頁五：婦幼展分析
 ════════════════════════════════════════════════════ -->
 <div id="page-fair" class="page">
 
@@ -1195,8 +1197,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </style>
 
 <div id="pf"><div class="pw">
-  <h1>婦幼展 BCL 蒐集與銷售分析</h1>
-  <div class="sub">資料截止：2026/03　三場：2507 台北婦幼展 ・ 2512 婦幼展 ・ 2602 婦幼展</div>
+  <h1>婦幼展分析</h1>
+  <div class="sub">資料截止：2026/05　三場：2507 台北婦幼展 ・ 2512 婦幼展 ・ 2602 婦幼展</div>
 
   <!-- KPI -->
   <div class="ks">
@@ -1208,7 +1210,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="kc" style="border-top:3px solid var(--pr);">
       <div class="kl">SS+S 人數（現況月齡）</div>
       <div class="kv" style="color:var(--pr);">1,154</div>
-      <div class="kn">佔整體 60.5%（202603 基準）</div>
+      <div class="kn">佔整體 60.5%（202605 基準）</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pt);">
       <div class="kl">總購買人數</div>
@@ -1231,7 +1233,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
       <!-- sub-label + toggle -->
       <div class="sl-row">
-        <div class="sl" id="pf-tbl-label">各場次蒐集概況（現況月齡，202603 基準）</div>
+        <div class="sl" id="pf-tbl-label">各場次蒐集概況（現況月齡，202605 基準）</div>
         <div class="tgl-wrap">
           <button class="tgl-btn active" id="pf-tgl-now" onclick="pfToggle('now')">現況</button>
           <button class="tgl-btn" id="pf-tgl-bind" onclick="pfToggle('bind')">綁定時</button>
@@ -1249,7 +1251,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
             <tr class="tot"><td>合計</td><td>1,906</td><td class="red">1,154</td><td class="red">60.5%</td><td>340</td><td>17.8%</td><td>79.8%</td></tr>
           </tbody>
         </table>
-        <div class="fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）。2507 最小現況月齡為 1M，孕期為 0。有效率＝未封鎖比率（截至目前的靜態數值，不區分綁定時/現況）</div>
+        <div class="fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）。2507 最小現況月齡為 1M，孕期為 0。有效率＝未封鎖比率（截至目前的靜態數值，不區分綁定時/現況）</div>
       </div>
 
       <!-- 綁定時表（預設隱藏） -->
@@ -1395,7 +1397,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
             <tr class="nil"><td style="color:#aaa;">無生日</td><td style="color:#aaa;">11</td><td style="color:#aaa;">0</td><td style="color:#aaa;">0%</td><td style="color:#aaa;">—</td><td style="color:#aaa;">0%</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.3% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高<br>各欄人數為現況月齡去重唯一人數</div>
+        <div class="fn" style="padding:6px 10px 5px;">★ SS+S(0~24M) 貢獻 66.0% 營收；AA+A(25~60M) 轉換率 5.7% 反而最高<br>各欄人數為現況月齡去重唯一人數</div>
       </div>
     </div>
   </div>
@@ -1552,7 +1554,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     document.getElementById('pf-tgl-now').classList.toggle('active', isNow);
     document.getElementById('pf-tgl-bind').classList.toggle('active', !isNow);
     document.getElementById('pf-tbl-label').textContent = isNow
-      ? '各場次蒐集概況（現況月齡，202603 基準）'
+      ? '各場次蒐集概況（現況月齡，202605 基準）'
       : '各場次蒐集概況（綁定時月齡）';
     /* update chart */
     pfUpdateChart(mode);
@@ -1776,7 +1778,7 @@ function drawC3(k){
 function selGrade(k,el){
   document.querySelectorAll('.gp').forEach(g=>g.classList.remove('active-grade'));
   el.classList.add('active-grade');
-  if(k==='all'){document.getElementById('donutVal').textContent='179,844';document.getElementById('donutSub').textContent='有效會員';}
+  if(k==='all'){document.getElementById('donutVal').textContent='178,789';document.getElementById('donutSub').textContent='有效會員';}
   drawC3(k);
 }
 drawC3('all');
@@ -1784,31 +1786,32 @@ drawC3('all');
 /* ═══ Charts 4 & 5 — pipe × grade / subscription ═══ */
 const PIPE_DATA_ALL={
   '主動':{
-    'LineOA':      {grade:[1,47,99,768,776,569,1087,795], sub:[85,183,275,2804]},
-    '官網-Welcome':{grade:[282,273,271,744,631,436,533,79],sub:[29,88,194,2859]},
+    'LineOA':      {grade:[1,40,75,726,804,615,1092,793], sub:[85,182,287,2799]},
+    '官網-Welcome':{grade:[246,301,254,775,674,494,575,79],sub:[30,95,198,2996]},
   },
   '自動':{
-    'SHOPLINE':    {grade:[5,22,40,446,303,191,1416,1309],sub:[23,85,67,2248]},
+    'SHOPLINE':    {grade:[1,23,33,433,343,209,1467,1353],sub:[26,89,73,2321]},
   },
   '異業':{
-    '揆眾婦幼展':{grade:[339,339,256,554,192,106,112,11],  sub:[4,30,14,1850]},
-    '大樹':      {grade:[0,1,37,555,360,316,1783,1608],    sub:[17,93,38,2904]},
-    '樂飛發票':  {grade:[108,136,124,251,236,320,1274,108], sub:[11,43,2,2393]},
-    '永生':      {grade:[90,736,305,75,18,17,496,449],      sub:[3,11,1,1722]},
-    '六甲村':    {grade:[150,459,197,81,14,23,270,220],     sub:[0,17,5,1172]},
-    '明治':      {grade:[466,308,32,12,1,6,64,2],           sub:[3,10,0,876]},
-    '聯盟網':    {grade:[1,18,36,114,68,48,29,16],          sub:[2,7,9,296]},
-    '芳茲':      {grade:[17,0,0,1,0,1,3,0],                 sub:[0,0,0,22]},
+    '揆眾婦幼展':{grade:[254,379,255,579,195,117,118,11],  sub:[4,30,14,1849]},
+    '大樹':      {grade:[0,1,19,534,372,331,1795,1608],    sub:[17,93,39,2903]},
+    '樂飛發票':  {grade:[101,136,129,257,232,340,1295,111], sub:[11,43,2,2434]},
+    '永生':      {grade:[70,646,392,98,16,19,496,449],      sub:[3,11,1,1722]},
+    '六甲村':    {grade:[116,446,212,119,13,24,269,219],     sub:[0,17,5,1177]},
+    '明治':      {grade:[374,414,27,19,1,6,68,2],            sub:[3,10,0,896]},
+    '聯盟網':    {grade:[0,14,35,109,73,54,29,16],           sub:[2,7,9,296]},
+    '芳茲':      {grade:[36,5,0,1,0,1,3,0],                  sub:[0,0,0,46]},
+    '小村日和':  {grade:[0,1,31,4,1,3,2,0],                  sub:[0,1,0,41]},
   },
   '自辦':{
-    '全管道':    {grade:[1179,1482,1286,2296,1689,884,1250,46],  sub:[49,187,119,9711]},
-    '線上活動':  {grade:[4,208,685,5348,3858,2330,2391,1713],    sub:[90,376,486,13872]},
-    '春季舞台劇':{grade:[0,4,3,57,182,426,298,2],                sub:[39,63,8,860]},
-    '英語劇':    {grade:[0,1,1,18,77,249,180,0],                 sub:[17,50,9,450]},
-    'BCL導購':   {grade:[0,0,3,40,82,129,59,13],                 sub:[2,21,19,271]},
-    '客服':      {grade:[2,14,18,57,42,23,8,0],                  sub:[19,8,113,24]},
-    '夏季舞台劇':{grade:[0,1,0,0,1,3,2,0],                       sub:[0,2,0,5]},
-    'Happy Go':  {grade:[2,10,8,17,14,11,10,0],                  sub:[0,2,1,69]},
+    '全管道':    {grade:[1136,1486,1352,2457,1809,1012,1352,44],  sub:[51,192,128,10233]},
+    '線上活動':  {grade:[2,118,360,4104,3218,2019,1802,1267],     sub:[90,376,486,13643]},
+    '春季舞台劇':{grade:[0,3,2,49,168,399,299,2],                sub:[39,63,8,860]},
+    '英語劇':    {grade:[0,1,0,17,55,216,127,0],                 sub:[17,50,9,450]},
+    'BCL導購':   {grade:[0,0,2,37,82,131,61,13],                 sub:[2,21,19,271]},
+    '客服':      {grade:[0,17,15,59,44,27,9,0],                  sub:[20,9,117,25]},
+    'Happy Go':  {grade:[1,10,7,18,15,11,10,0],                  sub:[0,2,1,69]},
+    '酷必後台':  {grade:[1,18,101,1922,5299,48386,166787,2218],   sub:[49370,145487,1612,26045]},
   },
 };
 const PIPE_DATA_2024={
@@ -1941,11 +1944,11 @@ renderSubPills4();
 renderCharts45();
 
 /* ═══ Monthly charts ═══ */
-const MO=['2025-04','2025-05','2025-06','2025-07','2025-08','2025-09','2025-10','2025-11','2025-12','2026-01','2026-02','2026-03'];
-const MV=[4159,987,1192,1614,1290,1580,2260,1695,2103,2104,2799,4899];
-const MI=[1049,220,473,571,406,332,488,350,502,442,469,422];
-const MG={'A 孕期':[1,0,0,2,4,15,50,86,286,430,548,549],'S 0–6M':[84,67,112,276,275,226,292,277,339,297,288,576],'SS 7–12M':[267,103,107,159,90,122,152,137,236,135,224,578],'S 13–24M':[1475,260,215,395,241,348,425,371,491,282,442,1011],'AA 25–36M':[938,226,240,311,236,380,446,312,270,224,277,718],'A 37–60M':[658,155,181,221,203,188,412,215,149,267,187,522],'B 61M+':[736,176,337,250,241,301,483,297,332,469,833,945]};
-const MC={'自辦':[2922,571,429,681,615,1027,1602,1027,882,1209,1065,3348],'異業':[974,276,612,754,497,365,400,367,821,444,654,399],'主動':[263,140,151,179,178,173,149,156,319,335,214,503],'自動':[0,0,0,0,0,15,109,145,81,116,866,649]};
+const MO=['2025-05','2025-06','2025-07','2025-08','2025-09','2025-10','2025-11','2025-12','2026-01','2026-02','2026-03','2026-04'];
+const MV=[984,1193,1609,1285,1572,2248,1685,2094,2081,2776,4863,1763];
+const MI=[223,472,576,411,340,500,360,511,465,492,458,37];
+const MG={'A 孕期':[0,0,2,0,7,22,54,192,351,459,459,342],'S 0–6M':[46,92,215,238,207,304,288,394,348,325,559,174],'SS 7–12M':[121,103,200,117,121,136,132,223,135,231,575,145],'S 13–24M':[243,228,386,241,349,423,366,514,277,443,1032,360],'AA 25–36M':[231,233,305,228,378,435,321,274,226,300,747,260],'A 37–60M':[170,199,244,213,209,447,227,164,273,192,556,119],'B 61M+':[173,338,257,248,301,481,297,333,471,826,935,363]};
+const MC={'自辦':[570,428,679,613,1026,1594,1022,881,1200,1062,3319,1048],'異業':[274,611,750,494,358,397,363,815,434,640,397,174],'主動':[140,154,180,178,173,149,155,317,331,211,500,218],'自動':[0,0,0,0,15,108,145,81,116,863,647,323]};
 const GC=[P.green,P.blue,P.ss,'#6fa8d8','#c87a2e',P.amber,P.gray];
 const MLEG={total:[{c:P.blue,l:'有效會員'},{c:'#d0cec8',l:'無效會員'}],grade:Object.keys(MG).map((k,i)=>({c:GC[i],l:k})),channel:[{c:P.purple,l:'自辦'},{c:P.ss,l:'異業'},{c:P.amber,l:'主動'},{c:'#2e7d6e',l:'自動'}]};
 function setMLeg(m){document.getElementById('mLeg').innerHTML=MLEG[m].map(x=>`<div class="legend-item"><div class="ldot" style="background:${x.c}"></div>${x.l}</div>`).join('');}
@@ -1962,7 +1965,7 @@ function switchM(mode,el){
 }
 setMLeg('total');switchM('total',document.querySelector('#mPills .pill'));
 
-new Chart(document.getElementById('ssC'),{type:'line',data:{labels:MO,datasets:[{label:'SS+S',data:[1826,430,434,830,606,696,869,785,1066,714,954,2165],borderColor:P.ss,backgroundColor:'rgba(201,48,48,.08)',pointRadius:4,pointBackgroundColor:P.ss,pointBorderColor:'#fff',pointBorderWidth:1.5,tension:.35,fill:true,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'SS+S: '+ctx.parsed.y.toLocaleString()+' 人'}}},scales:{x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:40,font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11}}}}}});
+new Chart(document.getElementById('ssC'),{type:'line',data:{labels:MO,datasets:[{label:'SS+S',data:[410, 423, 801, 596, 677, 863, 786, 1131, 760, 999, 2166, 679],borderColor:P.ss,backgroundColor:'rgba(201,48,48,.08)',pointRadius:4,pointBackgroundColor:P.ss,pointBorderColor:'#fff',pointBorderWidth:1.5,tension:.35,fill:true,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'SS+S: '+ctx.parsed.y.toLocaleString()+' 人'}}},scales:{x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:40,font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11}}}}}});
 
 const chTot=MO.map((_,i)=>MC['自辦'][i]+MC['異業'][i]+MC['主動'][i]+(MC['自動']?MC['自動'][i]:0));
 const pct=arr=>arr.map((v,i)=>chTot[i]>0?Math.round(v/chTot[i]*100):0);
@@ -2007,34 +2010,34 @@ const PS_GRADES=['A孕期','S(0~6M)','SS(7~12M)','S(13~24M)','AA(25~36M)','A(37~
 const PS_COLORS=['rgba(196,92,0,.75)','rgba(244,160,80,.8)','rgba(185,32,32,.9)','rgba(185,32,32,.65)','rgba(46,99,136,.7)','rgba(46,125,110,.65)','rgba(175,180,188,.65)','rgba(200,200,200,.5)'];
 
 const PS_DATA={
-  all:{label:'整體（有效會員）',n:162125,buyers:33145,amt:185816562,avgAmt:5606,avgTagsAll:9.6,avgTagsBuy:13.8,isNew:20.5,noBirth:5785,validRate:65.1,
-    cur:[1058,1460,1792,8105,9568,41393,98682],bind:[10533,12363,26222,53554,22119,18028,18638],
+  all:{label:'整體（有效會員）',n:161743,buyers:33138,amt:186296025,avgAmt:5616,avgTagsAll:9.6,avgTagsBuy:13.8,isNew:20.5,noBirth:2919,validRate:64.8,
+    cur:[1033,1420,1666,7909,9378,40308,100029],bind:[10361,12358,26116,53405,22004,17972,18537],
     top5:['ENGLISH TOGETHER','巧虎注音拼音學習套組','和巧虎一起說英語 進階版','和巧虎一起說英語 PLUS⁺ 初階版','九九乘法偵探套組'],
     top5n:[13712,6586,6493,4562,4153]},
-  '全管道':{label:'全管道',n:8952,buyers:562,amt:2902787,avgAmt:5165,avgTagsAll:14.6,avgTagsBuy:21.4,isNew:96.6,noBirth:37,validRate:88.9,
-    cur:[1062,1279,1155,2071,1525,769,1091],bind:[1348,1344,1205,2051,1342,607,1055],
+  '全管道':{label:'全管道',n:9426,buyers:588,amt:3013715,avgAmt:5125,avgTagsAll:14.8,avgTagsBuy:21.5,isNew:96.6,noBirth:33,validRate:88.9,
+    cur:[1030,1280,1218,2206,1632,884,1176],bind:[1463,1396,1246,2136,1409,645,1131],
     top5:['巧虎雙語點讀圖鑑','巧虎手偶','和巧虎一起說英語 PLUS⁺ 初階版','好情緒EQX品格人際套組','巧虎手偶互動遊戲組'],
     top5n:[125,88,87,87,84],
     subtags:[
-      {name:'育兒知識王',dropout:10.0,n:3636,buyers:113,rate:3.1,avgTags:12.1,preg:10.5,ss:52.3},
-      {name:'我的育兒超能力',dropout:5.8,n:1948,buyers:73,rate:3.7,avgTags:13.9,preg:37.1,ss:46.3},
-      {name:'我的育兒四季',dropout:9.6,n:1781,buyers:138,rate:7.7,avgTags:17.7,preg:8.5,ss:54.1},
-      {name:'育兒小調查4-3',dropout:7.0,n:691,buyers:32,rate:4.6,avgTags:13.8,preg:17.7,ss:44.0},
-      {name:'育兒小調查4-2',dropout:13.2,n:570,buyers:49,rate:8.6,avgTags:14.8,preg:8.1,ss:42.3},
-      {name:'育兒小調查4-4',dropout:8.1,n:566,buyers:75,rate:13.3,avgTags:16.0,preg:5.8,ss:62.5},
-      {name:'育兒小調查4-5',dropout:12.1,n:440,buyers:37,rate:8.4,avgTags:13.0,preg:13.6,ss:49.5},
-      {name:'育兒小調查4-1',dropout:17.9,n:379,buyers:57,rate:15.0,avgTags:19.4,preg:9.5,ss:54.9},
+      {name:'育兒知識王',dropout:10.0,n:3960,buyers:136,rate:3.4,avgTags:12.5,preg:12.4,ss:50.1},
+      {name:'我的育兒超能力',dropout:5.8,n:1679,buyers:72,rate:4.3,avgTags:14.5,preg:36.9,ss:47.6},
+      {name:'我的育兒四季',dropout:9.6,n:1558,buyers:138,rate:8.9,avgTags:18.6,preg:8.2,ss:54.8},
+      {name:'育兒小調查4-3',dropout:7.0,n:543,buyers:32,rate:5.9,avgTags:15.2,preg:15.3,ss:44.8},
+      {name:'育兒小調查4-2',dropout:13.2,n:483,buyers:48,rate:9.9,avgTags:15.7,preg:7.5,ss:42.2},
+      {name:'育兒小調查4-4',dropout:8.1,n:488,buyers:71,rate:14.5,avgTags:16.9,preg:5.1,ss:63.5},
+      {name:'育兒小調查4-5',dropout:12.1,n:380,buyers:36,rate:9.5,avgTags:13.6,preg:13.4,ss:52.1},
+      {name:'育兒小調查4-1',dropout:17.9,n:335,buyers:55,rate:16.4,avgTags:20.6,preg:8.4,ss:55.8},
     ]},
-  '舞台劇':{label:'舞台劇',n:1335,buyers:142,amt:914138,avgAmt:6438,avgTagsAll:14.5,avgTagsBuy:18.1,isNew:87.5,noBirth:1,validRate:88.8,
-    cur:[0,6,3,71,246,602,409],bind:[2,4,9,94,285,572,369],
+  '舞台劇':{label:'舞台劇',n:1335,buyers:142,amt:913805,avgAmt:6435,avgTagsAll:14.8,avgTagsBuy:18.2,isNew:87.4,noBirth:1,validRate:88.8,
+    cur:[0,5,2,68,221,613,426],bind:[2,4,9,94,283,574,369],
     top5:['好情緒EQX品格人際套組','和巧虎一起說英語 PLUS⁺ 初階版','和巧虎一起說英語 進階版','ENGLISH TOGETHER','數位典藏1年'],
     top5n:[30,29,27,26,14]},
-  '24心測活動':{label:'24心測活動',n:11645,buyers:1445,amt:8160650,avgAmt:5648,avgTagsAll:13.8,avgTagsBuy:21.0,isNew:92.7,noBirth:1271,validRate:78.6,
-    cur:[4,159,523,4205,3134,1840,1780],bind:[1158,2437,1733,2988,1166,619,1544],
+  '24心測活動':{label:'24心測活動',n:11623,buyers:1459,amt:8319200,avgAmt:5702,avgTagsAll:14.0,avgTagsBuy:21.4,isNew:92.5,noBirth:1267,validRate:78.4,
+    cur:[2,118,360,4104,3218,2019,1802],bind:[1153,2435,1730,2982,1165,619,1539],
     top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','巧虎手偶互動遊戲組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑'],
     top5n:[378,342,302,234,177]},
-  '酷必後台':{label:'酷必後台',n:139727,buyers:30996,amt:174016295,avgAmt:5614,avgTagsAll:9.6,avgTagsBuy:12.1,isNew:9.8,noBirth:1626,validRate:62.8,
-    cur:[1,24,115,1747,4644,38069,95127],bind:[7966,8539,23194,48294,19277,16800,15657],
+  '酷必後台':{label:'酷必後台',n:139359,buyers:30949,amt:174049305,avgAmt:5624,avgTagsAll:9.6,avgTagsBuy:12.3,isNew:9.8,noBirth:1618,validRate:62.6,
+    cur:[1,17,86,1531,4307,36792,96625],bind:[7942,8523,23131,48193,19213,16754,15603],
     top5:['ENGLISH TOGETHER','巧虎注音拼音學習套組','和巧虎一起說英語 進階版','和巧虎一起說英語 PLUS⁺ 初階版','九九乘法偵探套組'],
     top5n:[13699,6574,6405,4173,4144]},
 };
@@ -2053,9 +2056,9 @@ function psToggle(mode){
   document.getElementById('ps-tgl-now').classList.toggle('active',mode==='now');
   document.getElementById('ps-tgl-bind').classList.toggle('active',mode==='bind');
   document.getElementById('ps-tbl-label').textContent=mode==='now'
-    ?'各管道蒐集概況（現況月齡，202603 基準）':'各管道蒐集概況（綁定時月齡）';
+    ?'各管道蒐集概況（現況月齡，202605 基準）':'各管道蒐集概況（綁定時月齡）';
   document.getElementById('ps-collect-fn').textContent=mode==='now'
-    ?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）'
+    ?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）'
     :'綁定時月齡＝客戶加入 LINE 當下的孩子月齡';
   psRenderCollect(); psRenderChart();
 }
@@ -2083,8 +2086,8 @@ function psRenderCollect(){
     });
     const totDist=CHNLS.reduce((acc,ch)=>{const r=PS_DATA[ch];const dist=psTglMode==='now'?r.cur:r.bind;dist.forEach((v,i)=>{acc[i]=(acc[i]||0)+v;});return acc;},[]);
     const tSss=totDist[1]+totDist[2]+totDist[3],tPreg=totDist[0];
-    const tTags=(CHNLS.reduce((s,ch)=>s+PS_DATA[ch].avgTagsAll*PS_DATA[ch].n,0)/162125).toFixed(1);
-    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>162,125</td><td class="red">${tSss.toLocaleString()}</td><td class="red">${(tSss/162125*100).toFixed(1)}%</td><td>${tPreg.toLocaleString()}</td><td>${(tPreg/162125*100).toFixed(1)}%</td><td>${tTags}</td><td>65.1%</td></tr>`;
+    const tTags=(CHNLS.reduce((s,ch)=>s+PS_DATA[ch].avgTagsAll*PS_DATA[ch].n,0)/161743).toFixed(1);
+    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>161,743</td><td class="red">${tSss.toLocaleString()}</td><td class="red">${(tSss/161743*100).toFixed(1)}%</td><td>${tPreg.toLocaleString()}</td><td>${(tPreg/161743*100).toFixed(1)}%</td><td>${tTags}</td><td>65.1%</td></tr>`;
   } else {
     const d=PS_DATA[psCurCh];
     const dist=psTglMode==='now'?d.cur:d.bind;
@@ -2107,7 +2110,7 @@ function psRenderSale(){
       const gray=isKubi?'color:#aaa;':'';
       rows+=`<tr style="${gray}"><td>${ch}${isKubi?' <span style="font-size:10px;color:#bbb;">（舊系統）</span>':''}</td><td>${r.buyers.toLocaleString()}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+Math.round(r.amt/r.buyers).toLocaleString():'—'}</td></tr>`;
     });
-    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>33,145</td><td>20.5%</td><td>$185,816,562</td><td>$5,606</td></tr>`;
+    rows+=`<tr class="tot"><td>合計（有效會員）</td><td>33,138</td><td>20.5%</td><td>$186,296,025</td><td>$5,616</td></tr>`;
   } else {
     const r=PS_DATA[psCurCh];
     rows=`<tr><td style="font-weight:600;">${r.label}</td><td>${r.buyers.toLocaleString()}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+Math.round(r.amt/r.buyers).toLocaleString():'—'}</td></tr>`;
@@ -2184,47 +2187,376 @@ document.addEventListener('click',function(e){
 });
 
 /* ═══════════════════════════════════
-   Partner Page JS
+   Weekly Report Chart JS
 ═══════════════════════════════════ */
+function pwMode(mode,el){
+  document.querySelectorAll('#pw-page .mode-tab').forEach(function(b){b.classList.remove('active');});
+  el.classList.add('active');
+  document.querySelectorAll('#pw-page .mode-panel').forEach(function(p){p.classList.remove('active');});
+  var panel=document.getElementById('pw-'+mode);
+  if(panel) panel.classList.add('active');
+  setTimeout(pwInitCharts,60);
+}
+
+var pwGradeChartW=null,pwGradeChartM=null,pwTrendChart=null;
+
+/* Grade data from 綁定月齡 sheet (2504~26 period) */
+var PW_GRADES=['A 孕期','S（0~6M）','★SS（7~12M）','★S（13~24M）','AA（25~36M）','A（37~60M）','B（61M+）','無生日'];
+var PW_GRADE_PCT=[16.5,67.4,2.7,2.9,1.1,1.0,0.0,8.4];
+var PW_GRADE_COLORS=['rgba(14,122,110,.75)','rgba(30,111,184,.75)','rgba(185,28,28,.9)','rgba(185,28,28,.65)','rgba(46,99,136,.7)','rgba(46,125,110,.65)','rgba(175,180,188,.5)','rgba(200,200,200,.5)'];
+var PW_GRADE_BARS=['rgba(14,122,110,.8)','rgba(30,111,184,.8)','rgba(185,28,28,.9)','rgba(185,28,28,.7)','rgba(46,99,136,.7)','rgba(46,125,110,.7)','rgba(175,180,188,.6)','rgba(200,200,200,.5)'];
+/* SS+S rows = index 1,2,3 */
+
+/* ── 月齡等級占比：資料層 ── */
+var PW_BTYPE_N={all:720,self:380,active:130,shopline:43,partner:162};
+var PW_CH_N={
+  'all':720,'育兒知識王':379,'官網-Welcome':126,'樂飛發票':70,
+  '小村日和':53,'SHOPLINE':43,'明治':21,'六甲村':9,'永生':9,
+  'LineOA':4,'育兒超能力':1,'手動':5
+};
+
+/* 各管道月齡比例（8項：孕期/S0/SS/S1/A/AA/B+/無生日）
+   依各管道近期綁定DB分布估算，取代固定全管道比例 */
+var PW_CH_PCT={
+  'all':      [16.5,67.4,2.7,2.9,1.1,1.0,0.0,8.4],
+  'self':     [0.6,0.9,1.0,4.7,16.1,27.9,48.9,0.0],
+  'active':   [3.0,5.2,4.7,21.6,35.0,8.4,9.1,13.0],
+  'shopline': [0.0,0.8,1.2,16.4,20.6,3.5,3.7,53.7],
+  'partner':  [6.2,16.9,11.0,15.3,12.8,6.0,31.6,0.0],
+  '育兒知識王':[0.0,0.8,2.3,33.8,43.7,5.9,13.5,0.0],
+  '小村日和': [0.0,2.2,65.2,18.5,3.3,4.3,6.5,0.0],
+  '樂飛發票': [3.6,5.2,5.6,10.3,16.0,16.8,42.6,0.0],
+  '官網-Welcome':[6.0,9.4,7.6,22.8,31.6,8.4,11.9,2.4],
+  '明治':     [30.4,54.8,3.1,3.2,0.2,0.5,7.5,0.2],
+  '六甲村':   [6.6,34.9,21.1,12.0,2.5,1.9,21.0,0.0],
+  '永生':     [3.9,28.9,30.1,6.9,1.5,0.9,27.9,0.0],
+  'LineOA':   [0.0,0.9,1.8,20.4,38.4,8.5,6.3,23.6],
+  'SHOPLINE': [0.0,0.8,1.2,16.4,20.6,3.5,3.7,53.7],
+  '育兒超能力':[0.0,0.8,2.3,33.8,43.7,5.9,13.5,0.0]
+};
+
+/* 折線圖資料 */
+var PW_LINE_W19=[102,124,114,98,76,132,74];
+var PW_LINE_W18=[97,101,116,148,111,50,51];
+var PW_LINE_APR=[0,0,0,0,0,0,0];
+var PW_LINE_LABELS=['Day1\n(日)','Day2\n(一)','Day3\n(二)','Day4\n(三)','Day5\n(四)','Day6\n(五)','Day7\n(六)'];
+
+var _pwLineChart=null;
+
+/* ── 共用核心：根據 key 更新長條+說明 ── */
+function _pwUpdateGrade(n, key){
+  var pct=PW_CH_PCT[key]||PW_CH_PCT['all'];
+  pwRenderGradeBars('pw-week-bars', n, pct);
+  var ss=Math.round(n*(pct[1]+pct[2]+pct[3])/100);
+  var ssPct=((pct[1]+pct[2]+pct[3])).toFixed(1);
+  var fn=document.getElementById('pw-grade-fn');
+  var label=(key==='all'||!key)?'全管道':key;
+  if(fn) fn.textContent='SS+S(0~24M) 合計約 '+ssPct+'%，'+label+' '+n+' 人估計 '+ss+' 人。無生日/未填 '+pct[7].toFixed(1)+'% 需持續優化資料完整度';
+}
+
+/* ── 切換 btype ── */
+function pwGradeTab(bt,btn){
+  ['all','self','active','shopline','partner'].forEach(function(k){
+    var b=document.getElementById('pgt-'+k);
+    if(!b) return;
+    if(k===bt){b.style.background='#2563eb';b.style.color='#fff';b.style.borderColor='#2563eb';b.style.fontWeight='600';}
+    else{b.style.background='#fff';b.style.color='#555';b.style.borderColor='#d1d5db';b.style.fontWeight='400';}
+  });
+  var sel=document.getElementById('pw-ch-select');
+  if(sel) sel.value='all';
+  var note=document.getElementById('pw-ch-note');
+  if(note) note.style.display='none';
+  var n=PW_BTYPE_N[bt]||720;
+  _pwUpdateGrade(n, bt);
+}
+
+/* ── 切換細部管道 ── */
+function pwChannelFilter(ch){
+  /* 取消 btype highlight */
+  ['all','self','active','shopline','partner'].forEach(function(k){
+    var b=document.getElementById('pgt-'+k);
+    if(b){b.style.background='#fff';b.style.color='#555';b.style.borderColor='#d1d5db';b.style.fontWeight='400';}
+  });
+  var note=document.getElementById('pw-ch-note');
+  if(ch==='all'||!ch){
+    /* 還原全管道 */
+    if(note) note.style.display='none';
+    var ab=document.getElementById('pgt-all');
+    if(ab){ab.style.background='#2563eb';ab.style.color='#fff';ab.style.borderColor='#2563eb';ab.style.fontWeight='600';}
+    _pwUpdateGrade(720,'all');
+    return;
+  }
+  var n=PW_CH_N[ch]||0;
+  if(note){
+    note.textContent=(ch==='小村日和'?'🌱 ':'')+'篩選：'+ch+'　本週 '+n+' 人';
+    note.style.display='inline';
+  }
+  _pwUpdateGrade(n, ch);
+}
+
+function pwRenderGradeBars(containerId, total, pct){
+  var el=document.getElementById(containerId);
+  if(!el) return;
+  if(!pct) pct=PW_CH_PCT['all'];
+  var html='';
+  PW_GRADES.forEach(function(lbl,i){
+    var p=pct[i];
+    var n=Math.round(total*p/100);
+    var isss=(i>=1&&i<=3);
+    var barColor=PW_GRADE_BARS[i];
+    var lblStyle=isss?'font-weight:700;color:#b91c1c;':'';
+    html+='<div class="grade-row">';
+    html+='<div class="grade-lbl" style="'+lblStyle+'">'+lbl+'</div>';
+    html+='<div class="grade-bar-bg"><div class="grade-bar-fill" style="width:'+p+'%;background:'+barColor+';"></div></div>';
+    html+='<div class="grade-pct" style="'+(isss?'color:#b91c1c;font-weight:700;':'')+'\">'+(p>0?p.toFixed(1)+'%':'—')+'</div>';
+    html+='<div class="grade-n">≈'+n+'</div>';
+    html+='</div>';
+  });
+  el.innerHTML=html;
+}
+
+function pwInitLineChart(){
+  var el=document.getElementById('pwWeekLineChart');
+  if(!el||typeof Chart==='undefined') return;
+  var existing=Chart.getChart(el);
+  if(existing){existing.destroy();}
+  _pwLineChart=new Chart(el,{type:'line',
+    data:{
+      labels:['日(5/4)','一(5/5)','二(5/6)','三(5/7)','四(5/8)','五(5/9)','六(5/10)'],
+      datasets:[
+        {label:'W19 本週',data:PW_LINE_W19,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',pointBackgroundColor:'#2563eb',borderWidth:2.5,pointRadius:4,tension:0.3,fill:true},
+        {label:'W18 上週',data:PW_LINE_W18,borderColor:'#9ca3af',backgroundColor:'transparent',pointBackgroundColor:'#9ca3af',borderWidth:1.5,pointRadius:3,tension:0.3,borderDash:[4,3]},
+        {label:'4月同期',data:PW_LINE_APR,borderColor:'#f59e0b',backgroundColor:'transparent',pointBackgroundColor:'#f59e0b',borderWidth:1.5,pointRadius:3,tension:0.3,borderDash:[6,3]}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,
+        callbacks:{label:function(c){return ' '+c.dataset.label+': '+c.raw+' 人';}}}},
+      scales:{
+        x:{ticks:{font:{size:9},maxRotation:0},grid:{display:false}},
+        y:{ticks:{font:{size:9}},grid:{color:'rgba(0,0,0,.06)'},beginAtZero:true}
+      }
+    }
+  });
+}
+
+
+
+function pwInitMonthTrend(){
+  var el=document.getElementById('pwMonthTrendChart');
+  if(!el||typeof Chart==='undefined') return;
+  var existing=Chart.getChart(el);
+  if(existing){existing.destroy();}
+  new Chart(el,{type:'bar',
+    data:{labels:['1月','2月','3月','4月\n⚠️停機','5月↗'],
+      datasets:[{data:[2554,3278,5327,1800,932],
+        backgroundColor:['rgba(37,99,235,.7)','rgba(37,99,235,.7)','rgba(37,99,235,.85)','rgba(220,38,38,.6)','rgba(156,163,175,.5)'],
+        borderRadius:5,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' '+c.raw.toLocaleString()+' 人';}}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10}},afterDataLimits:function(s){s.max=s.max*1.18;}}}},
+    plugins:[{id:'ml',afterDatasetsDraw:function(chart){
+      var ctx=chart.ctx;
+      chart.data.datasets.forEach(function(ds,i){
+        chart.getDatasetMeta(i).data.forEach(function(bar,j){
+          ctx.save();ctx.fillStyle=j===3?'#dc2626':(j===4?'#9ca3af':'#1e40af');
+          ctx.font='bold 10px sans-serif';ctx.textAlign='center';
+          ctx.fillText(ds.data[j].toLocaleString(),bar.x,bar.y-5);ctx.restore();
+        });
+      });
+    }}]
+  });
+}
+
+function pwInitCharts(){
+  if(typeof Chart==='undefined') return;
+  var wPanel=document.getElementById('pw-week');
+  var mPanel=document.getElementById('pw-month');
+  if(wPanel&&wPanel.classList.contains('active')){
+    _pwUpdateGrade(720,'all');
+    pwInitLineChart();
+  }
+  if(mPanel&&mPanel.classList.contains('active')){
+    pwRenderGradeBars('pw-month-bars',1800);
+    pwGradeChartM=pwRenderGradeChart('pwMonthGradeChart');
+    pwInitMonthTrend();
+  }
+}
+
+/* Init on page load with delay */
+(function(){var t=0,iv=setInterval(function(){t++;
+  if(typeof Chart!=='undefined'){clearInterval(iv);
+    var pg=document.getElementById('page-weekly');
+    if(pg&&pg.classList.contains('active')) pwInitCharts();
+  } if(t>60) clearInterval(iv);
+},100);})();
+
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.classList.contains('tab-btn')){
+    setTimeout(function(){
+      var pg=document.getElementById('page-weekly');
+      if(pg&&pg.classList.contains('active')) pwInitCharts();
+    },100);
+  }
+});
+
+/* pwHistory for manual weekly input panel (legacy, kept for compatibility) */
+var pwHistory=[];
+
+function pwAddWeek(){
+  const week=document.getElementById('pw-in-week').value.trim();
+  const dates=document.getElementById('pw-in-dates').value.trim();
+  const valid=parseInt(document.getElementById('pw-in-valid').value)||0;
+  const invalid=parseInt(document.getElementById('pw-in-invalid').value)||0;
+  if(!week||valid===0){alert('請填入週次和有效蒐集人數');return;}
+  const grades=[0,1,2,3,4,5,6,7].map(i=>parseInt(document.getElementById('pw-in-g'+i).value)||0);
+  const entry={week,dates,valid,invalid,grades};
+  // Remove existing entry with same week
+  pwHistory=pwHistory.filter(e=>e.week!==week);
+  pwHistory.unshift(entry);
+  pwRenderAll();
+  // Clear inputs (except week)
+  ['valid','invalid','g0','g1','g2','g3','g4','g5','g6','g7'].forEach(id=>{
+    document.getElementById('pw-in-'+id).value='';
+  });
+}
+
+function pwRenderAll(){
+  if(pwHistory.length===0) return;
+  const cur=pwHistory[0];
+  const prev=pwHistory[1]||null;
+
+  // Banner
+  document.getElementById('pw-week-label').textContent=`${cur.week}　${cur.dates||''}`;
+  document.getElementById('pw-week-date').textContent=`有效 ${cur.valid.toLocaleString()} 人，有效率 ${cur.valid+cur.invalid>0?((cur.valid/(cur.valid+cur.invalid))*100).toFixed(1)+'%':'—'}`;
+
+  // KPI
+  const rate=cur.valid+cur.invalid>0?(cur.valid/(cur.valid+cur.invalid)*100).toFixed(1):0;
+  const ss=cur.grades[1]+cur.grades[2]+cur.grades[3];
+  document.getElementById('pw-kv-valid').textContent=cur.valid.toLocaleString();
+  document.getElementById('pw-kv-invalid').textContent=cur.invalid.toLocaleString();
+  document.getElementById('pw-kv-rate').textContent=rate+'%';
+  document.getElementById('pw-kv-ss').textContent=ss.toLocaleString();
+
+  // Trend vs prev week
+  if(prev){
+    const prevRate=prev.valid+prev.invalid>0?((prev.valid/(prev.valid+prev.invalid))*100).toFixed(1):0;
+    const prevSS=prev.grades[1]+prev.grades[2]+prev.grades[3];
+    const vDiff=cur.valid-prev.valid; const rDiff=(rate-prevRate).toFixed(1);
+    document.getElementById('pw-kn-valid').textContent=`前週 ${prev.valid.toLocaleString()}，${vDiff>=0?'+':''}${vDiff}`;
+    document.getElementById('pw-kn-rate').textContent=`前週 ${prevRate}%，${rDiff>=0?'+':''}${rDiff}%`;
+    document.getElementById('pw-kn-ss').textContent=`前週 ${prevSS}`;
+    document.getElementById('pw-kn-invalid').textContent=`前週 ${prev.invalid.toLocaleString()}`;
+  } else {
+    ['valid','invalid','rate','ss'].forEach(k=>{ document.getElementById('pw-kn-'+k).textContent=''; });
+  }
+
+  // Grade table
+  const total=cur.valid+cur.invalid;
+  let rows='';
+  GRADE_LABELS.forEach((lbl,i)=>{
+    const n=cur.grades[i]||0; const pct=cur.valid>0?(n/cur.valid*100).toFixed(1):'0.0';
+    const isss=(i>=1&&i<=3);
+    rows+=`<tr ${isss?'style="background:rgba(220,38,38,.04);"':''}><td>${isss?'★ ':''}<b>${lbl}</b></td><td>${n.toLocaleString()}</td><td>${pct}%</td></tr>`;
+  });
+  rows+=`<tr class="tot"><td>合計（有效）</td><td>${cur.valid.toLocaleString()}</td><td>100%</td></tr>`;
+  document.getElementById('pw-grade-table').innerHTML=`<table><thead><tr><th>月齡等級</th><th>人數</th><th>占比</th></tr></thead><tbody>${rows}</tbody></table>`;
+
+  // Chart
+  const el=document.getElementById('pwGradeChart');
+  if(el&&typeof Chart!=='undefined'){
+    if(pwChart){pwChart.destroy();pwChart=null;}
+    const pcts=GRADE_LABELS.map((_,i)=>cur.valid>0?((cur.grades[i]||0)/cur.valid*100).toFixed(1)+'%':'0%');
+    pwChart=new Chart(el,{type:'bar',
+      data:{labels:GRADE_LABELS,datasets:[{data:cur.grades,backgroundColor:GRADE_COLORS,borderRadius:4,borderSkipped:false}]},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.raw.toLocaleString()+' 人 ('+pcts[c.dataIndex]+')'}}},
+        scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10}},afterDataLimits:s=>{s.max=s.max*1.15;}}}},
+      plugins:[{id:'pwLbl',afterDatasetsDraw(chart){
+        const ctx=chart.ctx;
+        chart.data.datasets.forEach((ds,i)=>{
+          chart.getDatasetMeta(i).data.forEach((bar,j)=>{
+            if((cur.grades[j]||0)===0) return;
+            ctx.save();ctx.fillStyle=(j>=1&&j<=3)?'#b82020':'#444';
+            ctx.font='bold 9.5px sans-serif';ctx.textAlign='center';
+            ctx.fillText(pcts[j],bar.x,bar.y-5);ctx.restore();
+          });
+        });
+      }}]
+    });
+  }
+
+  // History table
+  let hrows=pwHistory.map((e,idx)=>{
+    const r=e.valid+e.invalid>0?((e.valid/(e.valid+e.invalid))*100).toFixed(1)+'%':'—';
+    const ss=(e.grades[1]||0)+(e.grades[2]||0)+(e.grades[3]||0);
+    return `<tr onclick="pwLoadWeek(${idx})" style="cursor:pointer;" ${idx===0?'style="font-weight:600;"':''}><td>${e.week}</td><td>${e.dates||'—'}</td><td>${e.valid.toLocaleString()}</td><td>${e.invalid.toLocaleString()}</td><td>${r}</td><td>${ss.toLocaleString()}</td></tr>`;
+  }).join('');
+  document.getElementById('pw-history-table').innerHTML=`<table><thead><tr><th>週次</th><th>日期</th><th>有效</th><th>無效</th><th>有效率</th><th>SS+S</th></tr></thead><tbody>${hrows}</tbody></table>`;
+}
+
+function pwLoadWeek(idx){
+  const e=pwHistory[idx];
+  document.getElementById('pw-in-week').value=e.week;
+  document.getElementById('pw-in-dates').value=e.dates||'';
+  document.getElementById('pw-in-valid').value=e.valid;
+  document.getElementById('pw-in-invalid').value=e.invalid;
+  [0,1,2,3,4,5,6,7].forEach(i=>{ document.getElementById('pw-in-g'+i).value=e.grades[i]||0; });
+  document.getElementById('pw-input-panel').scrollIntoView({behavior:'smooth'});
+}
+
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.classList.contains('tab-btn')){
+    setTimeout(function(){
+      const pg=document.getElementById('page-weekly');
+      if(pg&&pg.classList.contains('active')&&typeof Chart!=='undefined') pwRenderAll();
+    },80);
+  }
+});
+
+
 const PP_GRADES=['A孕期','S(0~6M)','SS(7~12M)','S(13~24M)','AA(25~36M)','A(37~60M)','B(61M+)'];
 const PP_COLORS=['rgba(140,90,180,.8)','rgba(244,150,80,.75)','rgba(185,32,32,.9)','rgba(185,32,32,.7)','rgba(46,99,136,.75)','rgba(46,125,110,.65)','rgba(175,180,188,.65)'];
 
 const PP_DATA={
-  all:{label:'整體',n:11556,buyers:283,amt:1357514,avgAmt:4797,avgTagsAll:9.0,avgTagsBuy:16.5,
-    cur:[1128,2006,991,1648,893,838,4029],bind:[3459,864,944,1102,643,668,3876],
+  all:{label:'整體',n:11686,buyers:282,amt:1412943,avgAmt:5010,avgTagsAll:9.0,avgTagsBuy:16.4,
+    cur:[951,2042,1100,1720,903,895,4075],bind:[3563,871,976,1120,653,679,3824],
     top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組'],
     top5n:[51,51,45,44,38]},
-  '大樹':{label:'大樹',n:3052,buyers:170,amt:883111,avgAmt:5195,avgTagsAll:8.0,avgTagsBuy:15.6,
-    cur:[0,1,37,555,360,316,1783],bind:[18,288,264,373,229,159,1721],
+  '大樹':{label:'大樹',n:3052,buyers:171,amt:886053,avgAmt:5182,avgTagsAll:8.1,avgTagsBuy:15.7,
+    cur:[0,1,19,534,372,331,1795],bind:[18,288,264,373,229,159,1721],
     top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組'],
     top5n:[38,34,27,25,22]},
-  '六甲村':{label:'六甲村',n:1195,buyers:18,amt:74747,avgAmt:4153,avgTagsAll:9.9,avgTagsBuy:21.1,
-    cur:[150,460,197,81,14,23,270],bind:[826,49,11,13,18,20,258],
+  '六甲村':{label:'六甲村',n:1199,buyers:18,amt:74747,avgAmt:4153,avgTagsAll:10.0,avgTagsBuy:21.1,
+    cur:[116,446,212,119,13,24,269],bind:[832,48,11,13,18,20,257],
     top5:['巧虎雙語點讀圖鑑','寶寶生活好習慣套組','巧虎手偶','語彙表達-智育學習套組','和巧虎一起說英語 PLUS⁺ 初階版'],
     top5n:[11,5,2,2,2]},
-  '永生':{label:'永生',n:1737,buyers:11,amt:58028,avgAmt:5275,avgTagsAll:9.4,avgTagsBuy:17.5,
-    cur:[90,736,305,75,18,17,496],bind:[1143,46,17,13,11,15,492],
+  '永生':{label:'永生',n:1737,buyers:13,amt:59514,avgAmt:4578,avgTagsAll:9.4,avgTagsBuy:17.0,
+    cur:[70,646,392,98,16,19,496],bind:[1143,46,17,13,11,15,492],
     top5:['寶寶生活好習慣套組','語彙表達．智育學習套組','Mirafeel體驗包','好情緒EQX品格人際套組','巧虎鋁箔包防壓盒'],
     top5n:[4,3,2,2,2]},
-  '明治':{label:'明治',n:889,buyers:4,amt:13328,avgAmt:3332,avgTagsAll:10.4,avgTagsBuy:10.7,
-    cur:[466,308,32,12,1,6,64],bind:[712,69,33,4,1,6,64],
+  '明治':{label:'明治',n:909,buyers:4,amt:13328,avgAmt:3332,avgTagsAll:10.6,avgTagsBuy:10.8,
+    cur:[374,414,27,19,1,6,68],bind:[728,69,33,4,1,6,68],
     top5:['Mirafeel體驗包','寶寶生活好習慣套組','巧虎好朋友度假小屋','巧虎注音拼音學習套組'],
     top5n:[1,1,1,1]},
-  '芳茲':{label:'芳茲',n:22,buyers:0,amt:0,avgAmt:0,avgTagsAll:7.5,avgTagsBuy:0,
-    cur:[17,0,0,1,0,1,3],bind:[17,0,1,0,0,1,3],
+  '芳茲':{label:'芳茲',n:46,buyers:0,amt:0,avgAmt:0,avgTagsAll:7.3,avgTagsBuy:0,
+    cur:[36,5,0,1,0,1,3],bind:[41,0,1,0,0,1,3],
     top5:[],top5n:[]},
-  '揆眾婦幼展':{label:'揆眾婦幼展',n:1898,buyers:47,amt:239196,avgAmt:5089,avgTagsAll:10.6,avgTagsBuy:17.1,
-    cur:[339,339,256,554,192,106,112],bind:[604,183,419,366,144,78,104],
+  '揆眾婦幼展':{label:'揆眾婦幼展',n:1897,buyers:46,amt:237023,avgAmt:5153,avgTagsAll:10.8,avgTagsBuy:17.5,
+    cur:[254,379,255,579,195,117,118],bind:[605,183,418,365,144,78,104],
     top5:['巧虎雙語點讀圖鑑','和巧虎一起說英語 PLUS⁺ 初階版','巧虎手偶互動遊戲組','好情緒EQX品格人際套組','寶寶生活好習慣套組'],
     top5n:[11,9,9,9,8]},
-  '樂飛發票':{label:'樂飛發票',n:2449,buyers:4,amt:12887,avgAmt:3222,avgTagsAll:7.4,avgTagsBuy:13.8,
-    cur:[108,136,124,251,236,320,1274],bind:[173,193,139,251,194,364,1135],
+  '樂飛發票':{label:'樂飛發票',n:2490,buyers:4,amt:12887,avgAmt:3222,avgTagsAll:7.4,avgTagsBuy:15.2,
+    cur:[101,136,129,257,232,340,1295],bind:[180,197,142,255,198,367,1151],
     top5:['Mirafeel體驗包','和巧虎一起學-注音拼音套組','和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','巧虎手偶'],
     top5n:[1,1,1,1,1]},
-  '聯盟網':{label:'聯盟網',n:314,buyers:26,amt:129391,avgAmt:4977,avgTagsAll:13.3,avgTagsBuy:19.9,
+  '聯盟網':{label:'聯盟網',n:314,buyers:26,amt:129391,avgAmt:4977,avgTagsAll:13.3,avgTagsBuy:20.0,
     cur:[1,18,36,114,68,48,29],bind:[16,39,65,88,50,31,25],
     top5:['寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組','和巧虎一起說英語 PLUS⁺ 初階版'],
     top5n:[7,6,4,4,3]},
+  '小村日和':{label:'小村日和',n:42,buyers:0,amt:0,avgAmt:0,avgTagsAll:7.2,avgTagsBuy:0,
+    cur:[0,1,31,4,1,3,2],bind:[0,1,25,9,2,2,3],
+    top5:[],top5n:[]},
 };
 
 let ppCurCh='all',ppTglMode='now',ppChart=null;
@@ -2239,14 +2571,14 @@ function ppToggle(mode){
   ppTglMode=mode;
   document.getElementById('pp-tgl-now').classList.toggle('active',mode==='now');
   document.getElementById('pp-tgl-bind').classList.toggle('active',mode==='bind');
-  document.getElementById('pp-tbl-label').textContent=mode==='now'?'各管道蒐集概況（現況月齡，202603 基準）':'各管道蒐集概況（綁定時月齡）';
-  document.getElementById('pp-collect-fn').textContent=mode==='now'?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202603 基準）':'綁定時月齡＝客戶加入 LINE 當下的孩子月齡';
+  document.getElementById('pp-tbl-label').textContent=mode==='now'?'各管道蒐集概況（現況月齡，202605 基準）':'各管道蒐集概況（綁定時月齡）';
+  document.getElementById('pp-collect-fn').textContent=mode==='now'?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）':'綁定時月齡＝客戶加入 LINE 當下的孩子月齡';
   ppRenderCollect();ppRenderChart();
 }
 function ppRender(){ppRenderCollect();ppRenderSale();ppRenderProd();ppRenderChart();}
 
 function ppRenderCollect(){
-  const CHNLS=['大樹','六甲村','永生','明治','芳茲','揆眾婦幼展','樂飛發票','聯盟網'];
+  const CHNLS=['大樹','六甲村','永生','明治','芳茲','揆眾婦幼展','樂飛發票','聯盟網','小村日和'];
   let rows='';
   if(ppCurCh==='all'){
     CHNLS.forEach(ch=>{
@@ -2275,7 +2607,7 @@ function ppRenderSale(){
       const r=PP_DATA[ch];
       rows+=`<tr><td>${ch}</td><td>${r.buyers}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+r.avgAmt.toLocaleString():'—'}</td></tr>`;
     });
-    rows+=`<tr class="tot"><td>合計</td><td>280</td><td>2.4%</td><td>$1,439,517</td><td>$5,141</td></tr>`;
+    rows+=`<tr class="tot"><td>合計</td><td>282</td><td>2.4%</td><td>$1,412,943</td><td>$5,010</td></tr>`;
   } else {
     const r=PP_DATA[ppCurCh];
     rows=`<tr class="tot"><td>${r.label}</td><td>${r.buyers}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+r.avgAmt.toLocaleString():'—'}</td></tr>`;
@@ -2556,5 +2888,330 @@ const META_IMGS={
   </div>
 </div></div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════
+     周月報告分析
+════════════════════════════════════════════════════ -->
+<div id="page-weekly" class="page">
+<style>
+#pw-page{--pw-blue:#2563eb;--pw-blue-bg:#eff6ff;--pw-blue-d:#1d4ed8;--pw-green:#16a34a;--pw-green-bg:#f0fdf4;--pw-red:#dc2626;--pw-red-bg:#fef2f2;--pw-gold:#d97706;--pw-gold-bg:#fffbeb;--pw-gray:#6b7280;--pw-purple:#7c3aed;font-size:14px;}
+#pw-page .pw{max-width:980px;margin:0 auto;padding:22px 0 36px;}
+#pw-page h1{font-size:19px;font-weight:700;color:var(--text);margin-bottom:3px;}
+#pw-page .sub{font-size:13px;color:#555;margin-bottom:14px;}
+#pw-page .mode-tabs{display:flex;gap:0;border-radius:8px;overflow:hidden;border:1px solid rgba(37,99,235,.25);margin-bottom:16px;width:fit-content;}
+#pw-page .mode-tab{padding:8px 22px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#6b7280;border:none;transition:all .15s;}
+#pw-page .mode-tab.active{background:var(--pw-blue);color:#fff;}
+#pw-page .mode-panel{display:none;}
+#pw-page .mode-panel.active{display:block;}
+#pw-page .note{background:var(--pw-gold-bg);border:1px solid rgba(217,119,6,.25);border-radius:8px;padding:9px 14px;font-size:12px;color:#92400e;line-height:1.75;margin-bottom:12px;}
+#pw-page .banner{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:11px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
+#pw-page .banner-label{font-size:14px;font-weight:700;color:var(--pw-blue-d);}
+#pw-page .banner-sub{font-size:11.5px;color:#555;margin-top:2px;}
+#pw-page .ks3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;}
+#pw-page .ks4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;}
+#pw-page .kc{background:#fff;border:1px solid rgba(37,99,235,.15);border-radius:10px;padding:11px 13px;box-shadow:0 2px 5px rgba(37,99,235,.06);}
+#pw-page .kl{font-size:11px;color:#666;margin-bottom:2px;}
+#pw-page .kv{font-size:24px;font-weight:700;line-height:1.2;}
+#pw-page .kn{font-size:11px;color:#888;margin-top:3px;}
+#pw-page .up{color:var(--pw-green);font-weight:600;}
+#pw-page .dn{color:var(--pw-red);font-weight:600;}
+#pw-page .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+#pw-page .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;}
+#pw-page .sc{background:#fff;border:1px solid rgba(37,99,235,.15);border-radius:10px;padding:14px;box-shadow:0 2px 5px rgba(37,99,235,.06);}
+#pw-page .sh{font-size:13px;font-weight:700;margin-bottom:9px;padding-bottom:7px;border-bottom:2px solid currentColor;display:flex;align-items:center;gap:5px;}
+#pw-page .sh-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0;}
+#pw-page table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;border-radius:7px;overflow:hidden;border:1px solid rgba(37,99,235,.12);}
+#pw-page thead tr{background:linear-gradient(135deg,#dbeafe,#bfdbfe);}
+#pw-page th{padding:6px 8px;border-bottom:2px solid rgba(37,99,235,.2);color:#1e3a8a;font-weight:600;text-align:right;font-size:11.5px;}
+#pw-page th:first-child{text-align:left;}
+#pw-page td{padding:5px 8px;border-bottom:1px solid rgba(37,99,235,.07);text-align:right;font-size:12px;color:#222;}
+#pw-page td:first-child{text-align:left;}
+#pw-page tbody tr:last-child td{border-bottom:none;}
+#pw-page .tot td{font-weight:700;background:linear-gradient(135deg,#bfdbfe,#93c5fd)!important;color:#1e3a8a;}
+#pw-page .ss-row td{background:rgba(185,28,28,.04)!important;}
+#pw-page .wknd td{color:#9ca3af;background:#fafafa!important;}
+#pw-page .zero td{color:#d1d5db;background:#fafafa!important;}
+#pw-page .fn{font-size:11px;color:#666;margin-top:5px;line-height:1.6;}
+#pw-page .chart-wrap{position:relative;height:150px;margin-top:8px;}
+#pw-page .grade-bar-wrap{margin:8px 0 4px;}
+#pw-page .grade-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;font-size:11.5px;}
+#pw-page .grade-lbl{width:85px;color:#555;flex-shrink:0;text-align:right;}
+#pw-page .grade-bar-bg{flex:1;height:14px;background:#f3f4f6;border-radius:7px;overflow:hidden;}
+#pw-page .grade-bar-fill{height:100%;border-radius:7px;transition:width .3s;}
+#pw-page .grade-pct{width:36px;color:#374151;font-weight:600;text-align:right;flex-shrink:0;}
+#pw-page .grade-n{width:40px;color:#9ca3af;text-align:right;flex-shrink:0;}
+#pw-page .cmp-up{color:var(--pw-green);font-weight:600;}
+#pw-page .cmp-dn{color:var(--pw-red);font-weight:600;}
+#pw-page .cmp-eq{color:var(--pw-gray);}
+#pw-page .summary-box{background:linear-gradient(135deg,#f8faff,#eff6ff);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:14px 16px;margin-bottom:0;}
+#pw-page .summary-box h3{font-size:14px;font-weight:700;color:var(--pw-blue-d);margin-bottom:8px;}
+#pw-page .summary-box p{font-size:12.5px;color:#333;line-height:1.85;margin-bottom:6px;}
+#pw-page .summary-box p:last-child{margin-bottom:0;}
+#pw-page .summary-box b{color:var(--pw-blue-d);}
+#pw-page .tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:600;margin:0 2px;}
+#pw-page .tag-ok{background:var(--pw-green-bg);color:var(--pw-green);}
+#pw-page .tag-warn{background:var(--pw-red-bg);color:var(--pw-red);}
+#pw-page .tag-info{background:var(--pw-gold-bg);color:var(--pw-gold);}
+</style>
+
+<div id="pw-page"><div class="pw">
+  <h1>周月報告分析</h1>
+  <div class="sub">資料來源：CUBE 每日觀察報告　　數據截至 2026/05/10</div>
+  <div class="mode-tabs">
+    <button class="mode-tab active" onclick="pwMode('week',this)">📅 週報告</button>
+    <button class="mode-tab" onclick="pwMode('month',this)">📆 月報告</button>
+  </div>
+
+  <!-- ══════ 週報告 ══════ -->
+  <div id="pw-week" class="mode-panel active">
+    <div class="note">⚠️ 本頁數據來自 CUBE 每日匯出（含綁定日期），不含有效/無效區分。SS+S 依近期綁定月齡比例估算（73%）。</div>
+    <div class="banner">
+      <div>
+        <div class="banner-label">📅 上週：2026-W19　5/4（日）– 5/10（六）</div>
+        <div class="banner-sub">對比上上週（4/27–5/3）674 人　→　<span class="cmp-up">▲ 46（+6.8%）</span></div>
+      </div>
+    </div>
+
+    <!-- KPI 3格 -->
+    <div class="ks4">
+      <div class="kc" style="border-top:3px solid var(--pw-blue);">
+        <div class="kl">週新增綁定</div>
+        <div class="kv" style="color:var(--pw-blue);">720</div>
+        <div class="kn"><span class="up">▲ 46（+6.8%）</span>　前週 674</div>
+      </div>
+      <div class="kc" style="border-top:3px solid var(--pw-purple);">
+        <div class="kl">每日平均</div>
+        <div class="kv" style="color:var(--pw-purple);">102.9</div>
+        <div class="kn"><span class="up">▲ 6.6</span>　前週平均 96.3</div>
+      </div>
+      <div class="kc" style="border-top:3px solid #b91c1c;">
+        <div class="kl">SS+S 人數（估）</div>
+        <div class="kv" style="color:#b91c1c;">526</div>
+        <div class="kn"><span class="up">▲ 34</span>　前週估 492（各佔 73%）</div>
+      </div>
+      <div class="kc" style="border-top:3px solid #059669;">
+        <div class="kl">本月累計（5/1–5/10）</div>
+        <div class="kv" style="color:#059669;">932</div>
+        <div class="kn">自辦 490｜主動 151｜自動 66｜異業 220</div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <!-- 每日明細 -->
+      <div class="sc">
+        <div class="sh" style="color:var(--pw-blue);"><span class="sh-dot"></span>每日新增（5/4–5/10）</div>
+        <table>
+          <thead><tr><th>日期</th><th>自辦</th><th>主動</th><th>自動</th><th>異業</th><th>手動</th><th>總計</th></tr></thead>
+          <tbody>
+            <tr class="wknd"><td>5/04（日）</td><td>68</td><td>17</td><td>4</td><td>13</td><td>0</td><td><b>102</b></td></tr>
+            <tr><td>5/05（一）</td><td>58</td><td>42</td><td>9</td><td>15</td><td>0</td><td><b>124</b></td></tr>
+            <tr><td>5/06（二）</td><td>59</td><td>24</td><td>11</td><td>19</td><td>1</td><td><b>114</b></td></tr>
+            <tr><td>5/07（三）</td><td>57</td><td>17</td><td>5</td><td>16</td><td>3</td><td><b>98</b></td></tr>
+            <tr><td>5/08（四）</td><td>47</td><td>9</td><td>6</td><td>13</td><td>1</td><td><b>76</b></td></tr>
+            <tr><td>5/09（五）</td><td>48</td><td>11</td><td>8</td><td>65</td><td>0</td><td><b>132</b></td></tr>
+            <tr class="wknd"><td>5/10（六）</td><td>43</td><td>10</td><td>0</td><td>21</td><td>0</td><td><b>74</b></td></tr>
+            <tr class="tot"><td>週合計</td><td>380</td><td>130</td><td>43</td><td>162</td><td>5</td><td>720</td></tr>
+          </tbody>
+        </table>
+        <div class="fn">5/9（五）異業大增（小村 26 + 六甲 8 + 永生 9 + 明治 16）；週末蒐集正常持續</div>
+      </div>
+
+      <!-- 週比較 + 異業 -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="sc">
+          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>週次比較</div>
+          <table>
+            <thead><tr><th>管道</th><th>4/27–5/3</th><th>5/4–5/10</th><th>±</th></tr></thead>
+            <tbody>
+              <tr><td>自辦</td><td>418</td><td>380</td><td class="cmp-dn">▼38</td></tr>
+              <tr><td>主動</td><td>94</td><td>130</td><td class="cmp-up">▲36</td></tr>
+              <tr><td>自動(SHOPLINE)</td><td>73</td><td>43</td><td class="cmp-dn">▼30</td></tr>
+              <tr><td>異業</td><td>83</td><td>162</td><td class="cmp-up">▲79</td></tr>
+              <tr class="tot"><td>合計</td><td>674</td><td>720</td><td class="cmp-up">▲46</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sc">
+          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>異業管道動態</div>
+          <table>
+            <thead><tr><th>管道</th><th>4/27–5/3</th><th>5/4–5/10</th><th>±</th></tr></thead>
+            <tbody>
+              <tr><td>小村日和</td><td>39</td><td>53</td><td class="cmp-up">▲14</td></tr>
+              <tr><td>六甲村</td><td>5</td><td>9</td><td class="cmp-up">▲4</td></tr>
+              <tr><td>永生</td><td>0</td><td>9</td><td class="cmp-up">▲9</td></tr>
+              <tr><td>明治</td><td>16</td><td>21</td><td class="cmp-up">▲5</td></tr>
+              <tr><td>芳茲</td><td>23</td><td>0</td><td class="cmp-dn">▼23</td></tr>
+              <tr><td>樂飛發票</td><td>0</td><td>70</td><td class="cmp-up">▲70</td></tr>
+              <tr class="tot"><td>異業合計</td><td>83</td><td>162</td><td class="cmp-up">▲79</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 月齡等級占比 -->
+    <div class="sc" style="margin-bottom:12px;">
+      <div class="sh" style="color:#b91c1c;"><span class="sh-dot"></span>月齡等級占比（上週 5/4–5/10 × 各管道近期月齡分布）</div>
+
+      <!-- Row1: btype tabs -->
+      <div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap;align-items:center;">
+        <span style="font-size:11px;color:#888;margin-right:2px;">管道類型：</span>
+        <button onclick="pwGradeTab('all',this)"      id="pgt-all"      style="padding:3px 11px;border-radius:20px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-size:12px;cursor:pointer;font-weight:600;">全管道 720</button>
+        <button onclick="pwGradeTab('self',this)"     id="pgt-self"     style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自辦 380</button>
+        <button onclick="pwGradeTab('active',this)"   id="pgt-active"   style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">主動 130</button>
+        <button onclick="pwGradeTab('shopline',this)" id="pgt-shopline" style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自動 43</button>
+        <button onclick="pwGradeTab('partner',this)"  id="pgt-partner"  style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">異業 162</button>
+      </div>
+
+      <!-- Row2: channel dropdown -->
+      <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap;">
+        <span style="font-size:11px;color:#888;">細部管道：</span>
+        <select id="pw-ch-select" onchange="pwChannelFilter(this.value)"
+          style="font-size:12px;padding:3px 8px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;">
+          <option value="all">— 全部 —</option>
+          <option value="育兒知識王">育兒知識王（379）</option>
+          <option value="官網-Welcome">官網-Welcome（126）</option>
+          <option value="樂飛發票">樂飛發票（70）</option>
+          <option value="小村日和">🌱 小村日和（53）</option>
+          <option value="SHOPLINE">SHOPLINE（43）</option>
+          <option value="明治">明治（21）</option>
+          <option value="六甲村">六甲村（9）</option>
+          <option value="永生">永生（9）</option>
+          <option value="LineOA">LineOA（4）</option>
+          <option value="育兒超能力">育兒超能力（1）</option>
+        </select>
+        <span id="pw-ch-note" style="font-size:11px;color:#059669;font-weight:600;display:none;"></span>
+      </div>
+
+      <div style="font-size:11px;background:#fef3c7;border:1px solid rgba(217,119,6,.25);border-radius:6px;padding:5px 9px;margin-bottom:10px;color:#92400e;">
+        ⚠️ CUBE 每日資料不含月齡細分，以下月齡分布依各管道近期綁定資料（2504~26）估算，非實際每人月齡統計
+      </div>
+
+      <!-- 主體：左=長條, 右=折線 -->
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+
+        <!-- 左：長條圖 -->
+        <div style="flex:1;min-width:260px;">
+          <div class="grade-bar-wrap" id="pw-week-bars"></div>
+          <div class="fn" id="pw-grade-fn"></div>
+        </div>
+
+        <!-- 右：折線圖 -->
+        <div style="width:320px;flex-shrink:0;">
+          <div style="font-size:12px;font-weight:600;color:#444;margin-bottom:4px;">📈 每日新增（同期對比）</div>
+          <div style="font-size:10.5px;color:#888;margin-bottom:6px;">W19(5/4–10) vs W18(4/27–5/3) vs 4月同期(4/4–10，停機中)</div>
+          <div style="position:relative;height:180px;"><canvas id="pwWeekLineChart"></canvas></div>
+          <div style="display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:4px;"><div style="width:20px;height:3px;background:#2563eb;border-radius:2px;"></div><span style="font-size:10px;color:#555;">W19 本週</span></div>
+            <div style="display:flex;align-items:center;gap:4px;"><div style="width:20px;height:3px;background:#9ca3af;border-radius:2px;"></div><span style="font-size:10px;color:#555;">W18 上週</span></div>
+            <div style="display:flex;align-items:center;gap:4px;"><div style="width:20px;height:3px;background:#f59e0b;border-radius:2px;"></div><span style="font-size:10px;color:#555;">4月同期</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 週總結 -->
+    <div class="summary-box" style="font-size:14px;">
+      <h3>📝 本週成效總結（5/4–5/10）</h3>
+      <p><span class="tag tag-ok">整體微增，異業爆發</span> 本週合計 <b>720 人</b>，較上週 674 人成長 <b>+6.8%</b>，日均 102.9（前週 96.3）。表現略優於上週，但主因是異業大量回補，自辦實際偏弱（380 人 vs 前週 418 人，▼9%）。4月同期（4/4–10）因機房停機幾乎為零，無直接可比基準。</p>
+      <p><span class="tag tag-warn">自辦＆自動走弱</span> 自辦 380（▼38）、自動 43（▼30），兩者合計較上週少 68 人。主動回升明顯（130 vs 94，▲38%），但仍需觀察是否持續。</p>
+      <p><span class="tag tag-ok">異業強勢反彈，品質分化值得關注</span> 異業本週 <b>162 人（前週 83，▲95%）</b>，表面數字亮眼，但結構需拆開看：</p>
+      <p style="margin-left:12px;padding-left:10px;border-left:3px solid #bbf7d0;">
+        🌱 <b>小村日和 53 人（5月全新開跑活動）</b>：SS+S(0~24M) 高達 85.9%，是本週所有管道中名單品質最高的，5/9 單日 26 人、週末仍有 17 人，可持續追蹤後續效益。
+      </p>
+      <p style="margin-left:12px;padding-left:10px;border-left:3px solid #fde68a;">
+        ⚠️ <b>樂飛發票 70 人（帳面最多，但品質偏低）</b>：樂飛整體名單老化明顯（B+ 73M+ 佔 42.6%），依本次續約條款，<b>僅 3 歲以內名單計費，本週有效人數實際約 22 人</b>，效果等同明治（21 人），並非真正的大量優質來源。
+      </p>
+      <p><span class="tag tag-info">月齡結構</span> 本週全管道 SS+S(0~24M) 估計 <b>526 人（73%）</b>，品質維持正常水準。可切換上方「細部管道」篩選，查看各管道實際月齡分布差異。</p>
+    </div>
+  </div>
+
+  <!-- ══════ 月報告 ══════ -->
+  <div id="pw-month" class="mode-panel">
+    <div class="note">⚠️ <b>4月特殊情況：機房搬遷</b>　4/1–4/17 系統停機，自辦/主動管道完全無法收錄，共損失 17 天。<b>4月數字偏低有明確原因，並非蒐集策略失效</b>，有效蒐集天數僅 13 天（4/18–4/30）。</div>
+    <div class="banner">
+      <div>
+        <div class="banner-label">📆 2026 年 4 月（4/1–4/30）完整月</div>
+        <div class="banner-sub">新增綁定 1,800 人　｜　有效蒐集 13 天（4/18起）　｜　日均 138.5 人/天</div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="ks3">
+      <div class="kc" style="border-top:3px solid var(--pw-blue);">
+        <div class="kl">月新增綁定</div>
+        <div class="kv" style="color:var(--pw-blue);">1,800</div>
+        <div class="kn">完整月（4/1–4/30）</div>
+      </div>
+      <div class="kc" style="border-top:3px solid var(--pw-red);">
+        <div class="kl">停機損失天數</div>
+        <div class="kv" style="color:var(--pw-red);">17 天</div>
+        <div class="kn">4/1–4/17 完全無自辦收入</div>
+      </div>
+      <div class="kc" style="border-top:3px solid #b91c1c;">
+        <div class="kl">SS+S 人數（估）</div>
+        <div class="kv" style="color:#b91c1c;">1,314</div>
+        <div class="kn">占月新增 73%（比例估算）</div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <!-- 月齡等級 + 圖 -->
+      <div class="sc">
+        <div class="sh" style="color:#b91c1c;"><span class="sh-dot"></span>月齡等級占比（4月全月，1,800人 × 近期月齡比例估算）</div>
+        <div style="font-size:11px;background:#fef3c7;border:1px solid rgba(217,119,6,.25);border-radius:6px;padding:5px 9px;margin-bottom:8px;color:#92400e;">
+  ⚠️ 以下為「4月 1,800 人 × 近期綁定月齡比例（2504~26期間）」估算值，非實際每人月齡統計
+</div>
+<div class="grade-bar-wrap" id="pw-month-bars"></div>
+        <div class="chart-wrap"><canvas id="pwMonthGradeChart"></canvas></div>
+        <div class="fn">SS+S(0~24M) 73%，4月估計 1,314 人。孕期 16.5% 亦是重要族群；B(61M+)近乎為零，代表近期新增以年輕名單為主</div>
+      </div>
+
+      <!-- 月趨勢 + 異業 -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="sc">
+          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>月度蒐集趨勢（2026 年）</div>
+          <table>
+            <thead><tr><th>月份</th><th>新增</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>1月</td><td>2,554</td><td style="text-align:left;font-size:11px;color:#888;">含回溯補登</td></tr>
+              <tr><td>2月</td><td>3,278</td><td style="text-align:left;font-size:11px;color:#888;"></td></tr>
+              <tr><td>3月</td><td>5,327</td><td style="text-align:left;font-size:11px;color:#888;">育兒知識王活動</td></tr>
+              <tr style="background:rgba(220,38,38,.05);"><td>4月</td><td style="color:var(--pw-red);font-weight:600;">1,800</td><td style="text-align:left;font-size:11px;color:var(--pw-red);">⚠️ 機房停機 17 天</td></tr>
+              <tr><td style="color:#aaa;">5月(至5/10)</td><td style="color:#aaa;">932</td><td style="text-align:left;font-size:11px;color:#aaa;">進行中</td></tr>
+            </tbody>
+          </table>
+          <div class="chart-wrap"><canvas id="pwMonthTrendChart"></canvas></div>
+        </div>
+        <div class="sc">
+          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>4月異業管道分布</div>
+          <table>
+            <thead><tr><th>管道</th><th>4月合計</th><th>占異業%</th></tr></thead>
+            <tbody>
+              <tr><td>明治</td><td>57</td><td>30.5%</td></tr>
+              <tr><td>六甲村</td><td>50</td><td>26.7%</td></tr>
+              <tr><td>永生</td><td>46</td><td>24.6%</td></tr>
+              <tr><td>芳茲</td><td>23</td><td>12.3%</td></tr>
+              <tr><td>其他（聯盟等）</td><td>11</td><td>5.9%</td></tr>
+              <tr class="tot"><td>異業合計</td><td>187</td><td>100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 月總結 -->
+    <div class="summary-box">
+      <h3>📝 4月成效總結</h3>
+      <p><span class="tag tag-warn">表現差，但原因明確、非策略問題</span> 4月合計 <b>1,800 人</b>，遠低於 3月（5,327）和 2月（3,278）。直接原因是<b>機房搬遷 4/1–4/17 停機 17 天</b>，自辦和主動管道整整兩週半無法收錄，有效蒐集天數只有 13 天。若比照 3 月日均 189 人，17 天損失估達 3,200 人。</p>
+      <p><span class="tag tag-ok">恢復動能健全</span> 4/18 恢復後日均 <b>138.5 人/天</b>，高於 2 月日均（117 人/天），代表蒐集引擎復原正常，沒有因停機而衰退，趨勢向上。</p>
+      <p><span class="tag tag-ok">名單品質優異</span> SS+S(0~24M) 估計佔 <b>73%（≈1,314 人）</b>，孕期 16.5%，月份雖量少，但名單年齡結構比去年同期更年輕，品質符合預期。</p>
+      <p><span class="tag tag-info">後續展望</span> 5月目前 932 人（截至 5/10），小村日和新管道持續成長（本週 53 人），樂飛發票本週大量回補（70 人）。若維持恢復節奏，5月預計可達 <b>3,000–4,000 人</b>。</p>
+    </div>
+  </div>
+
+</div></div>
+
 </body>
 </html>
