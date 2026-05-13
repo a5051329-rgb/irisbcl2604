@@ -2239,7 +2239,7 @@ var PW_CH_PCT={
 var PW_LINE_W19=[102,124,114,98,76,132,74];
 var PW_LINE_W18=[97,101,116,148,111,50,51];
 var PW_LINE_APR=[0,0,0,0,0,0,0];
-var PW_LINE_LABELS=['Day1\n(日)','Day2\n(一)','Day3\n(二)','Day4\n(三)','Day5\n(四)','Day6\n(五)','Day7\n(六)'];
+var PW_LINE_LABELS=['Day1\n(一)','Day2\n(二)','Day3\n(三)','Day4\n(四)','Day5\n(五)','Day6\n(六)','Day7\n(日)'];
 
 var _pwLineChart=null;
 
@@ -2322,7 +2322,7 @@ function pwInitLineChart(){
   if(existing){existing.destroy();}
   _pwLineChart=new Chart(el,{type:'line',
     data:{
-      labels:['日(5/4)','一(5/5)','二(5/6)','三(5/7)','四(5/8)','五(5/9)','六(5/10)'],
+      labels:['一(5/4)','二(5/5)','三(5/6)','四(5/7)','五(5/8)','六(5/9)','日(5/10)'],
       datasets:[
         {label:'W19 本週',data:PW_LINE_W19,borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.08)',pointBackgroundColor:'#2563eb',borderWidth:2.5,pointRadius:4,tension:0.3,fill:true},
         {label:'W18 上週',data:PW_LINE_W18,borderColor:'#9ca3af',backgroundColor:'transparent',pointBackgroundColor:'#9ca3af',borderWidth:1.5,pointRadius:3,tension:0.3,borderDash:[4,3]},
@@ -2340,6 +2340,73 @@ function pwInitLineChart(){
   });
 }
 
+
+
+/* ── 月報告月齡占比控制（4月實際資料）── */
+var PM_BTYPE_N={all:1751,self:1041,active:215,shopline:323,partner:170};
+var PM_CH_N={
+  'all':1751,'全管道(酷必後台)':991,'客服':51,'SHOPLINE':323,
+  '明治':91,'六甲村':38,'永生':20,'芳茲':21,'LineOA':7
+};
+
+/* 4月實際月齡分布（8項：孕期/S0/SS/S1/A/AA/B+/無生日）實際計算值 */
+var PM_CH_PCT={
+  'all':      [19.3,9.8,8.3,20.6,19.7,2.7,9.9,9.7],
+  'self':     [15.5,13.1,10.7,23.4,22.7,2.6,12.1,0.0],
+  'active':   [18.6,6.5,11.2,23.3,22.3,3.7,13.5,0.9],
+  'shopline': [0.0,0.9,3.1,19.8,18.6,4.0,1.9,51.7],
+  'partner':  [80.6,10.6,0.0,0.6,0.6,0.0,7.1,0.6],
+  '全管道(酷必後台)':[16.2,13.1,10.7,22.8,22.2,2.4,12.5,0.0],
+  '客服':     [0.0,13.7,9.8,35.3,31.4,5.9,3.9,0.0],
+  'SHOPLINE': [0.0,0.9,3.1,19.8,18.6,4.0,1.9,51.7],
+  '明治':     [71.4,17.6,0.0,1.1,1.1,0.0,8.8,0.0],
+  '六甲村':   [86.8,5.3,0.0,0.0,0.0,0.0,5.3,2.6],
+  '永生':     [90.0,0.0,0.0,0.0,0.0,0.0,10.0,0.0],
+  '芳茲':     [100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+  'LineOA':   [0.0,0.0,0.0,85.7,0.0,14.3,0.0,0.0]
+};
+
+function pmUpdateGrade(n, key){
+  var pct=PM_CH_PCT[key]||PM_CH_PCT['all'];
+  pwRenderGradeBars('pw-month-bars', n, pct);
+  var ss=Math.round(n*(pct[1]+pct[2]+pct[3])/100);
+  var ssPct=((pct[1]+pct[2]+pct[3])).toFixed(1);
+  var fn=document.getElementById('pm-grade-fn');
+  var label=(key==='all'||!key)?'全管道':key;
+  if(fn) fn.textContent='SS+S(0~24M) 實際 '+ssPct+'%，'+label+' '+n+' 人中 SS+S 共 '+ss+' 人。（實際計算值，非估算）';
+}
+
+function pmGradeTab(bt,btn){
+  ['all','self','active','shopline','partner'].forEach(function(k){
+    var b=document.getElementById('pmgt-'+k);
+    if(!b) return;
+    if(k===bt){b.style.background='#2563eb';b.style.color='#fff';b.style.borderColor='#2563eb';b.style.fontWeight='600';}
+    else{b.style.background='#fff';b.style.color='#555';b.style.borderColor='#d1d5db';b.style.fontWeight='400';}
+  });
+  var sel=document.getElementById('pm-ch-select');
+  if(sel) sel.value='all';
+  var note=document.getElementById('pm-ch-note');
+  if(note) note.style.display='none';
+  pmUpdateGrade(PM_BTYPE_N[bt]||1751, bt);
+}
+
+function pmChannelFilter(ch){
+  ['all','self','active','shopline','partner'].forEach(function(k){
+    var b=document.getElementById('pmgt-'+k);
+    if(b){b.style.background='#fff';b.style.color='#555';b.style.borderColor='#d1d5db';b.style.fontWeight='400';}
+  });
+  var note=document.getElementById('pm-ch-note');
+  if(ch==='all'||!ch){
+    if(note) note.style.display='none';
+    var ab=document.getElementById('pmgt-all');
+    if(ab){ab.style.background='#2563eb';ab.style.color='#fff';ab.style.borderColor='#2563eb';ab.style.fontWeight='600';}
+    pmUpdateGrade(1751,'all');
+    return;
+  }
+  var n=PM_CH_N[ch]||0;
+  if(note){note.textContent='篩選：'+ch+'　4月 '+n+' 人';note.style.display='inline';}
+  pmUpdateGrade(n,ch);
+}
 
 
 function pwInitMonthTrend(){
@@ -2377,8 +2444,7 @@ function pwInitCharts(){
     pwInitLineChart();
   }
   if(mPanel&&mPanel.classList.contains('active')){
-    pwRenderGradeBars('pw-month-bars',1800);
-    pwGradeChartM=pwRenderGradeChart('pwMonthGradeChart');
+    pmUpdateGrade(1751,'all');
     pwInitMonthTrend();
   }
 }
@@ -2967,7 +3033,7 @@ const META_IMGS={
     <div class="note">⚠️ 本頁數據來自 CUBE 每日匯出（含綁定日期），不含有效/無效區分。SS+S 依近期綁定月齡比例估算（73%）。</div>
     <div class="banner">
       <div>
-        <div class="banner-label">📅 上週：2026-W19　5/4（日）– 5/10（六）</div>
+        <div class="banner-label">📅 上週：2026-W19　5/4（一）– 5/10（日）</div>
         <div class="banner-sub">對比上上週（4/27–5/3）674 人　→　<span class="cmp-up">▲ 46（+6.8%）</span></div>
       </div>
     </div>
@@ -3003,13 +3069,13 @@ const META_IMGS={
         <table>
           <thead><tr><th>日期</th><th>自辦</th><th>主動</th><th>自動</th><th>異業</th><th>手動</th><th>總計</th></tr></thead>
           <tbody>
-            <tr class="wknd"><td>5/04（日）</td><td>68</td><td>17</td><td>4</td><td>13</td><td>0</td><td><b>102</b></td></tr>
-            <tr><td>5/05（一）</td><td>58</td><td>42</td><td>9</td><td>15</td><td>0</td><td><b>124</b></td></tr>
-            <tr><td>5/06（二）</td><td>59</td><td>24</td><td>11</td><td>19</td><td>1</td><td><b>114</b></td></tr>
-            <tr><td>5/07（三）</td><td>57</td><td>17</td><td>5</td><td>16</td><td>3</td><td><b>98</b></td></tr>
-            <tr><td>5/08（四）</td><td>47</td><td>9</td><td>6</td><td>13</td><td>1</td><td><b>76</b></td></tr>
-            <tr><td>5/09（五）</td><td>48</td><td>11</td><td>8</td><td>65</td><td>0</td><td><b>132</b></td></tr>
-            <tr class="wknd"><td>5/10（六）</td><td>43</td><td>10</td><td>0</td><td>21</td><td>0</td><td><b>74</b></td></tr>
+            <tr><td>5/04（一）</td><td>68</td><td>17</td><td>4</td><td>13</td><td>0</td><td><b>102</b></td></tr>
+            <tr><td>5/05（二）</td><td>58</td><td>42</td><td>9</td><td>15</td><td>0</td><td><b>124</b></td></tr>
+            <tr><td>5/06（三）</td><td>59</td><td>24</td><td>11</td><td>19</td><td>1</td><td><b>114</b></td></tr>
+            <tr><td>5/07（四）</td><td>57</td><td>17</td><td>5</td><td>16</td><td>3</td><td><b>98</b></td></tr>
+            <tr><td>5/08（五）</td><td>47</td><td>9</td><td>6</td><td>13</td><td>1</td><td><b>76</b></td></tr>
+            <tr class="wknd"><td>5/09（六）</td><td>48</td><td>11</td><td>8</td><td>65</td><td>0</td><td><b>132</b></td></tr>
+            <tr class="wknd"><td>5/10（日）</td><td>43</td><td>10</td><td>0</td><td>21</td><td>0</td><td><b>74</b></td></tr>
             <tr class="tot"><td>週合計</td><td>380</td><td>130</td><td>43</td><td>162</td><td>5</td><td>720</td></tr>
           </tbody>
         </table>
@@ -3129,85 +3195,105 @@ const META_IMGS={
 
   <!-- ══════ 月報告 ══════ -->
   <div id="pw-month" class="mode-panel">
-    <div class="note">⚠️ <b>4月特殊情況：機房搬遷</b>　4/1–4/17 系統停機，自辦/主動管道完全無法收錄，共損失 17 天。<b>4月數字偏低有明確原因，並非蒐集策略失效</b>，有效蒐集天數僅 13 天（4/18–4/30）。</div>
+    <div class="note">⚠️ <b>4月特殊情況：機房搬遷</b>　4/1–4/17 系統停機，自辦/主動管道完全無法運作（僅 SHOPLINE 自動與部分異業仍有少量收錄）。<b>4月數字偏低有明確原因，並非蒐集策略失效</b>，主要管道有效蒐集天數僅 13 天（4/18–4/30）。</div>
     <div class="banner">
       <div>
         <div class="banner-label">📆 2026 年 4 月（4/1–4/30）完整月</div>
-        <div class="banner-sub">新增綁定 1,800 人　｜　有效蒐集 13 天（4/18起）　｜　日均 138.5 人/天</div>
+        <div class="banner-sub">全員綁定 1,800 人　｜　有效 1,751 / 無效 49　｜　4/18起日均 113.3 人/天</div>
       </div>
     </div>
 
-    <!-- KPI -->
+    <!-- KPI 3格 -->
     <div class="ks3">
       <div class="kc" style="border-top:3px solid var(--pw-blue);">
-        <div class="kl">月新增綁定</div>
-        <div class="kv" style="color:var(--pw-blue);">1,800</div>
-        <div class="kn">完整月（4/1–4/30）</div>
+        <div class="kl">月新增綁定（有效）</div>
+        <div class="kv" style="color:var(--pw-blue);">1,751</div>
+        <div class="kn">全員 1,800 / 無效 49（2.7%）</div>
       </div>
-      <div class="kc" style="border-top:3px solid var(--pw-red);">
-        <div class="kl">停機損失天數</div>
-        <div class="kv" style="color:var(--pw-red);">17 天</div>
-        <div class="kn">4/1–4/17 完全無自辦收入</div>
+      <div class="kc" style="border-top:3px solid var(--pw-purple);">
+        <div class="kl">每日平均（4/18起）</div>
+        <div class="kv" style="color:var(--pw-purple);">113.3</div>
+        <div class="kn">恢復後 13 天合計 1,473 人</div>
       </div>
       <div class="kc" style="border-top:3px solid #b91c1c;">
-        <div class="kl">SS+S 人數（估）</div>
-        <div class="kv" style="color:#b91c1c;">1,314</div>
-        <div class="kn">占月新增 73%（比例估算）</div>
+        <div class="kl">SS+S 實際人數</div>
+        <div class="kv" style="color:#b91c1c;">677</div>
+        <div class="kn">占有效 38.7%（實際計算，非估算）</div>
       </div>
     </div>
 
-    <div class="row2">
-      <!-- 月齡等級 + 圖 -->
-      <div class="sc">
-        <div class="sh" style="color:#b91c1c;"><span class="sh-dot"></span>月齡等級占比（4月全月，1,800人 × 近期月齡比例估算）</div>
-        <div style="font-size:11px;background:#fef3c7;border:1px solid rgba(217,119,6,.25);border-radius:6px;padding:5px 9px;margin-bottom:8px;color:#92400e;">
-  ⚠️ 以下為「4月 1,800 人 × 近期綁定月齡比例（2504~26期間）」估算值，非實際每人月齡統計
-</div>
-<div class="grade-bar-wrap" id="pw-month-bars"></div>
-        <div class="chart-wrap"><canvas id="pwMonthGradeChart"></canvas></div>
-        <div class="fn">SS+S(0~24M) 73%，4月估計 1,314 人。孕期 16.5% 亦是重要族群；B(61M+)近乎為零，代表近期新增以年輕名單為主</div>
+    <!-- 月齡等級占比 -->
+    <div class="sc" style="margin-bottom:12px;">
+      <div class="sh" style="color:#b91c1c;"><span class="sh-dot"></span>月齡等級占比（4月有效 1,751人 × 實際月齡資料）</div>
+
+      <!-- btype tabs -->
+      <div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap;align-items:center;">
+        <span style="font-size:11px;color:#888;margin-right:2px;">管道類型：</span>
+        <button onclick="pmGradeTab('all',this)"      id="pmgt-all"      style="padding:3px 11px;border-radius:20px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-size:12px;cursor:pointer;font-weight:600;">全管道 1,751</button>
+        <button onclick="pmGradeTab('self',this)"     id="pmgt-self"     style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自辦 1,041</button>
+        <button onclick="pmGradeTab('active',this)"   id="pmgt-active"   style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">主動 215</button>
+        <button onclick="pmGradeTab('shopline',this)" id="pmgt-shopline" style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自動 323</button>
+        <button onclick="pmGradeTab('partner',this)"  id="pmgt-partner"  style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">異業 170</button>
       </div>
 
-      <!-- 月趨勢 + 異業 -->
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="sc">
-          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>月度蒐集趨勢（2026 年）</div>
-          <table>
-            <thead><tr><th>月份</th><th>新增</th><th>備註</th></tr></thead>
-            <tbody>
-              <tr><td>1月</td><td>2,554</td><td style="text-align:left;font-size:11px;color:#888;">含回溯補登</td></tr>
-              <tr><td>2月</td><td>3,278</td><td style="text-align:left;font-size:11px;color:#888;"></td></tr>
-              <tr><td>3月</td><td>5,327</td><td style="text-align:left;font-size:11px;color:#888;">育兒知識王活動</td></tr>
-              <tr style="background:rgba(220,38,38,.05);"><td>4月</td><td style="color:var(--pw-red);font-weight:600;">1,800</td><td style="text-align:left;font-size:11px;color:var(--pw-red);">⚠️ 機房停機 17 天</td></tr>
-              <tr><td style="color:#aaa;">5月(至5/10)</td><td style="color:#aaa;">932</td><td style="text-align:left;font-size:11px;color:#aaa;">進行中</td></tr>
-            </tbody>
-          </table>
-          <div class="chart-wrap"><canvas id="pwMonthTrendChart"></canvas></div>
+      <!-- channel dropdown -->
+      <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap;">
+        <span style="font-size:11px;color:#888;">細部管道：</span>
+        <select id="pm-ch-select" onchange="pmChannelFilter(this.value)"
+          style="font-size:12px;padding:3px 8px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;">
+          <option value="all">— 全部 —</option>
+          <option value="全管道(酷必後台)">全管道/酷必後台（991）</option>
+          <option value="客服">客服（51）</option>
+          <option value="SHOPLINE">SHOPLINE（323）</option>
+          <option value="明治">明治（91）</option>
+          <option value="六甲村">六甲村（38）</option>
+          <option value="永生">永生（20）</option>
+          <option value="芳茲">芳茲（21）</option>
+          <option value="LineOA">LineOA（7）</option>
+        </select>
+        <span id="pm-ch-note" style="font-size:11px;color:#059669;font-weight:600;display:none;"></span>
+      </div>
+
+      <div style="font-size:11px;background:#d1fae5;border:1px solid rgba(5,150,105,.25);border-radius:6px;padding:5px 9px;margin-bottom:10px;color:#065f46;">
+        ✅ 此頁月齡分布為<b>實際計算值</b>（來自 260421DB數據.xlsx），非比例估算
+      </div>
+
+      <!-- 主體：左=長條, 右=月趨勢折線+異業表 -->
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+        <!-- 左：長條圖 -->
+        <div style="flex:1;min-width:260px;">
+          <div class="grade-bar-wrap" id="pw-month-bars"></div>
+          <div class="fn" id="pm-grade-fn"></div>
         </div>
-        <div class="sc">
-          <div class="sh" style="color:var(--pw-gold);"><span class="sh-dot"></span>4月異業管道分布</div>
-          <table>
-            <thead><tr><th>管道</th><th>4月合計</th><th>占異業%</th></tr></thead>
-            <tbody>
-              <tr><td>明治</td><td>57</td><td>30.5%</td></tr>
-              <tr><td>六甲村</td><td>50</td><td>26.7%</td></tr>
-              <tr><td>永生</td><td>46</td><td>24.6%</td></tr>
-              <tr><td>芳茲</td><td>23</td><td>12.3%</td></tr>
-              <tr><td>其他（聯盟等）</td><td>11</td><td>5.9%</td></tr>
-              <tr class="tot"><td>異業合計</td><td>187</td><td>100%</td></tr>
-            </tbody>
-          </table>
+        <!-- 右：月度趨勢折線圖 + 異業表 -->
+        <div style="width:320px;flex-shrink:0;">
+          <div style="font-size:12px;font-weight:600;color:#444;margin-bottom:4px;">📈 月度蒐集趨勢（2026年）</div>
+          <div style="position:relative;height:170px;"><canvas id="pwMonthTrendChart"></canvas></div>
+          <!-- 4月異業表 -->
+          <div style="margin-top:10px;">
+            <div style="font-size:11px;font-weight:600;color:#555;margin-bottom:4px;">4月異業管道分布（全員）</div>
+            <table style="font-size:11px;width:100%;">
+              <thead><tr><th>管道</th><th>全員</th><th>有效</th><th>主要月齡</th></tr></thead>
+              <tbody>
+                <tr><td>明治</td><td>99</td><td>91</td><td style="font-size:10px;color:#888;">孕期 71%</td></tr>
+                <tr><td>六甲村</td><td>41</td><td>38</td><td style="font-size:10px;color:#888;">孕期 87%</td></tr>
+                <tr><td>永生</td><td>25</td><td>20</td><td style="font-size:10px;color:#888;">孕期 90%</td></tr>
+                <tr><td>芳茲</td><td>22</td><td>21</td><td style="font-size:10px;color:#888;">孕期 100%</td></tr>
+                <tr class="tot"><td>異業合計</td><td>187</td><td>170</td><td style="font-size:10px;color:#888;">SS+S 11.2%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 月總結 -->
-    <div class="summary-box">
+    <div class="summary-box" style="font-size:14px;">
       <h3>📝 4月成效總結</h3>
-      <p><span class="tag tag-warn">表現差，但原因明確、非策略問題</span> 4月合計 <b>1,800 人</b>，遠低於 3月（5,327）和 2月（3,278）。直接原因是<b>機房搬遷 4/1–4/17 停機 17 天</b>，自辦和主動管道整整兩週半無法收錄，有效蒐集天數只有 13 天。若比照 3 月日均 189 人，17 天損失估達 3,200 人。</p>
-      <p><span class="tag tag-ok">恢復動能健全</span> 4/18 恢復後日均 <b>138.5 人/天</b>，高於 2 月日均（117 人/天），代表蒐集引擎復原正常，沒有因停機而衰退，趨勢向上。</p>
-      <p><span class="tag tag-ok">名單品質優異</span> SS+S(0~24M) 估計佔 <b>73%（≈1,314 人）</b>，孕期 16.5%，月份雖量少，但名單年齡結構比去年同期更年輕，品質符合預期。</p>
-      <p><span class="tag tag-info">後續展望</span> 5月目前 932 人（截至 5/10），小村日和新管道持續成長（本週 53 人），樂飛發票本週大量回補（70 人）。若維持恢復節奏，5月預計可達 <b>3,000–4,000 人</b>。</p>
+      <p><span class="tag tag-warn">表現差，但原因明確、非策略問題</span> 4月全員綁定 1,800 人（有效 1,751），遠低於 3月（5,327）和 2月（3,278）。直接原因是<b>機房搬遷 4/1–4/17，自辦/主動停機 17 天</b>，有效蒐集天數只有 13 天（4/18起）。停機期仍有 278 人（主要為 SHOPLINE 自動收錄與異業），但非主力管道。</p>
+      <p><span class="tag tag-ok">恢復動能健全</span> 4/18 恢復後日均 <b>113.3 人/天</b>，4/24 和 4/30 分別達 148、144 人，恢復節奏穩定向上，代表蒐集引擎沒有因停機而衰退。</p>
+      <p><span class="tag tag-warn">月齡結構與估算有落差</span> 本月 SS+S(0~24M) 實際比例為 <b>38.7%（677人）</b>，低於過去估算的 73%。主因是 4月異業全由明治、六甲村、永生、芳茲主導，這四個管道均以<b>孕期</b>（出生前）為主（孕期佔異業 80.6%），SS+S 僅 11.2%，拉低整體比例。自辦（SS+S 47.2%）和主動（41%）品質相對正常。</p>
+      <p><span class="tag tag-info">後續展望</span> 5月目前 932 人（截至 5/10）。小村日和（5月新活動）本週 53 人、SS+S 達 85.9% 品質極佳，為新增的優質管道；樂飛依續約條款 3 歲以內計費，本週有效約 22 人。若維持恢復節奏，5月預計可達 <b>3,000–4,000 人</b>。</p>
     </div>
   </div>
 
