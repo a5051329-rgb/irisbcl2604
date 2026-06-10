@@ -2491,18 +2491,46 @@ function pwInitLineChart(){
   var ssPct4 =weeks4.map(function(w){return PW_WEEKS[w]?PW_WEEKS[w].ssPct:0;});
   var ptColors=['rgba(185,28,28,.4)','rgba(185,28,28,.4)','rgba(185,28,28,.4)','#b91c1c'];
   var ptSizes=[3,3,3,5];
-  new Chart(el,{type:'line',data:{labels:labels4,datasets:[{
-      label:'SS+S 比例（%）',data:ssPct4,borderColor:'#b91c1c',backgroundColor:'rgba(185,28,28,.08)',pointBackgroundColor:ptColors,pointRadius:ptSizes,borderWidth:2.5,tension:0.3,fill:true
-    }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{
-        label:function(c){return ' SS+S: '+c.raw+'%';},afterLabel:function(c){
+  var ssN4=weeks4.map(function(w){return PW_WEEKS[w]?PW_WEEKS[w].ss:0;});
+  var ssLabelPlugin={id:'ssLabelPlugin',afterDraw:function(chart){
+    var ctx2=chart.ctx; ctx2.save();
+    ctx2.textAlign='center';
+    var meta=chart.getDatasetMeta(0);
+    meta.data.forEach(function(pt,i){
+      var pct=ssPct4[i];
+      var n=ssN4[i];
+      /* 比例（上行）*/
+      ctx2.font='bold 10px sans-serif';
+      ctx2.fillStyle='#b91c1c';
+      ctx2.fillText(pct+'%', pt.x, pt.y-20);
+      /* 人數（下行）*/
+      ctx2.font='10px sans-serif';
+      ctx2.fillStyle='#555';
+      ctx2.fillText(n+' 人', pt.x, pt.y-9);
+    });
+    ctx2.restore();
+  }};
+  new Chart(el,{plugins:[ssLabelPlugin],type:'line',data:{labels:labels4,datasets:[{
+      label:'SS+S 比例（%）',data:ssPct4,borderColor:'#b91c1c',backgroundColor:'rgba(185,28,28,.08)',pointBackgroundColor:ptColors,pointRadius:ptSizes,borderWidth:2.5,tension:0.3,fill:true,
+      datalabels:{display:false}
+    }]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{
+        label:function(c){
+          var w=PW_WEEKS[weeks4[c.dataIndex]];
+          var n=w?w.ss:0;
+          return ' SS+S: '+c.raw+'%（約 '+n+' 人）';
+        },
+        afterLabel:function(c){
           var w=PW_WEEKS[weeks4[c.dataIndex]];
           return w?' 週合計: '+w.total+' 人':'';
         }
-      }}},scales:{
-        x:{grid:{display:false},ticks:{font:{size:11}}},y:{min:0,max:55,ticks:{font:{size:9},callback:function(v){return v+'%';}},grid:{color:'rgba(0,0,0,.06)'}}
-      }
+      }}
+    },scales:{
+      x:{grid:{display:false},ticks:{font:{size:11}}},
+      y:{min:0,max:60,ticks:{font:{size:9},callback:function(v){return v+'%';}},grid:{color:'rgba(0,0,0,.06)'}}
     }
-  });
+  }});
 }
 function pwGradeTab(bt,btn){
   ['all','selfOnline','selfOffline','active','shopline','partner'].forEach(function(k){
@@ -4272,7 +4300,7 @@ const META_IMGS={
         <div style="width:320px;flex-shrink:0;">
           <div style="font-size:12px;font-weight:600;color:#b91c1c;margin-bottom:4px;">📈 SS+S 蒐集走勢（近 4 週）</div>
           <div style="font-size:10.5px;color:#888;margin-bottom:6px;">依各管道 SS+S 比例加權估算；W14–W16 停機期偏低屬正常</div>
-          <div style="position:relative;height:180px;"><canvas id="pwWeekLineChart"></canvas></div>
+          <div style="position:relative;height:210px;"><canvas id="pwWeekLineChart"></canvas></div>
           <div style="display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;">
             <div style="display:flex;align-items:center;gap:4px;"><div style="width:20px;height:3px;background:#b91c1c;border-radius:2px;"></div><span style="font-size:10px;color:#555;">SS+S 比例（%）</span></div>
           </div>
