@@ -2088,8 +2088,19 @@ var PW_GRADE_BARS=['rgba(14,122,110,.8)','rgba(30,111,184,.8)','rgba(185,28,28,.
 
 /* 週次選擇資料 */
 var PW_WEEKS = {
+  'W11': {
+    label: 'W11：6/8（一）– 6/14（日）', badge: 'W11 最新週', total: 491, ss: 163, ssPct: 33.2, prev: 'W10',
+    monthAccum: 1619, monthLabel: '6/1–6/14', monthDays: 30, daysPassed: 14, prevMonthAccum: 1044, prevMonthLabel: '5/1–5/14',
+    btype: {自辦線上:205,自辦線下:49,主動:66,自動:75,異業:96},
+    btypeN: {all:491,selfOnline:205,selfOffline:49,active:66,shopline:75,partner:96},
+    chN: {'育兒神隊友':201,'夏季舞台劇':49,'官網綁定':52,'SHOPLINE回補':75,'明治':42,'小村日和':15,'六甲村':11,'樂飛':24,'永生':4,'客服':14,'育兒知識王':1},
+    dailyLabels: ['6/8','6/9','6/10','6/11','6/12','6/13','6/14'],
+    daily: [47,52,59,59,106,118,50],
+    partner: {小村日和:15,六甲村:11,永生:4,明治:42,樂飛:24},
+    summary: '<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eff6ff;border-left:4px solid #2563eb;margin-bottom:10px;">📊 W11 回歸基礎水準，神隊友主力＋夏季舞台劇線下亮相，SS+S 33.2% 健康。</p><p><span class="tag tag-ok">排除 Lalaport 後的真實成長</span> 本週合計 <b>491 人</b>。比較基準：W10 去除 Lalaport 663 人後非展覽日實質約 465 人；本週 491 人較之 <b>▲5.6%</b>，確認自然成長趨勢持續。日均 <b>70.1 人</b>，6/12–6/13 雙峰（106、118 人），可能與明治異業推播（42 人）有關。</p><p><span class="tag tag-info">管道拆分</span><br>• <b>自辦線上 205 人（41.8%）</b>：育兒神隊友 152 人（週報第一主力），知識王 1 人，其餘為全管道／CDP<br>• <b>自辦線下 49 人（10.0%）</b>：夏季舞台劇 6/13 共 39 人、6/14 共 10 人，為本週線下唯一活動<br>• <b>主動 66 人（13.4%）</b>：官網綁定 52 人 ＋ 客服 14 人<br>• <b>自動（SHOPLINE）75 人（15.3%）</b><br>• <b>異業 96 人（19.6%）</b>：明治 42、樂飛 24、小村日和 15、六甲村 11、永生 4</p><p><span class="tag tag-warn">SS+S 33.2%（≈163 人）</span> 較 W10 全體 13.9% 大幅回升，但仍低於 W9（33.5%）水準。夏季舞台劇（SS+S ~2%）49 人稀釋整體約 1.5pp；若單看線上管道，SS+S 估計約 37-39%。建議持續追蹤神隊友效期結束後（6/7 已結束）的自辦線上動能是否接棒。</p><p><span class="tag tag-info">月累計</span> 6/1–6/14 合計 1,619 人，日均 115.6，較去年同期表現待確認；月初兩週已佔 6月目標的重要基數。</p>'
+  },
   'W10': {
-    label: 'W10：6/1（一）– 6/7（日）',badge: 'W10 最新週',total: 1128,ss: 157,ssPct: 13.9,prev: 'W9',monthAccum: 1128,monthLabel: '6/1–6/7',monthDays: 30,daysPassed: 7,prevMonthAccum: 646,prevMonthLabel: '5/1–5/7',btype: {自辦線上:155,自辦線下:663,主動:140,自動:81,異業:89},btypeN: {all:1128,selfOnline:155,selfOffline:663,active:140,shopline:81,partner:89},gradeOverride:[5.6,2.8,5.5,16.5,35.4,13.4,15.5,5.3],chN: {'Lalaport活動':663,'育兒神隊友':154,'官網綁定':140,'SHOPLINE回補':81,'樂飛':27,'小村日和':20,'明治':16,'六甲村':11,'永生':10,'育兒知識王':1},dailyLabels: ['一(6/1)','二(6/2)','三(6/3)','四(6/4)','五(6/5)','六(6/6)','日(6/7)'],daily:[35,55,38,51,53,428,468],partner:{小村日和:20,六甲村:11,永生:10,明治:16,芳茲:0,樂飛:27,聯盟網:0,'Lalaport活動':663},summary:'<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">✅ Lalaport 社內自辦活動（6/6–6/7）帶來大量綁定，本週合計 1,128 人，創 FY26 單週新高。6/1–6/5 日均僅 46.4，活動日 6/6–6/7 單日分別達 428、468 人。</p><p><span class="tag tag-ok">展覽效應顯著</span> 本週合計 <b>1,128 人</b>，較上週 454 人 <b>▲148%</b>，日均 161.1。6/6–6/7 Lalaport 社內自辦活動（自辦線下活動）貢獻 <b>663 人</b>，佔本週 58.8%。</p><p><span class="tag tag-info">非展覽日（6/1–6/5）</span> 合計 232 人，日均 46.4；自辦/主動/自動各管道維持正常水準。</p><p><span class="tag tag-info">異業明細</span> Lalaport 活動（社內自辦，自辦線下活動）663 人，小村日和 20 人，樂飛 27 人，明治 16 人，六甲村 11 人，永生 10 人。</p>'
+    label: 'W10：6/1（一）– 6/7（日）',badge: 'W10',total: 1128,ss: 157,ssPct: 13.9,prev: 'W9',monthAccum: 1128,monthLabel: '6/1–6/7',monthDays: 30,daysPassed: 7,prevMonthAccum: 646,prevMonthLabel: '5/1–5/7',btype: {自辦線上:155,自辦線下:663,主動:140,自動:81,異業:89},btypeN: {all:1128,selfOnline:155,selfOffline:663,active:140,shopline:81,partner:89},gradeOverride:[5.6,2.8,5.5,16.5,35.4,13.4,15.5,5.3],chN: {'Lalaport活動':663,'育兒神隊友':154,'官網綁定':140,'SHOPLINE回補':81,'樂飛':27,'小村日和':20,'明治':16,'六甲村':11,'永生':10,'育兒知識王':1},dailyLabels: ['一(6/1)','二(6/2)','三(6/3)','四(6/4)','五(6/5)','六(6/6)','日(6/7)'],daily:[35,55,38,51,53,428,468],partner:{小村日和:20,六甲村:11,永生:10,明治:16,芳茲:0,樂飛:27,聯盟網:0,'Lalaport活動':663},summary:'<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">✅ Lalaport 自辦線下活動（6/6–6/7）帶來大量綁定，本週合計 1,128 人，創 FY26 單週新高。</p><p><span class="tag tag-ok">展覽效應顯著</span> 本週合計 <b>1,128 人</b>，較上週 454 人 <b>▲148%</b>，日均 161.1。Lalaport 貢獻 <b>663 人（58.8%）</b>；非展覽日（6/1–6/5）合計 232 人，日均 46.4。</p><p><span class="tag tag-warn">📊 Lalaport 管道深度分析</span></p><table class="lala-tbl" style="width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0 12px;border:1px solid #e0e0e0;"><colgroup><col style="width:13%"><col style="width:20%"><col style="width:67%"></colgroup><thead><tr style="background:#f0f4f8;"><th style="padding:8px 12px;text-align:left;border-bottom:2px solid #c8d0dc;font-weight:700;color:#444;">維度</th><th style="padding:8px 12px;text-align:center;border-bottom:2px solid #c8d0dc;font-weight:700;color:#444;">數值</th><th style="padding:8px 12px;text-align:left;border-bottom:2px solid #c8d0dc;font-weight:700;color:#444;">說明</th></tr></thead><tbody><tr style="border-bottom:1px solid #eee;"><td style="padding:8px 12px;font-weight:600;color:#333;vertical-align:top;text-align:left;">活動規模</td><td style="padding:8px 12px;text-align:center;vertical-align:top;"><b>663 人</b><br><small style="color:#888;">W10 新增</small></td><td style="padding:8px 12px;color:#555;line-height:1.75;text-align:left;">CUBE 歷次累計 716 人。<br>6/6 單日 428 人、6/7 單日 468 人。</td></tr><tr style="background:#fafafa;border-bottom:1px solid #eee;"><td style="padding:8px 12px;font-weight:600;color:#333;vertical-align:top;text-align:left;">封鎖率</td><td style="padding:8px 12px;text-align:center;vertical-align:top;"><b>9.1%</b><br><small style="color:#888;">65 / 716 封鎖</small></td><td style="padding:8px 12px;color:#555;line-height:1.75;text-align:left;">有效會員 651 人；W10 新增 663 人估計有效約 <b>604 人</b>（封鎖約 59 人）。<br>與春季舞台劇幾乎相同（9.3%，90/971），兩者客群性質類似——帶孩出門、以領贈品為目的。<br>建議以 <b>9–10%</b> 作為同類實體活動封鎖率基準。</td></tr><tr style="border-bottom:1px solid #eee;"><td style="padding:8px 12px;font-weight:600;color:#333;vertical-align:top;text-align:left;">月齡結構</td><td style="padding:8px 12px;text-align:center;vertical-align:top;"><b>SS+S 2.3%</b><br><small style="color:#888;">A帶為主</small></td><td style="padding:8px 12px;color:#555;line-height:1.75;text-align:left;"><canvas id=\"lala-grade-cvs\" width=\"320\" height=\"160\" style=\"display:block;margin-bottom:8px;\"></canvas>A（25–48M）42.6%、AA（49–72M）19.1%、B+（73M+）21.3%。<br>與春季舞台劇高度相似（A 41.9%、AA 32.2%、B+ 18.9%，SS+S 0.7%）。<br>「帶孩實體活動」固有月齡偏老特性，未來報告建議分開檢視 SS+S。</td></tr><tr style="background:#fafafa;"><td style="padding:8px 12px;font-weight:600;color:#333;vertical-align:top;text-align:left;">封鎖率對比</td><td style="padding:8px 12px;vertical-align:top;text-align:left;"></td><td style="padding:8px 12px;vertical-align:top;text-align:left;"><table style="width:100%;border-collapse:collapse;font-size:12px;text-align:left;"><thead><tr style="background:#eef2f7;"><th style="padding:5px 10px;text-align:left;border:1px solid #dde;">活動</th><th style="padding:5px 10px;text-align:center;border:1px solid #dde;">人數</th><th style="padding:5px 10px;text-align:center;border:1px solid #dde;">封鎖率</th><th style="padding:5px 10px;text-align:center;border:1px solid #dde;">SS+S</th></tr></thead><tbody><tr><td style="padding:5px 10px;border:1px solid #dde;text-align:left;">Lalaport（W10）</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;">716</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;font-weight:700;">9.1%</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;">2.3%</td></tr><tr style="background:#f8f8f8;"><td style="padding:5px 10px;border:1px solid #dde;text-align:left;">春季舞台劇（FY26 Q1）</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;">971</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;font-weight:700;">9.3%</td><td style="padding:5px 10px;text-align:center;border:1px solid #dde;">0.7%</td></tr></tbody></table><p style="margin:6px 0 0;font-size:11.5px;color:#666;">→ 兩者封鎖率與月齡結構幾乎一致，9–10% 可作為同類活動基準。</p></td></tr></tbody></table><p style="font-size:12px;color:#777;margin-bottom:4px;text-align:left;">管道明細：自辦線下 Lalaport 663 人（有效約 604 人）｜異業：小村日和 20、樂飛 27、明治 16、六甲村 11、永生 10</p>'
   },'W9': {
     label: 'W9：5/25（一）– 5/31（日）',badge: 'W9',total: 454,ss: 152,ssPct: 33.5,prev: 'W8',monthAccum: 2115,monthLabel: '5/1–5/31',monthDays: 31,daysPassed: 31,prevMonthAccum: 1800,prevMonthLabel: '4月全月',btype: {自辦線上:215,自辦線下:0,主動:46,自動:128,異業:82},btypeN: {all:471,selfOnline:215,selfOffline:0,active:46,shopline:128,partner:82},chN: {'育兒神隊友':212,'官網綁定':47,'SHOPLINE回補':113,'小村日和':36,'樂飛':22,'永生':14,'六甲村':6,'明治':4},dailyLabels: ['一(5/25)','二(5/26)','三(5/27)','四(5/28)','五(5/29)','六(5/30)','日(5/31)'],daily:[16,67,102,78,67,67,57],partner:{小村日和:36,六甲村:6,永生:14,明治:4,芳茲:0,樂飛:22,聯盟網:0},summary:'<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">✅ 本週系統恢復正常（5/26起），蒐集力道逐步回升，整體表現符合預期。5/25（一）受簡訊公司設備異常尾效影響仍偏低（16人），5/26恢復後日均達76人，動能健康。</p><p><span class="tag tag-ok">整體回升</span> 本週合計 <b>454 人</b>，較上週 178 人大幅回升（▲154.5%），日均 64.9。5/26 起自辦恢復正常，5/27 達 102 人高點。</p><p><span class="tag tag-info">異業分布</span> 小村日和 36 人、樂飛 22 人、永生 14 人、六甲村 6 人、明治 4 人。</p><p><span class="tag tag-info">5月全月</span> 5月累計 <b>2,115 人</b>，較 4月全月 1,800 人 <b>▲17.5%</b>，日均 68.2 人（排除 W8 簡訊異常週後平均更高）。</p>'
   },'W8': {
@@ -2112,11 +2123,11 @@ var PW_WEEKS = {
 };
 
 var PW_TREND_DATA = {
-  labels: ["3/31–4/6","4/7–13","4/14–20","4/21–27","4/28–5/4","5/5–11","5/12–18","5/19–25","5/26–6/1","6/2–8","6/9–15","6/16–22","6/23–29","6/30–7/6","7/7–13","7/14–20","7/21–27","7/28–8/3","8/4–10","8/11–17","8/18–24","8/25–31","9/1–7","9/8–14","9/15–21","9/22–28","9/29–10/5","10/6–12","10/13–19","10/20–26","10/27–11/2","11/3–9","11/10–16","11/17–23","11/24–30","12/1–7","12/8–14","12/15–21","12/22–28","12/29–1/4","1/5–11","1/12–18","1/19–25","1/26–2/1","2/2–8","2/9–15","2/16–22","2/23–3/1","3/2–8","3/9–15","3/16–22","3/23–29","3/30–4/5","4/6–12","4/13–19","4/20–26","4/27–5/3","5/4–10","5/11–17","5/18–24","5/25–31","6/1–7"],total:    [361,786,997,2639,601,223,313,309,343,452,329,310,393,342,868,424,427,279,388,322,483,413,409,451,523,437,371,949,653,615,333,524,453,517,491,408,555,1019,490,332,605,681,596,596,597,1126,387,1372,936,2577,916,543,79,96,387,798,674,725,551,178,454,1128],selfOnline: [224,454,512,2198,428,132,119,191,121,162,108,105,132,156,156,185,249,159,175,139,176,190,217,295,295,314,244,554,292,211,168,289,229,316,308,265,340,215,113,175,277,269,201,232,243,240,274,316,296,1991,506,355,18,6,186,535,424,385,336,47,215,155],
-  selfOffline:[0,0,0,0,0,0,0,0,0,0,0,1,0,3,0,0,0,1,0,0,0,2,0,0,0,0,0,193,133,218,0,0,0,0,0,0,0,0,0,0,0,144,141,109,113,0,0,0,156,118,172,0,0,0,0,0,0,0,0,0,0,663],active:   [21,79,82,121,50,44,39,35,48,42,46,37,55,60,68,37,46,37,55,26,67,56,58,58,46,31,32,52,51,24,42,71,61,45,36,41,51,214,74,41,106,123,71,89,77,47,41,87,61,293,82,82,0,0,41,106,94,130,54,20,47,140],shopline: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,33,18,20,41,28,42,42,34,36,19,19,29,15,28,16,21,43,42,40,788,32,149,232,140,112,89,61,88,76,79,73,48,51,53,113,81],partner:  [116,253,399,318,123,47,155,83,174,247,175,167,206,123,641,200,132,82,158,156,237,163,134,98,182,81,62,132,156,121,95,122,121,122,111,83,145,558,288,88,205,124,140,123,124,49,39,812,190,34,43,17,0,2,84,76,83,162,114,62,82,89],ssPct:    [54.3,52.2,43.9,67.3,62.7,51.1,32.9,44.7,43.1,35.8,33.7,33.9,36.4,36.5,45.2,49.1,38.4,43.7,37.9,36.3,33.5,36.6,47.2,49.0,37.1,41.2,40.2,32.1,39.8,32.2,47.7,37.2,39.3,36.0,42.8,46.8,41.8,44.7,35.7,36.4,29.4,27.8,26.5,31.4,28.8,26.6,47.3,37.5,33.2,54.1,35.7,33.5,30.4,28.1,29.2,43.0,38.4,36.3,37.6,34.3,33.5,13.9],ssN:      [196,410,438,1776,377,114,103,138,148,162,111,105,143,125,392,208,164,122,147,117,162,151,193,221,194,180,149,305,260,198,159,195,178,186,210,191,232,455,175,121,178,189,158,187,172,300,183,514,311,1395,327,182,24,27,113,343,259,263,207,61,152,157],curIdx: 61
+  labels: ["3/31–4/6","4/7–13","4/14–20","4/21–27","4/28–5/4","5/5–11","5/12–18","5/19–25","5/26–6/1","6/2–8","6/9–15","6/16–22","6/23–29","6/30–7/6","7/7–13","7/14–20","7/21–27","7/28–8/3","8/4–10","8/11–17","8/18–24","8/25–31","9/1–7","9/8–14","9/15–21","9/22–28","9/29–10/5","10/6–12","10/13–19","10/20–26","10/27–11/2","11/3–9","11/10–16","11/17–23","11/24–30","12/1–7","12/8–14","12/15–21","12/22–28","12/29–1/4","1/5–11","1/12–18","1/19–25","1/26–2/1","2/2–8","2/9–15","2/16–22","2/23–3/1","3/2–8","3/9–15","3/16–22","3/23–29","3/30–4/5","4/6–12","4/13–19","4/20–26","4/27–5/3","5/4–10","5/11–17","5/18–24","5/25–31","6/1–7","6/8–14"],total:    [361,786,997,2639,601,223,313,309,343,452,329,310,393,342,868,424,427,279,388,322,483,413,409,451,523,437,371,949,653,615,333,524,453,517,491,408,555,1019,490,332,605,681,596,596,597,1126,387,1372,936,2577,916,543,79,96,387,798,674,725,551,178,454,1128,491],selfOnline: [224,454,512,2198,428,132,119,191,121,162,108,105,132,156,156,185,249,159,175,139,176,190,217,295,295,314,244,554,292,211,168,289,229,316,308,265,340,215,113,175,277,269,201,232,243,240,274,316,296,1991,506,355,18,6,186,535,424,385,336,47,215,155,205],
+  selfOffline:[0,0,0,0,0,0,0,0,0,0,0,1,0,3,0,0,0,1,0,0,0,2,0,0,0,0,0,193,133,218,0,0,0,0,0,0,0,0,0,0,0,144,141,109,113,0,0,0,156,118,172,0,0,0,0,0,0,0,0,0,0,663,49],active:   [21,79,82,121,50,44,39,35,48,42,46,37,55,60,68,37,46,37,55,26,67,56,58,58,46,31,32,52,51,24,42,71,61,45,36,41,51,214,74,41,106,123,71,89,77,47,41,87,61,293,82,82,0,0,41,106,94,130,54,20,47,140,66],shopline: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,33,18,20,41,28,42,42,34,36,19,19,29,15,28,16,21,43,42,40,788,32,149,232,140,112,89,61,88,76,79,73,48,51,53,113,81,75],partner:  [116,253,399,318,123,47,155,83,174,247,175,167,206,123,641,200,132,82,158,156,237,163,134,98,182,81,62,132,156,121,95,122,121,122,111,83,145,558,288,88,205,124,140,123,124,49,39,812,190,34,43,17,0,2,84,76,83,162,114,62,82,89,96],ssPct:    [54.3,52.2,43.9,67.3,62.7,51.1,32.9,44.7,43.1,35.8,33.7,33.9,36.4,36.5,45.2,49.1,38.4,43.7,37.9,36.3,33.5,36.6,47.2,49.0,37.1,41.2,40.2,32.1,39.8,32.2,47.7,37.2,39.3,36.0,42.8,46.8,41.8,44.7,35.7,36.4,29.4,27.8,26.5,31.4,28.8,26.6,47.3,37.5,33.2,54.1,35.7,33.5,30.4,28.1,29.2,43.0,38.4,36.3,37.6,34.3,33.5,13.9,33.2],ssN:      [196,410,438,1776,377,114,103,138,148,162,111,105,143,125,392,208,164,122,147,117,162,151,193,221,194,180,149,305,260,198,159,195,178,186,210,191,232,455,175,121,178,189,158,187,172,300,183,514,311,1395,327,182,24,27,113,343,259,263,207,61,152,157,163],curIdx: 62
 };
 
-var _pwCurrentWeek = 'W10';
+var _pwCurrentWeek = 'W11';
 var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
@@ -2184,7 +2195,38 @@ function pwSelectWeek(wk) {
   pwInitLineChart();
   /* summary */
   var sb = document.getElementById('pw-summary-box');
-  if(sb) sb.innerHTML = '<div class="summary-box" style="font-size:14px;"><h3>📝 本週成效總結（'+w.label.split('：')[1]+'）</h3>'+w.summary+'</div>';
+  if(sb) {
+    sb.innerHTML = '<div class="summary-box" style="font-size:14px;"><h3>📝 本週成效總結（'+w.label.split('：')[1]+'）</h3>'+w.summary+'</div>';
+    /* Draw Lalaport grade chart if present */
+    requestAnimationFrame(function(){
+      var cvs = document.getElementById('lala-grade-cvs');
+      if(!cvs) return;
+      var ctx = cvs.getContext('2d');
+      var grades = [{l:'A 孕期',p:0.6,c:'#10b981'},{l:'S (0~6M)',p:0.2,c:'#3b82f6'},{l:'★SS (7~12M)',p:1.5,c:'#ef4444'},{l:'★S (13~24M)',p:14.3,c:'#ef4444'},{l:'AA (25~36M)',p:42.6,c:'#0891b2'},{l:'A (37~60M)',p:19.1,c:'#22c55e'},{l:'B (61M+)',p:21.3,c:'#9ca3af'},{l:'無生日',p:0.5,c:'#d1d5db'}];
+      var n = 663;
+      var W=320,rowH=18,padL=90,padR=60,padT=4;
+      cvs.height = grades.length * rowH + padT*2;
+      ctx.clearRect(0,0,W,cvs.height);
+      ctx.font='11px sans-serif';
+      var maxBar = W - padL - padR;
+      grades.forEach(function(g,i){
+        var y = padT + i*rowH;
+        var barW = Math.max(2, g.p/43*maxBar);
+        /* label */
+        ctx.fillStyle='#374151'; ctx.textAlign='right';
+        ctx.fillText(g.l, padL-6, y+rowH-5);
+        /* bar */
+        ctx.fillStyle=g.c+'33'; ctx.fillRect(padL,y+2,maxBar,rowH-4);
+        ctx.fillStyle=g.c; ctx.fillRect(padL,y+2,barW,rowH-4);
+        /* pct */
+        ctx.fillStyle='#374151'; ctx.textAlign='left';
+        ctx.fillText(g.p+'%', padL+maxBar+4, y+rowH-5);
+        /* n */
+        ctx.fillStyle='#9ca3af'; ctx.textAlign='right';
+        ctx.fillText('≈'+Math.round(n*g.p/100), W, y+rowH-5);
+      });
+    });
+  }
 }
 
 /* ── 趨勢圖模式切換 ── */
@@ -2227,11 +2269,42 @@ function pwDrawTrendChart() {
   if (_pwTrendMode === 'line') {
     _pwTrendChart = new Chart(el,{type:'line',data:{labels:slicedLabels,datasets:[
         {label:'合計',data:sliced['total'],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.1)',borderWidth:2.5,pointRadius:3,tension:0.3,fill:true},{label:'自辦線上',data:(sliced['selfOnline']||[]),borderColor:'rgba(37,99,235,.5)',borderWidth:1.5,pointRadius:2,tension:0.3,borderDash:[4,2],fill:false},{label:'自辦線下',data:(sliced['selfOffline']||[]),borderColor:'rgba(124,58,237,.5)',borderWidth:1.5,fill:false,tension:.3,pointRadius:2,stack:'s'},{label:'異業',data:sliced['partner'],borderColor:'rgba(245,158,11,.8)',borderWidth:1.5,pointRadius:2,tension:0.3,borderDash:[4,2],fill:false}
-      ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:16}},tooltip:{mode:'index',intersect:false,callbacks:{label:function(c){return ' '+c.dataset.label+': '+c.raw+' 人';}}}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:20}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}}});
+      ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:function(c){return ' '+c.dataset.label+': '+c.raw+' 人';}}}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:20}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}}})
+  /* ── HTML Checkbox Legend ── */
+  function _buildTrendLegend(){
+    var lgd = document.getElementById('pw-trend-legend');
+    if(!lgd || !_pwTrendChart) return;
+    lgd.innerHTML = '';
+    _pwTrendChart.data.datasets.forEach(function(ds, i){
+      if(!ds.label) return;
+      var color = ds.borderColor || (Array.isArray(ds.backgroundColor) ? ds.backgroundColor[0] : ds.backgroundColor) || '#999';
+      if(typeof color === 'function') color = '#999';
+      var isVisible = _pwTrendChart.isDatasetVisible(i);
+      var item = document.createElement('label');
+      item.style.cssText = 'display:inline-flex;align-items:center;gap:4px;cursor:pointer;user-select:none;';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = isVisible;
+      cb.style.cssText = 'cursor:pointer;accent-color:'+color+';width:13px;height:13px;';
+      cb.onchange = function(){
+        _pwTrendChart.setDatasetVisibility(i, cb.checked);
+        _pwTrendChart.update();
+      };
+      var swatch = document.createElement('span');
+      swatch.style.cssText = 'width:12px;height:12px;border-radius:2px;background:'+color+';display:inline-block;flex-shrink:0;';
+      var txt = document.createTextNode(ds.label);
+      item.appendChild(cb);
+      item.appendChild(swatch);
+      item.appendChild(txt);
+      lgd.appendChild(item);
+    });
+  }
+  _buildTrendLegend();
   } else {
     _pwTrendChart = new Chart(el,{type:'bar',data:{labels:slicedLabels,datasets:[
         {label:'自辦線上',data:sliced.selfOnline||[],backgroundColor:'rgba(37,99,235,.75)',stack:'s'},{label:'自辦線下',data:sliced.selfOffline||[],backgroundColor:'rgba(124,58,237,.75)',stack:'s'},{label:'主動',data:sliced['active'],backgroundColor:'rgba(139,92,246,.75)',stack:'s'},{label:'自動',data:sliced['shopline'],backgroundColor:'rgba(16,185,129,.75)',stack:'s'},{label:'異業',data:sliced['partner'],backgroundColor:'rgba(245,158,11,.85)',stack:'s'}
-      ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:16}},tooltip:{mode:'index',intersect:false,callbacks:{afterBody:function(items){var t=items.reduce(function(a,b){return a+b.raw;},0);return['合計：'+t+' 人'];}}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:20}},y:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}}});
+      ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:16}},tooltip:{mode:'index',intersect:false,callbacks:{afterBody:function(items){var t=items.reduce(function(a,b){return a+b.raw;},0);return['合計：'+t+' 人'];}}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:20}},y:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}}})
+  _buildTrendLegend();;
   }
   /* render scrollable table */
   pwDrawTrendTable();
@@ -2243,61 +2316,124 @@ function pwDrawTrendTable() {
   if (!wrap) return;
   var n = PW_TREND_DATA.labels.length;
   var curI = PW_TREND_DATA.curIdx !== undefined ? PW_TREND_DATA.curIdx : n-1;
-  /* apply range */
   var from = 0;
   if(_pwTrendRange==='4w') from=Math.max(0,n-4);
   else if(_pwTrendRange==='8w') from=Math.max(0,n-8);
-  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7'};
-  var html = '<table style="min-width:'+(Math.max(300,(n-from)*58+80))+'px;font-size:11px;white-space:nowrap;width:100%;border-collapse:collapse;">';
-  html += '<thead><tr>';
-  html += '<th style="text-align:left;min-width:80px;position:sticky;left:0;z-index:3;background:#f8f7f4;border-right:1px solid #e5e7eb;">管道</th>';
-  for(var i=from;i<n;i++){
-    var l=PW_TREND_DATA.labels[i],isCur=(i===curI),isLast=(i===n-1),fy=fyMap[i]||'';
-    var bg=isCur?'rgba(37,99,235,.13)':'',fw=isCur?'font-weight:700;':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:3;background:'+(isCur?'rgba(37,99,235,.18)':'#f0f4ff')+';border-left:2px solid #2563eb;':'';
-    html+='<th style="background:'+bg+';'+fw+sticky+'min-width:55px;">'+(isCur?'★ ':fy?'<span style="font-size:9px;color:#2563eb;display:block;">'+fy+'</span>':'')+l+'</th>';
+  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11'};
+
+  var rowDefs = [
+    {label:'週合計',   key:'total',      bg:'#f5f5f3', color:'#111', bold:true},
+    {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false},
+    {label:'自辦線下', key:'selfOffline', bg:'#fff',    color:'#333', bold:false},
+    {label:'主動',     key:'active',      bg:'#fff',    color:'#333', bold:false},
+    {label:'自動(SHOPLINE)',key:'shopline',bg:'#fff',   color:'#333', bold:false},
+    {label:'異業',     key:'partner',     bg:'#fff',    color:'#333', bold:false},
+    {label:'SS+S%',    key:'ssPct',       bg:'#fff5f5', color:'#b91c1c', bold:true},
+    {label:'日均',     key:'__avg',       bg:'#f0f7ff', color:'#1d4ed8', bold:true},
+  ];
+
+  /* ── Shared style helpers ── */
+  function cellVal(rk, i) {
+    if (rk.key === '__avg') return (PW_TREND_DATA.total[i] / 7).toFixed(1);
+    return PW_TREND_DATA[rk.key][i];
   }
-  html += '</tr></thead><tbody>';
-  var rowKeys=[['自辦線上','selfOnline'],['自辦線下','selfOffline'],['主動','active'],['自動(SHOPLINE)','shopline'],['異業','partner']];
-  rowKeys.forEach(function(rk){
-    html += '<tr><td style="font-weight:600;position:sticky;left:0;z-index:2;background:#fff;border-right:1px solid #e5e7eb;">'+rk[0]+'</td>';
-    for(var i=from;i<n;i++){
-      var val=PW_TREND_DATA[rk[1]][i],isCur=(i===curI),isLast=(i===n-1);
-      var bg=isCur?'rgba(37,99,235,.06)':'';
-      var sticky=isLast?'position:sticky;right:0;z-index:2;background:'+(isCur?'rgba(37,99,235,.10)':'#f8f9ff')+';border-left:2px solid #2563eb;':'';
-      html+='<td style="text-align:center;background:'+bg+';'+sticky+(val===0?'color:#ddd;':'')+'">'+val+'</td>';
-    }
-    html += '</tr>';
+  var pH = '5px 7px';
+
+  /* ── Build outer container ── */
+  var outer = document.createElement('div');
+  outer.style.cssText = 'display:flex;align-items:stretch;font-size:11px;white-space:nowrap;';
+
+  /* ── LEFT: fixed label column ── */
+  var leftDiv = document.createElement('div');
+  leftDiv.style.cssText = 'flex-shrink:0;box-shadow:3px 0 5px rgba(0,0,0,.12);z-index:2;';
+
+  var lTable = document.createElement('table');
+  lTable.style.cssText = 'border-collapse:collapse;';
+
+  /* header */
+  var lHead = lTable.createTHead();
+  var lHr = lHead.insertRow();
+  var lTh = document.createElement('th');
+  lTh.textContent = '管道';
+  lTh.style.cssText = 'padding:'+pH+';background:#f5f5f3;border:1px solid #ddd;font-weight:700;min-width:88px;max-width:88px;text-align:left;';
+  lHr.appendChild(lTh);
+
+  /* body rows */
+  var lBody = lTable.createTBody();
+  rowDefs.forEach(function(rk) {
+    var tr = lBody.insertRow();
+    var td = tr.insertCell();
+    td.textContent = rk.label;
+    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':'500')+';color:'+rk.color+';min-width:88px;max-width:88px;text-align:left;';
   });
-  /* Total */
-  html += '<tr class="tot"><td style="position:sticky;left:0;z-index:2;border-right:1px solid #e5e7eb;">週合計</td>';
-  for(var i=from;i<n;i++){
-    var val=PW_TREND_DATA.total[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(37,99,235,.14)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:rgba(37,99,235,.20);border-left:2px solid #2563eb;':'';
-    html+='<td style="text-align:center;background:'+bg+';'+sticky+'">'+val+'</td>';
+
+  leftDiv.appendChild(lTable);
+
+  /* ── RIGHT: scrollable data columns ── */
+  var rightDiv = document.createElement('div');
+  rightDiv.style.cssText = 'overflow-x:auto;flex:1;min-width:0;';
+
+  var rTable = document.createElement('table');
+  var colCount = n - from;
+  rTable.style.cssText = 'border-collapse:collapse;min-width:'+(colCount*62)+'px;';
+
+  /* header */
+  var rHead = rTable.createTHead();
+  var rHr = rHead.insertRow();
+  for (var i = from; i < n; i++) {
+    var l = PW_TREND_DATA.labels[i], isCur=(i===curI), isLast=(i===n-1), fy=fyMap[i]||'';
+    var th = document.createElement('th');
+    var inner = (isCur?'★ ':'') + l + (fy ? '\n['+fy+']' : '');
+    /* Use two lines for FY label */
+    if (fy) {
+      th.innerHTML = '<span style="font-size:9px;color:'+(isCur?'#fff':'#2563eb')+';display:block;">'+fy+'</span>' + (isCur?'★ ':'')+l;
+    } else {
+      th.textContent = (isCur?'★ ':'')+l;
+    }
+    th.style.cssText = 'padding:'+pH+';text-align:center;'
+      + 'background:'+(isCur?'rgba(37,99,235,.85)':'#f5f5f3')+';'
+      + 'color:'+(isCur?'#fff':'#333')+';'
+      + 'border:'+(isLast?'2px solid #2563eb':'1px solid #ddd')+';'
+      + 'font-weight:'+(isCur?'700':'600')+';min-width:60px;';
+    rHr.appendChild(th);
   }
-  html += '</tr>';
-  /* SS+S% */
-  html += '<tr style="font-size:11px;background:#fff8f8;"><td style="font-weight:700;color:#b91c1c;position:sticky;left:0;z-index:2;background:#fff8f8;border-right:1px solid #e5e7eb;">SS+S%</td>';
-  for(var i=from;i<n;i++){
-    var val=PW_TREND_DATA.ssPct[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(37,99,235,.06)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:'+(isCur?'rgba(37,99,235,.10)':'#f8f9ff')+';border-left:2px solid #2563eb;':'';
-    html+='<td style="text-align:center;color:#b91c1c;font-weight:'+(isCur?'700':'400')+';background:'+bg+';'+sticky+'">'+val+'%</td>';
-  }
-  html += '</tr>';
-  /* 日均 */
-  html += '<tr style="font-size:10px;color:#888;background:#f9f9f7;"><td style="position:sticky;left:0;z-index:2;background:#f9f9f7;border-right:1px solid #e5e7eb;">日均</td>';
-  for(var i=from;i<n;i++){
-    var val=PW_TREND_DATA.total[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(37,99,235,.05)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:'+(isCur?'rgba(37,99,235,.08)':'#f8f9ff')+';border-left:2px solid #2563eb;':'';
-    html+='<td style="text-align:center;background:'+bg+';'+sticky+'">'+(val/7).toFixed(1)+'</td>';
-  }
-  html += '</tr></tbody></table>';
-  wrap.innerHTML = html;
-}/* ── 週比較表 ── */
+
+  /* body */
+  var rBody = rTable.createTBody();
+  rowDefs.forEach(function(rk) {
+    var tr = rBody.insertRow();
+    for (var i = from; i < n; i++) {
+      var v = cellVal(rk, i);
+      var isCur=(i===curI), isLast=(i===n-1);
+      var td = tr.insertCell();
+      td.textContent = (v === 0 || v === '0.0') ? '○' : v;
+      var zeroCss = (v === 0 || v === '0.0') ? 'color:#ccc;' : '';
+      td.style.cssText = 'padding:'+pH+';text-align:center;'
+        + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.08)':rk.bg==='#f0f7ff'?'rgba(29,78,216,.08)':'rgba(37,99,235,.06)'):rk.bg)+';'
+        + zeroCss
+        + 'color:'+(zeroCss?'#ccc':rk.color)+';'
+        + 'font-weight:'+(rk.bold?'700':'400')+';'
+        + 'border:'+(isLast?'2px solid #2563eb':'1px solid #ddd')+';';
+    }
+  });
+
+  rightDiv.appendChild(rTable);
+  outer.appendChild(leftDiv);
+  outer.appendChild(rightDiv);
+  wrap.innerHTML = '';
+  wrap.appendChild(outer);
+
+  /* ── Sync row heights ── */
+  requestAnimationFrame(function() {
+    var lRows = lTable.rows, rRows = rTable.rows;
+    var count = Math.min(lRows.length, rRows.length);
+    for (var r = 0; r < count; r++) {
+      var h = Math.max(lRows[r].offsetHeight, rRows[r].offsetHeight);
+      lRows[r].style.height = h + 'px';
+      rRows[r].style.height = h + 'px';
+    }
+  });
+}
 function pwUpdateChDropdown(w) {
   var sel = document.getElementById('pw-ch-select');
   if(!sel || !w) return;
@@ -2483,7 +2619,7 @@ function pwInitLineChart(){
   var el=document.getElementById('pwWeekLineChart');
   if(!el||typeof Chart==='undefined') return;
   var ex=Chart.getChart(el); if(ex) ex.destroy();
-  var weeks4=['W7','W8','W9','W10'];
+  var weeks4=['W8','W9','W10','W11'];
   var labels4=weeks4.map(function(w){
     var l=PW_WEEKS[w]?PW_WEEKS[w].label.split('：')[1]:'';
     return l.split('–')[0].split('–')[0].trim();
@@ -2712,7 +2848,7 @@ function pwInitCharts(){
   var wPanel=document.getElementById('pw-week');
   var mPanel=document.getElementById('pw-month');
   if(wPanel&&wPanel.classList.contains('active')){
-    pwSelectWeek('W10');
+    pwSelectWeek('W11');
   }
   if(mPanel&&mPanel.classList.contains('active')){
     pmUpdateGrade(1800,'all');
@@ -3427,6 +3563,29 @@ function mcSort(val){
   var key=val.split('-')[0],dir=val.split('-')[1];
   try{rows.sort(function(a,b){var av=parseFloat(a.dataset[key])||0,bv=parseFloat(b.dataset[key])||0;return dir==='asc'?av-bv:bv-av;});rows.forEach(function(r){tbody.appendChild(r);});}catch(e){}
 }
+
+/* ── 趨勢圖系列勾選 ── */
+function pwTrendSeriesToggle(){
+  if(!_pwTrendChart) return;
+  var cfg = {
+    'tsc-total':       0,
+    'tsc-selfOnline':  1,
+    'tsc-selfOffline': 2,
+    'tsc-active':      3,
+    'tsc-shopline':    4,
+    'tsc-partner':     5,
+    'tsc-ssPct':       6,
+  };
+  Object.keys(cfg).forEach(function(id){
+    var cb = document.getElementById(id);
+    var dsIdx = cfg[id];
+    if(cb && _pwTrendChart.data.datasets[dsIdx]){
+      var meta = _pwTrendChart.getDatasetMeta(dsIdx);
+      meta.hidden = !cb.checked;
+    }
+  });
+  _pwTrendChart.update();
+}
 /* ── Meta 廣告活動切換 ── */
 function metaSwitch(v) {
   document.getElementById('meta-camp-1').style.display = (v==='1') ? '' : 'none';
@@ -4132,7 +4291,7 @@ const META_IMGS={
 #pw-page .cmp-up{color:var(--pw-green);font-weight:600;}
 #pw-page .cmp-dn{color:var(--pw-red);font-weight:600;}
 #pw-page .cmp-eq{color:var(--pw-gray);}
-#pw-page .summary-box{background:linear-gradient(135deg,#f8faff,#eff6ff);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:14px 16px;margin-bottom:0;}
+#pw-page .summary-box{background:linear-gradient(135deg,#f8faff,#eff6ff);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:14px 16px;margin-bottom:0;}#pw-page .lala-tbl td,#pw-page .lala-tbl th{text-align:left;}#pw-page .lala-tbl td.num,#pw-page .lala-tbl th.num{text-align:center;}
 #pw-page .summary-box h3{font-size:14px;font-weight:700;color:var(--pw-blue-d);margin-bottom:8px;}
 #pw-page .summary-box p{font-size:12.5px;color:#333;line-height:1.85;margin-bottom:6px;}
 #pw-page .summary-box p:last-child{margin-bottom:0;}
@@ -4159,7 +4318,8 @@ const META_IMGS={
       <span style="font-size:13px;font-weight:600;color:#444;">📅 選擇週次：</span>
       <select id="pw-week-select" onchange="pwSelectWeek(this.value)"
         style="font-size:13px;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;font-weight:500;">
-        <option value="W10" selected>W10：6/1（一）– 6/7（日）＊最新</option>
+        <option value="W11" selected>W11：6/8（一）– 6/14（日）★最新</option>
+        <option value="W10">W10：6/1（一）– 6/7（日）</option>
         <option value="W9">W9：5/25（一）– 5/31（日）</option>
         <option value="W8">W8：5/18（一）– 5/24（日）</option>
         <option value="W7">W7：5/11（一）– 5/17（日）</option>
@@ -4240,14 +4400,16 @@ const META_IMGS={
         </div>
         <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W7=最新週（5/11–5/17）｜資料截至 2026/05/18</span>
       </div>
+
+      <div id="pw-trend-legend" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;font-size:11.5px;"></div>
       <div style="position:relative;height:220px;margin-bottom:12px;"><canvas id="pwTrendChart"></canvas></div>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><div id="pw-trend-table-wrap"></div></div>
+      <div id="pw-trend-table-wrap"></div>
     </div>
 
     <!-- 本週比較表 + 異業動態（並排） -->
     <div style="display:grid;grid-template-columns:3fr 5fr;gap:12px;margin-bottom:12px;">
       <div class="sc">
-        <div class="sh" style="color:var(--pw-purple);font-size:12px;"><span class="sh-dot"></span>週次比較（前週 W18 vs 本週 W19）</div>
+        <div class="sh" style="color:var(--pw-purple);font-size:12px;"><span class="sh-dot"></span>週次比較</div>
         <table id="pw-compare-table" style="font-size:12px;"></table>
       </div>
       <div class="sc">
