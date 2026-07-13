@@ -2617,7 +2617,16 @@ function pwGradeTab(bt,btn){
   });
   var sel=document.getElementById('pw-ch-select'); if(sel) sel.value='all';
   var note=document.getElementById('pw-ch-note'); if(note) note.style.display='none';
-  _pwUpdateGrade(PW_BTYPE_N[bt]||720,bt);
+  /* 2026/07/13 修正：改用當週實際 btypeN（而非跟當週無關的全域備援數字），且 0 人時顯示無資料，不套用錯誤比例 */
+  var w=PW_WEEKS[_pwCurrentWeek]||{};
+  var n=(w.btypeN&&typeof w.btypeN[bt]==='number')?w.btypeN[bt]:0;
+  if(n===0){
+    var bars=document.getElementById('pw-week-bars');
+    if(bars) bars.innerHTML='<div style="padding:20px 0;text-align:center;color:#888;font-size:13px;">📊 本週此管道 0 人，無月齡資料</div>';
+    var fn=document.getElementById('pw-grade-fn'); if(fn) fn.textContent='';
+    return;
+  }
+  _pwUpdateGrade(n,bt);
 }
 
 function pwChannelFilter(ch){
@@ -2722,7 +2731,16 @@ function pwGradeTab(bt,btn){
   });
   var sel=document.getElementById('pw-ch-select'); if(sel) sel.value='all';
   var note=document.getElementById('pw-ch-note'); if(note) note.style.display='none';
-  _pwUpdateGrade(PW_BTYPE_N[bt]||720,bt);
+  /* 2026/07/13 修正：改用當週實際 btypeN（而非跟當週無關的全域備援數字），且 0 人時顯示無資料，不套用錯誤比例 */
+  var w=PW_WEEKS[_pwCurrentWeek]||{};
+  var n=(w.btypeN&&typeof w.btypeN[bt]==='number')?w.btypeN[bt]:0;
+  if(n===0){
+    var bars=document.getElementById('pw-week-bars');
+    if(bars) bars.innerHTML='<div style="padding:20px 0;text-align:center;color:#888;font-size:13px;">📊 本週此管道 0 人，無月齡資料</div>';
+    var fn=document.getElementById('pw-grade-fn'); if(fn) fn.textContent='';
+    return;
+  }
+  _pwUpdateGrade(n,bt);
 }
 
 function pwChannelFilter(ch){
@@ -4473,7 +4491,7 @@ const META_IMGS={
     <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->
     <div class="sc" style="margin-bottom:12px;">
       <div class="sh" style="color:var(--pw-blue);"><span class="sh-dot"></span>各週蒐集趨勢（近一年）
-        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/05/17（共 59 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/06/30</span>
+        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/07/12（共 67 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/07/12</span>
       </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <div style="display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;">
@@ -4485,7 +4503,7 @@ const META_IMGS={
           <button onclick="pwTrendRange('8w',this)"   id="pw-range-8w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:transparent;color:#666;">近8週</button>
           <button onclick="pwTrendRange('4w',this)"   id="pw-range-4w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:#fff;color:var(--pw-blue);box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:600;">近4週</button>
         </div>
-        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W7=最新週（5/11–5/17）｜資料截至 2026/06/30</span>
+        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W15=最新週（7/6–7/12）｜資料截至 2026/07/12</span>
       </div>
 
       <div id="pw-trend-legend" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;font-size:11.5px;"></div>
