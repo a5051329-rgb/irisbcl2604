@@ -3599,35 +3599,35 @@ function metaUpdateCount(tableId) {
 
 /* ── 比較 Modal 圖表 ── */
 function initCompareCharts() {
-  var existing1 = Chart.getChart('cpl-stage-chart');
-  if(existing1) existing1.destroy();
   var existing2 = Chart.getChart('cpb-compare-chart');
   if(existing2) existing2.destroy();
-  
-  // CPL 階段折線圖
-  var ctx1 = document.getElementById('cpl-stage-chart').getContext('2d');
-  var c1 = new Chart(ctx1,{
-    type: 'line',data: {
-      labels: ['5/11-5/18\n($70)','5/19-5/25\n(停播)','5/26-5/31\n($70)','6/1-6/7\n($90)'],datasets: [
-        { label: '神隊友 CPL',data: [0.55,null,0.88,1.12],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.1)',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#f59e0b',tension:0.3,spanGaps:false },{ label: '知識王 CPL 均值',data: [0.66,0.66,0.66,0.66],borderColor:'#1877f2',borderDash:[6,3],borderWidth:1.5,pointRadius:0,tension:0 }
-      ]
-    },options: {
-      responsive:true,maintainAspectRatio:false,plugins:{ legend:{ labels:{ font:{ size:11 },boxWidth:14 } } },scales:{
-        y:{ beginAtZero:false,min:0.3,max:1.3,ticks:{ font:{size:10},callback: v=>'$'+v.toFixed(2) },grid:{ color:'rgba(0,0,0,0.06)' } },x:{ ticks:{ font:{size:9} },grid:{ display:false } }
-      }
-    }
-  });
 
-  // CPB + 轉換率對比長條圖
+  // 日均BCL（長條）+ CPB（折線）比較圖
   var ctx2 = document.getElementById('cpb-compare-chart').getContext('2d');
   var c2 = new Chart(ctx2,{
-    type: 'bar',data: {
-      labels: ['巧虎育兒知識王','我的育兒神隊友'],datasets: [
-        { label: 'CPB (USD)',data: [1.63,2.15],backgroundColor: ['rgba(24,119,242,0.75)','rgba(245,158,11,0.75)'],borderColor: ['#1877f2','#f59e0b'],borderWidth:1.5,yAxisID: 'y',order:1 },{ label: 'Lead→BCL 轉換率 (%)',data: [40.3,35.9],type: 'line',borderColor:'#059669',backgroundColor:'rgba(5,150,105,0.1)',borderWidth:2,pointRadius:6,pointBackgroundColor:'#059669',yAxisID: 'y2',order:0 }
+    data: {
+      labels: ['巧虎育兒知識王','我的育兒神隊友'],
+      datasets: [
+        { type:'bar', label: '日均BCL（人/天）', data: [57.5,33.5],
+          backgroundColor: ['rgba(24,119,242,0.75)','rgba(245,158,11,0.75)'],
+          borderColor: ['#1877f2','#f59e0b'], borderWidth:1.5, yAxisID: 'y', order:1 },
+        { type:'line', label: 'CPB（USD）', data: [1.63,2.48],
+          borderColor:'#059669', backgroundColor:'rgba(5,150,105,0.1)',
+          borderWidth:2.5, pointRadius:7, pointBackgroundColor:'#059669', yAxisID: 'y2', order:0 }
       ]
-    },options: {
-      responsive:true,maintainAspectRatio:false,plugins:{ legend:{ labels:{ font:{size:11},boxWidth:14 } } },scales:{
-        y:{ beginAtZero:true,max:3,ticks:{ font:{size:10},callback: v=>'$'+v.toFixed(2) },title:{ display:true,text:'CPB (USD)',font:{size:10} },grid:{ color:'rgba(0,0,0,0.06)' } },y2:{ position:'right',beginAtZero:false,min:30,max:50,ticks:{ font:{size:10},callback: v=>v+'%' },title:{ display:true,text:'轉換率 (%)',font:{size:10} },grid:{ display:false } },x:{ ticks:{ font:{size:11} },grid:{ display:false } }
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ font:{size:11}, boxWidth:14 } },
+        tooltip:{ callbacks:{ label:function(c){
+          if(c.dataset.label==='CPB（USD）') return ' CPB: $'+c.raw.toFixed(2);
+          return ' 日均BCL: '+c.raw+' 人/天';
+        }}}
+      },
+      scales: {
+        y:{ beginAtZero:true, ticks:{ font:{size:10} }, title:{ display:true, text:'日均BCL（人/天）', font:{size:10} }, grid:{ color:'rgba(0,0,0,0.06)' } },
+        y2:{ position:'right', beginAtZero:true, max:3, ticks:{ font:{size:10}, callback: v=>'$'+v.toFixed(2) }, title:{ display:true, text:'CPB（USD）', font:{size:10} }, grid:{ display:false } },
+        x:{ ticks:{ font:{size:11} }, grid:{ display:false } }
       }
     }
   });
@@ -4069,18 +4069,18 @@ const META_IMGS={
     <div class="kc" style="border-top:3px solid #8b9cf0;">
       <div class="kl">連結點擊次數</div><div class="kv" style="color:#8b9cf0;">21,482</div><div class="kn">CTR 0.97%</div>
     </div>
+    <div class="kc" style="border-top:3px solid var(--pm-purple,#8b5cf6);">
+      <div class="kl">蒐集BCL數</div><div class="kv" style="color:#8b5cf6;">2,472</div><div class="kn">CUBE 實際綁定（非 Meta Lead，已排除幫寶適協推）</div>
+    </div>
     <div class="kc" style="border-top:3px solid var(--pm-green);">
-      <div class="kl">Lead（綁定導流）</div><div class="kv" style="color:var(--pm-green);">6,138</div><div class="kn">轉換率 28.6%</div>
+      <div class="kl">整體 CPB</div><div class="kv" style="color:var(--pm-green);">$1.63</div><div class="kn">USD / BCL</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pm-gold);">
-      <div class="kl">廣告花費</div><div class="kv" style="color:var(--pm-gold);">$4,025</div><div class="kn">USD ≈ NT$132,000</div>
-    </div>
-    <div class="kc" style="border-top:3px solid var(--pm-green);">
-      <div class="kl">整體 CPB</div><div class="kv" style="color:var(--pm-green);">$1.63</div><div class="kn">USD / BCL（育兒知識王廣告來源 2,472人）</div>
+      <div class="kl">廣告花費</div><div class="kv" style="color:var(--pm-gold);">$4,025</div><div class="kn">USD ≈ NT$132,000　日均 $93.6（43個廣告投放日）</div>
     </div>
   </div>
   <div class="insight">
-    <b>【整體表現】</b>本次活動以孕媽咪為主要 TA，共跑 3 個廣告組合：BT 親子（2,379 Lead）、RT 粉專互動＋舊客（2,089 Lead）、LL 已註冊（1,670 Lead）。整體 CPL $0.66（每個 Lead 成本），<b>CPB $0.91（每個實際 BCL 成本）</b>——以廣告花費 $4,025 USD 除以育兒知識王累計 BCL 人數 4,433人（有效 4,140 ＋ 無效 293）計算，代表每蒐集一筆 BCL 名單的真實廣告成本。LL 已註冊組 CPL 表現最佳（$0.62），顯示已有互動的族群轉換效率最高。<br>
+    <b>【整體表現】</b>本次活動以孕媽咪為主要 TA，共跑 3 個廣告組合：BT 親子（2,379 Lead）、RT 粉專互動＋舊客（2,089 Lead）、LL 已註冊（1,670 Lead）。整體 CPL $0.66（每個 Lead 成本），<b>CPB $1.63（每個實際 BCL 成本）</b>——以廣告花費 $4,025 USD 除以「育兒知識王」廣告來源實際 BCL 人數 2,472 人計算（活動期間另有「幫寶適」協助宣傳導入的名單，非廣告貢獻，已排除不計入分母），代表每蒐集一筆廣告貢獻 BCL 名單的真實成本。LL 已註冊組 CPL 表現最佳（$0.62），顯示已有互動的族群轉換效率最高。<br>
     <b>【素材分類】</b>共測試 27 支素材，巧好（孩子已出生）14 支、孕粉（孕媽咪）13 支。<b>巧好素材貢獻 5,565 Lead（90.7%）</b>，孕粉 569 Lead（9.3%），兩類 CPL 相近（$0.65 vs $0.73）。
   </div>
   <div class="row2">
@@ -4139,6 +4139,55 @@ const META_IMGS={
         <div style="width:9.3%;background:#27ae60;">孕粉 9.3%</div>
       </div>
     </div>
+  <div class="sc">
+    <div class="sh" style="color:var(--pm-blue);"><span class="sh-dot"></span>每週成效（CPB = 花費 ÷ CUBE 同期「全管道」實際綁定人數，非 Meta Lead；週次自 3/2 起算）</div>
+    <div style="position:relative;height:220px;margin-bottom:14px;"><canvas id="metaDailyChart1"></canvas></div>
+    <script>
+    (function(){
+      var L=["3/2–3/8","3/9–3/15★","3/16–3/22","3/23–3/29","3/30–4/12","4/13–4/19","4/20–4/26","4/27–5/3","5/4–5/10"];
+      var SPEND=[194.75,480.04,492.38,406.53,0,507.71,1028.29,844.33,70.85];
+      var BCB=[129,1983,476,346,0,175,527,418,68];
+      var CPB=SPEND.map(function(s,i){return BCB[i]>0 ? +(s/BCB[i]).toFixed(2) : null;});
+      var el=document.getElementById('metaDailyChart1');
+      new Chart(el,{
+        data:{labels:L,datasets:[
+          {type:'bar',label:'廣告花費(USD)',data:SPEND,backgroundColor:'rgba(24,119,242,.55)',borderRadius:2,yAxisID:'y',order:2},
+          {type:'line',label:'蒐集BCL人數',data:BCB,borderColor:'#27ae60',backgroundColor:'rgba(39,174,96,.1)',pointRadius:3,borderWidth:2,tension:.3,yAxisID:'y',order:1,segment:{borderDash:function(ctx){return ctx.p0DataIndex===1?[6,4]:undefined;}}},
+          {type:'line',label:'CPB(USD)',data:CPB,borderColor:'#f39c12',backgroundColor:'rgba(243,156,18,.1)',pointRadius:3,borderWidth:2,tension:.3,yAxisID:'y1',order:0,spanGaps:true}
+        ]},
+        options:{responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}},
+            tooltip:{callbacks:{label:function(c){
+              if(c.dataset.label==='CPB(USD)') return c.raw==null?' CPB: —':' CPB: $'+c.raw.toFixed(2);
+              if(c.dataset.label==='蒐集BCL人數') return ' BCL: '+c.raw+' 人'+(c.dataIndex===1?'（含幫寶適協推，非純廣告）':'');
+              return ' 花費: $'+c.raw.toFixed(2);
+            }}}},
+          scales:{
+            x:{grid:{display:false},ticks:{font:{size:9},maxRotation:60,minRotation:60}},
+            y:{position:'left',grid:{color:'rgba(0,0,0,.05)'},title:{display:true,text:'花費($) / 人數',font:{size:10}},ticks:{font:{size:10}}},
+            y1:{position:'right',grid:{display:false},title:{display:true,text:'CPB($)',font:{size:10}},ticks:{font:{size:10}}}
+          }
+        }
+      });
+    })();
+    </script>
+    <div style="overflow-x:auto;"><table style="font-size:12px;">
+      <thead><tr><th>週次</th><th>曝光</th><th>點擊(all)</th><th>連結點擊</th><th>花費(USD)</th><th>CPB</th><th>預算</th><th>備註</th></tr></thead>
+      <tbody>
+        <tr><td>3/2–3/8</td><td>99,660</td><td>2,491</td><td>985</td><td>$194.75</td><td class="cpl-ok">$1.51</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">129人</td></tr>
+        <tr><td>3/9–3/15</td><td>302,368</td><td>8,537</td><td>3,182</td><td>$480.04</td><td class="cpl-warn">$0.24*</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">1983人　⚠️ 含幫寶適協推導入名單，非純廣告貢獻，僅供參考</td></tr>
+        <tr><td>3/16–3/22</td><td>292,649</td><td>7,985</td><td>2,943</td><td>$492.38</td><td class="cpl-good">$1.03</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">476人</td></tr>
+        <tr><td>3/23–3/29</td><td>243,739</td><td>5,871</td><td>2,506</td><td>$406.53</td><td class="cpl-good">$1.17</td><td style="color:#888;">$70→$90</td><td style="color:#bbb;font-size:10px;">346人</td></tr>
+        <tr><td>3/30–4/12</td><td>0</td><td>0</td><td>0</td><td>$0.00</td><td>—</td><td style="color:#888;">—</td><td style="color:#bbb;font-size:10px;">0人　活動暫停</td></tr>
+        <tr><td>4/13–4/19</td><td>230,996</td><td>6,113</td><td>2,379</td><td>$507.71</td><td class="cpl-warn">$2.90</td><td style="color:#888;">$90→$150</td><td style="color:#bbb;font-size:10px;">175人</td></tr>
+        <tr><td>4/20–4/26</td><td>544,541</td><td>13,410</td><td>5,132</td><td>$1,028.29</td><td class="cpl-ok">$1.95</td><td style="color:#888;">$150</td><td style="color:#bbb;font-size:10px;">527人</td></tr>
+        <tr><td>4/27–5/3</td><td>471,318</td><td>9,585</td><td>3,980</td><td>$844.33</td><td class="cpl-ok">$2.02</td><td style="color:#888;">$150→$70</td><td style="color:#bbb;font-size:10px;">418人</td></tr>
+        <tr><td>5/4–5/10</td><td>36,601</td><td>860</td><td>375</td><td>$70.85</td><td class="cpl-good">$1.04</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">68人</td></tr>
+        <tr class="tot"><td>合計（不含3/9–3/15）</td><td>2,221,872</td><td>54,852</td><td>21,482</td><td>$4,024.88</td><td class="cpl-ok">$1.66</td><td>—</td><td style="color:#bbb;font-size:10px;">2139人（不含異常週）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fn">★ 3/9–3/15「全管道」人數暴增至1,983人（一般週次僅100–500人），研判為幫寶適協推導入之名單，非純廣告貢獻，CPB計算已排除該週；3/30–4/12活動暫停無花費；整體 CPB（不含異常週）約 $1.66，與 KPI 卡採「廣告來源2,472人」算出的 $1.63 相近，可互相印證。</div>
+  </div>
   <div class="sc" style="border-left:4px solid var(--pm-blue);margin-top:4px;">
     <div class="sh" style="color:var(--pm-blue);"><span class="sh-dot"></span>觀察與建議</div>
     <div style="font-size:12.5px;line-height:2;color:#333;">
@@ -4167,14 +4216,14 @@ const META_IMGS={
     <div class="kc" style="border-top:3px solid #8b9cf0;">
       <div class="kl">連結點擊次數</div><div class="kv" style="color:#8b9cf0;">16,876</div><div class="kn">CTR 0.82%</div>
     </div>
+    <div class="kc" style="border-top:3px solid var(--pm-purple,#8b5cf6);">
+      <div class="kl">蒐集BCL數</div><div class="kv" style="color:#8b5cf6;">1,907</div><div class="kn">CUBE「育兒神隊友」實際綁定（非 Meta Lead），5/11–7/12</div>
+    </div>
     <div class="kc" style="border-top:3px solid var(--pm-green);">
-      <div class="kl">Lead（綁定導流）</div><div class="kv" style="color:var(--pm-green);">5,029</div><div class="kn">轉換率 29.8%</div>
+      <div class="kl">整體 CPB</div><div class="kv" style="color:var(--pm-green);">$2.48</div><div class="kn">USD / BCL</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pm-gold);">
-      <div class="kl">廣告花費</div><div class="kv" style="color:var(--pm-gold);">$4,737</div><div class="kn">USD ≈ NT$155,700</div>
-    </div>
-    <div class="kc" style="border-top:3px solid var(--pm-green);">
-      <div class="kl">整體 CPB</div><div class="kv" style="color:var(--pm-green);">$2.48</div><div class="kn">USD / BCL（CUBE 育兒神隊友累計 1,907 人，5/11–7/12）</div>
+      <div class="kl">廣告花費</div><div class="kv" style="color:var(--pm-gold);">$4,737</div><div class="kn">USD ≈ NT$155,700　日均 $83.1（57個廣告投放日）</div>
     </div>
   </div>
   <div class="insight">
@@ -4279,7 +4328,7 @@ const META_IMGS={
     })();
     </script>
     <div style="overflow-x:auto;"><table style="font-size:11px;white-space:nowrap;">
-      <thead><tr><th>日期</th><th>曝光</th><th>點擊(all)</th><th>連結點擊</th><th>花費(USD)</th><th>CPB</th><th>預算</th><th>備註</th></tr></thead>
+      <thead><tr><th>週次</th><th>曝光</th><th>點擊(all)</th><th>連結點擊</th><th>花費(USD)</th><th>CPB</th><th>預算</th><th>備註</th></tr></thead>
       <tbody>
         <tr><td>W1（5/11–5/17）</td><td>356,522</td><td>4,412</td><td>2,328</td><td>$443.88</td><td class="cpl-good">$1.38</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">(322人)</td></tr>
         <tr><td>W2（5/18–5/24）</td><td>84,458</td><td>862</td><td>451</td><td>$104.97</td><td class="cpl-ok">$2.62</td><td style="color:#888;">$70</td><td style="color:#bbb;font-size:10px;">(40人　2天有數據)</td></tr>
@@ -5072,64 +5121,141 @@ const META_IMGS={
       <div style="padding:18px 22px 14px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;border-radius:14px 14px 0 0;z-index:1;">
         <div>
           <div style="font-size:15px;font-weight:700;color:#1877f2;">📊 兩活動投廣成效比較</div>
-          <div style="font-size:11px;color:#888;margin-top:2px;">巧虎育兒知識王 vs 我的育兒神隊友｜預算前提：均為日預算 $70 USD（神隊友 6/1–6/7 提高至 $90）</div>
+          <div style="font-size:11px;color:#888;margin-top:2px;">巧虎育兒知識王 vs 我的育兒神隊友｜以 CPB（花費÷實際BCL）與日均BCL 為核心比較指標，不採計 Meta Lead</div>
         </div>
         <button onclick="document.getElementById('meta-compare-modal').style.display='none'" style="border:none;background:none;font-size:20px;cursor:pointer;color:#888;padding:4px 8px;border-radius:6px;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'">✕</button>
       </div>
       <!-- Body -->
             <div style="padding:20px 22px;font-size:13px;line-height:1.8;color:#333;">
 
-        <!-- KPI 對比表 -->
-        <div style="font-size:12.5px;font-weight:700;color:#1877f2;margin-bottom:8px;">📊 關鍵指標對比</div>
-        <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:12px;">
-          <thead>
-            <tr style="background:#e8effc;">
-              <th style="padding:7px 10px;text-align:left;color:#0c3d8a;font-weight:600;">指標</th>
-              <th style="padding:7px 10px;text-align:center;color:#0c3d8a;">巧虎育兒知識王</th>
-              <th style="padding:7px 10px;text-align:center;color:#0c3d8a;">我的育兒神隊友</th>
-              <th style="padding:7px 10px;text-align:center;color:#0c3d8a;">差異</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid #f0f0ee;"><td style="padding:6px 10px;color:#555;">投放期間</td><td style="text-align:center;">60 天（3/6–5/4）</td><td style="text-align:center;">28 天（5/11–6/7）</td><td style="text-align:center;color:#888;">—</td></tr>
-            <tr style="border-bottom:1px solid #f0f0ee;background:#fafafa;"><td style="padding:6px 10px;color:#555;">日預算</td><td style="text-align:center;">$70 全程</td><td style="text-align:center;">$70（6/1–6/7 升至 $90）</td><td style="text-align:center;color:#888;">—</td></tr>
-            <tr style="border-bottom:1px solid #f0f0ee;"><td style="padding:6px 10px;color:#555;">總花費</td><td style="text-align:center;">$4,025</td><td style="text-align:center;">$1,567 USD</td><td style="text-align:center;color:#888;">—</td></tr>
-          <tr style="border-bottom:1px solid #f0f0ee;background:#fafafa;"><td style="padding:6px 10px;color:#555;">CTR（點擊率）</td><td style="text-align:center;font-weight:700;color:#059669;">0.98%</td><td style="text-align:center;">0.71%</td><td style="text-align:center;font-weight:600;color:#059669;">知識王 +38%</td></tr>
-          <tr style="border-bottom:1px solid #f0f0ee;"><td style="padding:6px 10px;color:#555;">連結點擊數</td><td style="text-align:center;">23,651</td><td style="text-align:center;">6,894</td><td style="text-align:center;color:#888;">—</td></tr>
-          <tr style="border-bottom:1px solid #f0f0ee;background:#fafafa;"><td style="padding:6px 10px;color:#555;">CPL</td><td style="text-align:center;font-weight:700;color:#059669;">$0.66</td><td style="text-align:center;">$0.77</td><td style="text-align:center;font-weight:600;color:#059669;">知識王 -17%</td></tr>
-          <tr style="border-bottom:1px solid #f0f0ee;"><td style="padding:6px 10px;color:#555;">CPB（廣告歸因）</td><td style="text-align:center;font-weight:700;color:#059669;">$1.63</td><td style="text-align:center;">$2.15</td><td style="text-align:center;font-weight:600;color:#059669;">知識王 -32%</td></tr>
-          <tr style="border-bottom:1px solid #f0f0ee;background:#fafafa;"><td style="padding:6px 10px;color:#555;">Lead → BCL 轉換率</td><td style="text-align:center;font-weight:700;color:#059669;">40.3%</td><td style="text-align:center;">35.9%</td><td style="text-align:center;font-weight:600;color:#059669;">知識王 +4.4pp</td></tr>
-          <tr><td style="padding:6px 10px;color:#555;">日均 BCL</td><td style="text-align:center;font-weight:700;color:#059669;">41.2 筆</td><td style="text-align:center;">26.0 筆</td><td style="text-align:center;font-weight:600;color:#059669;">知識王 +58%</td></tr>
-          </tbody>
-        </table>
-        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:9px 13px;margin-bottom:18px;font-size:11.5px;color:#166534;">
-          <b>💡 什麼是 Lead？</b>　Lead 是指透過 Meta 廣告點擊後，進入綁定頁面並<b>填寫表單送出</b>的用戶數（即廣告平台的轉換事件計數）。Lead ≠ BCL：部分用戶填表後未完成手機驗證、或本身已是 BCL 舊會員，因此實際新增 BCL 人數（廣告歸因）通常低於 Lead 數。Lead → BCL 的轉換率反映的是「廣告導流品質」。
+        <!-- KPI 對比：橫向長條 -->
+        <div style="font-size:12.5px;font-weight:700;color:#1877f2;margin-bottom:2px;">📊 關鍵指標對比（不採計 Lead，統一以 CPB／實際 BCL 為準）</div>
+        <div style="font-size:10.5px;color:#999;margin-bottom:14px;">巧虎育兒知識王：60天／43廣告投放日（3/6–5/4）　我的育兒神隊友：63天／57廣告投放日（5/11–7/12）</div>
+        <div style="margin-bottom:8px;">
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">總花費(USD)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:85.0%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">$4,025</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">$4,737</div>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">日均花費(USD)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">$93.6</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:88.8%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">$83.1</div>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">CTR(點擊率)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">0.97%</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:84.5%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">0.82%</div>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">蒐集BCL數(人)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">2,472</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:77.1%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">1,907</div>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">日均BCL(人/天)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">57.5</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:58.3%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">33.5</div>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:11.5px;font-weight:600;color:#555;margin-bottom:4px;">整體CPB(USD)</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <div style="width:64px;font-size:10.5px;color:#1877f2;font-weight:600;text-align:right;flex-shrink:0;">知識王</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:65.7%;background:linear-gradient(90deg,#1877f2,#4a9af4);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#1877f2;">$1.63</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:64px;font-size:10.5px;color:#f59e0b;font-weight:600;text-align:right;flex-shrink:0;">神隊友</div>
+              <div style="flex:1;background:#f0f4fa;border-radius:4px;height:18px;position:relative;">
+                <div style="width:100.0%;background:linear-gradient(90deg,#f59e0b,#fbbf60);height:100%;border-radius:4px;"></div>
+              </div>
+              <div style="width:64px;font-size:11px;font-weight:700;color:#f59e0b;">$2.48</div>
+            </div>
+          </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-          <div style="background:#f8faff;border-radius:10px;padding:14px;">
-            <div style="font-size:12px;font-weight:700;color:#1877f2;margin-bottom:10px;">📈 神隊友各階段 CPL（$70 vs $90 預算）</div>
-            <div style="position:relative;height:160px;"><canvas id="cpl-stage-chart"></canvas></div>
-            <div style="font-size:10.5px;color:#888;margin-top:6px;text-align:center;">⚠️ 5/19–5/25 停播期間｜6/1–6/7 升至 $90/天</div>
-          </div>
-          <div style="background:#f8faff;border-radius:10px;padding:14px;">
-            <div style="font-size:12px;font-weight:700;color:#1877f2;margin-bottom:10px;">💰 CPB 與 Lead→BCL 轉換率比較</div>
-            <div style="position:relative;height:160px;"><canvas id="cpb-compare-chart"></canvas></div>
-            <div style="font-size:10.5px;color:#888;margin-top:4px;text-align:center;">CPB = 廣告花費 ÷ 廣告歸因 BCL 人數</div>
-          </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:9px 13px;margin-bottom:18px;font-size:11.5px;color:#166534;">
+          <b>💡 為何不用 Lead？</b>　Lead 是 Meta 平台自行認定的表單送出數，跟 CUBE 實際綁定的 BCL 名單常有落差（重複填寫、未完成驗證、非廣告來源混入等）。本比較改以「CUBE 同期實際 BCL 人數」除「廣告花費」算出的 CPB 為準，更貼近真實成本。
+        </div>
+        <div style="background:#f8faff;border-radius:10px;padding:14px;margin-bottom:20px;">
+          <div style="font-size:12px;font-weight:700;color:#1877f2;margin-bottom:10px;">💰 兩活動成效比較：日均BCL（長條）vs 整體CPB（折線）</div>
+          <div style="position:relative;height:220px;"><canvas id="cpb-compare-chart"></canvas></div>
+          <div style="font-size:10.5px;color:#888;margin-top:6px;text-align:center;">日均BCL＝蒐集BCL數 ÷ 廣告投放日；CPB＝總花費 ÷ 蒐集BCL數（均排除幫寶適等非廣告來源）</div>
         </div>
         <div style="font-size:12.5px;font-weight:700;color:#333;margin-bottom:8px;">📌 綜合觀察與建議</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div style="background:#f0f7ff;border-left:3px solid #1877f2;padding:10px 12px;border-radius:0 8px 8px 0;font-size:12px;">
-            <b>① 知識王各指標全面領先</b><br>CTR、CPL、CPB、轉換率均優。同$70/天基準下，神隊友估算 CPL $0.80 vs 知識王 $0.66，差距 21%。
+            <b>① 知識王 CPB 表現全面領先</b><br>CPB $1.63 vs 神隊友 $2.48，低 34.4%；日均BCL 57.5人 vs 33.5人，高 71.8%。兩項核心指標知識王都明顯較優。
           </div>
           <div style="background:#f0f7ff;border-left:3px solid #1877f2;padding:10px 12px;border-radius:0 8px 8px 0;font-size:12px;">
-            <b>② 加碼 $90/天 效益遞減</b><br>6/1–6/7 CPL 飆至 $1.12（最高段），邊際成本雖低（$0.20/筆），但拉高整體 CPB。<b>建議改在前 10 天加碼</b>。
+            <b>② 神隊友花費更高、成效卻更低</b><br>神隊友總花費（$4,737）比知識王（$4,025）多 17.7%，蒐集BCL數卻少 22.9%，投入產出比明顯較差，值得檢討受眾設定或素材疲勞問題。
           </div>
           <div style="background:#fff8f0;border-left:3px solid #f59e0b;padding:10px 12px;border-radius:0 8px 8px 0;font-size:12px;">
-            <b>③ Lead→BCL 落漏是最大損失點</b><br>神隊友轉換率 35.9%，若提升至知識王水準（40.3%），CPB 可從 $2.15 降至約 $1.91。建議追蹤驗證流程。
+            <b>③ 預算調升的邊際效益需留意</b><br>兩活動都在中後期調高過預算，但 CPB 並未同步下降，顯示單純加碼預算不必然提升效率，建議搭配素材更新一起評估。
           </div>
           <div style="background:#fff8f0;border-left:3px solid #f59e0b;padding:10px 12px;border-radius:0 8px 8px 0;font-size:12px;">
-            <b>④ 下次建議</b><br>沿用知識王三組受眾架構；前 10 天加碼；正式評估 Threads；優先修復 BCL 驗證落漏。
+            <b>④ 下次建議</b><br>沿用知識王的受眾／素材架構作為基準；下次活動上線前，先確認預算與素材輪替節奏，並持續用 CUBE 實際綁定人數校準 CPB，而非只看 Meta 平台 Lead 數。
           </div>
         </div>
       </div>
