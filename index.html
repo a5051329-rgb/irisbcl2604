@@ -3137,68 +3137,104 @@ function pmDrawMonthTrendChart() {
 
 function pmDrawMonthTrendTable() {
   var wrap = document.getElementById('pm-trend-table-wrap');
-  if(!wrap) return;
+  if (!wrap) return;
   var n = PM_TREND_DATA.labels.length;
+  var curI = PM_TREND_DATA.curIdx;
   var from = 0;
   if(_pmTrendRange==='3m') from = Math.max(0,n-3);
   else if(_pmTrendRange==='6m') from = Math.max(0,n-6);
-  var curI = PM_TREND_DATA.curIdx;
+  var days=[30,31,30,31,31,30,31,30,31,31,28,31,30,31,30,31];
 
-  var html = '<table style="min-width:'+(Math.max(300,(n-from)*72+90))+'px;font-size:11px;white-space:nowrap;width:100%;border-collapse:collapse;">';
-  html += '<thead><tr>';
-  html += '<th style="text-align:left;min-width:90px;position:sticky;left:0;z-index:3;background:#f8f7f4;border-right:1px solid #e5e7eb;">管道</th>';
-  for(var i=from;i<n;i++){
-    var l=PM_TREND_DATA.labels[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(185,28,28,.10)':'';
-    var fw=isCur?'font-weight:700;':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:3;background:'+(isCur?'rgba(185,28,28,.18)':'#f0f4ff')+';border-left:2px solid #b91c1c;':'';
-    html+='<th style="background:'+bg+';'+fw+sticky+'min-width:68px;text-align:center;">'+(isCur?'★ ':'')+l+'</th>';
+  var rowDefs = [
+    {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false},
+    {label:'自辦線下', key:'selfOffline', bg:'#fff',    color:'#333', bold:false},
+    {label:'主動',     key:'active',      bg:'#fff',    color:'#333', bold:false},
+    {label:'自動',     key:'shopline',    bg:'#fff',    color:'#333', bold:false},
+    {label:'異業',     key:'partner',     bg:'#fff',    color:'#333', bold:false},
+    {label:'月合計',   key:'total',       bg:'#f5f5f3', color:'#111', bold:true},
+    {label:'SS+S%',    key:'ssPct',       bg:'#fff5f5', color:'#b91c1c', bold:true},
+    {label:'日均',     key:'__avg',       bg:'#f9f9f7', color:'#888', bold:false},
+  ];
+
+  function cellVal(rk, i) {
+    if (rk.key === '__avg') return (PM_TREND_DATA.total[i] / (days[i]||30)).toFixed(1);
+    if (rk.key === 'ssPct') return PM_TREND_DATA.ssPct[i] + '%';
+    return PM_TREND_DATA[rk.key][i].toLocaleString();
   }
-  html += '</tr></thead><tbody>';
+  var pH = '5px 7px';
 
-  var rows = [['自辦線上','selfOnline'],['自辦線下','selfOffline'],['主動','active'],['自動','shopline'],['異業','partner']];
-  rows.forEach(function(r){
-    html += '<tr><td style="font-weight:600;position:sticky;left:0;z-index:2;background:#fff;border-right:1px solid #e5e7eb;">'+r[0]+'</td>';
-    for(var i=from;i<n;i++){
-      var val=PM_TREND_DATA[r[1]][i],isCur=(i===curI),isLast=(i===n-1);
-      var bg=isCur?'rgba(185,28,28,.05)':'';
-      var sticky=isLast?'position:sticky;right:0;z-index:2;background:'+(isCur?'rgba(185,28,28,.09)':'#f8f9ff')+';border-left:2px solid #b91c1c;':'';
-      html+='<td style="text-align:center;background:'+bg+';'+sticky+(val===0?'color:#ddd;':'')+'">'+val.toLocaleString()+'</td>';
-    }
-    html += '</tr>';
+  /* ── Build outer container ── */
+  var outer = document.createElement('div');
+  outer.style.cssText = 'display:flex;align-items:stretch;font-size:11px;white-space:nowrap;';
+
+  /* ── LEFT: fixed label column ── */
+  var leftDiv = document.createElement('div');
+  leftDiv.style.cssText = 'flex-shrink:0;box-shadow:3px 0 5px rgba(0,0,0,.12);z-index:2;';
+
+  var lTable = document.createElement('table');
+  lTable.style.cssText = 'border-collapse:collapse;';
+
+  var lHead = lTable.createTHead();
+  var lHr = lHead.insertRow();
+  var lTh = document.createElement('th');
+  lTh.textContent = '管道';
+  lTh.style.cssText = 'padding:'+pH+';background:#f5f5f3;border:1px solid #ddd;font-weight:700;min-width:88px;max-width:88px;text-align:left;';
+  lHr.appendChild(lTh);
+
+  var lBody = lTable.createTBody();
+  rowDefs.forEach(function(rk) {
+    var tr = lBody.insertRow();
+    var td = tr.insertCell();
+    td.textContent = rk.label;
+    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':'500')+';color:'+rk.color+';min-width:88px;max-width:88px;text-align:left;';
   });
 
-  /* 合計 */
-  html += '<tr class="tot"><td style="position:sticky;left:0;z-index:2;border-right:1px solid #e5e7eb;">月合計</td>';
-  for(var i=from;i<n;i++){
-    var val=PM_TREND_DATA.total[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(185,28,28,.12)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:rgba(185,28,28,.18);border-left:2px solid #b91c1c;':'';
-    html+='<td style="text-align:center;background:'+bg+';'+sticky+'">'+val.toLocaleString()+'</td>';
-  }
-  html += '</tr>';
+  leftDiv.appendChild(lTable);
 
-  /* SS+S% */
-  html += '<tr style="background:#fff8f8;"><td style="font-weight:700;color:#b91c1c;position:sticky;left:0;z-index:2;background:#fff8f8;border-right:1px solid #e5e7eb;">SS+S%</td>';
-  for(var i=from;i<n;i++){
-    var val=PM_TREND_DATA.ssPct[i],isCur=(i===curI),isLast=(i===n-1);
-    var bg=isCur?'rgba(185,28,28,.08)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:rgba(185,28,28,.14);border-left:2px solid #b91c1c;':'';
-    html+='<td style="text-align:center;color:#b91c1c;font-weight:'+(isCur?'700':'400')+';background:'+bg+';'+sticky+'">'+val+'%</td>';
-  }
-  html += '</tr>';
+  /* ── RIGHT: scrollable data columns ── */
+  var rightDiv = document.createElement('div');
+  rightDiv.style.cssText = 'overflow-x:auto;flex:1;min-width:0;';
 
-  /* 日均 */
-  html += '<tr style="font-size:10px;color:#888;background:#f9f9f7;"><td style="position:sticky;left:0;z-index:2;background:#f9f9f7;border-right:1px solid #e5e7eb;">日均</td>';
-  var days=[30,31,30,31,31,30,31,30,31,31,28,31,30,31];
-  for(var i=from;i<n;i++){
-    var val=PM_TREND_DATA.total[i],isCur=(i===curI),isLast=(i===n-1),d=days[i]||30;
-    var bg=isCur?'rgba(185,28,28,.04)':'';
-    var sticky=isLast?'position:sticky;right:0;z-index:2;background:'+(isCur?'rgba(185,28,28,.08)':'#f8f9ff')+';border-left:2px solid #b91c1c;':'';
-    html+='<td style="text-align:center;background:'+bg+';'+sticky+'">'+(val/d).toFixed(1)+'</td>';
+  var rTable = document.createElement('table');
+  var colCount = n - from;
+  rTable.style.cssText = 'border-collapse:collapse;min-width:'+(colCount*68)+'px;';
+
+  var rHead = rTable.createTHead();
+  var rHr = rHead.insertRow();
+  for (var i = from; i < n; i++) {
+    var l = PM_TREND_DATA.labels[i], isCur=(i===curI), isLast=(i===n-1);
+    var th = document.createElement('th');
+    th.textContent = (isCur?'★ ':'')+l;
+    th.style.cssText = 'padding:'+pH+';text-align:center;'
+      + 'background:'+(isCur?'rgba(185,28,28,.85)':'#f5f5f3')+';'
+      + 'color:'+(isCur?'#fff':'#333')+';'
+      + 'border:'+(isLast?'2px solid #b91c1c':'1px solid #ddd')+';'
+      + 'font-weight:'+(isCur?'700':'600')+';min-width:64px;';
+    rHr.appendChild(th);
   }
-  html += '</tr></tbody></table>';
-  wrap.innerHTML = html;
+
+  var rBody = rTable.createTBody();
+  rowDefs.forEach(function(rk) {
+    var tr = rBody.insertRow();
+    for (var i = from; i < n; i++) {
+      var v = cellVal(rk, i);
+      var isCur=(i===curI), isLast=(i===n-1);
+      var isZero = (rk.key!=='__avg' && rk.key!=='ssPct' && PM_TREND_DATA[rk.key][i]===0);
+      var td = tr.insertCell();
+      td.textContent = isZero ? '○' : v;
+      td.style.cssText = 'padding:'+pH+';text-align:center;'
+        + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.10)':rk.bg==='#f9f9f7'?'rgba(185,28,28,.04)':rk.bg==='#f5f5f3'?'rgba(185,28,28,.12)':'rgba(185,28,28,.05)'):rk.bg)+';'
+        + (isZero?'color:#ccc;':'color:'+rk.color+';')
+        + 'font-weight:'+(rk.bold?'700':(isCur&&rk.key==='ssPct'?'700':'400'))+';'
+        + 'border:'+(isLast?'2px solid #b91c1c':'1px solid #ddd')+';';
+    }
+  });
+
+  rightDiv.appendChild(rTable);
+  outer.appendChild(leftDiv);
+  outer.appendChild(rightDiv);
+  wrap.innerHTML = '';
+  wrap.appendChild(outer);
 }
 
 
