@@ -3438,29 +3438,29 @@ function pmInitSsGradeChart() {
   var el = document.getElementById('pmSsGradeChart');
   if(!el || typeof Chart==='undefined') return;
   var ex = Chart.getChart(el); if(ex) ex.destroy();
-  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5"];
+  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7"];
   if(_pmSsChartView === 'channel') {
-    var selfOnline_d = [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082];
-    var selfOffline_d = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    var selfOnline_d = [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082,1004,1432];
+    var selfOffline_d = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,870,157];
     var self_d = selfOnline_d;
-    var act_d  = [339,172,196,231,213,202,183,222,397,400,251,532,220,272];
-    var shop_d = [0,0,0,0,0,17,126,162,95,130,927,684,332,288];
-    var part_d = [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478];
+    var act_d  = [339,172,196,231,213,202,183,222,397,400,251,532,220,272,345,170];
+    var shop_d = [0,0,0,0,0,17,126,162,95,130,927,684,332,288,452,20];
+    var part_d = [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478,411,388];
     new Chart(el,{type:'bar',data:{labels:labels,datasets:[
-        {label:'自辦線上',data:selfOnline_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(37,99,235,.9)':'rgba(37,99,235,.7)';}),stack:'s',yAxisID:'y'},{label:'自辦線下',data:selfOffline_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(124,58,237,.9)':'rgba(124,58,237,.7)';}),stack:'s',yAxisID:'y'},{label:'主動',data:act_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(139,92,246,.95)':l==='2026/4'?'rgba(139,92,246,.75)':'rgba(139,92,246,.55)';}),stack:'s'},{label:'自動',data:shop_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(16,185,129,.95)':l==='2026/4'?'rgba(16,185,129,.75)':'rgba(16,185,129,.55)';}),stack:'s'},{label:'異業',data:part_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(245,158,11,1)':l==='2026/4'?'rgba(245,158,11,.85)':'rgba(245,158,11,.65)';}),stack:'s'}
+        {label:'自辦線上',data:selfOnline_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(37,99,235,.9)':'rgba(37,99,235,.7)';}),stack:'s',yAxisID:'y'},{label:'自辦線下',data:selfOffline_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(124,58,237,.9)':'rgba(124,58,237,.7)';}),stack:'s',yAxisID:'y'},{label:'主動',data:act_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(139,92,246,.95)':l==='2026/6'?'rgba(139,92,246,.75)':'rgba(139,92,246,.55)';}),stack:'s'},{label:'自動',data:shop_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(16,185,129,.95)':l==='2026/6'?'rgba(16,185,129,.75)':'rgba(16,185,129,.55)';}),stack:'s'},{label:'異業',data:part_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(245,158,11,1)':l==='2026/6'?'rgba(245,158,11,.85)':'rgba(245,158,11,.65)';}),stack:'s'}
       ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{
           afterBody:function(items){var t=items.reduce(function(a,b){return a+b.raw;},0);return['合計: '+t.toLocaleString()+' 人'];}
         }}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}
       }
     });
   } else {
-    /* 依月齡 — 13+1個月實際數據 */
-    var s_d  = [1064,131,140,223,143,178,213,183,255,259,310,645,178,98];
-    var ss_d = [800,162,152,345,162,224,261,193,374,172,264,629,147,145];
-    var s1_d = [1223,274,298,385,307,428,529,419,476,318,479,1094,362,147];
-    var preg = [293,197,241,474,362,284,384,385,651,677,728,604,353,234];
+    /* 依月齡 — 15+1個月實際數據 */
+    var s_d  = [1064,131,140,223,143,178,213,183,255,259,310,645,178,98,197,320];
+    var ss_d = [800,162,152,345,162,224,261,193,374,172,264,629,147,145,234,193];
+    var s1_d = [1223,274,298,385,307,428,529,419,476,318,479,1094,362,147,533,390];
+    var preg = [293,197,241,474,362,284,384,385,651,677,728,604,353,234,304,598];
     new Chart(el,{type:'bar',data:{labels:labels,datasets:[
-        {label:'S(0-6M)',data:s_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'#b91c1c':l==='2026/4'?'#dc2626':'rgba(220,38,38,.65)';}),stack:'s'},{label:'SS(7-12M)',data:ss_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'#ea580c':l==='2026/4'?'#f97316':'rgba(249,115,22,.65)';}),stack:'s'},{label:'S(13-24M)',data:s1_d,backgroundColor:labels.map(function(l){return l==='2026/5'?'#f97316':l==='2026/4'?'#fb923c':'rgba(251,146,60,.6)';}),stack:'s'},{label:'孕期',data:preg,backgroundColor:labels.map(function(l){return l==='2026/5'?'rgba(209,213,219,.95)':l==='2026/4'?'rgba(209,213,219,.85)':'rgba(209,213,219,.5)';}),stack:'s'}
+        {label:'S(0-6M)',data:s_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'#b91c1c':l==='2026/6'?'#dc2626':'rgba(220,38,38,.65)';}),stack:'s'},{label:'SS(7-12M)',data:ss_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'#ea580c':l==='2026/6'?'#f97316':'rgba(249,115,22,.65)';}),stack:'s'},{label:'S(13-24M)',data:s1_d,backgroundColor:labels.map(function(l){return l==='2026/7'?'#f97316':l==='2026/6'?'#fb923c':'rgba(251,146,60,.6)';}),stack:'s'},{label:'孕期',data:preg,backgroundColor:labels.map(function(l){return l==='2026/7'?'rgba(209,213,219,.95)':l==='2026/6'?'rgba(209,213,219,.85)':'rgba(209,213,219,.5)';}),stack:'s'}
       ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{
           afterBody:function(items){
             var ss=items.slice(0,3).reduce(function(a,b){return a+b.raw;},0);
@@ -3475,12 +3475,12 @@ function pmInitSsGradeChart() {
   var el = document.getElementById('pmSsTrendChart');
   if(!el || typeof Chart==='undefined') return;
   var ex = Chart.getChart(el); if(ex) ex.destroy();
-  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5"];
-  var ssPct = [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4];
-  var ssN   = [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749];
+  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7"];
+  var ssPct = [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4,31.3,41.7];
+  var ssN   = [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749,964,903];
   var isN = _pmSsMode === 'n';
   var data = isN ? ssN : ssPct;
-  var cur = _pmCurrentMonth==='M202605'?'2026/5':'2026/4';
+  var cur = '2026/'+_pmCurrentMonth.slice(-2).replace(/^0/,'');
   var ptColors = labels.map(function(l){ return l===cur?'#dc2626':'rgba(185,28,28,.4)'; });
   var ptSizes  = labels.map(function(l){ return l===cur?6:3; });
   new Chart(el,{type:'line',data:{labels:labels,datasets:[{
