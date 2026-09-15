@@ -2358,10 +2358,36 @@ var PW_TREND_DATA = {
   friend:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,186,320,768,1242,971,1249,865,535,819,1531,824,587,914,737,580,781,807,829,814,691,867,792,861,774]
 };
 
+/* 2026/09/15：8TDB 自辦線上細部來源。
+   口徑＝同一 LINE ID 的最新綁定日，對到同日、同活動的來源標籤後，各來源內去重。
+   「官網自然」僅收錄沒有任何其他細部來源標籤的人；若同時有其他標籤，改歸其他來源。
+   其餘來源間仍可能重疊，因此細項不可彼此加總；父層仍以週報正式口徑為準。 */
+function pwFy26DetailSeries(values) {
+  return new Array(52).fill(null).concat(values);
+}
+var PW_SELF_ONLINE_DETAIL = {
+  'Meta（未拆分）': pwFy26DetailSeries([0,0,146,439,315,290,290,32,131,106,167,156,194,196,233,0,0,0,0,0,0,0,0,0]),
+  'FB廣告':         pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,211,230,187,178,199,153,182,215,187]),
+  'IG廣告':         pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,76,38,43,59,17,24,55,49,47]),
+  'EDM':            pwFy26DetailSeries([0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0]),
+  '巧虎好朋友FB':   pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,2,1,1,0]),
+  '孕媽咪FB':       pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  'BABYMINE':       pwFy26DetailSeries([0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,1,0,0,0,1,0,0,0]),
+  '官網自然':       pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,3,1,4,3,3,4,19,11]),
+  '自動旅程':       pwFy26DetailSeries([0,0,8,19,27,21,6,5,3,9,4,5,11,2,7,6,9,7,8,11,10,5,7,8]),
+  '揪好友活動':     pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,14,12,16,8,6,2,8,6])
+};
+
 var _pwCurrentWeek = 'W24';
 var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
+var _pwSelfOnlineExpanded = false;
+
+function pwToggleSelfOnline() {
+  _pwSelfOnlineExpanded = !_pwSelfOnlineExpanded;
+  pwDrawTrendTable();
+}
 
 /* ── 週次切換 ── */
 function pwSelectWeek(wk) {
@@ -2562,7 +2588,7 @@ function pwDrawTrendTable() {
     {label:'週BCL合計',   key:'total',      bg:'#f5f5f3', color:'#111', bold:true},
     {label:'週好友數', key:'friend',      bg:'#f0fdf4', color:'#06C755', bold:true},
     {label:'BCL/好友比',key:'__ratio',     bg:'#f0fdfa', color:'#0d9488', bold:true},
-    {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false},
+    {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false, expandable:true},
     {label:'自辦線下', key:'selfOffline', bg:'#fff',    color:'#333', bold:false},
     {label:'主動',     key:'active',      bg:'#fff',    color:'#333', bold:false},
     {label:'自動(SHOPLINE)',key:'shopline',bg:'#fff',   color:'#333', bold:false},
@@ -2570,9 +2596,17 @@ function pwDrawTrendTable() {
     {label:'SS+S%',    key:'ssPct',       bg:'#fff5f5', color:'#b91c1c', bold:true},
     {label:'日均',     key:'__avg',       bg:'#f0f7ff', color:'#1d4ed8', bold:true},
   ];
+  if (_pwSelfOnlineExpanded) {
+    var selfOnlineAt = rowDefs.findIndex(function(r){ return r.key === 'selfOnline'; }) + 1;
+    var detailRows = Object.keys(PW_SELF_ONLINE_DETAIL).map(function(label){
+      return {label:label, key:label, detail:true, bg:'#f0f9ff', color:'#0369a1', bold:false};
+    });
+    rowDefs.splice.apply(rowDefs, [selfOnlineAt, 0].concat(detailRows));
+  }
 
   /* ── Shared style helpers ── */
   function cellVal(rk, i) {
+    if (rk.detail) return PW_SELF_ONLINE_DETAIL[rk.key][i];
     if (rk.key === '__avg') return (PW_TREND_DATA.total[i] / 7).toFixed(1);
     if (rk.key === '__ratio') {
       var f = PW_TREND_DATA.friend ? PW_TREND_DATA.friend[i] : null;
@@ -2608,8 +2642,20 @@ function pwDrawTrendTable() {
   rowDefs.forEach(function(rk) {
     var tr = lBody.insertRow();
     var td = tr.insertCell();
-    td.textContent = rk.label;
-    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':'500')+';color:'+rk.color+';min-width:88px;max-width:88px;text-align:left;';
+    if (rk.expandable) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-expanded', _pwSelfOnlineExpanded ? 'true' : 'false');
+      btn.title = _pwSelfOnlineExpanded ? '收合細部管道' : '展開細部管道';
+      btn.innerHTML = '<span aria-hidden="true" style="display:inline-block;width:12px;">'+(_pwSelfOnlineExpanded?'▾':'▸')+'</span>'+rk.label;
+      btn.onclick = pwToggleSelfOnline;
+      btn.style.cssText = 'border:0;background:transparent;padding:0;color:'+rk.color+';font:inherit;font-weight:700;cursor:pointer;text-align:left;white-space:nowrap;';
+      td.appendChild(btn);
+    } else {
+      td.textContent = (rk.detail ? '↳ ' : '') + rk.label;
+    }
+    td.title = rk.detail ? (rk.key === '官網自然' ? '僅計同日、同活動沒有其他來源標籤的人' : '8TDB 同日、同活動來源標籤人數；非官網自然的來源間仍可能重疊') : '';
+    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':rk.detail?'400':'500')+';color:'+rk.color+';min-width:110px;max-width:110px;text-align:left;';
   });
 
   leftDiv.appendChild(lTable);
@@ -2668,6 +2714,12 @@ function pwDrawTrendTable() {
   outer.appendChild(rightDiv);
   wrap.innerHTML = '';
   wrap.appendChild(outer);
+  if (_pwSelfOnlineExpanded) {
+    var detailNote = document.createElement('div');
+    detailNote.style.cssText = 'margin-top:6px;padding:6px 9px;border-left:3px solid #38bdf8;background:#f0f9ff;color:#475569;font-size:10.5px;line-height:1.55;';
+    detailNote.innerHTML = '<b style="color:#0369a1;">細部來源口徑：</b>8TDB 同日、同活動來源標籤，各來源內以 LINE ID 去重。「官網自然」只計沒有其他細部來源標籤的人；同時有其他標籤者改歸其他來源。其餘來源間仍可能重疊，因此細項不可相加；自辦線上父層仍以週報正式數字為準。';
+    wrap.appendChild(detailNote);
+  }
 
   /* ── Sync row heights ── */
   requestAnimationFrame(function() {
