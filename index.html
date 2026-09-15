@@ -2559,8 +2559,9 @@ function pwDrawTrendTable() {
   var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11',63:'W12',64:'W13',65:'W14',66:'W15',67:'W16',68:'W17',69:'W18',70:'W19',71:'W20',72:'W21',73:'W22',74:'W23',75:'W24'};
 
   var rowDefs = [
-    {label:'週好友數', key:'friend',      bg:'#f0fdf4', color:'#06C755', bold:true},
     {label:'週BCL合計',   key:'total',      bg:'#f5f5f3', color:'#111', bold:true},
+    {label:'週好友數', key:'friend',      bg:'#f0fdf4', color:'#06C755', bold:true},
+    {label:'BCL/好友比',key:'__ratio',     bg:'#f0fdfa', color:'#0d9488', bold:true},
     {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false},
     {label:'自辦線下', key:'selfOffline', bg:'#fff',    color:'#333', bold:false},
     {label:'主動',     key:'active',      bg:'#fff',    color:'#333', bold:false},
@@ -2573,6 +2574,12 @@ function pwDrawTrendTable() {
   /* ── Shared style helpers ── */
   function cellVal(rk, i) {
     if (rk.key === '__avg') return (PW_TREND_DATA.total[i] / 7).toFixed(1);
+    if (rk.key === '__ratio') {
+      var f = PW_TREND_DATA.friend ? PW_TREND_DATA.friend[i] : null;
+      var t = PW_TREND_DATA.total[i];
+      if (f == null || !f) return null;
+      return (t / f * 100).toFixed(1) + '%';
+    }
     return PW_TREND_DATA[rk.key][i];
   }
   var pH = '5px 7px';
@@ -2648,7 +2655,7 @@ function pwDrawTrendTable() {
       td.textContent = isNull ? '—' : ((v === 0 || v === '0.0') ? '○' : v);
       var zeroCss = (!isNull && (v === 0 || v === '0.0')) ? 'color:#ccc;' : (isNull ? 'color:#ddd;' : '');
       td.style.cssText = 'padding:'+pH+';text-align:center;'
-        + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.08)':rk.bg==='#f0f7ff'?'rgba(29,78,216,.08)':rk.bg==='#f0fdf4'?'rgba(6,199,85,.10)':'rgba(37,99,235,.06)'):rk.bg)+';'
+        + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.08)':rk.bg==='#f0f7ff'?'rgba(29,78,216,.08)':rk.bg==='#f0fdf4'?'rgba(6,199,85,.10)':rk.bg==='#f0fdfa'?'rgba(13,148,136,.10)':'rgba(37,99,235,.06)'):rk.bg)+';'
         + zeroCss
         + 'color:'+(zeroCss?(isNull?'#ddd':'#ccc'):rk.color)+';'
         + 'font-weight:'+(rk.bold?'700':'400')+';'
