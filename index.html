@@ -198,6 +198,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .hstack-seg{height:100%;transition:width .4s ease;display:flex;align-items:center;justify-content:center;}
 .hstack-seg span{font-size:9px;font-weight:500;color:rgba(255,255,255,.9);white-space:nowrap;padding:0 4px;}
 .hstack-total{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);width:46px;flex-shrink:0;}
+
+/* 9/14–9/15 新活動速報 */
+.campaign-alert-btn{position:fixed;right:88px;bottom:32px;z-index:1002;border:0;border-radius:999px;background:linear-gradient(135deg,#b91c1c,#e24a3b);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 7px 22px rgba(185,28,28,.3);cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.01em;transition:transform .18s,box-shadow .18s;}
+.campaign-alert-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(185,28,28,.36);}
+.campaign-alert-btn:focus-visible,.campaign-alert-close:focus-visible{outline:3px solid rgba(245,158,11,.45);outline-offset:2px;}
+.campaign-alert-dot{width:8px;height:8px;border-radius:50%;background:#fde68a;box-shadow:0 0 0 0 rgba(253,230,138,.7);animation:campaignPulse 1.8s infinite;flex:0 0 auto;}
+@keyframes campaignPulse{70%{box-shadow:0 0 0 8px rgba(253,230,138,0)}100%{box-shadow:0 0 0 0 rgba(253,230,138,0)}}
+.campaign-alert-panel{position:fixed;right:24px;bottom:88px;z-index:1003;width:min(590px,calc(100vw - 32px));max-height:calc(100vh - 118px);overflow:auto;background:#fff;border:1px solid #e7dfd9;border-radius:16px;box-shadow:0 20px 55px rgba(55,36,25,.23);padding:0;opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .18s,transform .18s,visibility .18s;}
+.campaign-alert-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+.campaign-alert-head{position:sticky;top:0;z-index:1;background:linear-gradient(135deg,#fff7ed,#fff);border-bottom:1px solid #f0e3da;padding:15px 48px 13px 17px;}
+.campaign-alert-head h2{font-size:16px;line-height:1.35;margin:0 0 3px;color:#7f1d1d;}
+.campaign-alert-head p{font-size:11px;color:#777;margin:0;line-height:1.5;}
+.campaign-alert-close{position:absolute;right:12px;top:11px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#765b50;cursor:pointer;font-size:20px;line-height:1;}
+.campaign-alert-body{padding:14px 16px 16px;}
+.campaign-alert-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.campaign-alert-kpi{background:#faf7f5;border:1px solid #eee5df;border-radius:10px;padding:9px 10px;}
+.campaign-alert-kpi span{display:block;color:#7b6b63;font-size:10px;margin-bottom:3px;}
+.campaign-alert-kpi strong{font:700 19px/1.2 'DM Mono',monospace;color:#3d2b25;}
+.campaign-alert-kpi small{display:block;color:#9a776a;font-size:9.5px;margin-top:2px;}
+.campaign-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.campaign-mini-card{border:1px solid #eadfd8;border-radius:12px;padding:12px;background:#fff;}
+.campaign-mini-card.agency{border-color:#d9e6f7;background:#fbfdff;}
+.campaign-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:9px;}
+.campaign-card-name{font-size:13px;font-weight:700;color:#382823;line-height:1.35;}
+.campaign-badge{font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:999px;background:#fee2e2;color:#991b1b;white-space:nowrap;}
+.campaign-mini-card.agency .campaign-badge{background:#dbeafe;color:#1d4ed8;}
+.campaign-card-total{font:700 24px/1 'DM Mono',monospace;color:#b91c1c;margin-bottom:7px;}
+.campaign-mini-card.agency .campaign-card-total{color:#2563eb;}
+.campaign-card-total small{font:500 10px/1.2 inherit;color:#777;margin-left:3px;}
+.campaign-daily{font-size:10.5px;color:#665650;margin-bottom:9px;display:flex;gap:10px;flex-wrap:wrap;}
+.campaign-quality{background:#f8f7f5;border-radius:8px;padding:8px 9px;margin-bottom:9px;font-size:10.5px;color:#555;line-height:1.6;}
+.campaign-quality b{color:#7f1d1d;}
+.campaign-mini-card.agency .campaign-quality b{color:#1d4ed8;}
+.campaign-grade-table{width:100%;border-collapse:collapse;font-size:9.5px;}
+.campaign-grade-table th,.campaign-grade-table td{padding:3px 2px;border-bottom:1px solid #f1ebe7;text-align:right;color:#665650;}
+.campaign-grade-table th:first-child,.campaign-grade-table td:first-child{text-align:left;}
+.campaign-grade-table th{font-weight:600;color:#8a7770;}
+.campaign-alert-insight{margin-top:11px;background:#fff8eb;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:9px 11px;font-size:10.5px;line-height:1.65;color:#654b29;}
+.campaign-alert-note{font-size:9.5px;color:#8a7d77;line-height:1.55;margin-top:9px;}
+@media(max-width:640px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);max-height:calc(100vh - 94px)}.campaign-cards{grid-template-columns:1fr}.campaign-alert-summary{grid-template-columns:repeat(3,1fr)}#backTop{right:20px;bottom:20px}}
 </style>
 
 </head>
@@ -226,6 +266,77 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 </nav>
 
 <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂端">↑</button>
+
+<button id="campaignAlertBtn" class="campaign-alert-btn" type="button" aria-controls="campaignAlertPanel" aria-expanded="false" onclick="toggleCampaignAlert()">
+  <span class="campaign-alert-dot" aria-hidden="true"></span>
+  <span>NEW｜9/14–9/15 活動速報</span>
+</button>
+
+<section id="campaignAlertPanel" class="campaign-alert-panel" role="dialog" aria-modal="false" aria-labelledby="campaignAlertTitle" aria-hidden="true">
+  <div class="campaign-alert-head">
+    <h2 id="campaignAlertTitle">新自辦線上活動速報｜9/14–9/15</h2>
+    <p>兩場廣告投放活動的 BCL 蒐集量與綁定時月齡品質</p>
+    <button class="campaign-alert-close" type="button" aria-label="關閉活動速報" onclick="toggleCampaignAlert(false)">×</button>
+  </div>
+  <div class="campaign-alert-body">
+    <div class="campaign-alert-summary">
+      <div class="campaign-alert-kpi"><span>兩場共蒐集</span><strong>123</strong><small>9/14：40｜9/15：83</small></div>
+      <div class="campaign-alert-kpi"><span>SS+S（0–24M）</span><strong>85</strong><small>69.1%｜含無生日補列 S 2人</small></div>
+      <div class="campaign-alert-kpi"><span>孕期名單</span><strong>14</strong><small>11.4%｜另行觀察培育</small></div>
+    </div>
+
+    <div class="campaign-cards">
+      <article class="campaign-mini-card">
+        <div class="campaign-card-top"><div class="campaign-card-name">巧虎育兒大調查</div><span class="campaign-badge">自操</span></div>
+        <div class="campaign-card-total">74<small>人</small></div>
+        <div class="campaign-daily"><span>9/14：<b>32</b></span><span>9/15：<b>42</b></span><span>日增 +31.3%</span></div>
+        <div class="campaign-quality"><b>SS+S 50 人（67.6%）</b><br>孕期 9 人（12.2%）｜原始生日完整率 97.3%</div>
+        <table class="campaign-grade-table" aria-label="巧虎育兒大調查月齡級別">
+          <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
+          <tbody>
+            <tr><td>孕期</td><td>9</td><td>12.2%</td></tr><tr><td>S 0–6M*</td><td>29</td><td>39.2%</td></tr>
+            <tr><td>SS 7–12M</td><td>11</td><td>14.9%</td></tr><tr><td>S 13–24M</td><td>10</td><td>13.5%</td></tr>
+            <tr><td>AA 25–36M</td><td>5</td><td>6.8%</td></tr><tr><td>A 37–60M</td><td>4</td><td>5.4%</td></tr>
+            <tr><td>B 61M+</td><td>6</td><td>8.1%</td></tr><tr><td>無生日</td><td>0</td><td>0%</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="campaign-mini-card agency">
+        <div class="campaign-card-top"><div class="campaign-card-name">健康寶貝知識王</div><span class="campaign-badge">廣代操作</span></div>
+        <div class="campaign-card-total">49<small>人</small></div>
+        <div class="campaign-daily"><span>9/14：<b>8</b></span><span>9/15：<b>41</b></span><span>日增 +412.5%</span></div>
+        <div class="campaign-quality"><b>SS+S 35 人（71.4%）</b><br>孕期 5 人（10.2%）｜有生日 100%</div>
+        <table class="campaign-grade-table" aria-label="健康寶貝知識王月齡級別">
+          <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
+          <tbody>
+            <tr><td>孕期</td><td>5</td><td>10.2%</td></tr><tr><td>S 0–6M</td><td>8</td><td>16.3%</td></tr>
+            <tr><td>SS 7–12M</td><td>12</td><td>24.5%</td></tr><tr><td>S 13–24M</td><td>15</td><td>30.6%</td></tr>
+            <tr><td>AA 25–36M</td><td>2</td><td>4.1%</td></tr><tr><td>A 37–60M</td><td>3</td><td>6.1%</td></tr>
+            <tr><td>B 61M+</td><td>4</td><td>8.2%</td></tr><tr><td>無生日</td><td>0</td><td>0%</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </div>
+
+    <div class="campaign-alert-insight"><b>初期觀察：</b>自操活動量體較大（74 vs 49），且 0–6M 占比高（39.2%）；廣代活動的 SS+S 比例較高（71.4%，高 3.8 個百分點），名單更集中在 7–24M。僅兩天資料，先看方向，不宜直接判定投放優劣。</div>
+    <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx（前一天）與 260421DB數據0916.xlsx（bcl日），兩份數字已核對一致。活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」。月齡依 2026/09 綁定月份與最小出生年月計算；SS+S＝0–24M。*依指定報表口徑，巧虎活動原「無生日」2 人補列至 S 0–6M；原始生日欄位仍為缺失，不代表實際月齡已確認。</div>
+  </div>
+</section>
+
+<script>
+function toggleCampaignAlert(forceOpen){
+  var panel=document.getElementById('campaignAlertPanel');
+  var btn=document.getElementById('campaignAlertBtn');
+  if(!panel||!btn)return;
+  var open=typeof forceOpen==='boolean'?forceOpen:!panel.classList.contains('open');
+  panel.classList.toggle('open',open);
+  panel.setAttribute('aria-hidden',String(!open));
+  btn.setAttribute('aria-expanded',String(open));
+  if(open){var closeBtn=panel.querySelector('.campaign-alert-close');if(closeBtn)closeBtn.focus();}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampaignAlert(false);});
+</script>
 
 <!-- ═══════════════════════ TAB 1 ═══════════════════════ -->
 <div id="page-overview" class="page active">
