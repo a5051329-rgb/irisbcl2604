@@ -2358,24 +2358,44 @@ var PW_TREND_DATA = {
   friend:   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,186,320,768,1242,971,1249,865,535,819,1531,824,587,914,737,580,781,807,829,814,691,867,792,861,774]
 };
 
-/* 2026/09/15：8TDB 自辦線上細部來源。
+/* 2026/09/16：8TDB 自辦線上改為「活動 → 細部來源」三級結構。
    口徑＝同一 LINE ID 的最新綁定日，對到同日、同活動的來源標籤後，各來源內去重。
    「官網自然」僅收錄沒有任何其他細部來源標籤的人；若同時有其他標籤，改歸其他來源。
-   其餘來源間仍可能重疊，因此細項不可彼此加總；父層仍以週報正式口徑為準。 */
+   其餘來源間仍可能重疊，因此來源細項不可彼此加總；父層仍以週報正式口徑為準。 */
 function pwFy26DetailSeries(values) {
   return new Array(52).fill(null).concat(values);
 }
-var PW_SELF_ONLINE_DETAIL = {
-  'Meta（未拆分）': pwFy26DetailSeries([0,0,146,439,315,290,290,32,131,106,167,156,194,196,233,0,0,0,0,0,0,0,0,0]),
-  'FB廣告':         pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,211,230,187,178,199,153,182,215,187]),
-  'IG廣告':         pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,76,38,43,59,17,24,55,49,47]),
-  'EDM':            pwFy26DetailSeries([0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0]),
-  '巧虎好朋友FB':   pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,2,1,1,0]),
-  '孕媽咪FB':       pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
-  'BABYMINE':       pwFy26DetailSeries([0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,1,0,0,0,1,0,0,0]),
-  '官網自然':       pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,3,1,4,3,3,4,19,11]),
-  '自動旅程':       pwFy26DetailSeries([0,0,8,19,27,21,6,5,3,9,4,5,11,2,7,6,9,7,8,11,10,5,7,8]),
-  '揪好友活動':     pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,14,12,16,8,6,2,8,6])
+var PW_SELF_ONLINE_ACTIVITIES = {
+  '育兒知識王': {
+    total: pwFy26DetailSeries([0,0,175,527,418,379,10,0,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+    sources: {
+      'Meta廣告（FB／IG未區分）': pwFy26DetailSeries([0,0,146,439,315,290,3,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+      '自動旅程': pwFy26DetailSeries([0,0,8,19,27,21,4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0])
+    }
+  },
+  '育兒神隊友': {
+    total: pwFy26DetailSeries([0,0,0,1,0,0,322,43,210,155,229,211,226,234,277,3,0,0,0,0,0,0,0,0]),
+    sources: {
+      'Meta廣告（FB／IG未區分）': pwFy26DetailSeries([0,0,0,0,0,0,287,32,131,105,167,156,194,196,233,0,0,0,0,0,0,0,0,0]),
+      'EDM': pwFy26DetailSeries([0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+      'BABYMINE': pwFy26DetailSeries([0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+      '自動旅程': pwFy26DetailSeries([0,0,0,0,0,0,2,5,3,9,3,5,11,2,7,1,0,0,0,0,0,0,0,0])
+    }
+  },
+  '育兒安全大作戰': {
+    total: pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,365,325,259,279,261,233,262,305,267]),
+    sources: {
+      'FB廣告': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,211,230,187,178,199,153,182,215,187]),
+      'IG廣告': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,76,38,43,59,17,24,55,49,47]),
+      'EDM': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0]),
+      '巧虎好朋友FB': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,2,1,1,0]),
+      '孕媽咪FB': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+      'BABYMINE': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,1,0,0,0]),
+      '官網自然': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,3,1,4,3,3,4,19,11]),
+      '自動旅程': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,9,7,8,11,10,5,7,8]),
+      '揪好友活動': pwFy26DetailSeries([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,14,12,16,8,6,2,8,6])
+    }
+  }
 };
 
 var _pwCurrentWeek = 'W24';
@@ -2383,9 +2403,14 @@ var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
 var _pwSelfOnlineExpanded = false;
+var _pwSelfOnlineActivityExpanded = {};
 
 function pwToggleSelfOnline() {
   _pwSelfOnlineExpanded = !_pwSelfOnlineExpanded;
+  pwDrawTrendTable();
+}
+function pwToggleSelfOnlineActivity(activity) {
+  _pwSelfOnlineActivityExpanded[activity] = !_pwSelfOnlineActivityExpanded[activity];
   pwDrawTrendTable();
 }
 
@@ -2598,15 +2623,25 @@ function pwDrawTrendTable() {
   ];
   if (_pwSelfOnlineExpanded) {
     var selfOnlineAt = rowDefs.findIndex(function(r){ return r.key === 'selfOnline'; }) + 1;
-    var detailRows = Object.keys(PW_SELF_ONLINE_DETAIL).map(function(label){
-      return {label:label, key:label, detail:true, bg:'#f0f9ff', color:'#0369a1', bold:false};
+    var detailRows = [];
+    Object.keys(PW_SELF_ONLINE_ACTIVITIES).forEach(function(activity){
+      var activityData = PW_SELF_ONLINE_ACTIVITIES[activity];
+      var visibleInRange = activityData.total.slice(from).some(function(v){ return v > 0; });
+      if (!visibleInRange) return;
+      detailRows.push({label:activity, key:'__activity', activity:activity, activityRow:true, bg:'#e0f2fe', color:'#075985', bold:true});
+      if (_pwSelfOnlineActivityExpanded[activity]) {
+        Object.keys(activityData.sources).forEach(function(source){
+          detailRows.push({label:source, key:source, activity:activity, activitySource:true, bg:'#f8fbff', color:'#0369a1', bold:false});
+        });
+      }
     });
     rowDefs.splice.apply(rowDefs, [selfOnlineAt, 0].concat(detailRows));
   }
 
   /* ── Shared style helpers ── */
   function cellVal(rk, i) {
-    if (rk.detail) return PW_SELF_ONLINE_DETAIL[rk.key][i];
+    if (rk.activityRow) return PW_SELF_ONLINE_ACTIVITIES[rk.activity].total[i];
+    if (rk.activitySource) return PW_SELF_ONLINE_ACTIVITIES[rk.activity].sources[rk.key][i];
     if (rk.key === '__avg') return (PW_TREND_DATA.total[i] / 7).toFixed(1);
     if (rk.key === '__ratio') {
       var f = PW_TREND_DATA.friend ? PW_TREND_DATA.friend[i] : null;
@@ -2634,7 +2669,7 @@ function pwDrawTrendTable() {
   var lHr = lHead.insertRow();
   var lTh = document.createElement('th');
   lTh.textContent = '管道';
-  lTh.style.cssText = 'padding:'+pH+';background:#f5f5f3;border:1px solid #ddd;font-weight:700;min-width:88px;max-width:88px;text-align:left;';
+  lTh.style.cssText = 'padding:'+pH+';background:#f5f5f3;border:1px solid #ddd;font-weight:700;min-width:174px;max-width:174px;text-align:left;';
   lHr.appendChild(lTh);
 
   /* body rows */
@@ -2651,11 +2686,21 @@ function pwDrawTrendTable() {
       btn.onclick = pwToggleSelfOnline;
       btn.style.cssText = 'border:0;background:transparent;padding:0;color:'+rk.color+';font:inherit;font-weight:700;cursor:pointer;text-align:left;white-space:nowrap;';
       td.appendChild(btn);
+    } else if (rk.activityRow) {
+      var activityBtn = document.createElement('button');
+      var activityOpen = !!_pwSelfOnlineActivityExpanded[rk.activity];
+      activityBtn.type = 'button';
+      activityBtn.setAttribute('aria-expanded', activityOpen ? 'true' : 'false');
+      activityBtn.title = activityOpen ? '收合此活動的細部管道' : '展開此活動的細部管道';
+      activityBtn.innerHTML = '<span aria-hidden="true" style="display:inline-block;width:12px;">'+(activityOpen?'▾':'▸')+'</span>↳ '+rk.label;
+      activityBtn.onclick = function(){ pwToggleSelfOnlineActivity(rk.activity); };
+      activityBtn.style.cssText = 'border:0;background:transparent;padding:0 0 0 8px;color:'+rk.color+';font:inherit;font-weight:700;cursor:pointer;text-align:left;white-space:nowrap;';
+      td.appendChild(activityBtn);
     } else {
-      td.textContent = (rk.detail ? '↳ ' : '') + rk.label;
+      td.textContent = (rk.activitySource ? '      ↳ ' : '') + rk.label;
     }
-    td.title = rk.detail ? (rk.key === '官網自然' ? '僅計同日、同活動沒有其他來源標籤的人' : '8TDB 同日、同活動來源標籤人數；非官網自然的來源間仍可能重疊') : '';
-    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':rk.detail?'400':'500')+';color:'+rk.color+';min-width:110px;max-width:110px;text-align:left;';
+    td.title = rk.activitySource ? (rk.key === '官網自然' ? '僅計此活動中沒有其他來源標籤的人' : '8TDB 同日、同活動來源標籤人數；非官網自然的來源間仍可能重疊') : '';
+    td.style.cssText = 'padding:'+pH+';background:'+rk.bg+';border:1px solid #ddd;font-weight:'+(rk.bold?'700':rk.activitySource?'400':'500')+';color:'+rk.color+';min-width:174px;max-width:174px;text-align:left;';
   });
 
   leftDiv.appendChild(lTable);
@@ -2717,7 +2762,7 @@ function pwDrawTrendTable() {
   if (_pwSelfOnlineExpanded) {
     var detailNote = document.createElement('div');
     detailNote.style.cssText = 'margin-top:6px;padding:6px 9px;border-left:3px solid #38bdf8;background:#f0f9ff;color:#475569;font-size:10.5px;line-height:1.55;';
-    detailNote.innerHTML = '<b style="color:#0369a1;">細部來源口徑：</b>8TDB 同日、同活動來源標籤，各來源內以 LINE ID 去重。「官網自然」只計沒有其他細部來源標籤的人；同時有其他標籤者改歸其他來源。其餘來源間仍可能重疊，因此細項不可相加；自辦線上父層仍以週報正式數字為準。';
+    detailNote.innerHTML = '<b style="color:#0369a1;">展開層級：</b>自辦線上 → 活動名稱 → 該活動的細部來源。同一週有兩個活動時會分成兩個活動小計並可各自展開。來源依 8TDB 同日、同活動標籤，各來源內以 LINE ID 去重；「官網自然」只計沒有其他來源標籤的人。其餘來源間仍可能重疊，因此來源細項不可相加；自辦線上父層仍以週報正式數字為準。';
     wrap.appendChild(detailNote);
   }
 
