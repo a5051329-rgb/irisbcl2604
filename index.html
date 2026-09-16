@@ -202,42 +202,72 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 /* 9/14–9/15 新活動速報 */
 .campaign-alert-btn{position:fixed;right:88px;bottom:32px;z-index:1002;border:0;border-radius:999px;background:linear-gradient(135deg,#b91c1c,#e24a3b);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 7px 22px rgba(185,28,28,.3);cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.01em;transition:transform .18s,box-shadow .18s;}
 .campaign-alert-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(185,28,28,.36);}
-.campaign-alert-btn:focus-visible,.campaign-alert-close:focus-visible{outline:3px solid rgba(245,158,11,.45);outline-offset:2px;}
+.campaign-alert-btn:focus-visible,.campaign-alert-close:focus-visible,.campaign-alert-fullscreen:focus-visible,.campaign-compare-toggle:focus-visible{outline:3px solid rgba(245,158,11,.45);outline-offset:2px;}
 .campaign-alert-dot{width:8px;height:8px;border-radius:50%;background:#fde68a;box-shadow:0 0 0 0 rgba(253,230,138,.7);animation:campaignPulse 1.8s infinite;flex:0 0 auto;}
 @keyframes campaignPulse{70%{box-shadow:0 0 0 8px rgba(253,230,138,0)}100%{box-shadow:0 0 0 0 rgba(253,230,138,0)}}
-.campaign-alert-panel{position:fixed;right:24px;bottom:88px;z-index:1003;width:min(590px,calc(100vw - 32px));max-height:calc(100vh - 118px);overflow:auto;background:#fff;border:1px solid #e7dfd9;border-radius:16px;box-shadow:0 20px 55px rgba(55,36,25,.23);padding:0;opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .18s,transform .18s,visibility .18s;}
+.campaign-alert-panel{position:fixed;right:24px;bottom:88px;z-index:1003;width:min(820px,calc(100vw - 32px));min-width:590px;min-height:390px;max-height:calc(100vh - 118px);overflow:auto;resize:both;background:#fff;border:1px solid #e7dfd9;border-radius:16px;box-shadow:0 20px 55px rgba(55,36,25,.23);padding:0;opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .18s,transform .18s,visibility .18s;}
 .campaign-alert-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
-.campaign-alert-head{position:sticky;top:0;z-index:1;background:linear-gradient(135deg,#fff7ed,#fff);border-bottom:1px solid #f0e3da;padding:15px 48px 13px 17px;}
-.campaign-alert-head h2{font-size:16px;line-height:1.35;margin:0 0 3px;color:#7f1d1d;}
-.campaign-alert-head p{font-size:11px;color:#777;margin:0;line-height:1.5;}
-.campaign-alert-close{position:absolute;right:12px;top:11px;width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#765b50;cursor:pointer;font-size:20px;line-height:1;}
+.campaign-alert-panel.fullscreen{inset:14px;width:auto;height:calc(100vh - 28px);max-height:none;border-radius:14px;transform:none;transform-origin:center;}
+.campaign-alert-head{position:sticky;top:0;z-index:2;background:linear-gradient(135deg,#fff7ed,#fff);border-bottom:1px solid #f0e3da;padding:15px 148px 13px 17px;}
+.campaign-alert-head h2{font-size:18px;line-height:1.35;margin:0 0 3px;color:#7f1d1d;}
+.campaign-alert-head p{font-size:12.5px;color:#777;margin:0;line-height:1.5;}
+.campaign-alert-actions{position:absolute;right:11px;top:10px;display:flex;align-items:center;gap:6px;}
+.campaign-alert-fullscreen{height:32px;border:1px solid #eadfd8;border-radius:7px;background:#fff;color:#765b50;cursor:pointer;padding:0 10px;font-family:inherit;font-size:12px;font-weight:600;}
+.campaign-alert-close{width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#765b50;cursor:pointer;font-size:20px;line-height:1;}
 .campaign-alert-body{padding:14px 16px 16px;}
 .campaign-alert-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
 .campaign-alert-kpi{background:#faf7f5;border:1px solid #eee5df;border-radius:10px;padding:9px 10px;}
-.campaign-alert-kpi span{display:block;color:#7b6b63;font-size:10px;margin-bottom:3px;}
-.campaign-alert-kpi strong{font:700 19px/1.2 'DM Mono',monospace;color:#3d2b25;}
-.campaign-alert-kpi small{display:block;color:#9a776a;font-size:9.5px;margin-top:2px;}
-.campaign-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.campaign-alert-kpi span{display:block;color:#7b6b63;font-size:12px;margin-bottom:3px;}
+.campaign-alert-kpi strong{font:700 22px/1.2 'DM Mono',monospace;color:#3d2b25;}
+.campaign-alert-kpi small{display:block;color:#9a776a;font-size:11px;margin-top:2px;}
+.campaign-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start;}
 .campaign-mini-card{border:1px solid #eadfd8;border-radius:12px;padding:12px;background:#fff;}
 .campaign-mini-card.agency{border-color:#d9e6f7;background:#fbfdff;}
 .campaign-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:9px;}
-.campaign-card-name{font-size:13px;font-weight:700;color:#382823;line-height:1.35;}
-.campaign-badge{font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:999px;background:#fee2e2;color:#991b1b;white-space:nowrap;}
+.campaign-card-name{font-size:15px;font-weight:700;color:#382823;line-height:1.35;}
+.campaign-badge{font-size:11px;font-weight:700;padding:3px 7px;border-radius:999px;background:#fee2e2;color:#991b1b;white-space:nowrap;}
 .campaign-mini-card.agency .campaign-badge{background:#dbeafe;color:#1d4ed8;}
-.campaign-card-total{font:700 24px/1 'DM Mono',monospace;color:#b91c1c;margin-bottom:7px;}
+.campaign-card-total{font:700 28px/1 'DM Mono',monospace;color:#b91c1c;margin-bottom:7px;}
 .campaign-mini-card.agency .campaign-card-total{color:#2563eb;}
-.campaign-card-total small{font:500 10px/1.2 inherit;color:#777;margin-left:3px;}
-.campaign-daily{font-size:10.5px;color:#665650;margin-bottom:9px;display:flex;gap:10px;flex-wrap:wrap;}
-.campaign-quality{background:#f8f7f5;border-radius:8px;padding:8px 9px;margin-bottom:9px;font-size:10.5px;color:#555;line-height:1.6;}
+.campaign-card-total small{font:500 12px/1.2 inherit;color:#777;margin-left:3px;}
+.campaign-daily{font-size:12.5px;color:#665650;margin-bottom:9px;display:flex;gap:10px;flex-wrap:wrap;}
+.campaign-quality{background:#f8f7f5;border-radius:8px;padding:8px 9px;margin-bottom:9px;font-size:12px;color:#555;line-height:1.6;}
 .campaign-quality b{color:#7f1d1d;}
 .campaign-mini-card.agency .campaign-quality b{color:#1d4ed8;}
-.campaign-grade-table{width:100%;border-collapse:collapse;font-size:9.5px;}
+.campaign-grade-table{width:100%;border-collapse:collapse;font-size:11.5px;}
 .campaign-grade-table th,.campaign-grade-table td{padding:3px 2px;border-bottom:1px solid #f1ebe7;text-align:right;color:#665650;}
 .campaign-grade-table th:first-child,.campaign-grade-table td:first-child{text-align:left;}
 .campaign-grade-table th{font-weight:600;color:#8a7770;}
-.campaign-alert-insight{margin-top:11px;background:#fff8eb;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:9px 11px;font-size:10.5px;line-height:1.65;color:#654b29;}
-.campaign-alert-note{font-size:9.5px;color:#8a7d77;line-height:1.55;margin-top:9px;}
-@media(max-width:640px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);max-height:calc(100vh - 94px)}.campaign-cards{grid-template-columns:1fr}.campaign-alert-summary{grid-template-columns:repeat(3,1fr)}#backTop{right:20px;bottom:20px}}
+.campaign-alert-insight{margin-top:11px;background:#fff8eb;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;line-height:1.7;color:#654b29;}
+.campaign-alert-note{font-size:10.5px;color:#8a7d77;line-height:1.6;margin-top:9px;}
+.campaign-history-card{border-color:#dbe3ef;background:linear-gradient(145deg,#f7fbff,#eef5ff);display:flex;flex-direction:column;gap:10px;}
+.campaign-history-card p{font-size:12px;line-height:1.7;color:#536779;margin:0;}
+.campaign-history-summary{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.campaign-history-summary div{background:#fff;border:1px solid #e2eaf4;border-radius:8px;padding:8px;text-align:center;}
+.campaign-history-summary b{display:block;font:700 15px/1.2 'DM Mono',monospace;color:#1e3a5f;}
+.campaign-history-summary span{font-size:9.5px;color:#718096;}
+.campaign-compare-wrap{display:none;margin-top:12px;border:1px solid #dbe3ef;border-radius:11px;overflow:hidden;background:#fbfdff;}
+.campaign-compare-wrap.open{display:block;}
+.campaign-compare-toggle{width:100%;border:0;border-radius:9px;background:#1e5c98;color:#fff;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;font-family:inherit;text-align:center;}
+.campaign-compare-toggle strong{font-size:12.5px;}
+.campaign-compare-toggle span{font-size:11px;color:#fff;}
+.campaign-compare-chevron{display:inline-block;transition:transform .18s;font-size:13px!important;}
+.campaign-compare-toggle[aria-expanded="true"] .campaign-compare-chevron{transform:rotate(180deg);}
+.campaign-launch-compare{display:none;padding:13px;}
+.campaign-launch-compare.open{display:block;}
+.campaign-launch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.campaign-launch-card{border:1px solid #dbe3ef;border-radius:10px;background:#fff;padding:11px;}
+.campaign-launch-card h3{font-size:14px;color:#253b56;margin:0 0 2px;}
+.campaign-launch-period{font-size:11px;color:#7b8794;margin-bottom:8px;}
+.campaign-launch-main{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.campaign-launch-main strong{font:700 22px/1 'DM Mono',monospace;color:#1d4ed8;}
+.campaign-launch-main span{font-size:11px;color:#6b7280;text-align:right;line-height:1.45;}
+.campaign-launch-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:8px;}
+.campaign-launch-metric{background:#f5f8fc;border-radius:7px;padding:6px;text-align:center;}
+.campaign-launch-metric b{display:block;font:700 12px/1.2 'DM Mono',monospace;color:#243b53;}
+.campaign-launch-metric span{display:block;font-size:10px;color:#7a8794;margin-top:2px;}
+.campaign-launch-insight{margin-top:10px;padding:9px 11px;border-left:3px solid #3b82f6;background:#eff6ff;color:#334e68;border-radius:0 7px 7px 0;font-size:12px;line-height:1.7;}
+@media(max-width:760px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);min-width:0;max-height:calc(100vh - 94px);resize:vertical}.campaign-alert-panel.fullscreen{inset:8px;width:auto;height:calc(100vh - 16px);max-height:none}.campaign-alert-head{padding-right:130px}.campaign-cards,.campaign-launch-grid{grid-template-columns:1fr}.campaign-alert-summary{grid-template-columns:repeat(3,1fr)}#backTop{right:20px;bottom:20px}}
 </style>
 
 </head>
@@ -275,8 +305,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <section id="campaignAlertPanel" class="campaign-alert-panel" role="dialog" aria-modal="false" aria-labelledby="campaignAlertTitle" aria-hidden="true">
   <div class="campaign-alert-head">
     <h2 id="campaignAlertTitle">新自辦線上活動速報｜9/14–9/15</h2>
-    <p>兩場廣告投放活動的 BCL 蒐集量與綁定時月齡品質</p>
-    <button class="campaign-alert-close" type="button" aria-label="關閉活動速報" onclick="toggleCampaignAlert(false)">×</button>
+    <p>兩場廣告投放活動的 BCL 蒐集量與綁定時月齡品質｜可拖曳視窗右下角調整大小</p>
+    <div class="campaign-alert-actions">
+      <button id="campaignFullscreenBtn" class="campaign-alert-fullscreen" type="button" aria-pressed="false" onclick="toggleCampaignFullscreen()">全螢幕</button>
+      <button class="campaign-alert-close" type="button" aria-label="關閉活動速報" onclick="toggleCampaignAlert(false)">×</button>
+    </div>
   </div>
   <div class="campaign-alert-body">
     <div class="campaign-alert-summary">
@@ -317,9 +350,70 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           </tbody>
         </table>
       </article>
+
+      <article class="campaign-mini-card campaign-history-card">
+        <div class="campaign-card-top"><div class="campaign-card-name">過往首兩日經驗</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">3 場</span></div>
+        <p>用三場過往自辦線上活動的投廣首兩日，判斷目前兩場新活動的量體與名單品質是否落在合理範圍。</p>
+        <div class="campaign-history-summary">
+          <div><b>66–169</b><span>歷史兩日人數</span></div>
+          <div><b>42.0–60.6%</b><span>歷史 SS+S</span></div>
+        </div>
+        <button id="campaignCompareToggle" class="campaign-compare-toggle" type="button" aria-controls="campaignLaunchCompare" aria-expanded="false" onclick="toggleLaunchComparison()">
+          <strong>展開三場過往活動</strong><span class="campaign-compare-chevron" aria-hidden="true">⌄</span>
+        </button>
+      </article>
     </div>
 
     <div class="campaign-alert-insight"><b>初期觀察：</b>自操活動量體較大（74 vs 49），且 0–6M 占比高（39.2%）；廣代活動的 SS+S 比例較高（71.4%，高 3.8 個百分點），名單更集中在 7–24M。僅兩天資料，先看方向，不宜直接判定投放優劣。</div>
+
+    <div id="campaignCompareWrap" class="campaign-compare-wrap">
+      <div id="campaignLaunchCompare" class="campaign-launch-compare" aria-hidden="true">
+        <div class="campaign-launch-grid">
+          <article class="campaign-launch-card">
+            <h3>育兒安全大作戰</h3>
+            <div class="campaign-launch-period">投廣首兩日：2026/7/14–7/15</div>
+            <div class="campaign-launch-main"><strong>169 人</strong><span>7/14：73 人<br>7/15：96 人</span></div>
+            <div class="campaign-launch-metrics">
+              <div class="campaign-launch-metric"><b>76</b><span>SS+S人數</span></div>
+              <div class="campaign-launch-metric"><b>45.0%</b><span>SS+S比例</span></div>
+              <div class="campaign-launch-metric"><b>42.6%</b><span>孕期比例</span></div>
+            </div>
+            <table class="campaign-grade-table" aria-label="育兒安全大作戰投廣首兩日月齡級別">
+              <tbody><tr><td>孕期</td><td>72</td><td>42.6%</td></tr><tr><td>S 0–6M</td><td>48</td><td>28.4%</td></tr><tr><td>SS 7–12M</td><td>11</td><td>6.5%</td></tr><tr><td>S 13–24M</td><td>17</td><td>10.1%</td></tr><tr><td>AA 25–36M</td><td>13</td><td>7.7%</td></tr><tr><td>A 37–60M</td><td>4</td><td>2.4%</td></tr><tr><td>B 61M+</td><td>4</td><td>2.4%</td></tr><tr><td>無生日</td><td>0</td><td>0%</td></tr></tbody>
+            </table>
+          </article>
+          <article class="campaign-launch-card">
+            <h3>我的育兒神隊友</h3>
+            <div class="campaign-launch-period">投廣首兩日：2026/5/11–5/12</div>
+            <div class="campaign-launch-main"><strong>66 人</strong><span>5/11：7 人<br>5/12：59 人</span></div>
+            <div class="campaign-launch-metrics">
+              <div class="campaign-launch-metric"><b>40</b><span>SS+S人數</span></div>
+              <div class="campaign-launch-metric"><b>60.6%</b><span>SS+S比例</span></div>
+              <div class="campaign-launch-metric"><b>7.6%</b><span>孕期比例</span></div>
+            </div>
+            <table class="campaign-grade-table" aria-label="我的育兒神隊友投廣首兩日月齡級別">
+              <tbody><tr><td>孕期</td><td>5</td><td>7.6%</td></tr><tr><td>S 0–6M</td><td>9</td><td>13.6%</td></tr><tr><td>SS 7–12M</td><td>8</td><td>12.1%</td></tr><tr><td>S 13–24M</td><td>23</td><td>34.8%</td></tr><tr><td>AA 25–36M</td><td>10</td><td>15.2%</td></tr><tr><td>A 37–60M</td><td>5</td><td>7.6%</td></tr><tr><td>B 61M+</td><td>6</td><td>9.1%</td></tr><tr><td>無生日</td><td>0</td><td>0%</td></tr></tbody>
+            </table>
+          </article>
+          <article class="campaign-launch-card">
+            <h3>巧虎育兒知識王</h3>
+            <div class="campaign-launch-period">投廣首兩日：2026/3/6–3/7</div>
+            <div class="campaign-launch-main"><strong>69 人</strong><span>3/6：24 人<br>3/7：45 人</span></div>
+            <div class="campaign-launch-metrics">
+              <div class="campaign-launch-metric"><b>29</b><span>SS+S人數</span></div>
+              <div class="campaign-launch-metric"><b>42.0%</b><span>SS+S比例</span></div>
+              <div class="campaign-launch-metric"><b>31.9%</b><span>孕期比例</span></div>
+            </div>
+            <table class="campaign-grade-table" aria-label="巧虎育兒知識王投廣首兩日月齡級別">
+              <tbody><tr><td>孕期</td><td>22</td><td>31.9%</td></tr><tr><td>S 0–6M</td><td>9</td><td>13.0%</td></tr><tr><td>SS 7–12M</td><td>9</td><td>13.0%</td></tr><tr><td>S 13–24M</td><td>11</td><td>15.9%</td></tr><tr><td>AA 25–36M</td><td>5</td><td>7.2%</td></tr><tr><td>A 37–60M</td><td>1</td><td>1.4%</td></tr><tr><td>B 61M+</td><td>11</td><td>15.9%</td></tr><tr><td>無生日</td><td>1</td><td>1.4%</td></tr></tbody>
+            </table>
+          </article>
+        </div>
+        <div class="campaign-launch-insight"><b>目前成效判讀：</b>過往三場首兩日量體介於 66–169 人。巧虎育兒大調查目前 74 人，略高於巧虎育兒知識王（69）與神隊友（66），屬於正常區間；健康寶貝知識王目前 49 人，量體低於過往下緣約 25.8%，但 SS+S 71.4% 高於三場歷史活動（42.0%–60.6%），呈現「量較小、品質較集中」的初期樣貌。兩場新活動第二日均明顯成長，建議至少再觀察 3–5 天再判定投放量是否異常。</div>
+        <div class="campaign-alert-note">資料來源：CUBE「前一天」與 DB「bcl日」，活動標籤與兩日總數逐筆核對一致。「我的育兒神隊友」與「巧虎育兒知識王」分別對應 Excel 的「育兒神隊友」與「育兒知識王」。首日可能受實際開播時間影響；此處為活動標籤下的 BCL，不直接等同廣告效率。</div>
+      </div>
+    </div>
+
     <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx（前一天）與 260421DB數據0916.xlsx（bcl日），兩份數字已核對一致。活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」。月齡依 2026/09 綁定月份與最小出生年月計算；SS+S＝0–24M。*依指定報表口徑，巧虎活動原「無生日」2 人補列至 S 0–6M；原始生日欄位仍為缺失，不代表實際月齡已確認。</div>
   </div>
 </section>
@@ -333,7 +427,32 @@ function toggleCampaignAlert(forceOpen){
   panel.classList.toggle('open',open);
   panel.setAttribute('aria-hidden',String(!open));
   btn.setAttribute('aria-expanded',String(open));
+  if(!open){
+    panel.classList.remove('fullscreen');
+    var fsBtn=document.getElementById('campaignFullscreenBtn');
+    if(fsBtn){fsBtn.textContent='全螢幕';fsBtn.setAttribute('aria-pressed','false');}
+  }
   if(open){var closeBtn=panel.querySelector('.campaign-alert-close');if(closeBtn)closeBtn.focus();}
+}
+function toggleCampaignFullscreen(){
+  var panel=document.getElementById('campaignAlertPanel');
+  var btn=document.getElementById('campaignFullscreenBtn');
+  if(!panel||!btn)return;
+  var isFullscreen=panel.classList.toggle('fullscreen');
+  btn.textContent=isFullscreen?'還原視窗':'全螢幕';
+  btn.setAttribute('aria-pressed',String(isFullscreen));
+}
+function toggleLaunchComparison(){
+  var content=document.getElementById('campaignLaunchCompare');
+  var wrap=document.getElementById('campaignCompareWrap');
+  var btn=document.getElementById('campaignCompareToggle');
+  if(!content||!wrap||!btn)return;
+  var open=content.classList.toggle('open');
+  wrap.classList.toggle('open',open);
+  content.setAttribute('aria-hidden',String(!open));
+  btn.setAttribute('aria-expanded',String(open));
+  var label=btn.querySelector('strong');
+  if(label)label.textContent=open?'收合三場過往活動':'展開三場過往活動';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampaignAlert(false);});
 </script>
