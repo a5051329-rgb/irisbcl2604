@@ -2652,11 +2652,24 @@ function pwFy26DetailSeries(values) {
 var PW_SELF_ONLINE_ACTIVITIES = {
   '巧虎育兒大調查': {
     total: new Array(76).fill(null).concat([248]),
-    sources: {}
+    /* 2026/09/23 依 8TDB W25（9/14–9/20）同日、同活動來源標籤去重。
+       META 廣告未拆 FB／IG；官網自然排除同時具有其他細部來源標籤者。 */
+    sources: {
+      'Meta廣告（FB／IG未區分）': new Array(76).fill(null).concat([203]),
+      'EDM': new Array(76).fill(null).concat([23]),
+      '官網自然': new Array(76).fill(null).concat([15])
+    }
   },
   '健康寶貝知識王': {
     total: new Array(76).fill(null).concat([208]),
-    sources: {}
+    /* 2026/09/23 依 8TDB W25（9/14–9/20）同日、同活動來源標籤去重。
+       官網自然排除同時具有其他細部來源標籤者；其餘來源間仍可能重疊。 */
+    sources: {
+      'FB廣告': new Array(76).fill(null).concat([120]),
+      'IG廣告': new Array(76).fill(null).concat([62]),
+      '官網自然': new Array(76).fill(null).concat([10]),
+      '揪好友活動': new Array(76).fill(null).concat([4])
+    }
   },
   '育兒知識王': {
     total: pwFy26DetailSeries([0,0,175,527,418,379,10,0,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]),
@@ -3240,7 +3253,7 @@ function pwGradeTab(bt,btn){
 
 /* 2026/09/08 新增：細部管道→上層管道對應表，找不到專屬月齡資料時回頭用上層(自辦線上/主動/自動/異業/自辦線下)的真實資料，不再直接顯示無資料 */
 var PW_CH_BTYPE_MAP = {
-  '育兒安全大作戰':'selfOnline','育兒神隊友':'selfOnline','育兒知識王':'selfOnline','育兒超能力':'selfOnline','全管道(酷必後台)':'selfOnline','全管道':'selfOnline','新BCL':'selfOnline','線上活動':'selfOnline','酷必':'selfOnline','BCL導購':'selfOnline',
+  '巧虎育兒大調查':'selfOnline','健康寶貝知識王':'selfOnline','育兒安全大作戰':'selfOnline','育兒神隊友':'selfOnline','育兒知識王':'selfOnline','育兒超能力':'selfOnline','全管道(酷必後台)':'selfOnline','全管道':'selfOnline','新BCL':'selfOnline','線上活動':'selfOnline','酷必':'selfOnline','BCL導購':'selfOnline',
   '舞台劇':'selfOffline','英語劇':'selfOffline','舞台劇/英語劇':'selfOffline','Lalaport活動':'selfOffline','lalaport活動':'selfOffline',
   '官網':'active','官網-Welcome':'active','官網綁定':'active','官網/OA':'active','OA':'active','LineOA':'active','客服':'active',
   'SHOPLINE':'shopline','SHOPLINE回補':'shopline',
@@ -3376,7 +3389,7 @@ function pwGradeTab(bt,btn){
 
 /* 2026/09/08 新增：細部管道→上層管道對應表，找不到專屬月齡資料時回頭用上層(自辦線上/主動/自動/異業/自辦線下)的真實資料，不再直接顯示無資料 */
 var PW_CH_BTYPE_MAP = {
-  '育兒安全大作戰':'selfOnline','育兒神隊友':'selfOnline','育兒知識王':'selfOnline','育兒超能力':'selfOnline','全管道(酷必後台)':'selfOnline','全管道':'selfOnline','新BCL':'selfOnline','線上活動':'selfOnline','酷必':'selfOnline','BCL導購':'selfOnline',
+  '巧虎育兒大調查':'selfOnline','健康寶貝知識王':'selfOnline','育兒安全大作戰':'selfOnline','育兒神隊友':'selfOnline','育兒知識王':'selfOnline','育兒超能力':'selfOnline','全管道(酷必後台)':'selfOnline','全管道':'selfOnline','新BCL':'selfOnline','線上活動':'selfOnline','酷必':'selfOnline','BCL導購':'selfOnline',
   '舞台劇':'selfOffline','英語劇':'selfOffline','舞台劇/英語劇':'selfOffline','Lalaport活動':'selfOffline','lalaport活動':'selfOffline',
   '官網':'active','官網-Welcome':'active','官網綁定':'active','官網/OA':'active','OA':'active','LineOA':'active','客服':'active',
   'SHOPLINE':'shopline','SHOPLINE回補':'shopline',
