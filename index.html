@@ -248,6 +248,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .campaign-history-card{border-color:#dbe3ef;background:linear-gradient(145deg,#f7fbff,#eef5ff);display:flex;flex-direction:column;gap:10px;}
 .campaign-right-column{display:flex;flex-direction:column;gap:10px;min-width:0;}
 .campaign-history-card p{font-size:12px;line-height:1.7;color:#536779;margin:0;}
+.campaign-judgement-list{margin:0;padding-left:20px;color:#536779;font-size:12px;line-height:1.65;}
+.campaign-judgement-list li+li{margin-top:7px;}
+.campaign-judgement-list b{display:block;color:#294a6b;margin-bottom:1px;}
+.campaign-judgement-list .campaign-root-cause>ol{margin:5px 0 0;padding-left:20px;}
+.campaign-judgement-list .campaign-root-cause>ol li+li{margin-top:5px;}
+.campaign-judgement-list .campaign-root-cause strong{color:#294a6b;}
+.campaign-evidence-trigger{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;margin-left:5px;border:0;border-radius:50%;background:#2f6fad;color:#fff;font:700 11px/1 sans-serif;cursor:pointer;vertical-align:middle;padding:0;}
+.campaign-evidence-popover{display:none;position:absolute;z-index:1200;right:12px;width:min(430px,calc(100% - 24px));margin-top:6px;padding:13px 14px 12px;background:#fff;border:1px solid #bed2e8;border-radius:10px;box-shadow:0 10px 28px rgba(30,58,95,.2);color:#40566d;font-size:11.5px;line-height:1.7;}
+.campaign-evidence-popover.show{display:block;}
+.campaign-evidence-popover-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;color:#294a6b;font-weight:700;}
+.campaign-evidence-close{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border:1px solid #d6e1ed;border-radius:6px;background:#f7faff;color:#526b83;font-size:16px;cursor:pointer;flex-shrink:0;}
+.campaign-evidence-popover ul{margin:0;padding-left:18px;}
+.campaign-evidence-popover li+li{margin-top:4px;}
 .campaign-history-summary{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
 .campaign-history-summary div{background:#fff;border:1px solid #e2eaf4;border-radius:8px;padding:8px;text-align:center;}
 .campaign-history-summary b{display:block;font:700 15px/1.2 'DM Mono',monospace;color:#1e3a5f;}
@@ -283,6 +296,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .campaign-next-step-title{font-size:13px;font-weight:800;margin-bottom:5px;color:#166534;}
 .campaign-next-step ol{margin:0;padding-left:19px;}
 .campaign-next-step li+li{margin-top:5px;}
+.campaign-next-step-wide{margin-top:11px;}
 .campaign-resize-hint{display:inline-block;margin-left:8px;color:#9a776a;font-size:10.5px;white-space:nowrap;}
 @media(max-width:760px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);height:calc(100vh - 94px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 94px);resize:vertical}.campaign-alert-panel.fullscreen{inset:8px;width:auto;height:calc(100vh - 16px);max-height:none}.campaign-alert-head{padding-right:130px}.campaign-cards,.campaign-launch-grid{grid-template-columns:1fr}.campaign-alert-summary{grid-template-columns:repeat(3,1fr)}.campaign-resize-hint{display:none}#backTop{right:20px;bottom:20px}}
 </style>
@@ -296,7 +310,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="brand-tag">BCL DB</div>
       <div class="brand-name">資料庫分析儀表板</div>
     </div>
-    <div class="header-meta">截至 2026 年 5 月</div>
+    <div class="header-meta">各頁資料截止日另列</div>
   </div>
 </header>
 
@@ -379,29 +393,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="campaign-right-column">
         <article class="campaign-mini-card campaign-history-card">
           <div class="campaign-card-top"><div class="campaign-card-name">第 2 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">9/21–9/27</span></div>
-          <p><b>1＋1 仍沒有大於 2，且由上週 1.71 降至 1.33。</b> 兩活動合計 356 BCL，較上週減少 100 人；自操仍比廣代多 30 人，但雙方量體都下滑約 22%。</p>
-          <p style="margin-top:8px;"><b>9/24–9/27 兩邊同步轉弱。</b> 同期下滑較不支持單一操作失誤；連假競價升高、投放效率下降是目前的待驗證假說。9/25、9/26 未花滿 US$70，加上 9/26、9/27 簡訊暫時異常，皆可能影響轉換；本週持續觀察恢復後是否回穩。</p>
+          <ul class="campaign-judgement-list">
+            <li><b>1＋1有大於2嗎？</b>沒有，由上週1.71降至1.33。兩活動合計356 BCL，較上週減少100人；自操仍比廣代多30人，但雙方量體都下滑約22%。</li>
+            <li class="campaign-root-cause"><b>為何這週成效不佳？</b>
+              <ol>
+                <li><strong>上週操作失誤？</strong>兩邊同期下滑，較不支持單一操作失誤；9/25、9/26未花滿US$70，也可能壓低量體。</li>
+                <li style="position:relative;"><strong style="display:inline;">中秋連假有影響嗎？</strong><button class="campaign-evidence-trigger" type="button" aria-label="查看兩年連假數據佐證" aria-expanded="false" onclick="campaignEvidenceToggle(this)">i</button>歷史方向一致，連假可能是本週投放轉弱的重要因素之一；但不能將全部降幅單獨歸因於連假競價。
+                  <div class="campaign-evidence-popover" role="dialog" aria-label="兩年連假數據佐證">
+                    <div class="campaign-evidence-popover-head"><span>兩年連假數據佐證｜自辦線上</span><button class="campaign-evidence-close" type="button" aria-label="關閉" onclick="campaignEvidenceClose(this)">×</button></div>
+                    <ul>
+                      <li>資料來源：2025、2026 兩年的「自辦線上」歷史資料。</li>
+                      <li>14 段連假中有 12 段蒐集量下降；連假期間整體日均較連假前下降 44.2%。</li>
+                      <li>本次中秋／教師節連假日均由 60.0 降至 40.3 BCL，下降 32.9%。</li>
+                      <li>各時期活動、預算與素材不同，因此只能判斷連假可能有影響，不能視為唯一原因。</li>
+                    </ul>
+                  </div>
+                </li>
+                <li><strong>9/26、9/27曾出現短時間簡訊異常。</strong>異常屬於短時間故障，當天仍有部分客戶綁定成功，故影響範圍較小；且9/22綁定率僅42.7%但未回報異常，因此不能只靠單日綁定率判斷系統狀態。</li>
+              </ol>
+            </li>
+          </ul>
           <div class="campaign-history-summary">
             <div><b>1＋1＝1.33</b><span>上週 1.71</span></div>
             <div><b>66.7%</b><span>理論 2 倍達成率</span></div>
-            <div><b>-21.9%</b><span>兩活動 BCL 週變化</span></div>
-            <div><b>56.5%</b><span>兩活動 SS+S</span></div>
           </div>
           <button id="campaignCompareToggle" class="campaign-compare-toggle" type="button" aria-controls="campaignLaunchCompare" aria-expanded="false" onclick="toggleLaunchComparison()">
             <strong>展開三場過往活動</strong><span class="campaign-compare-chevron" aria-hidden="true">⌄</span>
           </button>
         </article>
-        <div class="campaign-next-step">
-          <div class="campaign-next-step-title">下一步</div>
-          <ol>
-            <li><b>替換弱勢素材：</b>優先汰換表現較弱的素材，觀察新素材能否改善投放效率。</li>
-            <li><b>提高預算測試：</b>10/1–10/14 將每日預算提高至 US$100，持續比較 BCL、CPB 與兩邊投放差異。</li>
-          </ol>
-        </div>
       </div>
     </div>
 
-    <div class="campaign-alert-insight"><b>完整週判讀｜第 2 週的 1＋1 約等於 1.33，較首週 1.71 明顯回落。</b><br>過往單一路線 W11–W24 平均為 266.9 BCL／週，理論 2 倍為 533.9；本週兩活動合計 356 BCL，為理論值的 66.7%，較上週 456 人減少 100 人（-21.9%）。自操 193 人仍高於廣代 163 人（+30、+18.4%），但兩者分別較上週下降 22.2% 與 21.6%。以每邊週預算 US$490 計算，CPB 為自操 $2.54、廣代 $3.01。9/24–9/27 兩邊同步轉弱，較不支持單一操作失誤；連假競價影響目前先列為待驗證假說。9/25、9/26 未花滿日預算，且 9/26、9/27 簡訊暫時異常，均可能影響投放轉換。品質方面，自操 SS+S 維持 65.3%；廣代由 53.6% 降至 46.0%（-7.6pt）。</div>
+    <div class="campaign-next-step campaign-next-step-wide">
+      <div class="campaign-next-step-title">下一步</div>
+      <ol>
+        <li><b>替換弱勢素材：</b>優先汰換表現較弱的素材，觀察新素材能否改善投放效率。</li>
+        <li><b>提高預算測試：</b>10/1–10/14 將每日預算提高至 US$100，持續比較 BCL、CPB 與兩邊投放差異。</li>
+      </ol>
+    </div>
+
+    <div class="campaign-alert-insight"><b>完整週判讀｜第 2 週的 1＋1 約等於 1.33，較首週 1.71 明顯回落。</b><br>過往單一路線 W11–W24 平均為 266.9 BCL／週，理論 2 倍為 533.9；本週兩活動合計 356 BCL，為理論值的 66.7%，較上週 456 人減少 100 人（-21.9%）。自操 193 人仍高於廣代 163 人（+30、+18.4%），但兩者分別較上週下降 22.2% 與 21.6%。以每邊週預算 US$490 計算，CPB 為自操 $2.54、廣代 $3.01。兩年自辦線上的連假資料顯示，本次下滑方向與多數連假一致，因此連假可能是投放轉弱的重要因素之一；完整數據可由「中秋連假有影響嗎？」旁的 i 查看。9/26、9/27曾出現短時間簡訊異常，當天仍有部分客戶綁定成功，故影響範圍較小；且9/22同日綁定率僅42.7%但未回報異常，顯示不能只靠單日綁定率判定系統狀態。品質方面，自操 SS+S 維持65.3%；廣代由53.6%降至46.0%（-7.6pt）。</div>
 
     <div id="campaignCompareWrap" class="campaign-compare-wrap">
       <div id="campaignLaunchCompare" class="campaign-launch-compare" aria-hidden="true">
@@ -470,7 +501,29 @@ function toggleLaunchComparison(){
   var label=btn.querySelector('strong');
   if(label)label.textContent=open?'收合三場過往活動':'展開三場過往活動';
 }
-document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampaignAlert(false);});
+function campaignEvidenceToggle(btn){
+  var pop=btn&&btn.nextElementSibling;
+  if(!pop)return;
+  var open=!pop.classList.contains('show');
+  document.querySelectorAll('.campaign-evidence-popover.show').forEach(function(el){el.classList.remove('show');});
+  document.querySelectorAll('.campaign-evidence-trigger[aria-expanded="true"]').forEach(function(el){el.setAttribute('aria-expanded','false');});
+  pop.classList.toggle('show',open);
+  btn.setAttribute('aria-expanded',String(open));
+  if(open){var close=pop.querySelector('.campaign-evidence-close');if(close)close.focus();}
+}
+function campaignEvidenceClose(btn){
+  var pop=btn&&btn.closest('.campaign-evidence-popover');
+  if(!pop)return;
+  pop.classList.remove('show');
+  var trigger=pop.previousElementSibling;
+  if(trigger){trigger.setAttribute('aria-expanded','false');trigger.focus();}
+}
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape')return;
+  var evidence=document.querySelector('.campaign-evidence-popover.show');
+  if(evidence){campaignEvidenceClose(evidence.querySelector('.campaign-evidence-close'));return;}
+  toggleCampaignAlert(false);
+});
 </script>
 
 <!-- ═══════════════════════ TAB 1 ═══════════════════════ -->
@@ -1107,29 +1160,29 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
 
 <div id="pp"><div class="pw">
   <h1>異業合作分析</h1>
-  <div class="sub">資料截止：2026/05　管道：大樹、六甲村、永生、明治、芳茲、揆眾婦幼展、樂飛發票、聯盟網</div>
+  <div class="sub">資料截止：2026/09/29　BCL／標籤／訂單均取自 8TDB 最新資料　管道：大樹、六甲村、永生、明治、芳茲、揆眾婦幼展、樂飛發票、聯盟網、小村日和</div>
 
   <!-- KPI -->
   <div class="ks">
     <div class="kc" style="border-top:3px solid var(--pp-blue);">
       <div class="kl">異業 BCL 總人數</div>
-      <div class="kv" style="color:var(--pp-blue);">11,533</div>
-      <div class="kn">8 個合作管道</div>
+      <div class="kv" style="color:var(--pp-blue);">13,695</div>
+      <div class="kn">9 個合作管道</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pp-ss);">
       <div class="kl">SS+S 人數（現況）</div>
-      <div class="kv" style="color:var(--pp-ss);" id="pp-kpi-ss">4,645</div>
-      <div class="kn">佔整體 40.3%</div>
+      <div class="kv" style="color:var(--pp-ss);" id="pp-kpi-ss">6,000</div>
+      <div class="kn">佔整體 43.8%</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pp-teal);">
       <div class="kl">總購買人數</div>
-      <div class="kv" style="color:var(--pp-teal);">280</div>
-      <div class="kn">整體轉換率 2.4%</div>
+      <div class="kv" style="color:var(--pp-teal);">382</div>
+      <div class="kn">整體轉換率 2.8%</div>
     </div>
     <div class="kc" style="border-top:3px solid var(--pp-gold);">
       <div class="kl">總銷售金額</div>
-      <div class="kv" style="color:var(--pp-gold);">$1,412,943</div>
-      <div class="kn">均價 $5,010</div>
+      <div class="kv" style="color:var(--pp-gold);">$2,006,722</div>
+      <div class="kn">每位購買者平均 $5,253</div>
     </div>
   </div>
 
@@ -1153,14 +1206,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
     <div class="sc">
       <div class="sh" style="color:var(--pp-blue);"><span class="sh-dot"></span>重點 1 ── 蒐集成果</div>
       <div class="sl-row">
-        <div class="sl" id="pp-tbl-label">各管道蒐集概況（現況月齡，202605 基準）</div>
+        <div class="sl" id="pp-tbl-label">各管道蒐集概況（現況月齡，202609 基準）</div>
         <div class="tgl-wrap">
           <button class="tgl-btn active" id="pp-tgl-now" onclick="ppToggle('now')">現況</button>
           <button class="tgl-btn" id="pp-tgl-bind" onclick="ppToggle('bind')">綁定時</button>
         </div>
       </div>
       <div id="pp-collect-table"></div>
-      <div class="fn" id="pp-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）</div>
+      <div class="fn" id="pp-collect-fn">SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；比例分母為全部 BCL，月齡圖以有出生年月者計算（202609 基準）</div>
       <div class="sl-row" style="margin-top:12px;">
         <div class="sl" id="pp-chart-label">月齡分布</div>
       </div>
@@ -1172,7 +1225,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
       <div class="sh" style="color:var(--pp-teal);"><span class="sh-dot"></span>重點 2 ── 銷售成果</div>
       <div class="sl-row"><div class="sl">各管道銷售概況</div></div>
       <div id="pp-sale-table"></div>
-      <div class="fn-warn" id="pp-sale-fn">※ 銷售金額來源：銷貨狀況表；金額口徑為個人總消費加總</div>
+      <div class="fn-warn" id="pp-sale-fn">※ 銷售金額來源：8TDB 訂單資料（更新至 2026/09/29）；金額口徑為異業 BCL 客戶歷史訂單加總</div>
       <div class="sl-row" style="margin-top:12px;"><div class="sl" id="pp-prod-label">熱銷商品 TOP 5（依購買人數）</div>
         <div class="pp-tip-wrap" style="display:inline-block;position:relative;vertical-align:middle;"><span id="pp-tip-ch" class="pf-info" style="background:var(--pp-blue);margin-left:8px;flex-shrink:0;cursor:pointer;" onclick="ppTipToggle('pp-tip-ch-content')" title="點擊查看銷售管道占比">ℹ</span>
         <div class="pf-tip" id="pp-tip-ch-content">
@@ -1184,13 +1237,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
               <th style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.2);">占比</th>
             </tr></thead>
             <tbody>
-              <tr><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">Shopline WEB</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">294</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">45.8%</td></tr>
-              <tr style="background:rgba(46,99,136,.04);"><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">Shopline（團購）</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">186</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">29.0%</td></tr>
-              <tr><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">CRM</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">145</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">22.6%</td></tr>
-              <tr style="background:rgba(46,99,136,.04);"><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">Wabay</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">17</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">2.6%</td></tr>
+              <tr><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">SHOPLINE</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">372</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">72.2%</td></tr>
+              <tr style="background:rgba(46,99,136,.04);"><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">CRM</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">130</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">25.2%</td></tr>
+              <tr><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">WABAY</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">8</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">1.6%</td></tr>
+              <tr style="background:rgba(46,99,136,.04);"><td style="padding:4px 8px;border:1px solid rgba(46,99,136,.12);">BIBIAN</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">5</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(46,99,136,.12);">1.0%</td></tr>
             </tbody>
           </table>
-          <div style="font-size:10px;color:#888;margin-top:4px;">Shopline 合計 480 筆（74.8%）；以訂單筆數計算</div>
+          <div style="font-size:10px;color:#888;margin-top:4px;">共 515 筆訂單；以訂單筆數計算</div>
         </div></div>
       </div>
       <div id="pp-prod-table"></div>
@@ -1215,52 +1268,53 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
                 <th style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.15);">綁定後</th>
               </tr></thead>
               <tbody>
-                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">大樹</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">74筆 / $270,905</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">148筆 / $612,507</td></tr>
-                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">六甲村</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">3筆 / $6,829</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">18筆 / $67,918</td></tr>
-                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">永生</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">11筆 / $28,046</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">9筆 / $63,970</td></tr>
-                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">明治</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">3筆 / $4,529</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">1筆 / $4,299</td></tr>
-                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">揆眾婦幼展</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">44筆 / $173,946</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">19筆 / $77,970</td></tr>
-                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">樂飛發票</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">2筆 / $3,100</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">4筆 / $20,885</td></tr>
-                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">聯盟網</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">11筆 / $45,542</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">20筆 / $76,952</td></tr>
-                <tr style="font-weight:700;background:rgba(138,92,0,.08);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.15);">148筆 / $532,897</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.15);">219筆 / $924,501</td></tr>
+                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">大樹</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">83筆 / $279,870</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">187筆 / $771,089</td></tr>
+                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">六甲村</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">4筆 / $8,828</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">32筆 / $131,185</td></tr>
+                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">永生</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">12筆 / $34,714</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">30筆 / $136,836</td></tr>
+                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">明治</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">5筆 / $13,298</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">8筆 / $30,200</td></tr>
+                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">揆眾婦幼展</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">44筆 / $164,894</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">40筆 / $184,981</td></tr>
+                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">樂飛發票</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">3筆 / $3,399</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">8筆 / $29,312</td></tr>
+                <tr><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">聯盟網</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">13筆 / $48,290</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">32筆 / $111,516</td></tr>
+                <tr style="background:rgba(138,92,0,.03);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.1);">小村日和</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">9筆 / $36,744</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.1);">5筆 / $21,566</td></tr>
+                <tr style="font-weight:700;background:rgba(138,92,0,.08);"><td style="padding:4px 8px;border:1px solid rgba(138,92,0,.15);">合計</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.15);">173筆 / $590,037</td><td style="padding:4px 8px;text-align:right;border:1px solid rgba(138,92,0,.15);">342筆 / $1,416,685</td></tr>
               </tbody>
             </table>
-            <div style="font-size:10px;color:#888;margin-top:4px;">綁定後占整體消費 63.4%，除婦幼展外多數管道綁定後比例較高</div>
+            <div style="font-size:10px;color:#888;margin-top:4px;">綁定後占整體消費 70.6%；金額依各管道加總，跨管道客戶可能重複</div>
           </div></div>
         </div>
         <table style="border:none;border-radius:0;">
           <thead><tr><th>等級</th><th>人數</th><th>訂單數</th><th>金額</th><th>AOV</th></tr></thead>
           <tbody>
-            <tr><td>A 孕期（&lt;0M）</td><td>28</td><td>36</td><td>$80,814</td><td>$2,245</td></tr>
-            <tr class="rs1"><td>S（0～6M）</td><td>37</td><td>45</td><td>$201,309</td><td>$4,474</td></tr>
-            <tr class="rss"><td>★ SS（7～12M）</td><td>46</td><td>49</td><td>$208,628</td><td>$4,258</td></tr>
-            <tr class="rss"><td>★ S（13～24M）</td><td>100</td><td>116</td><td>$507,927</td><td>$4,379</td></tr>
-            <tr><td>AA（25～36M）</td><td>50</td><td>61</td><td>$254,075</td><td>$4,166</td></tr>
-            <tr><td>A（37～60M）</td><td>11</td><td>13</td><td>$46,308</td><td>$3,562</td></tr>
-            <tr><td>B（61M+）</td><td>41</td><td>47</td><td>$158,337</td><td>$3,369</td></tr>
+            <tr><td>A 孕期（&lt;0M）</td><td>32</td><td>41</td><td>$101,994</td><td>$2,488</td></tr>
+            <tr class="rs1"><td>S（0～6M）</td><td>46</td><td>58</td><td>$230,349</td><td>$3,972</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>71</td><td>81</td><td>$319,279</td><td>$3,942</td></tr>
+            <tr class="rss"><td>★ S（13～24M）</td><td>145</td><td>167</td><td>$746,017</td><td>$4,467</td></tr>
+            <tr><td>AA（25～36M）</td><td>61</td><td>80</td><td>$310,557</td><td>$3,882</td></tr>
+            <tr><td>A（37～60M）</td><td>18</td><td>21</td><td>$73,745</td><td>$3,512</td></tr>
+            <tr><td>B（61M+）</td><td>4</td><td>4</td><td>$16,537</td><td>$4,134</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:5px 9px 4px;">★ 0~24M 合計 67% 訂單；各欄人數可能跨月齡重複</div>
+        <div class="fn" style="padding:5px 9px 4px;">★ 0~24M 合計 59.4% 訂單；另有生日不明 63 筆，各欄人數可能跨月齡重複</div>
       </div>
       <div>
         <div class="pair-subhead" style="background:var(--pp-blue-bg);">
           <span style="font-size:12px;font-weight:600;color:var(--pp-blue);">現況月齡 × 消費</span>
-          <span style="font-size:11px;color:#666;margin-left:6px;">以 202603 為基準</span>
+          <span style="font-size:11px;color:#666;margin-left:6px;">以 202609 為基準</span>
         </div>
         <table style="border:none;border-radius:0;">
           <thead><tr><th>等級</th><th>人數</th><th>已購</th><th>轉換率</th><th>營收</th><th>營收%</th></tr></thead>
           <tbody>
-            <tr><td>A 孕期</td><td>1,171</td><td>5</td><td>0.4%</td><td>$12,364</td><td>0.9%</td></tr>
-            <tr class="rs1"><td>S（0～6M）</td><td>1,998</td><td>14</td><td>0.7%</td><td>$86,322</td><td>6.1%</td></tr>
-            <tr class="rss"><td>★ SS（7～12M）</td><td>987</td><td>24</td><td>2.4%</td><td>$158,849</td><td>11.2%</td></tr>
-            <tr class="rss"><td>★ S（13～24M）</td><td>1,643</td><td>84</td><td>5.1%</td><td>$412,329</td><td>29.2%</td></tr>
-            <tr><td>AA（25～36M）</td><td>889</td><td>67</td><td>7.5%</td><td>$382,766</td><td>27.1%</td></tr>
-            <tr><td>A（37～60M）</td><td>837</td><td>39</td><td>4.7%</td><td>$215,303</td><td>15.2%</td></tr>
-            <tr><td>B（61M+）</td><td>4,031</td><td>47</td><td>1.2%</td><td>$171,584</td><td>12.1%</td></tr>
-            <tr class="nil"><td style="color:#aaa;">無出生年月</td><td style="color:#aaa;">2,416</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td></tr>
+            <tr><td>A 孕期</td><td>823</td><td>1</td><td>0.1%</td><td>$6,668</td><td>0.3%</td></tr>
+            <tr class="rs1"><td>S（0～6M）</td><td>1,885</td><td>12</td><td>0.6%</td><td>$29,412</td><td>1.5%</td></tr>
+            <tr class="rss"><td>★ SS（7～12M）</td><td>1,769</td><td>31</td><td>1.8%</td><td>$159,136</td><td>7.9%</td></tr>
+            <tr class="rss"><td>★ S（13～24M）</td><td>2,314</td><td>107</td><td>4.6%</td><td>$626,203</td><td>31.2%</td></tr>
+            <tr><td>AA（25～36M）</td><td>1,191</td><td>95</td><td>8.0%</td><td>$488,736</td><td>24.4%</td></tr>
+            <tr><td>A（37～60M）</td><td>1,202</td><td>73</td><td>6.1%</td><td>$430,671</td><td>21.5%</td></tr>
+            <tr><td>B（61M+）</td><td>1,348</td><td>13</td><td>1.0%</td><td>$57,652</td><td>2.9%</td></tr>
+            <tr class="nil"><td style="color:#aaa;">無出生年月</td><td style="color:#aaa;">3,117</td><td style="color:#aaa;">50</td><td style="color:#aaa;">1.6%</td><td style="color:#aaa;">$208,244</td><td style="color:#aaa;">10.4%</td></tr>
           </tbody>
         </table>
-        <div class="fn" style="padding:5px 9px 4px;">★ SS+S(0~24M) 貢獻 45.6% 營收；S(13~24M) 和 AA(25~36M) 轉換率最高（5.1%、7.5%）<br>2,416 人缺乏出生年月資料，無法歸入月齡級距</div>
+        <div class="fn" style="padding:5px 9px 4px;">★ SS+S(0~24M) 貢獻 40.6% 營收；S(13~24M) 與 AA(25~36M) 是核心轉換區間<br>3,117 人缺乏出生年月資料，另列不併入月齡級距</div>
       </div>
     </div>
   </div>
@@ -1277,32 +1331,32 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
       <table style="font-size:12px;margin-bottom:12px;width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1px solid rgba(46,99,136,.18);">
         <thead><tr style="background:linear-gradient(135deg,#cdd9e8,#bfcedf);">
           <th style="padding:7px 10px;text-align:left;color:#1a3a52;font-size:12px;">指標</th>
-          <th style="padding:7px 10px;text-align:right;color:#1a3a52;font-size:12px;">購買者（280人）</th>
-          <th style="padding:7px 10px;text-align:right;color:#1a3a52;font-size:12px;">未購買者（11,253人）</th>
+          <th style="padding:7px 10px;text-align:right;color:#1a3a52;font-size:12px;">購買者（382人）</th>
+          <th style="padding:7px 10px;text-align:right;color:#1a3a52;font-size:12px;">未購買者（13,267人）</th>
         </tr></thead>
         <tbody>
-          <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(46,99,136,.1);">平均標籤數</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);font-weight:600;color:var(--pp-teal);">16.6</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);">8.8</td></tr>
-          <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(46,99,136,.1);">純新客比例</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);">68.6%</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);font-weight:600;">97.9%</td></tr>
-          <tr><td style="padding:6px 10px;">有訂閱史比例</td><td style="padding:6px 10px;text-align:right;font-weight:600;color:var(--pp-teal);">31.4%</td><td style="padding:6px 10px;text-align:right;">2.1%</td></tr>
+          <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(46,99,136,.1);">平均標籤數</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);font-weight:600;color:var(--pp-teal);">22.3</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);">10.5</td></tr>
+          <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(46,99,136,.1);">純新客比例</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);">92.1%</td><td style="padding:6px 10px;text-align:right;border-bottom:1px solid rgba(46,99,136,.1);font-weight:600;">98.0%</td></tr>
+          <tr><td style="padding:6px 10px;">有訂閱史比例</td><td style="padding:6px 10px;text-align:right;font-weight:600;color:var(--pp-teal);">7.9%</td><td style="padding:6px 10px;text-align:right;">2.0%</td></tr>
         </tbody>
       </table>
       <div style="font-size:11.5px;color:#444;background:#eaf1f7;border-radius:6px;padding:8px 11px;margin-bottom:12px;line-height:1.75;">
-        <b style="color:#1a3a52;">關鍵洞察：</b>標籤數是最強轉換預測指標，購買者是未購買者的 1.9 倍。有訂閱史的人只佔整體 2.1%，卻佔了購買者的 31.4%，代表原本就認識品牌的人轉換率遠高於純新客。
+        <b style="color:#1a3a52;">關鍵洞察：</b>購買者平均標籤數是未購買者的 2.1 倍；有訂閱史者在購買者中的占比也明顯較高，代表互動深度與既有品牌關係仍是重要轉換訊號。
       </div>
-      <div style="font-size:11.5px;font-weight:700;color:#1a3a52;margin-bottom:8px;">② 購買者特點（280人）</div>
+      <div style="font-size:11.5px;font-weight:700;color:#1a3a52;margin-bottom:8px;">② 購買者特點（382人）</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
         <div style="background:var(--pp-blue-bg);border-radius:7px;padding:10px 12px;font-size:12px;line-height:1.8;">
           <div style="font-size:11px;font-weight:700;color:var(--pp-blue);margin-bottom:5px;">購買時機</div>
-          <div>只在綁定後才購買：<b>161 人</b>（真正新增轉換）</div>
-          <div>只在綁定前就購買：<b>100 人</b></div>
-          <div>綁定前後都有消費：<b>19 人</b></div>
-          <div style="margin-top:5px;font-size:11px;color:var(--pp-warn);">→ 57% 在綁定後新增轉換，優於婦幼展（25%）</div>
+          <div>只在綁定後才購買：<b>243 人</b>（真正新增轉換）</div>
+          <div>只在綁定前就購買：<b>114 人</b></div>
+          <div>綁定前後都有消費：<b>25 人</b></div>
+          <div style="margin-top:5px;font-size:11px;color:var(--pp-warn);">→ 63.6% 的購買者是在綁定後才開始消費</div>
         </div>
         <div style="background:var(--pp-blue-bg);border-radius:7px;padding:10px 12px;font-size:12px;line-height:1.8;">
           <div style="font-size:11px;font-weight:700;color:var(--pp-blue);margin-bottom:5px;">各管道購買者均標籤</div>
-          <div>大樹：<b>15.6</b>　六甲村：<b>21.1</b></div>
-          <div>永生：<b>17.5</b>　揆眾婦幼展：<b>17.1</b></div>
-          <div>聯盟網：<b>19.9</b>　樂飛發票：<b>13.8</b></div>
+          <div>大樹：<b>20.1</b>　六甲村：<b>22.3</b></div>
+          <div>永生：<b>26.9</b>　揆眾婦幼展：<b>26.5</b></div>
+          <div>聯盟網：<b>23.9</b>　樂飛發票：<b>19.1</b></div>
           <div style="margin-top:5px;font-size:11px;color:var(--pp-teal);">→ 所有管道購買者均標籤均遠高於全體</div>
         </div>
       </div>
@@ -1313,8 +1367,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
   <div class="sc" style="margin-bottom:0;">
     <div class="sh" style="color:var(--pp-teal);"><span class="sh-dot"></span>FY26 異業合作策略</div>
     <div style="font-size:13px;color:#333;line-height:1.85;padding:13px 15px;background:linear-gradient(135deg,#eaf5f3,#f4fbf9);border-radius:8px;margin-bottom:12px;border:1px solid rgba(46,125,110,.15);">
-      <b style="color:var(--pp-teal-d);">【蒐集成果與品質差異】</b>8 個管道合計 11,533 人，各管道各有優缺點：<b>大樹</b>人數最多、轉換率最高（5.5%），但孕期佔比僅 0.6%，蒐集到的多為已出生嬰幼兒家長；<b>六甲村、永生、明治</b>孕期佔比極高（65~80%），精準鎖定孕期族群，但距消費仍遠，需要更長期的互動培育；<b>揆眾婦幼展</b>SS+S 佔比最佳（51%），現場直接觸及目標族群，蒐集品質高但規模有限；<b>樂飛發票</b>人數多但精準度低、月齡偏高，2026/05 起優化計費規則後持續觀察。<br><br>
-      <b style="color:var(--pp-teal-d);">【銷售 × 月齡分析】</b>消費集中在 SS(7~12M) 和 S(13~24M)，合計貢獻 50% 訂單。值得注意的是，整體綁定後消費比例達 63.4%（219筆 / $924,501），優於婦幼展（31%），大樹、六甲村、樂飛發票的綁定後比例更高達 69~91%，代表多數異業管道的名單在綁定後的轉換動能較強。
+      <b style="color:var(--pp-teal-d);">【蒐集成果與品質差異】</b>9 個管道合計 <b>13,695 人</b>，現況 SS+S 為 <b>6,000 人（43.8%）</b>。規模以樂飛發票與大樹最大；六甲村、永生、明治仍帶入大量孕期與低月齡家庭；揆眾婦幼展現況 SS+S 為 1,294 人，是兼具規模與目標月齡品質的來源；小村日和雖規模較小，但 0～24M 占比高，後續可持續觀察。<br><br>
+      <b style="color:var(--pp-teal-d);">【銷售 × 月齡分析】</b>目前共有 <b>382 位購買者、515 筆訂單、總額 $2,006,722</b>。S(13~24M) 與 AA(25~36M) 是主要轉換區間；跨管道加總的綁定後消費金額占 70.6%。另有 243 位購買者只在綁定後才開始消費，顯示異業名單後續培育具有實際轉換價值。
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
       <div style="background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:13px 14px;box-shadow:0 2px 6px rgba(46,125,110,.07);">
@@ -1322,21 +1376,21 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleCampai
           <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--pp-teal-bg);font-size:11px;font-weight:700;">01</span>
           持續觀察樂飛發票優化成效
         </div>
-        <div style="font-size:12px;color:#444;line-height:1.8;">樂飛發票過往最大問題是精準度不佳，高月齡用戶大量納入 BCL，導致有效率偏低。2026 年 5 月起改為 0~3 歲才計費，對方也承諾持續優化。未來應持續追蹤有效率與月齡分布的改善狀況，確認調整方向是否有效。</div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">樂飛發票目前累計 3,155 人，但現況 SS+S 為 702 人（22.3%）。規模成長明顯，精準度仍低於整體 43.8%，應持續追蹤 2026 年 5 月計費條件調整後的新名單品質。</div>
       </div>
       <div style="background:#fff;border:1px solid rgba(46,125,110,.18);border-radius:10px;padding:13px 14px;box-shadow:0 2px 6px rgba(46,125,110,.07);">
         <div style="font-size:13px;font-weight:700;color:var(--pp-teal);margin-bottom:6px;display:flex;align-items:center;gap:7px;">
           <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--pp-teal-bg);font-size:11px;font-weight:700;">02</span>
           孕期管道的綁定後溝通銜接
         </div>
-        <div style="font-size:12px;color:#444;line-height:1.8;">明治（80%）、六甲村（69%）、永生（66%）孕期名單比例極高，但轉換率均低於 2%。需針對孕期客戶設計專屬溝通，在孩子出生後 0~6M 黃金期主動銜接，避免名單冷卻。</div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">六甲村、永生、明治在綁定當下仍以孕期客戶為主；隨時間推進，現況已大量進入 0～24M。建議依預產期與孩子月齡設計分段溝通，把早期名單銜接到適齡商品。</div>
       </div>
       <div style="background:#fff;border:1px solid rgba(46,99,136,.18);border-radius:10px;padding:13px 14px;box-shadow:0 2px 6px rgba(46,99,136,.07);">
         <div style="font-size:13px;font-weight:700;color:var(--pp-blue);margin-bottom:6px;display:flex;align-items:center;gap:7px;">
           <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--pp-blue-bg);font-size:11px;font-weight:700;color:var(--pp-blue);">03</span>
           提升標籤數，強化互動深度
         </div>
-        <div style="font-size:12px;color:#444;line-height:1.8;">購買者平均標籤數 16.5，未購買者 9.0，差距超過 80%。應針對各管道名單規劃系統性互動，持續累積標籤，讓名單從冷清到活躍，自然提升整體 2.4% 的轉換率。</div>
+        <div style="font-size:12px;color:#444;line-height:1.8;">購買者平均標籤數 22.3，未購買者 10.5，前者約為 2.1 倍。應持續累積互動標籤並依月齡分眾，觀察整體 2.8% 轉換率能否進一步提升。</div>
       </div>
     </div>
   </div>
@@ -2756,6 +2810,31 @@ function pwToggleSelfOnlineActivity(activity) {
   pwDrawTrendTable();
 }
 
+var PW_FRIEND_DAILY_W26 = [
+  {date:'9/21',friends:132,bcl:100,same:82,rate:'62.1%',sources:[['FB廣告',36,31,'86.1%',31,'86.1%'],['Meta廣告',32,26,'81.3%',27,'84.4%'],['官網自然',21,17,'81.0%',20,'95.2%'],['IG廣告',17,9,'52.9%',9,'52.9%'],['樂飛',7,4,'57.1%',4,'57.1%'],['EDM',3,3,'100%',3,'100%']]},
+  {date:'9/22',friends:131,bcl:72,same:56,rate:'42.7%',sources:[['Meta廣告',36,22,'61.1%',24,'66.7%'],['FB廣告',28,16,'57.1%',17,'60.7%'],['IG廣告',18,6,'33.3%',7,'38.9%'],['樂飛',14,7,'50.0%',7,'50.0%'],['官網自然',11,6,'54.5%',8,'72.7%'],['明治',2,2,'100%',2,'100%'],['EDM',1,1,'100%',1,'100%']]},
+  {date:'9/23',friends:121,bcl:103,same:75,rate:'62.0%',sources:[['Meta廣告',33,24,'72.7%',24,'72.7%'],['FB廣告',27,21,'77.8%',21,'77.8%'],['官網自然',25,21,'84.0%',22,'88.0%'],['IG廣告',14,10,'71.4%',10,'71.4%'],['樂飛',9,5,'55.6%',5,'55.6%'],['六甲村',6,5,'83.3%',5,'83.3%'],['EDM',5,3,'60.0%',4,'80.0%'],['明治',2,2,'100%',2,'100%']]},
+  {date:'9/24',friends:93,bcl:57,same:44,rate:'47.3%',sources:[['Meta廣告',28,16,'57.1%',16,'57.1%'],['FB廣告',17,10,'58.8%',12,'70.6%'],['IG廣告',16,11,'68.8%',11,'68.8%'],['官網自然',8,7,'87.5%',7,'87.5%'],['樂飛',4,1,'25.0%',1,'25.0%'],['六甲村',2,2,'100%',2,'100%'],['EDM',1,0,'0%',0,'0%'],['明治',1,1,'100%',1,'100%']]},
+  {date:'9/25',friends:102,bcl:64,same:56,rate:'54.9%',sources:[['Meta廣告',24,14,'58.3%',14,'58.3%'],['樂飛',17,7,'41.2%',7,'41.2%'],['FB廣告',16,12,'75.0%',12,'75.0%'],['IG廣告',14,8,'57.1%',8,'57.1%'],['官網自然',14,10,'71.4%',11,'78.6%'],['明治',8,8,'100%',8,'100%'],['EDM',1,1,'100%',1,'100%'],['統一時代活動',1,1,'100%',1,'100%']]},
+  {date:'9/26',friends:96,bcl:58,same:43,rate:'44.8%',alert:true,sources:[['Meta廣告',32,17,'53.1%',18,'56.3%'],['IG廣告',22,13,'59.1%',14,'63.6%'],['官網自然',11,8,'72.7%',10,'90.9%'],['樂飛',10,7,'70.0%',7,'70.0%'],['六甲村',7,0,'0%',1,'14.3%'],['FB廣告',6,4,'66.7%',4,'66.7%']]},
+  {date:'9/27',friends:90,bcl:59,same:51,rate:'56.7%',alert:true,sources:[['Meta廣告',28,21,'75.0%',22,'78.6%'],['IG廣告',22,13,'59.1%',13,'59.1%'],['FB廣告',20,14,'70.0%',15,'75.0%'],['官網自然',13,11,'84.6%',12,'92.3%'],['樂飛',10,5,'50.0%',5,'50.0%']]}
+];
+
+function pwFriendDetailsW26Markup() {
+  var overviewRows = PW_FRIEND_DAILY_W26.map(function(d){
+    return '<tr'+(d.alert?' class="pw-friend-alert-row"':'')+'><td>'+d.date+'</td><td>'+d.friends+'</td><td>'+d.bcl+'</td><td>'+d.same+'</td><td><b>'+d.rate+'</b></td></tr>';
+  }).join('');
+  var dayBlocks = PW_FRIEND_DAILY_W26.map(function(d){
+    var sourceRows = d.sources.map(function(s){
+      var sixjia = s[0]==='六甲村' && d.date==='9/26' ? ' class="pw-source-alert"' : '';
+      return '<tr'+sixjia+'><td>'+s[0]+'</td><td>'+s[1]+'</td><td>'+s[2]+'</td><td>'+s[3]+'</td><td>'+s[4]+'</td><td>'+s[5]+'</td></tr>';
+    }).join('');
+    var sixjiaNote = d.date==='9/26' ? '<p class="pw-source-note"><b>六甲村9/27活動：</b>8TDB的SUPER8日期口徑記在9/26；可辨識7位好友，當日綁定0位，截至9/29共1位綁定，最終綁定率14.3%。</p>' : '';
+    return '<details class="pw-friend-day"'+(d.date==='9/26'?' open':'')+'><summary><b>'+d.date+'</b><span>好友 '+d.friends+'</span><span>同批當日綁定 '+d.same+'</span><span class="'+(d.alert?'warn':'')+'">'+d.rate+'</span></summary><div class="pw-friend-day-body"><table><thead><tr><th>管道</th><th>歸因好友</th><th>同日綁定</th><th>同日率</th><th>截至9/29綁定</th><th>最終率</th></tr></thead><tbody>'+sourceRows+'</tbody></table>'+sixjiaNote+'</div></details>';
+  }).join('');
+  return '<details class="pw-friend-info pw-friend-table-info"><summary aria-label="查看9/21至9/27 LINE好友來源與每日綁定明細">i</summary><div class="pw-friend-popover"><div class="pw-friend-popover-head"><h4>9/21–9/27 LINE好友、管道與綁定明細</h4><button type="button" class="pw-friend-close" aria-label="關閉LINE好友與綁定明細" onclick="this.closest(\'details\').removeAttribute(\'open\')">關閉 ×</button></div><p>上表看每日整體；下方展開日期可看各管道的歸因好友、同日綁定與截至9/29的最終綁定。單日綁定率僅供觀察，不能單獨判定系統是否異常。</p><table class="pw-friend-overview"><thead><tr><th>日期</th><th>新好友</th><th>每日總BCL</th><th>同批當日綁定</th><th>同日率</th></tr></thead><tbody>'+overviewRows+'<tr class="tot"><td>合計</td><td>765</td><td>513</td><td>407</td><td>53.2%</td></tr></tbody></table><div class="pw-friend-conclusion"><b>9/26、9/27曾出現短時間簡訊異常：</b>異常屬於短時間故障，當天仍有部分客戶綁定成功，故影響範圍較小。9/22同日綁定率也只有42.7%，但未回報簡訊異常，因此不能只靠單日綁定率判定系統狀態。</div><h5>逐日管道歸因</h5>'+dayBlocks+'<p class="pw-source-caveat"><b>口徑提醒：</b>8TDB沒有獨立的好友加入來源欄位，這裡用同期點擊標籤歸因；同一好友可能有多個管道標籤，因此各管道不可加總回當日好友總數。SUPER8貼標日期為資料匯入前一日，活動日可能與表內日期相差一天。</p></div></details>';
+}
+
 /* ── 週次切換 ── */
 function pwSelectWeek(wk) {
   _pwCurrentWeek = wk;
@@ -2783,7 +2862,7 @@ function pwSelectWeek(wk) {
   var _friendVal = (_friendIdx>=0 && PW_TREND_DATA.friend && PW_TREND_DATA.friend[_friendIdx]!=null) ? PW_TREND_DATA.friend[_friendIdx] : null;
   var _friendPrevIdx = _friendIdx-1;
   var _friendPrevVal = (_friendPrevIdx>=0 && PW_TREND_DATA.friend && PW_TREND_DATA.friend[_friendPrevIdx]!=null) ? PW_TREND_DATA.friend[_friendPrevIdx] : null;
-  var friendNote = _friendVal!=null ? '<div style="font-size:10px;color:#06C755;margin-top:2px;">🟢 週新增好友數 '+_friendVal.toLocaleString()+' 人'+(_friendPrevVal!=null?'　前週 '+_friendPrevVal.toLocaleString():'')+'</div>' : '<div style="font-size:10px;color:#b45309;margin-top:2px;">LINE 週新增好友：資料更新中（目前僅到 9/21）</div>';
+  var friendNote = _friendVal!=null ? '<div class="friend-note-line" style="font-size:10px;margin-top:2px;">🟢 週新增好友數 '+_friendVal.toLocaleString()+' 人'+(_friendPrevVal!=null?'　前週 '+_friendPrevVal.toLocaleString():'')+'</div>' : '<div style="font-size:10px;color:#b45309;margin-top:2px;">LINE 週新增好友：資料更新中（目前僅到 9/21）</div>';
   if (kpiRow) kpiRow.innerHTML =
     '<div class="kc" style="border-top:3px solid var(--pw-blue);"><div class="kl">週新增綁定</div><div class="kv" style="color:var(--pw-blue);">'+w.total+'</div><div class="kn">'+diffStr+'　'+(prev?'前週 '+prev.total:'')+'</div>'+friendNote+'</div>'+
     '<div class="kc" style="border-top:3px solid var(--pw-purple);"><div class="kl">每日平均</div><div class="kv" style="color:var(--pw-purple);">'+avg+'</div><div class="kn">'+avgStr+(prevAvg?'　前週 '+prevAvg:'')+'</div></div>'+
@@ -3092,6 +3171,9 @@ function pwDrawTrendTable() {
       var td = tr.insertCell();
       var isNull = (v === null || v === undefined);
       td.textContent = isNull ? '—' : ((v === 0 || v === '0.0') ? '○' : v);
+      if (rk.key === 'friend' && i === 77) {
+        td.insertAdjacentHTML('beforeend', pwFriendDetailsW26Markup());
+      }
       var zeroCss = (!isNull && (v === 0 || v === '0.0')) ? 'color:#ccc;' : (isNull ? 'color:#ddd;' : '');
       td.style.cssText = 'padding:'+pH+';text-align:center;'
         + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.08)':rk.bg==='#f0f7ff'?'rgba(29,78,216,.08)':rk.bg==='#f0fdf4'?'rgba(6,199,85,.10)':rk.bg==='#f0fdfa'?'rgba(13,148,136,.10)':'rgba(37,99,235,.06)'):rk.bg)+';'
@@ -4615,7 +4697,17 @@ const PP_GRADES=['A孕期','S(0~6M)','SS(7~12M)','S(13~24M)','AA(25~36M)','A(37~
 const PP_COLORS=['rgba(140,90,180,.8)','rgba(244,150,80,.75)','rgba(185,32,32,.9)','rgba(185,32,32,.7)','rgba(46,99,136,.75)','rgba(46,125,110,.65)','rgba(175,180,188,.65)'];
 
 const PP_DATA={
-  all:{label:'整體',n:11686,buyers:282,amt:1412943,avgAmt:5010,avgTagsAll:9.0,avgTagsBuy:16.4,cur:[951,2042,1100,1720,903,895,4075],bind:[3563,871,976,1120,653,679,3824],top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組'],top5n:[51,51,45,44,38]},'大樹':{label:'大樹',n:3052,buyers:171,amt:886053,avgAmt:5182,avgTagsAll:8.1,avgTagsBuy:15.7,cur:[0,1,19,534,372,331,1795],bind:[18,288,264,373,229,159,1721],top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組'],top5n:[38,34,27,25,22]},'六甲村':{label:'六甲村',n:1199,buyers:18,amt:74747,avgAmt:4153,avgTagsAll:10.0,avgTagsBuy:21.1,cur:[116,446,212,119,13,24,269],bind:[832,48,11,13,18,20,257],top5:['巧虎雙語點讀圖鑑','寶寶生活好習慣套組','巧虎手偶','語彙表達-智育學習套組','和巧虎一起說英語 PLUS⁺ 初階版'],top5n:[11,5,2,2,2]},'永生':{label:'永生',n:1737,buyers:13,amt:59514,avgAmt:4578,avgTagsAll:9.4,avgTagsBuy:17.0,cur:[70,646,392,98,16,19,496],bind:[1143,46,17,13,11,15,492],top5:['寶寶生活好習慣套組','語彙表達．智育學習套組','Mirafeel體驗包','好情緒EQX品格人際套組','巧虎鋁箔包防壓盒'],top5n:[4,3,2,2,2]},'明治':{label:'明治',n:909,buyers:4,amt:13328,avgAmt:3332,avgTagsAll:10.6,avgTagsBuy:10.8,cur:[374,414,27,19,1,6,68],bind:[728,69,33,4,1,6,68],top5:['Mirafeel體驗包','寶寶生活好習慣套組','巧虎好朋友度假小屋','巧虎注音拼音學習套組'],top5n:[1,1,1,1]},'芳茲':{label:'芳茲',n:46,buyers:0,amt:0,avgAmt:0,avgTagsAll:7.3,avgTagsBuy:0,cur:[36,5,0,1,0,1,3],bind:[41,0,1,0,0,1,3],top5:[],top5n:[]},'揆眾婦幼展':{label:'揆眾婦幼展',n:1897,buyers:46,amt:237023,avgAmt:5153,avgTagsAll:10.8,avgTagsBuy:17.5,cur:[254,379,255,579,195,117,118],bind:[605,183,418,365,144,78,104],top5:['巧虎雙語點讀圖鑑','和巧虎一起說英語 PLUS⁺ 初階版','巧虎手偶互動遊戲組','好情緒EQX品格人際套組','寶寶生活好習慣套組'],top5n:[11,9,9,9,8]},'樂飛發票':{label:'樂飛發票',n:2490,buyers:4,amt:12887,avgAmt:3222,avgTagsAll:7.4,avgTagsBuy:15.2,cur:[101,136,129,257,232,340,1295],bind:[180,197,142,255,198,367,1151],top5:['Mirafeel體驗包','和巧虎一起學-注音拼音套組','和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','巧虎手偶'],top5n:[1,1,1,1,1]},'聯盟網':{label:'聯盟網',n:314,buyers:26,amt:129391,avgAmt:4977,avgTagsAll:13.3,avgTagsBuy:20.0,cur:[1,18,36,114,68,48,29],bind:[16,39,65,88,50,31,25],top5:['寶寶生活好習慣套組','好情緒EQX品格人際套組','巧虎雙語點讀圖鑑','巧虎手偶互動遊戲組','和巧虎一起說英語 PLUS⁺ 初階版'],top5n:[7,6,4,4,3]},'小村日和':{label:'小村日和',n:42,buyers:0,amt:0,avgAmt:0,avgTagsAll:7.2,avgTagsBuy:0,cur:[0,1,31,4,1,3,2],bind:[0,1,25,9,2,2,3],top5:[],top5n:[]},};
+  all:{label:'整體',n:13695,buyers:382,amt:2006722,avgAmt:5253,avgTagsAll:10.9,avgTagsBuy:22.3,cur:[824,1891,1780,2329,1193,1207,1351],bind:[4621,1071,1198,1245,726,755,959],top5:['巧虎雙語點讀圖鑑','寶寶生活好習慣套組','和巧虎一起說英語 PLUS⁺ 初階版','好情緒EQ×品格人際套組','語彙表達‧智育學習套組'],top5n:[92,90,63,58,58]},
+  '大樹':{label:'大樹',n:3063,buyers:194,amt:1050959,avgAmt:5417,avgTagsAll:9.0,avgTagsBuy:20.1,cur:[0,2,1,339,448,460,210],bind:[21,289,270,384,230,162,104],top5:['和巧虎一起說英語 PLUS⁺ 初階版','寶寶生活好習慣套組','好情緒EQ×品格人際套組','巧虎雙語點讀圖鑑','語彙表達‧智育學習套組'],top5n:[41,40,32,30,28]},
+  '六甲村':{label:'六甲村',n:1441,buyers:31,amt:140013,avgAmt:4517,avgTagsAll:12.3,avgTagsBuy:22.3,cur:[190,254,401,292,11,29,39],bind:[1070,58,11,13,19,19,26],top5:['巧虎雙語點讀圖鑑','寶寶生活好習慣套組','巧虎手偶','和巧虎一起說英語 PLUS⁺ 初階版','語彙表達‧智育學習套組'],top5n:[19,11,4,3,3]},
+  '永生':{label:'永生',n:1945,buyers:28,amt:171550,avgAmt:6127,avgTagsAll:11.7,avgTagsBuy:26.9,cur:[132,208,691,382,16,22,39],bind:[1354,48,18,13,11,16,30],top5:['寶寶生活好習慣套組','巧虎雙語點讀圖鑑','巧虎手偶','語彙表達‧智育學習套組','Mirafeel體驗包'],top5n:[10,10,7,5,4]},
+  '明治':{label:'明治',n:1517,buyers:11,amt:43498,avgAmt:3954,avgTagsAll:13.0,avgTagsBuy:27.7,cur:[373,781,224,45,4,4,9],bind:[1217,161,43,4,2,7,6],top5:['巧虎雙語點讀圖鑑','Mirafeel體驗包','寶寶生活好習慣套組','好情緒EQ×品格人際套組','ENGLISH TOGETHER'],top5n:[4,3,3,2,1]},
+  '芳茲':{label:'芳茲',n:46,buyers:0,amt:0,avgAmt:0,avgTagsAll:11.5,avgTagsBuy:0,cur:[4,37,0,1,0,1,0],bind:[41,0,1,0,0,1,0],top5:[],top5n:[]},
+  '揆眾婦幼展':{label:'揆眾婦幼展',n:1918,buyers:65,amt:349875,avgAmt:5383,avgTagsAll:13.6,avgTagsBuy:26.5,cur:[11,393,283,618,317,166,62],bind:[613,184,426,368,145,78,36],top5:['巧虎雙語點讀圖鑑','語彙表達‧智育學習套組','寶寶生活好習慣套組','和巧虎一起說英語 PLUS⁺ 初階版','好情緒EQ×品格人際套組'],top5n:[20,13,12,11,11]},
+  '樂飛發票':{label:'樂飛發票',n:3155,buyers:7,amt:32711,avgAmt:4673,avgTagsAll:8.2,avgTagsBuy:19.1,cur:[114,205,158,339,294,431,954],bind:[290,281,184,335,248,425,732],top5:['巧虎手偶','Mirafeel體驗包','寶寶生活好習慣套組','Mirafeel整箱 M','和巧虎一起學-注音拼音套組'],top5n:[3,2,2,1,1]},
+  '聯盟網':{label:'聯盟網',n:303,buyers:35,amt:159806,avgAmt:4566,avgTagsAll:15.7,avgTagsBuy:23.9,cur:[0,2,16,97,80,71,21],bind:[15,38,61,83,50,31,9],top5:['寶寶生活好習慣套組','巧虎雙語點讀圖鑑','好情緒EQ×品格人際套組','語彙表達‧智育學習套組','巧虎手偶'],top5n:[9,7,6,6,4]},
+  '小村日和':{label:'小村日和',n:307,buyers:11,amt:58310,avgAmt:5301,avgTagsAll:11.5,avgTagsBuy:14.8,cur:[0,9,6,216,23,23,17],bind:[0,12,184,45,21,16,16],top5:['寶寶生活好習慣套組','和巧虎一起說英語 PLUS⁺ 初階版','好情緒EQ×品格人際套組','點讀巧比思考力遊戲組','和巧虎一起學數學套組'],top5n:[3,2,2,2,1]},
+};
 
 let ppCurCh='all',ppTglMode='now',ppChart=null;
 
@@ -4629,8 +4721,8 @@ function ppToggle(mode){
   ppTglMode=mode;
   document.getElementById('pp-tgl-now').classList.toggle('active',mode==='now');
   document.getElementById('pp-tgl-bind').classList.toggle('active',mode==='bind');
-  document.getElementById('pp-tbl-label').textContent=mode==='now'?'各管道蒐集概況（現況月齡，202605 基準）':'各管道蒐集概況（綁定時月齡）';
-  document.getElementById('pp-collect-fn').textContent=mode==='now'?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；均為現況月齡（202605 基準）':'綁定時月齡＝客戶加入 LINE 當下的孩子月齡';
+  document.getElementById('pp-tbl-label').textContent=mode==='now'?'各管道蒐集概況（現況月齡，202609 基準）':'各管道蒐集概況（綁定時月齡）';
+  document.getElementById('pp-collect-fn').textContent=mode==='now'?'SS+S ＝ S(0~6M)＋SS(7~12M)＋S(13~24M)；比例分母為全部 BCL，月齡圖以有出生年月者計算（202609 基準）':'綁定時月齡＝客戶完成 BCL 綁定當月的孩子月齡；比例分母為全部 BCL';
   ppRenderCollect();ppRenderChart();
 }
 function ppRender(){ppRenderCollect();ppRenderSale();ppRenderProd();ppRenderChart();}
@@ -4647,8 +4739,9 @@ function ppRenderCollect(){
     });
     const totDist=CHNLS.reduce((acc,ch)=>{const r=PP_DATA[ch];const dist=ppTglMode==='now'?r.cur:r.bind;dist.forEach((v,i)=>{acc[i]=(acc[i]||0)+v;});return acc;},[]);
     const tSss=totDist[1]+totDist[2]+totDist[3],tPreg=totDist[0];
-    const tTags=(CHNLS.reduce((s,ch)=>s+PP_DATA[ch].avgTagsAll*PP_DATA[ch].n,0)/11533).toFixed(1);
-    rows+=`<tr class="tot"><td>合計</td><td>11,533</td><td class="red">${tSss.toLocaleString()}</td><td class="red">${(tSss/11533*100).toFixed(1)}%</td><td>${tPreg.toLocaleString()}</td><td>${(tPreg/11533*100).toFixed(1)}%</td><td>${tTags}</td></tr>`;
+    const totalN=PP_DATA.all.n;
+    const tTags=PP_DATA.all.avgTagsAll.toFixed(1);
+    rows+=`<tr class="tot"><td>合計</td><td>${totalN.toLocaleString()}</td><td class="red">${tSss.toLocaleString()}</td><td class="red">${(tSss/totalN*100).toFixed(1)}%</td><td>${tPreg.toLocaleString()}</td><td>${(tPreg/totalN*100).toFixed(1)}%</td><td>${tTags}</td></tr>`;
   } else {
     const d=PP_DATA[ppCurCh];const dist=ppTglMode==='now'?d.cur:d.bind;
     const sss=dist[1]+dist[2]+dist[3],preg=dist[0];
@@ -4658,14 +4751,15 @@ function ppRenderCollect(){
 }
 
 function ppRenderSale(){
-  const CHNLS=['大樹','六甲村','永生','明治','芳茲','揆眾婦幼展','樂飛發票','聯盟網'];
+  const CHNLS=['大樹','六甲村','永生','明治','芳茲','揆眾婦幼展','樂飛發票','聯盟網','小村日和'];
   let rows='';
   if(ppCurCh==='all'){
     CHNLS.forEach(ch=>{
       const r=PP_DATA[ch];
       rows+=`<tr><td>${ch}</td><td>${r.buyers}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+r.avgAmt.toLocaleString():'—'}</td></tr>`;
     });
-    rows+=`<tr class="tot"><td>合計</td><td>282</td><td>2.4%</td><td>$1,412,943</td><td>$5,010</td></tr>`;
+    const a=PP_DATA.all;
+    rows+=`<tr class="tot"><td>合計</td><td>${a.buyers}</td><td>${(a.buyers/a.n*100).toFixed(1)}%</td><td>$${a.amt.toLocaleString()}</td><td>$${a.avgAmt.toLocaleString()}</td></tr>`;
   } else {
     const r=PP_DATA[ppCurCh];
     rows=`<tr class="tot"><td>${r.label}</td><td>${r.buyers}</td><td>${(r.buyers/r.n*100).toFixed(1)}%</td><td>$${r.amt.toLocaleString()}</td><td>${r.buyers>0?'$'+r.avgAmt.toLocaleString():'—'}</td></tr>`;
@@ -5230,6 +5324,36 @@ const META_IMGS={
 #pw-page .kl{font-size:11px;color:#666;margin-bottom:2px;}
 #pw-page .kv{font-size:24px;font-weight:700;line-height:1.2;}
 #pw-page .kn{font-size:11px;color:#888;margin-top:3px;}
+#pw-page .friend-note-line{display:flex;align-items:center;gap:5px;flex-wrap:wrap;color:#06C755;}
+#pw-page .pw-friend-info{position:relative;display:inline-block;vertical-align:middle;}
+#pw-page .pw-friend-info>summary{list-style:none;width:17px;height:17px;border-radius:50%;border:1px solid #16a34a;background:#f0fdf4;color:#15803d;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;line-height:1;cursor:pointer;user-select:none;}
+#pw-page .pw-friend-info>summary::-webkit-details-marker{display:none;}
+#pw-page .pw-friend-table-info{margin-left:5px;}
+#pw-page .pw-friend-popover{position:fixed;z-index:800;left:50%;top:11vh;transform:translateX(-50%);width:min(820px,calc(100vw - 44px));max-height:76vh;overflow:auto;background:#fff;border:1px solid #bbf7d0;border-radius:12px;box-shadow:0 20px 52px rgba(20,83,45,.25);padding:15px;color:#1f2937;text-align:left;white-space:normal;}
+#pw-page .pw-friend-popover-head{display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:-15px;z-index:2;margin:-15px -15px 6px;padding:13px 15px 9px;background:#fff;border-bottom:1px solid #dcfce7;}
+#pw-page .pw-friend-popover h4{font-size:14px;color:#166534;margin:0 0 5px;}
+#pw-page .pw-friend-close{border:1px solid #d1d5db;border-radius:7px;background:#fff;color:#4b5563;padding:5px 9px;font-family:inherit;font-size:11px;font-weight:700;line-height:1.2;cursor:pointer;white-space:nowrap;}
+#pw-page .pw-friend-close:hover{background:#f3f4f6;color:#111827;}
+#pw-page .pw-friend-popover h5{font-size:12px;color:#166534;margin:12px 0 6px;}
+#pw-page .pw-friend-popover p{font-size:11.5px;line-height:1.65;color:#4b5563;margin:4px 0 8px;}
+#pw-page .pw-friend-popover table{font-size:11px;margin:7px 0;}
+#pw-page .pw-friend-popover th,#pw-page .pw-friend-popover td{padding:5px 6px;text-align:right;white-space:nowrap;}
+#pw-page .pw-friend-popover th:first-child,#pw-page .pw-friend-popover td:first-child{text-align:left;}
+#pw-page .pw-friend-alert-row td{background:#fff7ed!important;}
+#pw-page .pw-friend-conclusion{margin:9px 0;padding:8px 10px;border-left:3px solid #f59e0b;background:#fff7ed;color:#7c4a03;border-radius:0 7px 7px 0;font-size:11.5px;line-height:1.6;}
+#pw-page .pw-friend-day{border:1px solid #d1fae5;border-radius:8px;margin:6px 0;overflow:hidden;background:#fff;}
+#pw-page .pw-friend-day>summary{display:grid;grid-template-columns:72px 1fr 1.35fr 64px;gap:8px;align-items:center;list-style:none;cursor:pointer;padding:7px 9px;background:#f0fdf4;color:#166534;font-size:11px;}
+#pw-page .pw-friend-day>summary::-webkit-details-marker{display:none;}
+#pw-page .pw-friend-day>summary:before{content:'▸';margin-right:4px;position:absolute;}
+#pw-page .pw-friend-day[open]>summary:before{content:'▾';}
+#pw-page .pw-friend-day>summary b{padding-left:13px;}
+#pw-page .pw-friend-day>summary .warn{color:#b45309;font-weight:800;}
+#pw-page .pw-friend-day-body{padding:3px 8px 8px;overflow-x:auto;}
+#pw-page .pw-friend-day-body table{min-width:600px;}
+#pw-page .pw-source-alert td{background:#fff1f2!important;color:#9f1239!important;font-weight:700;}
+#pw-page .pw-source-note{background:#fff7ed;border-radius:7px;padding:7px 9px!important;color:#7c4a03!important;}
+#pw-page .pw-source-caveat{border-top:1px dashed #a7f3d0;padding-top:8px!important;margin-top:11px!important;}
+@media(max-width:700px){#pw-page .pw-friend-popover{left:12px;right:12px;top:72px;transform:none;width:auto;max-height:calc(100vh - 92px)}#pw-page .pw-friend-day>summary{grid-template-columns:56px 1fr 1fr 52px;gap:4px;font-size:10px}}
 #pw-page .up{color:var(--pw-green);font-weight:600;}
 #pw-page .dn{color:var(--pw-red);font-weight:600;}
 #pw-page .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
