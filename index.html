@@ -199,7 +199,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .hstack-seg span{font-size:9px;font-weight:500;color:rgba(255,255,255,.9);white-space:nowrap;padding:0 4px;}
 .hstack-total{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);width:46px;flex-shrink:0;}
 
-/* 9/21–9/27 完整週廣告成效 */
+/* 9/28–10/4 完整週廣告成效 */
 .campaign-alert-btn{position:fixed;right:88px;bottom:32px;z-index:1002;border:0;border-radius:999px;background:linear-gradient(135deg,#b91c1c,#e24a3b);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 7px 22px rgba(185,28,28,.3);cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.01em;transition:transform .18s,box-shadow .18s;}
 .campaign-alert-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(185,28,28,.36);}
 .campaign-alert-btn:focus-visible,.campaign-alert-close:focus-visible,.campaign-alert-fullscreen:focus-visible,.campaign-compare-toggle:focus-visible{outline:3px solid rgba(245,158,11,.45);outline-offset:2px;}
@@ -298,7 +298,60 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .campaign-next-step li+li{margin-top:5px;}
 .campaign-next-step-wide{margin-top:11px;}
 .campaign-resize-hint{display:inline-block;margin-left:8px;color:#9a776a;font-size:10.5px;white-space:nowrap;}
-@media(max-width:760px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);height:calc(100vh - 94px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 94px);resize:vertical}.campaign-alert-panel.fullscreen{inset:8px;width:auto;height:calc(100vh - 16px);max-height:none}.campaign-alert-head{padding-right:130px}.campaign-cards,.campaign-launch-grid{grid-template-columns:1fr}.campaign-alert-summary{grid-template-columns:repeat(3,1fr)}.campaign-resize-hint{display:none}#backTop{right:20px;bottom:20px}}
+.event-profile-btn{position:fixed;right:88px;bottom:80px;z-index:1002;border:0;border-radius:999px;background:linear-gradient(135deg,#0f766e,#159a8c);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 7px 22px rgba(15,118,110,.28);cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;transition:transform .18s,box-shadow .18s;}
+.event-profile-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,118,110,.34);}
+.event-profile-panel{position:fixed;right:24px;bottom:118px;z-index:1004;width:min(930px,calc(100vw - 32px));height:min(690px,calc(100vh - 138px));min-width:620px;min-height:430px;max-width:calc(100vw - 32px);max-height:calc(100vh - 90px);overflow:auto;resize:both;background:#fff;border:1px solid #cde3df;border-radius:16px;box-shadow:0 20px 55px rgba(24,70,65,.24);opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .18s,transform .18s,visibility .18s;}
+.event-profile-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+.event-profile-panel.fullscreen{inset:14px;width:auto;height:calc(100vh - 28px);max-height:none;border-radius:14px;transform:none;}
+.event-profile-head{position:sticky;top:0;z-index:2;background:linear-gradient(135deg,#ecfdf5,#fff);border-bottom:1px solid #d8ebe7;padding:15px 138px 13px 17px;}
+.event-profile-head h2{font-size:18px;line-height:1.35;margin:0 0 3px;color:#115e59;}
+.event-profile-head p{font-size:12.5px;color:#647b77;margin:0;line-height:1.5;}
+.event-profile-actions{position:absolute;right:11px;top:10px;display:flex;align-items:center;gap:6px;}
+.event-profile-fullscreen{height:32px;border:1px solid #cde3df;border-radius:7px;background:#fff;color:#356a64;cursor:pointer;padding:0 10px;font-family:inherit;font-size:12px;font-weight:600;}
+.event-profile-close{width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:#356a64;cursor:pointer;font-size:20px;line-height:1;}
+.event-profile-body{padding:14px 16px 16px;}
+.event-profile-context{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.event-profile-context div{border:1px solid #d9ebe8;border-radius:10px;background:#f4fbf9;padding:9px 10px;}
+.event-profile-context span{display:block;color:#607c77;font-size:11px;margin-bottom:3px;}
+.event-profile-context b{font:700 20px/1.2 'DM Mono',monospace;color:#115e59;}
+.event-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;}
+.event-profile-card{border:1px solid #d8e7e4;border-radius:12px;background:#fff;padding:13px;}
+.event-profile-card.unified{border-color:#d9e3f2;background:#fbfdff;}
+.event-profile-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:9px;}
+.event-profile-card-head h3{font-size:16px;color:#24443f;margin:0;}
+.event-profile-card-head span{font-size:11px;font-weight:700;padding:3px 7px;border-radius:999px;background:#d1fae5;color:#047857;white-space:nowrap;}
+.event-profile-card.unified .event-profile-card-head span{background:#dbeafe;color:#1d4ed8;}
+.event-profile-main{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:9px;}
+.event-profile-main strong{font:700 30px/1 'DM Mono',monospace;color:#0f766e;}
+.event-profile-card.unified .event-profile-main strong{color:#2563eb;}
+.event-profile-main strong small{font:500 12px/1.2 inherit;color:#75817f;margin-left:3px;}
+.event-profile-main span{font-size:11px;line-height:1.5;color:#6b7d79;text-align:right;}
+.event-profile-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;}
+.event-profile-kpis div{background:#f5f8f7;border-radius:7px;padding:7px;text-align:center;}
+.event-profile-kpis b{display:block;font:700 13px/1.2 'DM Mono',monospace;color:#24443f;}
+.event-profile-kpis span{display:block;font-size:9.5px;color:#778984;margin-top:2px;}
+.event-age-layout{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;align-items:center;margin:2px 0 10px;}
+.event-pie{position:relative;width:164px;height:164px;margin:auto;}
+.event-pie svg{display:block;width:100%;height:100%;transform:rotate(-90deg);overflow:visible;filter:drop-shadow(0 4px 8px rgba(36,68,63,.12));}
+.event-pie path{stroke:#fff;stroke-width:1.4;cursor:pointer;transition:opacity .15s,transform .15s;transform-origin:50px 50px;}
+.event-pie:hover path:not(:hover){opacity:.55;}
+.event-pie path:hover,.event-pie path:focus{opacity:1;transform:scale(1.035);outline:none;}
+.event-pie-center{position:absolute;inset:36px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(36,68,63,.12);pointer-events:none;text-align:center;}
+.event-pie-center b{font:700 21px/1 'DM Mono',monospace;color:#24443f;}
+.event-pie-center span{font-size:9.5px;color:#778984;margin-top:4px;}
+.event-pie-tooltip{position:absolute;z-index:5;display:none;pointer-events:none;background:#183b36;color:#fff;border-radius:7px;padding:7px 9px;font-size:11px;line-height:1.45;box-shadow:0 8px 20px rgba(0,0,0,.2);white-space:nowrap;}
+.event-pie-tooltip.show{display:block;}
+.event-profile-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:9px;}
+.event-profile-table th,.event-profile-table td{padding:4px 3px;border-bottom:1px solid #edf2f1;text-align:right;color:#5e716d;}
+.event-profile-table th:first-child,.event-profile-table td:first-child{text-align:left;}
+.event-profile-table th{font-weight:600;color:#758783;}
+.event-profile-reading{padding:9px 10px;border-left:3px solid #0f766e;background:#f0fdfa;border-radius:0 8px 8px 0;color:#365f59;font-size:11.5px;line-height:1.65;}
+.event-profile-card.unified .event-profile-reading{border-left-color:#2563eb;background:#eff6ff;color:#405b7a;}
+.event-purchase-note{margin:0 0 9px;padding:8px 9px;border:1px solid #e3ecea;border-radius:8px;background:#fafcfc;color:#536a66;font-size:10.5px;line-height:1.55;}
+.event-purchase-note b{color:#24443f;}
+.event-profile-compare{margin-top:12px;padding:10px 12px;border:1px solid #e6dfce;border-left:4px solid #d97706;border-radius:9px;background:#fffbeb;color:#684d20;font-size:12px;line-height:1.7;}
+.event-profile-source{font-size:10.5px;color:#82908d;line-height:1.6;margin-top:9px;}
+@media(max-width:760px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.event-profile-btn{right:82px;bottom:66px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);height:calc(100vh - 94px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 94px);resize:vertical}.event-profile-panel{right:10px;bottom:112px;width:calc(100vw - 20px);height:calc(100vh - 132px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 132px);resize:vertical}.campaign-alert-panel.fullscreen,.event-profile-panel.fullscreen{inset:8px;width:auto;height:calc(100vh - 16px);max-height:none}.campaign-alert-head,.event-profile-head{padding-right:130px}.campaign-cards,.campaign-launch-grid,.event-profile-grid{grid-template-columns:1fr}.campaign-alert-summary,.event-profile-context{grid-template-columns:repeat(3,1fr)}.event-profile-kpis{grid-template-columns:repeat(2,1fr)}.event-age-layout{grid-template-columns:1fr}.campaign-resize-hint{display:none}#backTop{right:20px;bottom:20px}}
 </style>
 
 </head>
@@ -330,12 +383,78 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <button id="campaignAlertBtn" class="campaign-alert-btn" type="button" aria-controls="campaignAlertPanel" aria-expanded="false" onclick="toggleCampaignAlert()">
   <span class="campaign-alert-dot" aria-hidden="true"></span>
-  <span>本週｜9/21–9/27 廣告成效</span>
+  <span>本週｜9/28–10/4 廣告成效</span>
 </button>
+
+<button id="eventProfileBtn" class="event-profile-btn" type="button" aria-controls="eventProfilePanel" aria-expanded="false" onclick="toggleEventProfile()">
+  <span aria-hidden="true">●</span><span>禾馨・統一活動分析</span>
+</button>
+
+<section id="eventProfilePanel" class="event-profile-panel" role="dialog" aria-modal="false" aria-labelledby="eventProfileTitle" aria-hidden="true">
+  <div class="event-profile-head">
+    <h2 id="eventProfileTitle">禾馨活動、統一時代活動｜BCL與客戶樣貌</h2>
+    <p>9/28–10/4完整週｜兩場活動分開分析 <span class="campaign-resize-hint">右下角可拖曳縮放視窗</span></p>
+    <div class="event-profile-actions">
+      <button id="eventProfileFullscreenBtn" class="event-profile-fullscreen" type="button" aria-pressed="false" onclick="toggleEventProfileFullscreen()">全螢幕</button>
+      <button class="event-profile-close" type="button" aria-label="關閉禾馨與統一時代活動分析" onclick="toggleEventProfile(false)">×</button>
+    </div>
+  </div>
+  <div class="event-profile-body">
+    <div class="event-profile-context">
+      <div><span>兩場活動合計</span><b>204 BCL</b></div>
+      <div><span>占本週正式BCL</span><b>29.4%</b></div>
+      <div><span>兩場SS+S合計</span><b>37人・18.1%</b></div>
+    </div>
+    <div class="event-profile-grid">
+      <article class="event-profile-card">
+        <div class="event-profile-card-head"><h3>禾馨活動</h3><span>10/3集中蒐集</span></div>
+        <div class="event-profile-main"><strong>120<small>BCL</small></strong><span>占本週17.3%<br>占10/3當日55.8%</span></div>
+        <div class="event-profile-kpis">
+          <div><b>21人・17.5%</b><span>SS+S（0–24M）</span></div>
+          <div><b>91.7%</b><span>有效率（110人）</span></div>
+          <div><b>3人・2.5%</b><span>有購買紀錄</span></div>
+          <div><b>NT$14,400</b><span>購買金額合計</span></div>
+        </div>
+        <div class="event-age-layout">
+          <div class="event-pie" data-values="2,4,3,14,31,33,33" data-labels="孕期,0–6M,7–12M,13–24M,25–48M,49–72M,73M+" data-colors="#10b981,#60a5fa,#f97316,#ef4444,#0891b2,#22c55e,#9ca3af" aria-label="禾馨活動月齡圓餅圖；滑鼠移至區塊可查看月齡、人數與占比">
+            <div class="event-pie-center"><b>120</b><span>月齡分布</span></div><div class="event-pie-tooltip" role="tooltip"></div>
+          </div>
+          <table class="event-profile-table" aria-label="禾馨活動月齡分布明細"><thead><tr><th>綁定時月齡</th><th>人數</th><th>占比</th></tr></thead><tbody>
+            <tr><td>孕期</td><td>2</td><td>1.7%</td></tr><tr><td>0–6M</td><td>4</td><td>3.3%</td></tr><tr><td>7–12M</td><td>3</td><td>2.5%</td></tr><tr><td>13–24M</td><td>14</td><td>11.7%</td></tr><tr><td>25–48M</td><td>31</td><td>25.8%</td></tr><tr><td>49–72M</td><td>33</td><td>27.5%</td></tr><tr><td>73M+</td><td>33</td><td>27.5%</td></tr>
+          </tbody></table>
+        </div>
+        <div class="event-purchase-note"><b>購買樣貌：</b>3位有購買紀錄者合計NT$14,400；購買者平均NT$4,800、中位數NT$4,500，金額介於NT$600–9,300。</div>
+        <div class="event-profile-reading"><b>判讀：</b>量體大，一天即貢獻120 BCL；但客群明顯偏大月齡，25M以上占80.8%、49M以上占55.0%。適合補充整體名單量，對0–2歲核心受眾的貢獻較有限。</div>
+      </article>
+      <article class="event-profile-card unified">
+        <div class="event-profile-card-head"><h3>統一時代活動</h3><span>9/28集中蒐集</span></div>
+        <div class="event-profile-main"><strong>84<small>BCL</small></strong><span>占本週12.1%<br>占9/28當日62.2%</span></div>
+        <div class="event-profile-kpis">
+          <div><b>16人・19.0%</b><span>SS+S（0–24M）</span></div>
+          <div><b>92.9%</b><span>有效率（78人）</span></div>
+          <div><b>7人・8.3%</b><span>有購買紀錄</span></div>
+          <div><b>NT$25,216</b><span>購買金額合計</span></div>
+        </div>
+        <div class="event-age-layout">
+          <div class="event-pie" data-values="8,3,0,13,25,11,24" data-labels="孕期,0–6M,7–12M,13–24M,25–48M,49–72M,73M+" data-colors="#10b981,#60a5fa,#f97316,#ef4444,#0891b2,#22c55e,#9ca3af" aria-label="統一時代活動月齡圓餅圖；滑鼠移至區塊可查看月齡、人數與占比">
+            <div class="event-pie-center"><b>84</b><span>月齡分布</span></div><div class="event-pie-tooltip" role="tooltip"></div>
+          </div>
+          <table class="event-profile-table" aria-label="統一時代活動月齡分布明細"><thead><tr><th>綁定時月齡</th><th>人數</th><th>占比</th></tr></thead><tbody>
+            <tr><td>孕期</td><td>8</td><td>9.5%</td></tr><tr><td>0–6M</td><td>3</td><td>3.6%</td></tr><tr><td>7–12M</td><td>0</td><td>0.0%</td></tr><tr><td>13–24M</td><td>13</td><td>15.5%</td></tr><tr><td>25–48M</td><td>25</td><td>29.8%</td></tr><tr><td>49–72M</td><td>11</td><td>13.1%</td></tr><tr><td>73M+</td><td>24</td><td>28.6%</td></tr>
+          </tbody></table>
+        </div>
+        <div class="event-purchase-note"><b>購買樣貌：</b>7位有購買紀錄者合計NT$25,216；購買者平均NT$3,602、中位數NT$2,999，金額介於NT$899–7,249。</div>
+        <div class="event-profile-reading"><b>判讀：</b>單日量體低於禾馨，但占當日BCL比重更高。客群同樣偏大月齡，25M以上占71.4%；孕期占9.5%，比禾馨高，早期家庭的觸及稍多。</div>
+      </article>
+    </div>
+    <div class="event-profile-compare"><b>兩場共同結論：</b>兩場活動都能在單日快速放大BCL量體，有效率也都超過九成；但SS+S僅17.5%與19.0%，明顯低於本週全體46.3%。統一時代的可辨識購買率8.3%，高於禾馨的2.5%，但樣本數仍小。兩場較適合評估「名單量補充與既有家庭接觸」，不能直接視為0–2歲核心名單的主要來源。</div>
+    <div class="event-profile-source">資料來源：260421DB數據1006.xlsx（2026/10/6 10:58版）。月齡以綁定年月減最小孩出生年月計算；兩場皆無生日待補。有效率與購買資料為資料檔當下狀態；購買紀錄以「商品金額」大於0判定，金額不代表活動現場成交或活動後新增營收。</div>
+  </div>
+</section>
 
 <section id="campaignAlertPanel" class="campaign-alert-panel" role="dialog" aria-modal="false" aria-labelledby="campaignAlertTitle" aria-hidden="true">
   <div class="campaign-alert-head">
-    <h2 id="campaignAlertTitle">兩條路作戰｜9/21–9/27 第 2 週</h2>
+    <h2 id="campaignAlertTitle">兩條路作戰｜9/28–10/4 第 3 週</h2>
     <p>BCL、月齡品質、週預算 CPB 與上週比較｜以實際 BCL 計算，不採 Meta Lead <span class="campaign-resize-hint">右下角可拖曳縮放視窗</span></p>
     <div class="campaign-alert-actions">
       <button id="campaignFullscreenBtn" class="campaign-alert-fullscreen" type="button" aria-pressed="false" onclick="toggleCampaignFullscreen()">全螢幕</button>
@@ -344,78 +463,68 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div class="campaign-alert-body">
     <div class="campaign-alert-summary">
-      <div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>356</strong><small>上週 456｜<b style="color:#dc2626;">▼100（-21.9%）</b></small></div>
-      <div class="campaign-alert-kpi"><span>自操週預算 CPB</span><strong>$2.54</strong><small>US$490 ÷ 193 BCL</small></div>
-      <div class="campaign-alert-kpi"><span>廣代週預算 CPB</span><strong>$3.01</strong><small>US$490 ÷ 163 BCL</small></div>
+      <div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>364</strong><small>上週 356｜<b style="color:#15803d;">▲8（+2.2%）</b></small></div>
+      <div class="campaign-alert-kpi"><span>自操週預算 CPB</span><strong>$2.32</strong><small>上週 $2.54｜改善 8.7%</small></div>
+      <div class="campaign-alert-kpi"><span>廣代週預算 CPB</span><strong>$3.20</strong><small>上週 $3.01｜上升 6.3%</small></div>
     </div>
 
     <div class="campaign-cards">
       <article class="campaign-mini-card">
         <div class="campaign-card-top"><div class="campaign-card-name">巧虎育兒大調查</div><span class="campaign-badge">自操</span></div>
-        <div class="campaign-card-total">193<small>BCL</small></div>
-        <div class="campaign-daily"><span>9/21：<b>39</b></span><span>9/22：<b>33</b></span><span>9/23：<b>37</b></span><span>9/24：<b>23</b></span><span>9/25：<b>17</b></span><span>9/26：<b>23</b></span><span>9/27：<b>21</b></span></div>
-        <div class="campaign-quality"><b>較上週 248：▼55（-22.2%）</b><br>SS+S 126 人（65.3%，持平）｜孕期 13 人（6.7%）｜有生日 100%<br>週預算 US$490｜CPB $2.54</div>
+        <div class="campaign-card-total">211<small>BCL</small></div>
+        <div class="campaign-daily"><span>9/28：<b>21</b></span><span>9/29：<b>25</b></span><span>9/30：<b>28</b></span><span>10/1：<b>37</b></span><span>10/2：<b>26</b></span><span>10/3：<b>40</b></span><span>10/4：<b>34</b></span></div>
+        <div class="campaign-quality"><b style="color:#15803d;">較上週 193：▲18（+9.3%）</b><br>SS+S 151 人（71.6%，▲6.3pt）｜孕期 19 人（9.0%）｜生日／月齡待補 1 人<br>週預算 US$490｜CPB $2.32</div>
         <table class="campaign-grade-table" aria-label="巧虎育兒大調查月齡級別">
           <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
           <tbody>
-            <tr><td>孕期</td><td>13</td><td>6.7%</td></tr><tr><td>0–6M</td><td>46</td><td>23.8%</td></tr>
-            <tr><td>7–12M</td><td>32</td><td>16.6%</td></tr><tr><td>13–24M</td><td>48</td><td>24.9%</td></tr>
-            <tr><td>25–48M</td><td>40</td><td>20.7%</td></tr><tr><td>49–72M</td><td>6</td><td>3.1%</td></tr>
-            <tr><td>73M+</td><td>8</td><td>4.1%</td></tr><tr><td>無生日</td><td>0</td><td>0.0%</td></tr>
+            <tr><td>孕期</td><td>19</td><td>9.0%</td></tr><tr><td>0–6M</td><td>57</td><td>27.0%</td></tr>
+            <tr><td>7–12M</td><td>44</td><td>20.9%</td></tr><tr><td>13–24M</td><td>50</td><td>23.7%</td></tr>
+            <tr><td>25–48M</td><td>30</td><td>14.2%</td></tr><tr><td>49–72M</td><td>3</td><td>1.4%</td></tr>
+            <tr><td>73M+</td><td>7</td><td>3.3%</td></tr><tr><td>生日／月齡待補</td><td>1</td><td>0.5%</td></tr>
           </tbody>
         </table>
         <details class="campaign-spend-details">
           <summary>本週廣告花費口徑</summary>
-          <div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">統一以週預算 US$70 × 7 天＝US$490 計算 CPB。9/25、9/26 未花滿日預算，因此此數字是預算口徑，不代表 Meta 實際花費。</div>
+          <div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">依既定口徑，以週預算 US$490 計算 CPB；這是比較用預算口徑，不代表 Meta 實際花費。</div>
         </details>
       </article>
 
       <article class="campaign-mini-card agency">
         <div class="campaign-card-top"><div class="campaign-card-name">健康寶貝知識王</div><span class="campaign-badge">廣代操作</span></div>
-        <div class="campaign-card-total">163<small>BCL</small></div>
-        <div class="campaign-daily"><span>9/21：<b>36</b></span><span>9/22：<b>21</b></span><span>9/23：<b>30</b></span><span>9/24：<b>17</b></span><span>9/25：<b>16</b></span><span>9/26：<b>17</b></span><span>9/27：<b>26</b></span></div>
-        <div class="campaign-quality"><b>較上週 208：▼45（-21.6%）</b><br>SS+S 75 人（46.0%，▼7.6pt）｜孕期 16 人（9.8%）｜有生日 99.4%<br>週預算 US$490｜CPB $3.01</div>
+        <div class="campaign-card-total">153<small>BCL</small></div>
+        <div class="campaign-daily"><span>9/28：<b>18</b></span><span>9/29：<b>17</b></span><span>9/30：<b>18</b></span><span>10/1：<b>18</b></span><span>10/2：<b>20</b></span><span>10/3：<b>28</b></span><span>10/4：<b>34</b></span></div>
+        <div class="campaign-quality"><b style="color:#dc2626;">較上週 163：▼10（-6.1%）</b><br>SS+S 77 人（50.3%，▲4.3pt）｜孕期 12 人（7.8%）｜生日／月齡待補 1 人<br>週預算 US$490｜CPB $3.20</div>
         <table class="campaign-grade-table" aria-label="健康寶貝知識王月齡級別">
           <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
           <tbody>
-            <tr><td>孕期</td><td>16</td><td>9.8%</td></tr><tr><td>0–6M</td><td>23</td><td>14.1%</td></tr>
-            <tr><td>7–12M</td><td>20</td><td>12.3%</td></tr><tr><td>13–24M</td><td>32</td><td>19.6%</td></tr>
-            <tr><td>25–48M</td><td>33</td><td>20.2%</td></tr><tr><td>49–72M</td><td>6</td><td>3.7%</td></tr>
-            <tr><td>73M+</td><td>32</td><td>19.6%</td></tr><tr><td>無生日</td><td>1</td><td>0.6%</td></tr>
+            <tr><td>孕期</td><td>12</td><td>7.8%</td></tr><tr><td>0–6M</td><td>19</td><td>12.4%</td></tr>
+            <tr><td>7–12M</td><td>22</td><td>14.4%</td></tr><tr><td>13–24M</td><td>36</td><td>23.5%</td></tr>
+            <tr><td>25–48M</td><td>39</td><td>25.5%</td></tr><tr><td>49–72M</td><td>8</td><td>5.2%</td></tr>
+            <tr><td>73M+</td><td>16</td><td>10.5%</td></tr><tr><td>生日／月齡待補</td><td>1</td><td>0.7%</td></tr>
           </tbody>
         </table>
         <details class="campaign-spend-details">
           <summary>本週廣告花費口徑</summary>
-          <div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">統一以週預算 US$70 × 7 天＝US$490 計算 CPB。9/25、9/26 未花滿日預算，因此此數字是預算口徑，不代表 Meta 實際花費。</div>
+          <div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">依既定口徑，以週預算 US$490 計算 CPB；這是比較用預算口徑，不代表 Meta 實際花費。</div>
         </details>
       </article>
 
       <div class="campaign-right-column">
         <article class="campaign-mini-card campaign-history-card">
-          <div class="campaign-card-top"><div class="campaign-card-name">第 2 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">9/21–9/27</span></div>
+          <div class="campaign-card-top"><div class="campaign-card-name">第 3 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">9/28–10/4</span></div>
           <ul class="campaign-judgement-list">
-            <li><b>1＋1有大於2嗎？</b>沒有，由上週1.71降至1.33。兩活動合計356 BCL，較上週減少100人；自操仍比廣代多30人，但雙方量體都下滑約22%。</li>
-            <li class="campaign-root-cause"><b>為何這週成效不佳？</b>
+            <li><b>1＋1有大於2嗎？</b>沒有，目前約為1.36。兩活動合計364 BCL，較上週增加8人；為單一路線平均266.9人的1.36倍，達理論2倍的68.2%。</li>
+            <li class="campaign-root-cause"><b>本週變化來自哪裡？</b>
               <ol>
-                <li><strong>上週操作失誤？</strong>兩邊同期下滑，較不支持單一操作失誤；9/25、9/26未花滿US$70，也可能壓低量體。</li>
-                <li style="position:relative;"><strong style="display:inline;">中秋連假有影響嗎？</strong><button class="campaign-evidence-trigger" type="button" aria-label="查看兩年連假數據佐證" aria-expanded="false" onclick="campaignEvidenceToggle(this)">i</button>歷史方向一致，連假可能是本週投放轉弱的重要因素之一；但不能將全部降幅單獨歸因於連假競價。
-                  <div class="campaign-evidence-popover" role="dialog" aria-label="兩年連假數據佐證">
-                    <div class="campaign-evidence-popover-head"><span>兩年連假數據佐證｜自辦線上</span><button class="campaign-evidence-close" type="button" aria-label="關閉" onclick="campaignEvidenceClose(this)">×</button></div>
-                    <ul>
-                      <li>資料來源：2025、2026 兩年的「自辦線上」歷史資料。</li>
-                      <li>14 段連假中有 12 段蒐集量下降；連假期間整體日均較連假前下降 44.2%。</li>
-                      <li>本次中秋／教師節連假日均由 60.0 降至 40.3 BCL，下降 32.9%。</li>
-                      <li>各時期活動、預算與素材不同，因此只能判斷連假可能有影響，不能視為唯一原因。</li>
-                    </ul>
-                  </div>
-                </li>
-                <li><strong>9/26、9/27曾出現短時間簡訊異常。</strong>異常屬於短時間故障，當天仍有部分客戶綁定成功，故影響範圍較小；且9/22綁定率僅42.7%但未回報異常，因此不能只靠單日綁定率判斷系統狀態。</li>
+                <li><strong>自操回升：</strong>211人，較上週增加18人（+9.3%）；週預算CPB由$2.54降至$2.32，SS+S為151人（71.6%）。</li>
+                <li><strong>廣代仍低於上週：</strong>153人，較上週減少10人（-6.1%）；週預算CPB由$3.01升至$3.20，SS+S為77人（50.3%）。</li>
+                <li><strong>10/1後兩邊日量都增加：</strong>自操日均由24.7升至34.3，廣代由17.7升至25.0；因兩邊同步上升，暫不能只歸因於自操提高預算，仍需觀察至10/14。</li>
               </ol>
             </li>
           </ul>
           <div class="campaign-history-summary">
-            <div><b>1＋1＝1.33</b><span>上週 1.71</span></div>
-            <div><b>66.7%</b><span>理論 2 倍達成率</span></div>
+            <div><b>1＋1＝1.36</b><span>上週 1.33</span></div>
+            <div><b>68.2%</b><span>理論 2 倍達成率</span></div>
           </div>
           <button id="campaignCompareToggle" class="campaign-compare-toggle" type="button" aria-controls="campaignLaunchCompare" aria-expanded="false" onclick="toggleLaunchComparison()">
             <strong>展開三場過往活動</strong><span class="campaign-compare-chevron" aria-hidden="true">⌄</span>
@@ -427,12 +536,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="campaign-next-step campaign-next-step-wide">
       <div class="campaign-next-step-title">下一步</div>
       <ol>
-        <li><b>替換弱勢素材：</b>優先汰換表現較弱的素材，觀察新素材能否改善投放效率。</li>
-        <li><b>提高預算測試：</b>10/1–10/14 將每日預算提高至 US$100，持續比較 BCL、CPB 與兩邊投放差異。</li>
+        <li><b>自操第二檔：</b>下週上線「育兒大調查」第二檔，預計將預算提升至US$100／日。</li>
+        <li><b>廣代同步更新素材：</b>兩邊同步調整後，持續觀察BCL、CPB與月齡品質的差異變化。</li>
       </ol>
     </div>
 
-    <div class="campaign-alert-insight"><b>完整週判讀｜第 2 週的 1＋1 約等於 1.33，較首週 1.71 明顯回落。</b><br>過往單一路線 W11–W24 平均為 266.9 BCL／週，理論 2 倍為 533.9；本週兩活動合計 356 BCL，為理論值的 66.7%，較上週 456 人減少 100 人（-21.9%）。自操 193 人仍高於廣代 163 人（+30、+18.4%），但兩者分別較上週下降 22.2% 與 21.6%。以每邊週預算 US$490 計算，CPB 為自操 $2.54、廣代 $3.01。兩年自辦線上的連假資料顯示，本次下滑方向與多數連假一致，因此連假可能是投放轉弱的重要因素之一；完整數據可由「中秋連假有影響嗎？」旁的 i 查看。9/26、9/27曾出現短時間簡訊異常，當天仍有部分客戶綁定成功，故影響範圍較小；且9/22同日綁定率僅42.7%但未回報異常，顯示不能只靠單日綁定率判定系統狀態。品質方面，自操 SS+S 維持65.3%；廣代由53.6%降至46.0%（-7.6pt）。</div>
+    <div class="campaign-alert-insight"><b>完整週判讀｜第3週兩活動合計364 BCL，較上週356 BCL增加8人（+2.2%），但仍未出現1＋1大於2。</b><br>過往單一路線 W11–W24 平均為266.9 BCL／週，理論2倍為533.9；本週1＋1約為1.36，達成理論2倍的68.2%。自操211人，較上週增加18人（+9.3%），週預算CPB改善至$2.32，SS+S為151人（71.6%）；廣代153人，較上週減少10人（-6.1%），CPB為$3.20，SS+S為77人（50.3%）。自操比廣代多58人（+37.9%）。下週將以育兒大調查第二檔提高預算、廣代同步更新素材後的實際數據，觀察兩邊差異變化。</div>
 
     <div id="campaignCompareWrap" class="campaign-compare-wrap">
       <div id="campaignLaunchCompare" class="campaign-launch-compare" aria-hidden="true">
@@ -461,11 +570,59 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
     </div>
 
-    <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx、260421DB數據0929.xlsx。活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」；月齡依 2026/09 綁定月份與最小出生年月計算，SS+S＝0–24M。本週 CPB 統一以每邊週預算 US$490 ÷ 實際 BCL 計算；這是預算口徑，不等於 Meta 實際花費。</div>
+    <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx、260421DB數據1006.xlsx、8TDB。管道與月齡均採2026/10/6 10:58版DB完整七日逐筆資料；LINE好友採8TDB 2026/10/5資料。活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」；SS+S＝0–24M。本週 CPB 依既定口徑，以每邊週預算 US$490 ÷ 實際 BCL 計算；不等於 Meta 實際花費。</div>
   </div>
 </section>
 
 <script>
+function renderEventPies(){
+  document.querySelectorAll('.event-pie').forEach(function(pie){
+    if(pie.getAttribute('data-rendered')==='true')return;
+    var values=(pie.getAttribute('data-values')||'').split(',').map(Number);
+    var labels=(pie.getAttribute('data-labels')||'').split(',');
+    var colors=(pie.getAttribute('data-colors')||'').split(',');
+    var total=values.reduce(function(sum,value){return sum+value;},0);
+    var tooltip=pie.querySelector('.event-pie-tooltip');
+    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox','0 0 100 100');
+    svg.setAttribute('role','img');
+    svg.setAttribute('aria-label',pie.getAttribute('aria-label')||'月齡分布圓餅圖');
+    var angle=0;
+    values.forEach(function(value,index){
+      if(!value||!total)return;
+      var next=angle+(value/total)*Math.PI*2;
+      var x1=50+45*Math.cos(angle),y1=50+45*Math.sin(angle);
+      var x2=50+45*Math.cos(next),y2=50+45*Math.sin(next);
+      var large=next-angle>Math.PI?1:0;
+      var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d','M 50 50 L '+x1+' '+y1+' A 45 45 0 '+large+' 1 '+x2+' '+y2+' Z');
+      path.setAttribute('fill',colors[index]||'#94a3b8');
+      var percent=(value/total*100).toFixed(1)+'%';
+      var tip=(labels[index]||'未分類')+'｜'+value+'人・'+percent;
+      path.setAttribute('tabindex','0');
+      path.setAttribute('aria-label',tip);
+      function showTip(event){
+        if(!tooltip)return;
+        tooltip.textContent=tip;
+        tooltip.classList.add('show');
+        var rect=pie.getBoundingClientRect();
+        var left=event&&typeof event.clientX==='number'?event.clientX-rect.left+12:rect.width/2;
+        var top=event&&typeof event.clientY==='number'?event.clientY-rect.top+12:10;
+        tooltip.style.left=left+'px';tooltip.style.top=top+'px';
+      }
+      function hideTip(){if(tooltip)tooltip.classList.remove('show');}
+      path.addEventListener('mousemove',showTip);
+      path.addEventListener('mouseenter',showTip);
+      path.addEventListener('mouseleave',hideTip);
+      path.addEventListener('focus',showTip);
+      path.addEventListener('blur',hideTip);
+      svg.appendChild(path);
+      angle=next;
+    });
+    pie.insertBefore(svg,pie.firstChild);
+    pie.setAttribute('data-rendered','true');
+  });
+}
 function toggleCampaignAlert(forceOpen){
   var panel=document.getElementById('campaignAlertPanel');
   var btn=document.getElementById('campaignAlertBtn');
@@ -474,12 +631,32 @@ function toggleCampaignAlert(forceOpen){
   panel.classList.toggle('open',open);
   panel.setAttribute('aria-hidden',String(!open));
   btn.setAttribute('aria-expanded',String(open));
+  if(open){toggleEventProfile(false);}
   if(!open){
     panel.classList.remove('fullscreen');
     var fsBtn=document.getElementById('campaignFullscreenBtn');
     if(fsBtn){fsBtn.textContent='全螢幕';fsBtn.setAttribute('aria-pressed','false');}
   }
   if(open){var closeBtn=panel.querySelector('.campaign-alert-close');if(closeBtn)closeBtn.focus();}
+}
+function toggleEventProfile(forceOpen){
+  var panel=document.getElementById('eventProfilePanel');
+  var btn=document.getElementById('eventProfileBtn');
+  if(!panel||!btn)return;
+  var open=typeof forceOpen==='boolean'?forceOpen:!panel.classList.contains('open');
+  panel.classList.toggle('open',open);
+  panel.setAttribute('aria-hidden',String(!open));
+  btn.setAttribute('aria-expanded',String(open));
+  if(open){renderEventPies();toggleCampaignAlert(false);var closeBtn=panel.querySelector('.event-profile-close');if(closeBtn)closeBtn.focus();}
+  if(!open){panel.classList.remove('fullscreen');var fsBtn=document.getElementById('eventProfileFullscreenBtn');if(fsBtn){fsBtn.textContent='全螢幕';fsBtn.setAttribute('aria-pressed','false');}}
+}
+function toggleEventProfileFullscreen(){
+  var panel=document.getElementById('eventProfilePanel');
+  var btn=document.getElementById('eventProfileFullscreenBtn');
+  if(!panel||!btn)return;
+  var isFullscreen=panel.classList.toggle('fullscreen');
+  btn.textContent=isFullscreen?'還原視窗':'全螢幕';
+  btn.setAttribute('aria-pressed',String(isFullscreen));
 }
 function toggleCampaignFullscreen(){
   var panel=document.getElementById('campaignAlertPanel');
@@ -522,6 +699,8 @@ document.addEventListener('keydown',function(e){
   if(e.key!=='Escape')return;
   var evidence=document.querySelector('.campaign-evidence-popover.show');
   if(evidence){campaignEvidenceClose(evidence.querySelector('.campaign-evidence-close'));return;}
+  var eventPanel=document.getElementById('eventProfilePanel');
+  if(eventPanel&&eventPanel.classList.contains('open')){toggleEventProfile(false);return;}
   toggleCampaignAlert(false);
 });
 </script>
@@ -2389,8 +2568,27 @@ var PW_GRADE_BARS=['rgba(14,122,110,.8)','rgba(30,111,184,.8)','rgba(185,28,28,.
 
 /* 週次選擇資料 */
 var PW_WEEKS = {
+  'W27': {
+    label: 'W27：9/28（一）– 10/4（日）', badge: 'W27 最新週', total: 693, ss: 321, ssPct: 46.3, prev: 'W26',
+    monthAccum: 453, monthLabel: '10/1–10/4', monthDays: 31, daysPassed: 4, prevMonthAccum: 403, prevMonthLabel: '9/1–9/4',
+    btype: {自辦線上:370,自辦線下:85,主動:56,自動:4,異業:178},
+    btypeN: {all:693,selfOnline:370,selfOffline:85,active:56,shopline:4,partner:178},
+    chN: {'巧虎育兒大調查':211,'健康寶貝知識王':153,'禾馨活動':120,'統一時代活動':84,'官網綁定':28,'OA':28,'樂飛':32,'明治':16,'六甲村':7,'育兒安全大作戰':4,'SHOPLINE':4,'永生':3,'BCL貼紙':2,'客服':1},
+    dailyLabels: ['9/28','9/29','9/30','10/1','10/2','10/3','10/4'],
+    daily: [135,53,56,71,71,215,96],
+    partner: {禾馨活動:120,樂飛:32,明治:16,六甲村:7,永生:3},
+    chGradeOverride: {/* 2026/10/6 10:58版DB完整七日逐筆生日；排除SHOPLINE回補4筆 */
+      all:[9.5,15.7,11.3,19.3,13.9,12.0,17.7,0.6],// n=693，SS+S=46.3%，無生日4筆
+      selfOnline:[8.6,20.8,17.8,24.1,13.5,7.0,7.6,0.5],// n=370，SS+S=62.7%
+      selfOffline:[9.4,4.7,0.0,15.3,17.6,18.8,34.1,0.0],// n=85，統一時代活動84＋客服1
+      active:[7.1,7.1,10.7,21.4,16.1,16.1,21.4,0.0],// n=56，官網28＋OA28
+      shopline:[0.0,0.0,0.0,75.0,0.0,0.0,0.0,25.0],// n=4，樣本極小
+      partner:[12.4,13.5,3.4,9.6,12.4,18.0,30.3,0.6],// n=178，SS+S=26.4%
+    },
+    summary: '<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">W27 正式口徑693人，較上週增加180人（+35.1%）；10/6 10:58版已補齊七日逐筆生日與管道資料。</p><p><span class="tag tag-info">管道拆分</span><br>• <b>自辦線上370人（53.4%）</b>：巧虎育兒大調查211、健康寶貝知識王153、育兒安全大作戰4、BCL貼紙2<br>• <b>自辦線下85人（12.3%）</b>：統一時代活動84、客服1<br>• <b>主動56人（8.1%）</b>：官網28、OA28<br>• <b>自動（SHOPLINE）4人（0.6%）</b><br>• <b>異業178人（25.7%）</b>：禾馨活動120、樂飛32、明治16、六甲村7、永生3</p><p><span class="tag tag-ok">SS+S 321人（46.3%）</span> 較W26的52.4%下降6.1pt。新版DB已包含9/28–10/4完整七日逐筆資料，僅4筆生日／月齡待補，不再採混合來源推估。</p><p><span class="tag tag-warn">兩條路作戰第3週</span> 兩活動合計364人，較上週356人增加8人（+2.2%）。自操211人（+9.3%）、廣代153人（-6.1%）；以每邊週預算US$490計算，CPB為自操$2.32、廣代$3.20。1＋1約1.36，達理論2倍的68.2%。月齡品質方面，自操SS+S為71.6%，廣代為50.3%。</p><p><span class="tag tag-info">LINE好友</span> 9/28–10/4新增989人，較上週765人增加224人（+29.3%）；10/3單日265人為本週高點，當日BCL 215人中已包含禾馨活動120人。</p><p><span class="tag tag-info">月累計</span> 10/1–10/4 DB原始合計453人，較9/1–9/4的403人增加50人（+12.4%）。</p><p style="font-size:11px;color:#888;">口徑說明：10/6 10:58版DB七日原始合計697人；正式週報僅排除SHOPLINE回補4筆，故為693人。LINE好友採8TDB 2026/10/5資料；CPB採每邊週預算US$490計算。</p>',
+  },
   'W26': {
-    label: 'W26：9/21（一）– 9/27（日）', badge: 'W26 最新週', total: 513, ss: 269, ssPct: 52.4, prev: 'W25',
+    label: 'W26：9/21（一）– 9/27（日）', badge: 'W26 上週', total: 513, ss: 269, ssPct: 52.4, prev: 'W25',
     monthAccum: 2252, monthLabel: '9/1–9/27', monthDays: 30, daysPassed: 27, prevMonthAccum: 1977, prevMonthLabel: '8/1–8/27',
     btype: {自辦線上:362,自辦線下:1,主動:78,自動:11,異業:61},
     btypeN: {all:513,selfOnline:362,selfOffline:1,active:78,shopline:11,partner:61},
@@ -2718,7 +2916,18 @@ PW_TREND_DATA.partner.push(61);
 PW_TREND_DATA.ssPct.push(52.4);
 PW_TREND_DATA.ssN.push(269);
 PW_TREND_DATA.friend.push(765);
-PW_TREND_DATA.curIdx = 77;
+/* W27：9/28–10/4。10/6 10:58版DB原始697；正式口徑排除SHOPLINE回補4筆後為693。 */
+PW_TREND_DATA.labels.push('9/28–10/4');
+PW_TREND_DATA.total.push(693);
+PW_TREND_DATA.selfOnline.push(370);
+PW_TREND_DATA.selfOffline.push(85);
+PW_TREND_DATA.active.push(56);
+PW_TREND_DATA.shopline.push(4);
+PW_TREND_DATA.partner.push(178);
+PW_TREND_DATA.ssPct.push(46.3);
+PW_TREND_DATA.ssN.push(321);
+PW_TREND_DATA.friend.push(989);
+PW_TREND_DATA.curIdx = 78;
 
 /* 2026/09/16：8TDB 自辦線上改為「活動 → 細部來源」三級結構。
    口徑＝同一 LINE ID 的最新綁定日，對到同日、同活動的來源標籤後，各來源內去重。
@@ -2793,8 +3002,17 @@ Object.keys(PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources).forEach(
 Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(function(source){
   PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
 });
+PW_SELF_ONLINE_ACTIVITIES['育兒安全大作戰'].total.push(4);
+PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].total.push(211);
+PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].total.push(153);
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources[source].push(null);
+});
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
+});
 
-var _pwCurrentWeek = 'W26';
+var _pwCurrentWeek = 'W27';
 var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
@@ -2833,6 +3051,23 @@ function pwFriendDetailsW26Markup() {
     return '<details class="pw-friend-day"'+(d.date==='9/26'?' open':'')+'><summary><b>'+d.date+'</b><span>好友 '+d.friends+'</span><span>同批當日綁定 '+d.same+'</span><span class="'+(d.alert?'warn':'')+'">'+d.rate+'</span></summary><div class="pw-friend-day-body"><table><thead><tr><th>管道</th><th>歸因好友</th><th>同日綁定</th><th>同日率</th><th>截至9/29綁定</th><th>最終率</th></tr></thead><tbody>'+sourceRows+'</tbody></table>'+sixjiaNote+'</div></details>';
   }).join('');
   return '<details class="pw-friend-info pw-friend-table-info"><summary aria-label="查看9/21至9/27 LINE好友來源與每日綁定明細">i</summary><div class="pw-friend-popover"><div class="pw-friend-popover-head"><h4>9/21–9/27 LINE好友、管道與綁定明細</h4><button type="button" class="pw-friend-close" aria-label="關閉LINE好友與綁定明細" onclick="this.closest(\'details\').removeAttribute(\'open\')">關閉 ×</button></div><p>上表看每日整體；下方展開日期可看各管道的歸因好友、同日綁定與截至9/29的最終綁定。單日綁定率僅供觀察，不能單獨判定系統是否異常。</p><table class="pw-friend-overview"><thead><tr><th>日期</th><th>新好友</th><th>每日總BCL</th><th>同批當日綁定</th><th>同日率</th></tr></thead><tbody>'+overviewRows+'<tr class="tot"><td>合計</td><td>765</td><td>513</td><td>407</td><td>53.2%</td></tr></tbody></table><div class="pw-friend-conclusion"><b>9/26、9/27曾出現短時間簡訊異常：</b>異常屬於短時間故障，當天仍有部分客戶綁定成功，故影響範圍較小。9/22同日綁定率也只有42.7%，但未回報簡訊異常，因此不能只靠單日綁定率判定系統狀態。</div><h5>逐日管道歸因</h5>'+dayBlocks+'<p class="pw-source-caveat"><b>口徑提醒：</b>8TDB沒有獨立的好友加入來源欄位，這裡用同期點擊標籤歸因；同一好友可能有多個管道標籤，因此各管道不可加總回當日好友總數。SUPER8貼標日期為資料匯入前一日，活動日可能與表內日期相差一天。</p></div></details>';
+}
+
+var PW_FRIEND_DAILY_W27 = [
+  {date:'9/28',friends:163,bcl:135,same:117,rate:'71.8%'},
+  {date:'9/29',friends:115,bcl:53,same:42,rate:'36.5%'},
+  {date:'9/30',friends:101,bcl:56,same:43,rate:'42.6%'},
+  {date:'10/1',friends:97,bcl:71,same:54,rate:'55.7%'},
+  {date:'10/2',friends:107,bcl:71,same:54,rate:'50.5%'},
+  {date:'10/3',friends:265,bcl:215,same:192,rate:'72.5%'},
+  {date:'10/4',friends:141,bcl:96,same:84,rate:'59.6%'}
+];
+
+function pwFriendDetailsW27Markup() {
+  var rows = PW_FRIEND_DAILY_W27.map(function(d){
+    return '<tr><td>'+d.date+'</td><td>'+d.friends+'</td><td>'+d.bcl+'</td><td>'+d.same+'</td><td><b>'+d.rate+'</b></td></tr>';
+  }).join('');
+  return '<details class="pw-friend-info pw-friend-table-info"><summary aria-label="查看9/28至10/4 LINE好友與每日綁定明細">i</summary><div class="pw-friend-popover"><div class="pw-friend-popover-head"><h4>9/28–10/4 LINE好友與每日綁定明細</h4><button type="button" class="pw-friend-close" aria-label="關閉LINE好友與綁定明細" onclick="this.closest(\'details\').removeAttribute(\'open\')">關閉 ×</button></div><p>同批當日綁定是指該日新加入好友中，當天完成BCL綁定的人數；可用來觀察加入好友後的即時轉換。</p><table class="pw-friend-overview"><thead><tr><th>日期</th><th>新好友</th><th>每日總BCL</th><th>同批當日綁定</th><th>同日率</th></tr></thead><tbody>'+rows+'<tr class="tot"><td>合計</td><td>989</td><td>697</td><td>586</td><td>59.3%</td></tr></tbody></table><div class="pw-friend-conclusion"><b>本週觀察：</b>10/3好友265人、BCL 215人，主要受到禾馨活動120人帶動；9/28則有統一時代活動84人。好友增加不全由廣告活動造成，判讀兩條路成效仍應回到兩個活動各自的BCL與CPB。</div><p class="pw-source-caveat"><b>口徑提醒：</b>表內每日總BCL沿用10/6 10:58版DB原始數字697人；正式週報排除SHOPLINE回補4筆，因此正式週BCL為693人。</p></div></details>';
 }
 
 /* ── 週次切換 ── */
@@ -3171,9 +3406,6 @@ function pwDrawTrendTable() {
       var td = tr.insertCell();
       var isNull = (v === null || v === undefined);
       td.textContent = isNull ? '—' : ((v === 0 || v === '0.0') ? '○' : v);
-      if (rk.key === 'friend' && i === 77) {
-        td.insertAdjacentHTML('beforeend', pwFriendDetailsW26Markup());
-      }
       var zeroCss = (!isNull && (v === 0 || v === '0.0')) ? 'color:#ccc;' : (isNull ? 'color:#ddd;' : '');
       td.style.cssText = 'padding:'+pH+';text-align:center;'
         + 'background:'+(isCur?(rk.bg==='#fff5f5'?'rgba(185,28,28,.08)':rk.bg==='#f0f7ff'?'rgba(29,78,216,.08)':rk.bg==='#f0fdf4'?'rgba(6,199,85,.10)':rk.bg==='#f0fdfa'?'rgba(13,148,136,.10)':'rgba(37,99,235,.06)'):rk.bg)+';'
@@ -3704,7 +3936,7 @@ function pwInitCharts(){
   var wPanel=document.getElementById('pw-week');
   var mPanel=document.getElementById('pw-month');
   if(wPanel&&wPanel.classList.contains('active')){
-    pwSelectWeek('W26');
+    pwSelectWeek('W27');
   }
   if(mPanel&&mPanel.classList.contains('active')){
     pmUpdateGrade(1800,'all');
@@ -5397,7 +5629,7 @@ const META_IMGS={
 
 <div id="pw-page"><div class="pw">
   <h1>周月報告分析</h1>
-  <div class="sub">資料來源：CUBE 每日觀察報告　　數據截至 2026/09/13</div>
+  <div class="sub">資料來源：CUBE 每日觀察報告、8TDB　　數據截至 2026/10/04</div>
   <div class="mode-tabs">
     <button class="mode-tab active" onclick="pwMode('week',this)">📅 週報告</button>
     <button class="mode-tab" onclick="pwMode('month',this)">📆 月報告</button>
@@ -5411,7 +5643,8 @@ const META_IMGS={
       <span style="font-size:13px;font-weight:600;color:#444;">📅 選擇週次：</span>
       <select id="pw-week-select" onchange="pwSelectWeek(this.value)"
         style="font-size:13px;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;font-weight:500;">
-        <option value="W26" selected>W26：9/21（一）– 9/27（日）★最新</option>
+        <option value="W27" selected>W27：9/28（一）– 10/4（日）★最新</option>
+        <option value="W26">W26：9/21（一）– 9/27（日）</option>
         <option value="W25">W25：9/14（一）– 9/20（日）</option>
         <option value="W24">W24：9/7（一）– 9/13（日）</option>
         <option value="W23">W23：8/31（一）– 9/6（日）</option>
@@ -5438,7 +5671,7 @@ const META_IMGS={
         <option value="W2">W2：4/6（一）– 4/12（日）</option>
         <option value="W1">W1：3/30（一）– 4/5（日）</option>
       </select>
-      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W26 最新週</span>
+      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W27 最新週</span>
     </div>
 
     <!-- KPI 4格（動態） -->
@@ -5494,7 +5727,7 @@ const META_IMGS={
     <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->
     <div class="sc" style="margin-bottom:12px;">
       <div class="sh" style="color:var(--pw-blue);"><span class="sh-dot"></span>各週蒐集趨勢（近一年）
-        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/09/27（共 78 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/09/27</span>
+        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/10/04（共 79 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/10/04</span>
       </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <div style="display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;">
@@ -5506,7 +5739,7 @@ const META_IMGS={
           <button onclick="pwTrendRange('8w',this)"   id="pw-range-8w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:transparent;color:#666;">近8週</button>
           <button onclick="pwTrendRange('4w',this)"   id="pw-range-4w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:#fff;color:var(--pw-blue);box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:600;">近4週</button>
         </div>
-        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W24=最新週（9/7–9/13）｜資料截至 2026/09/13</span>
+        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W27=最新週（9/28–10/4）｜資料截至 2026/10/04</span>
       </div>
 
       <div id="pw-trend-legend" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;font-size:11.5px;"></div>
