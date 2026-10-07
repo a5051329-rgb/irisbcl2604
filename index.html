@@ -349,6 +349,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .event-profile-card.unified .event-profile-reading{border-left-color:#2563eb;background:#eff6ff;color:#405b7a;}
 .event-purchase-note{margin:0 0 9px;padding:8px 9px;border:1px solid #e3ecea;border-radius:8px;background:#fafcfc;color:#536a66;font-size:10.5px;line-height:1.55;}
 .event-purchase-note b{color:#24443f;}
+.event-gift-box{margin:0 0 9px;padding:10px;border:1px solid #f0dfb8;border-radius:9px;background:#fffaf0;color:#684f22;}
+.event-gift-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px;}
+.event-gift-head b{font-size:12px;color:#795817;}
+.event-gift-head strong{font:700 20px/1 'DM Mono',monospace;color:#b45309;white-space:nowrap;}
+.event-gift-head strong small{font:500 10px/1.2 inherit;color:#92733c;margin-left:3px;}
+.event-gift-split{display:flex;height:10px;border-radius:999px;overflow:hidden;background:#eadfca;margin-bottom:5px;}
+.event-gift-split .new{background:#0f766e;}
+.event-gift-split .old{background:#d6a84d;}
+.event-gift-legend{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#765f35;margin-bottom:8px;}
+.event-gift-legend b{color:#395e58;}
+.event-gift-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.event-gift-metrics div{border:1px solid #efe2c8;border-radius:7px;background:#fff;padding:6px;text-align:center;}
+.event-gift-metrics b{display:block;font:700 12px/1.2 'DM Mono',monospace;color:#6e4d12;}
+.event-gift-metrics span{display:block;margin-top:2px;font-size:9px;color:#967944;}
+.event-gift-compare{margin-top:12px;padding:10px 12px;border:1px solid #f0dfb8;border-left:4px solid #d69e2e;border-radius:9px;background:#fffaf0;color:#684f22;font-size:12px;line-height:1.7;}
 .event-profile-compare{margin-top:12px;padding:10px 12px;border:1px solid #e6dfce;border-left:4px solid #d97706;border-radius:9px;background:#fffbeb;color:#684d20;font-size:12px;line-height:1.7;}
 .event-profile-source{font-size:10.5px;color:#82908d;line-height:1.6;margin-top:9px;}
 @media(max-width:760px){.campaign-alert-btn{right:82px;bottom:20px;padding:9px 11px}.event-profile-btn{right:82px;bottom:66px;padding:9px 11px}.campaign-alert-panel{right:10px;bottom:74px;width:calc(100vw - 20px);height:calc(100vh - 94px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 94px);resize:vertical}.event-profile-panel{right:10px;bottom:112px;width:calc(100vw - 20px);height:calc(100vh - 132px);min-width:0;max-width:calc(100vw - 20px);max-height:calc(100vh - 132px);resize:vertical}.campaign-alert-panel.fullscreen,.event-profile-panel.fullscreen{inset:8px;width:auto;height:calc(100vh - 16px);max-height:none}.campaign-alert-head,.event-profile-head{padding-right:130px}.campaign-cards,.campaign-launch-grid,.event-profile-grid{grid-template-columns:1fr}.campaign-alert-summary,.event-profile-context{grid-template-columns:repeat(3,1fr)}.event-profile-kpis{grid-template-columns:repeat(2,1fr)}.event-age-layout{grid-template-columns:1fr}.campaign-resize-hint{display:none}#backTop{right:20px;bottom:20px}}
@@ -424,6 +439,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           </tbody></table>
         </div>
         <div class="event-purchase-note"><b>購買樣貌：</b>3位有購買紀錄者合計NT$14,400；購買者平均NT$4,800、中位數NT$4,500，金額介於NT$600–9,300。</div>
+        <div class="event-gift-box">
+          <div class="event-gift-head"><b>總發送禮物數｜貼紙</b><strong>209<small>份</small></strong></div>
+          <div class="event-gift-split" aria-label="禾馨兌換者中，新綁定114人占54.5%，舊綁定95人占45.5%"><span class="new" style="width:54.5%"></span><span class="old" style="width:45.5%"></span></div>
+          <div class="event-gift-legend"><span><b>新綁定114人</b>・54.5%</span><span>舊綁定95人・45.5%</span></div>
+          <div class="event-gift-metrics">
+            <div><b>NT$12.5</b><span>禮物成本＝單份成本</span></div><div><b>NT$2,612.5</b><span>估算禮物總成本</span></div><div><b>NT$22.9</b><span>CPB＝每位新綁定分攤</span></div>
+          </div>
+        </div>
         <div class="event-profile-reading"><b>判讀：</b>量體大，一天即貢獻120 BCL；但客群明顯偏大月齡，25M以上占80.8%、49M以上占55.0%。適合補充整體名單量，對0–2歲核心受眾的貢獻較有限。</div>
       </article>
       <article class="event-profile-card unified">
@@ -444,11 +467,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           </tbody></table>
         </div>
         <div class="event-purchase-note"><b>購買樣貌：</b>7位有購買紀錄者合計NT$25,216；購買者平均NT$3,602、中位數NT$2,999，金額介於NT$899–7,249。</div>
+        <div class="event-gift-box">
+          <div class="event-gift-head"><b>總發送禮物數｜方巾</b><strong>117<small>份</small></strong></div>
+          <div class="event-gift-split" aria-label="統一時代兌換者中，新綁定64人占54.7%，舊綁定53人占45.3%"><span class="new" style="width:54.7%"></span><span class="old" style="width:45.3%"></span></div>
+          <div class="event-gift-legend"><span><b>新綁定64人</b>・54.7%</span><span>舊綁定53人・45.3%</span></div>
+          <div class="event-gift-metrics">
+            <div><b>NT$24</b><span>禮物成本＝單份成本</span></div><div><b>NT$2,808</b><span>估算禮物總成本</span></div><div><b>NT$43.9</b><span>CPB＝每位新綁定分攤</span></div>
+          </div>
+        </div>
         <div class="event-profile-reading"><b>判讀：</b>單日量體低於禾馨，但占當日BCL比重更高。客群同樣偏大月齡，25M以上占71.4%；孕期占9.5%，比禾馨高，早期家庭的觸及稍多。</div>
       </article>
     </div>
+    <div class="event-gift-compare"><b>禮物兌換比較：</b>禾馨比統一時代多兌換92份（209比117），但貼紙單價較低，估算總成本反而少NT$195.5。兩場兌換者中的新綁定占比幾乎相同（54.5%比54.7%）；禾馨主要優勢是用較低單價取得較大量體，每位新綁定分攤的禮物成本約為統一時代的一半。</div>
     <div class="event-profile-compare"><b>兩場共同結論：</b>兩場活動都能在單日快速放大BCL量體，有效率也都超過九成；但SS+S僅17.5%與19.0%，明顯低於本週全體46.3%。統一時代的可辨識購買率8.3%，高於禾馨的2.5%，但樣本數仍小。兩場較適合評估「名單量補充與既有家庭接觸」，不能直接視為0–2歲核心名單的主要來源。</div>
-    <div class="event-profile-source">資料來源：260421DB數據1006.xlsx（2026/10/6 10:58版）。月齡以綁定年月減最小孩出生年月計算；兩場皆無生日待補。有效率與購買資料為資料檔當下狀態；購買紀錄以「商品金額」大於0判定，金額不代表活動現場成交或活動後新增營收。</div>
+    <div class="event-profile-source">資料來源：260421DB數據1006.xlsx（2026/10/6 10:58版）與8TDB（2026/10/5更新）。月齡以綁定年月減最小孩出生年月計算；兩場皆無生日待補。購買紀錄以「商品金額」大於0判定，金額不代表活動現場成交或活動後新增營收。禮物兌換採指定標籤原始人數；新綁定指兌換者的最新綁定管道為該活動，其餘歸為舊綁定／非本活動綁定。原始標籤包含禾馨3名、統一時代2名測試會員；若依正式週報排除測試會員，兌換人數為206與115。</div>
   </div>
 </section>
 
