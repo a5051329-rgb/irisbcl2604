@@ -398,95 +398,81 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <button id="campaignAlertBtn" class="campaign-alert-btn" type="button" aria-controls="campaignAlertPanel" aria-expanded="false" onclick="toggleCampaignAlert()">
   <span class="campaign-alert-dot" aria-hidden="true"></span>
-  <span>本週｜9/28–10/4 廣告成效</span>
+  <span>本週｜10/5–10/11 廣告成效</span>
 </button>
 
 <button id="eventProfileBtn" class="event-profile-btn" type="button" aria-controls="eventProfilePanel" aria-expanded="false" onclick="toggleEventProfile()">
-  <span aria-hidden="true">●</span><span>禾馨・統一活動分析</span>
+  <span aria-hidden="true">●</span><span>婦幼展 193 人分析</span>
 </button>
 
 <section id="eventProfilePanel" class="event-profile-panel" role="dialog" aria-modal="false" aria-labelledby="eventProfileTitle" aria-hidden="true">
   <div class="event-profile-head">
-    <h2 id="eventProfileTitle">禾馨活動、統一時代活動｜BCL與客戶樣貌</h2>
-    <p>9/28–10/4完整週｜兩場活動分開分析 <span class="campaign-resize-hint">右下角可拖曳縮放視窗</span></p>
+    <h2 id="eventProfileTitle">婦幼展｜193 人 BCL 與客戶樣貌</h2>
+    <p>10/5–10/11完整週｜10/8 集中蒐集 <span class="campaign-resize-hint">右下角可拖曳縮放視窗</span></p>
     <div class="event-profile-actions">
       <button id="eventProfileFullscreenBtn" class="event-profile-fullscreen" type="button" aria-pressed="false" onclick="toggleEventProfileFullscreen()">全螢幕</button>
-      <button class="event-profile-close" type="button" aria-label="關閉禾馨與統一時代活動分析" onclick="toggleEventProfile(false)">×</button>
+      <button class="event-profile-close" type="button" aria-label="關閉婦幼展分析" onclick="toggleEventProfile(false)">×</button>
     </div>
   </div>
   <div class="event-profile-body">
     <div class="event-profile-context">
-      <div><span>兩場活動合計</span><b>204 BCL</b></div>
-      <div><span>占本週正式BCL</span><b>29.4%</b></div>
-      <div><span>兩場SS+S合計</span><b>37人・18.1%</b></div>
+      <div><span>婦幼展蒐集</span><b>193 BCL</b></div>
+      <div><span>占本週正式BCL</span><b>29.6%</b></div>
+      <div><span>占10/8當日BCL</span><b>74.2%</b></div>
     </div>
-    <div class="event-profile-grid">
+    <div class="event-profile-grid" style="grid-template-columns:minmax(0,1fr);">
       <article class="event-profile-card">
-        <div class="event-profile-card-head"><h3>禾馨活動</h3><span>10/3集中蒐集</span></div>
-        <div class="event-profile-main"><strong>120<small>BCL</small></strong><span>占本週17.3%<br>占10/3當日55.8%</span></div>
+        <div class="event-profile-card-head"><h3>婦幼展</h3><span>10/8集中蒐集</span></div>
+        <div class="event-profile-main"><strong>193<small>BCL</small></strong><span>占本週29.6%<br>占10/8當日74.2%</span></div>
         <div class="event-profile-kpis">
-          <div><b>21人・17.5%</b><span>SS+S（0–24M）</span></div>
-          <div><b>91.7%</b><span>有效率（110人）</span></div>
-          <div><b>3人・2.5%</b><span>有購買紀錄</span></div>
-          <div><b>NT$14,400</b><span>購買金額合計</span></div>
+          <div><b>149人・77.2%</b><span>SS+S（孕期～24M）</span></div>
+          <div><b>85.5%</b><span>有效率（165人）</span></div>
+          <div><b>2人・1.0%</b><span>有購買紀錄</span></div>
+          <div><b>NT$11,399</b><span>購買金額合計</span></div>
         </div>
         <div class="event-age-layout">
-          <div class="event-pie" data-values="2,4,3,14,31,33,33" data-labels="孕期,0–6M,7–12M,13–24M,25–48M,49–72M,73M+" data-colors="#10b981,#60a5fa,#f97316,#ef4444,#0891b2,#22c55e,#9ca3af" aria-label="禾馨活動月齡圓餅圖；滑鼠移至區塊可查看月齡、人數與占比">
-            <div class="event-pie-center"><b>120</b><span>月齡分布</span></div><div class="event-pie-tooltip" role="tooltip"></div>
+          <div class="event-pie" data-values="52,42,35,20,24,5,15" data-labels="孕期,0–6M,7–12M,13–24M,25–48M,49–72M,73M+" data-colors="#10b981,#60a5fa,#f97316,#ef4444,#0891b2,#22c55e,#9ca3af" aria-label="婦幼展月齡圓餅圖；滑鼠移至區塊可查看月齡、人數與占比">
+            <div class="event-pie-center"><b>193</b><span>月齡分布</span></div><div class="event-pie-tooltip" role="tooltip"></div>
           </div>
-          <table class="event-profile-table" aria-label="禾馨活動月齡分布明細"><thead><tr><th>綁定時月齡</th><th>人數</th><th>占比</th></tr></thead><tbody>
-            <tr><td>孕期</td><td>2</td><td>1.7%</td></tr><tr><td>0–6M</td><td>4</td><td>3.3%</td></tr><tr><td>7–12M</td><td>3</td><td>2.5%</td></tr><tr><td>13–24M</td><td>14</td><td>11.7%</td></tr><tr><td>25–48M</td><td>31</td><td>25.8%</td></tr><tr><td>49–72M</td><td>33</td><td>27.5%</td></tr><tr><td>73M+</td><td>33</td><td>27.5%</td></tr>
+          <table class="event-profile-table" aria-label="婦幼展月齡分布明細"><thead><tr><th>綁定時月齡</th><th>人數</th><th>占比</th></tr></thead><tbody>
+            <tr><td>孕期</td><td>52</td><td>26.9%</td></tr><tr><td>0–6M</td><td>42</td><td>21.8%</td></tr><tr><td>7–12M</td><td>35</td><td>18.1%</td></tr><tr><td>13–24M</td><td>20</td><td>10.4%</td></tr><tr><td>25–48M</td><td>24</td><td>12.4%</td></tr><tr><td>49–72M</td><td>5</td><td>2.6%</td></tr><tr><td>73M+</td><td>15</td><td>7.8%</td></tr>
           </tbody></table>
         </div>
-        <div class="event-purchase-note"><b>購買樣貌：</b>3位有購買紀錄者合計NT$14,400；購買者平均NT$4,800、中位數NT$4,500，金額介於NT$600–9,300。</div>
-        <div class="event-gift-box">
-          <div class="event-gift-head"><b>總發送禮物數｜貼紙</b><strong>209<small>份</small></strong></div>
-          <div class="event-gift-split" aria-label="禾馨兌換者中，新綁定114人占54.5%，舊綁定95人占45.5%"><span class="new" style="width:54.5%"></span><span class="old" style="width:45.5%"></span></div>
-          <div class="event-gift-legend"><span><b>新綁定114人</b>・54.5%</span><span>舊綁定95人・45.5%</span></div>
-          <div class="event-gift-metrics">
-            <div><b>NT$12.5</b><span>禮物成本＝單份成本</span></div><div><b>NT$2,612.5</b><span>估算禮物總成本</span></div><div><b>NT$22.9</b><span>CPB＝每位新綁定分攤</span></div>
-          </div>
-        </div>
-        <div class="event-profile-reading"><b>判讀：</b>量體大，一天即貢獻120 BCL；但客群明顯偏大月齡，25M以上占80.8%、49M以上占55.0%。適合補充整體名單量，對0–2歲核心受眾的貢獻較有限。</div>
-      </article>
-      <article class="event-profile-card unified">
-        <div class="event-profile-card-head"><h3>統一時代活動</h3><span>9/28集中蒐集</span></div>
-        <div class="event-profile-main"><strong>84<small>BCL</small></strong><span>占本週12.1%<br>占9/28當日62.2%</span></div>
-        <div class="event-profile-kpis">
-          <div><b>16人・19.0%</b><span>SS+S（0–24M）</span></div>
-          <div><b>92.9%</b><span>有效率（78人）</span></div>
-          <div><b>7人・8.3%</b><span>有購買紀錄</span></div>
-          <div><b>NT$25,216</b><span>購買金額合計</span></div>
-        </div>
-        <div class="event-age-layout">
-          <div class="event-pie" data-values="8,3,0,13,25,11,24" data-labels="孕期,0–6M,7–12M,13–24M,25–48M,49–72M,73M+" data-colors="#10b981,#60a5fa,#f97316,#ef4444,#0891b2,#22c55e,#9ca3af" aria-label="統一時代活動月齡圓餅圖；滑鼠移至區塊可查看月齡、人數與占比">
-            <div class="event-pie-center"><b>84</b><span>月齡分布</span></div><div class="event-pie-tooltip" role="tooltip"></div>
-          </div>
-          <table class="event-profile-table" aria-label="統一時代活動月齡分布明細"><thead><tr><th>綁定時月齡</th><th>人數</th><th>占比</th></tr></thead><tbody>
-            <tr><td>孕期</td><td>8</td><td>9.5%</td></tr><tr><td>0–6M</td><td>3</td><td>3.6%</td></tr><tr><td>7–12M</td><td>0</td><td>0.0%</td></tr><tr><td>13–24M</td><td>13</td><td>15.5%</td></tr><tr><td>25–48M</td><td>25</td><td>29.8%</td></tr><tr><td>49–72M</td><td>11</td><td>13.1%</td></tr><tr><td>73M+</td><td>24</td><td>28.6%</td></tr>
-          </tbody></table>
-        </div>
-        <div class="event-purchase-note"><b>購買樣貌：</b>7位有購買紀錄者合計NT$25,216；購買者平均NT$3,602、中位數NT$2,999，金額介於NT$899–7,249。</div>
-        <div class="event-gift-box">
-          <div class="event-gift-head"><b>總發送禮物數｜方巾</b><strong>117<small>份</small></strong></div>
-          <div class="event-gift-split" aria-label="統一時代兌換者中，新綁定64人占54.7%，舊綁定53人占45.3%"><span class="new" style="width:54.7%"></span><span class="old" style="width:45.3%"></span></div>
-          <div class="event-gift-legend"><span><b>新綁定64人</b>・54.7%</span><span>舊綁定53人・45.3%</span></div>
-          <div class="event-gift-metrics">
-            <div><b>NT$24</b><span>禮物成本＝單份成本</span></div><div><b>NT$2,808</b><span>估算禮物總成本</span></div><div><b>NT$43.9</b><span>CPB＝每位新綁定分攤</span></div>
-          </div>
-        </div>
-        <div class="event-profile-reading"><b>判讀：</b>單日量體低於禾馨，但占當日BCL比重更高。客群同樣偏大月齡，25M以上占71.4%；孕期占9.5%，比禾馨高，早期家庭的觸及稍多。</div>
+        <div class="event-purchase-note"><b>購買樣貌：</b>2位有購買紀錄者合計NT$11,399；購買者平均與中位數均為NT$5,699.5。這是既有購買紀錄，不能視為婦幼展現場或活動後新增營收。</div>
+        <div class="event-profile-reading"><b>判讀：</b>婦幼展單日即貢獻193 BCL，是本週量體的重要來源；孕期與0–24M共149人（77.2%），明顯貼近核心受眾。25M以上44人（22.8%），且無生日／月齡待補為0人，客戶樣貌辨識完整。</div>
       </article>
     </div>
-    <div class="event-gift-compare"><b>禮物兌換比較：</b>禾馨比統一時代多兌換92份（209比117），但貼紙單價較低，估算總成本反而少NT$195.5。兩場兌換者中的新綁定占比幾乎相同（54.5%比54.7%）；禾馨主要優勢是用較低單價取得較大量體，每位新綁定分攤的禮物成本約為統一時代的一半。</div>
-    <div class="event-profile-compare"><b>兩場共同結論：</b>兩場活動都能在單日快速放大BCL量體，有效率也都超過九成；但SS+S僅17.5%與19.0%，明顯低於本週全體46.3%。統一時代的可辨識購買率8.3%，高於禾馨的2.5%，但樣本數仍小。兩場較適合評估「名單量補充與既有家庭接觸」，不能直接視為0–2歲核心名單的主要來源。</div>
-    <div class="event-profile-source">資料來源：260421DB數據1006.xlsx（2026/10/6 10:58版）與8TDB（2026/10/5更新）。月齡以綁定年月減最小孩出生年月計算；兩場皆無生日待補。購買紀錄以「商品金額」大於0判定，金額不代表活動現場成交或活動後新增營收。禮物兌換採指定標籤原始人數；新綁定指兌換者的最新綁定管道為該活動，其餘歸為舊綁定／非本活動綁定。原始標籤包含禾馨3名、統一時代2名測試會員；若依正式週報排除測試會員，兌換人數為206與115。</div>
+    <div class="event-gift-box" style="margin-top:12px;">
+      <div class="event-gift-head"><b>婦幼展禮物投入｜兩種贈品</b><strong>350<small>件</small></strong></div>
+      <div class="event-gift-metrics" style="grid-template-columns:repeat(4,minmax(0,1fr));">
+        <div><b>250 × NT$20</b><span>Mirafeel體驗包＝NT$5,000</span></div>
+        <div><b>100 × NT$24.07</b><span>方巾＝NT$2,407</span></div>
+        <div><b>NT$7,407</b><span>禮物總成本</span></div>
+        <div><b>NT$38.4</b><span>每位新綁定分攤（CPB）</span></div>
+      </div>
+      <div style="margin-top:7px;font-size:10.5px;line-height:1.55;color:#856b39;">口徑：CPB＝禮物總成本 NT$7,407 ÷ 193 BCL。350為禮物總件數，不等於350位不同兌換者；目前資料未含兌換者的新／舊綁定標籤，因此不拆新舊客比例。</div>
+    </div>
+    <div class="event-gift-compare">
+      <b>線下活動蒐集成效比較</b>
+      <table class="event-profile-table" aria-label="婦幼展、禾馨與統一時代蒐集成效比較" style="margin:7px 0 5px;">
+        <thead><tr><th>活動</th><th>BCL</th><th>CPB</th><th>SS+S</th><th>有效率</th><th>有購買紀錄</th></tr></thead>
+        <tbody>
+          <tr><td><b>婦幼展</b></td><td><b>193</b></td><td><b>NT$38.4</b></td><td><b>149・77.2%</b></td><td>165・85.5%</td><td>2・1.0%</td></tr>
+          <tr><td>禾馨</td><td>120</td><td>NT$22.9</td><td>21・17.5%</td><td>110・91.7%</td><td>3・2.5%</td></tr>
+          <tr><td>統一時代</td><td>84</td><td>NT$43.9</td><td>16・19.0%</td><td>78・92.9%</td><td>7・8.3%</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-bottom:5px;font-size:10px;color:#8a7243;">CPB採禮物成本分攤口徑：活動禮物總成本 ÷ 新綁定人數。</div>
+      <b>比較判讀：</b>婦幼展蒐集193 BCL，較禾馨多73人（+60.8%）、較統一時代多109人（+129.8%）；核心月齡SS+S占77.2%，也明顯高於禾馨17.5%與統一時代19.0%。不過婦幼展有效率85.5%低於另外兩場，且既有購買紀錄比例最低。三場活動日期與場域不同，適合比較活動成果，不宜直接視為同條件A/B測試。
+    </div>
+    <div class="event-profile-compare"><b>本週結論：</b>婦幼展同時補充量體與核心月齡品質：占正式週BCL 29.6%，SS+S 77.2%亦高於本週全體69.6%。不過可辨識購買者僅2人（1.0%），目前較適合評估名單蒐集與目標受眾觸及，尚不足以判定購買轉換效果。</div>
+    <div class="event-profile-source">資料來源：260421DB數據1012.xlsx。月齡以綁定年月減最小孩出生年月計算；婦幼展193人皆有生日資料。購買紀錄以「商品金額」大於0判定，金額不代表活動現場成交或活動後新增營收。</div>
   </div>
 </section>
 
 <section id="campaignAlertPanel" class="campaign-alert-panel" role="dialog" aria-modal="false" aria-labelledby="campaignAlertTitle" aria-hidden="true">
   <div class="campaign-alert-head">
-    <h2 id="campaignAlertTitle">兩條路作戰｜9/28–10/4 第 3 週</h2>
+    <h2 id="campaignAlertTitle">兩條路作戰｜10/5–10/11 第 4 週</h2>
     <p>BCL、月齡品質、週預算 CPB 與上週比較｜以實際 BCL 計算，不採 Meta Lead <span class="campaign-resize-hint">右下角可拖曳縮放視窗</span></p>
     <div class="campaign-alert-actions">
       <button id="campaignFullscreenBtn" class="campaign-alert-fullscreen" type="button" aria-pressed="false" onclick="toggleCampaignFullscreen()">全螢幕</button>
@@ -495,24 +481,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
   <div class="campaign-alert-body">
     <div class="campaign-alert-summary">
-      <div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>364</strong><small>上週 356｜<b style="color:#15803d;">▲8（+2.2%）</b></small></div>
-      <div class="campaign-alert-kpi"><span>自操週預算 CPB</span><strong>$2.32</strong><small>上週 $2.54｜改善 8.7%</small></div>
-      <div class="campaign-alert-kpi"><span>廣代週預算 CPB</span><strong>$3.20</strong><small>上週 $3.01｜上升 6.3%</small></div>
+      <div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>337</strong><small>上週 364｜<b style="color:#dc2626;">▼27（-7.4%）</b></small></div>
+      <div class="campaign-alert-kpi"><span>自操週預算 CPB</span><strong>$2.29</strong><small>上週 $2.32｜改善 1.3%</small></div>
+      <div class="campaign-alert-kpi"><span>廣代週預算 CPB</span><strong>$3.98</strong><small>上週 $3.20｜上升 24.5%</small></div>
     </div>
 
     <div class="campaign-cards">
       <article class="campaign-mini-card">
         <div class="campaign-card-top"><div class="campaign-card-name">巧虎育兒大調查</div><span class="campaign-badge">自操</span></div>
-        <div class="campaign-card-total">211<small>BCL</small></div>
-        <div class="campaign-daily"><span>9/28：<b>21</b></span><span>9/29：<b>25</b></span><span>9/30：<b>28</b></span><span>10/1：<b>37</b></span><span>10/2：<b>26</b></span><span>10/3：<b>40</b></span><span>10/4：<b>34</b></span></div>
-        <div class="campaign-quality"><b style="color:#15803d;">較上週 193：▲18（+9.3%）</b><br>SS+S 151 人（71.6%，▲6.3pt）｜孕期 19 人（9.0%）｜生日／月齡待補 1 人<br>週預算 US$490｜CPB $2.32</div>
+        <div class="campaign-card-total">214<small>BCL</small></div>
+        <div class="campaign-daily"><span>10/5：<b>33</b></span><span>10/6：<b>30</b></span><span>10/7：<b>41</b></span><span>10/8：<b>37</b></span><span>10/9：<b>29</b></span><span>10/10：<b>18</b></span><span>10/11：<b>26</b></span></div>
+        <div class="campaign-quality"><b style="color:#15803d;">較上週 211：▲3（+1.4%）</b><br>SS+S 164 人（76.6%，▲5.0pt）｜孕期 17 人（7.9%）｜生日／月齡待補 0 人<br>週預算 US$490｜CPB $2.29</div>
         <table class="campaign-grade-table" aria-label="巧虎育兒大調查月齡級別">
           <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
           <tbody>
-            <tr><td>孕期</td><td>19</td><td>9.0%</td></tr><tr><td>0–6M</td><td>57</td><td>27.0%</td></tr>
-            <tr><td>7–12M</td><td>44</td><td>20.9%</td></tr><tr><td>13–24M</td><td>50</td><td>23.7%</td></tr>
-            <tr><td>25–48M</td><td>30</td><td>14.2%</td></tr><tr><td>49–72M</td><td>3</td><td>1.4%</td></tr>
-            <tr><td>73M+</td><td>7</td><td>3.3%</td></tr><tr><td>生日／月齡待補</td><td>1</td><td>0.5%</td></tr>
+            <tr><td>孕期</td><td>17</td><td>7.9%</td></tr><tr><td>0–6M</td><td>58</td><td>27.1%</td></tr>
+            <tr><td>7–12M</td><td>48</td><td>22.4%</td></tr><tr><td>13–24M</td><td>41</td><td>19.2%</td></tr>
+            <tr><td>25–48M</td><td>38</td><td>17.8%</td></tr><tr><td>49–72M</td><td>3</td><td>1.4%</td></tr>
+            <tr><td>73M+</td><td>9</td><td>4.2%</td></tr><tr><td>生日／月齡待補</td><td>0</td><td>0.0%</td></tr>
           </tbody>
         </table>
         <details class="campaign-spend-details">
@@ -523,16 +509,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
       <article class="campaign-mini-card agency">
         <div class="campaign-card-top"><div class="campaign-card-name">健康寶貝知識王</div><span class="campaign-badge">廣代操作</span></div>
-        <div class="campaign-card-total">153<small>BCL</small></div>
-        <div class="campaign-daily"><span>9/28：<b>18</b></span><span>9/29：<b>17</b></span><span>9/30：<b>18</b></span><span>10/1：<b>18</b></span><span>10/2：<b>20</b></span><span>10/3：<b>28</b></span><span>10/4：<b>34</b></span></div>
-        <div class="campaign-quality"><b style="color:#dc2626;">較上週 163：▼10（-6.1%）</b><br>SS+S 77 人（50.3%，▲4.3pt）｜孕期 12 人（7.8%）｜生日／月齡待補 1 人<br>週預算 US$490｜CPB $3.20</div>
+        <div class="campaign-card-total">123<small>BCL</small></div>
+        <div class="campaign-daily"><span>10/5：<b>30</b></span><span>10/6：<b>24</b></span><span>10/7：<b>14</b></span><span>10/8：<b>8</b></span><span>10/9：<b>11</b></span><span>10/10：<b>19</b></span><span>10/11：<b>17</b></span></div>
+        <div class="campaign-quality"><b style="color:#dc2626;">較上週 153：▼30（-19.6%）</b><br>SS+S 68 人（55.3%，▲5.0pt）｜孕期 19 人（15.4%）｜生日／月齡待補 0 人<br>週預算 US$490｜CPB $3.98</div>
         <table class="campaign-grade-table" aria-label="健康寶貝知識王月齡級別">
           <thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead>
           <tbody>
-            <tr><td>孕期</td><td>12</td><td>7.8%</td></tr><tr><td>0–6M</td><td>19</td><td>12.4%</td></tr>
-            <tr><td>7–12M</td><td>22</td><td>14.4%</td></tr><tr><td>13–24M</td><td>36</td><td>23.5%</td></tr>
-            <tr><td>25–48M</td><td>39</td><td>25.5%</td></tr><tr><td>49–72M</td><td>8</td><td>5.2%</td></tr>
-            <tr><td>73M+</td><td>16</td><td>10.5%</td></tr><tr><td>生日／月齡待補</td><td>1</td><td>0.7%</td></tr>
+            <tr><td>孕期</td><td>19</td><td>15.4%</td></tr><tr><td>0–6M</td><td>7</td><td>5.7%</td></tr>
+            <tr><td>7–12M</td><td>17</td><td>13.8%</td></tr><tr><td>13–24M</td><td>25</td><td>20.3%</td></tr>
+            <tr><td>25–48M</td><td>30</td><td>24.4%</td></tr><tr><td>49–72M</td><td>5</td><td>4.1%</td></tr>
+            <tr><td>73M+</td><td>20</td><td>16.3%</td></tr><tr><td>生日／月齡待補</td><td>0</td><td>0.0%</td></tr>
           </tbody>
         </table>
         <details class="campaign-spend-details">
@@ -543,20 +529,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
       <div class="campaign-right-column">
         <article class="campaign-mini-card campaign-history-card">
-          <div class="campaign-card-top"><div class="campaign-card-name">第 3 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">9/28–10/4</span></div>
+          <div class="campaign-card-top"><div class="campaign-card-name">第 4 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">10/5–10/11</span></div>
           <ul class="campaign-judgement-list">
-            <li><b>1＋1有大於2嗎？</b>沒有，目前約為1.36。兩活動合計364 BCL，較上週增加8人；為單一路線平均266.9人的1.36倍，達理論2倍的68.2%。</li>
+            <li><b>1＋1有大於2嗎？</b>沒有，目前約為1.26。兩活動合計337 BCL，較上週減少27人；為單一路線平均266.9人的1.26倍，達理論2倍的63.1%。</li>
             <li class="campaign-root-cause"><b>本週變化來自哪裡？</b>
               <ol>
-                <li><strong>自操回升：</strong>211人，較上週增加18人（+9.3%）；週預算CPB由$2.54降至$2.32，SS+S為151人（71.6%）。</li>
-                <li><strong>廣代仍低於上週：</strong>153人，較上週減少10人（-6.1%）；週預算CPB由$3.01升至$3.20，SS+S為77人（50.3%）。</li>
-                <li><strong>10/1後兩邊日量都增加：</strong>自操日均由24.7升至34.3，廣代由17.7升至25.0；因兩邊同步上升，暫不能只歸因於自操提高預算，仍需觀察至10/14。</li>
+                <li><strong>自操量體大致持平：</strong>214人，較上週增加3人（+1.4%）；SS+S升至164人（76.6%），量體穩定、月齡品質提高。</li>
+                <li><strong>廣代量體明顯下滑：</strong>123人，較上週減少30人（-19.6%）；SS+S占比雖升至55.3%，但固定週預算口徑CPB由$3.20升至$3.98。</li>
+                <li><strong>差異集中在廣代：</strong>自操比廣代多91人（+74.0%）。本週兩活動合計下滑，主要不是自操減量，而是廣代少30人所致。</li>
               </ol>
             </li>
           </ul>
           <div class="campaign-history-summary">
-            <div><b>1＋1＝1.36</b><span>上週 1.33</span></div>
-            <div><b>68.2%</b><span>理論 2 倍達成率</span></div>
+            <div><b>1＋1＝1.26</b><span>上週 1.36</span></div>
+            <div><b>63.1%</b><span>理論 2 倍達成率</span></div>
           </div>
           <button id="campaignCompareToggle" class="campaign-compare-toggle" type="button" aria-controls="campaignLaunchCompare" aria-expanded="false" onclick="toggleLaunchComparison()">
             <strong>展開三場過往活動</strong><span class="campaign-compare-chevron" aria-hidden="true">⌄</span>
@@ -565,15 +551,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
     </div>
 
+    <div class="campaign-alert-insight" style="margin-bottom:12px;background:#f8fafc;border-color:#94a3b8;color:#334155;">
+      <b>受眾重疊假說｜為什麼目前1＋1沒有等於2？</b><br>
+      根據Meta AI的建議，兩個不同廣告帳號若以高度相似的受眾條件同時競價，可能進入相同拍賣、彼此抬高成本，使新增觸及無法完整疊加。這是目前要透過受眾差異化實測驗證的主要假說。<br><br>
+      <b>預算內耗：</b>花兩份預算去搶同一池人，成果自然打折扣。<br><br>
+      <span style="display:block;margin-bottom:10px;padding:8px 10px;border-radius:8px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;font-weight:800;">找到廣告蒐集BCL的預算天花板前，要先解決受眾問題。</span>
+      <img src="assets/2609-2610-audience-comparison.png" alt="2609受眾高度重疊與2610差異化受眾預期效果對照圖" style="display:block;width:80%;height:auto;margin:0 auto 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;" loading="lazy">
+      <b>2610差異化方向</b>
+      <ul style="margin:7px 0 0 20px;padding:0;line-height:1.75;">
+        <li><b>受眾切開：</b>廣代保留「嬰幼兒用品興趣」；自操新增與調查問卷主題相符的「餐食興趣」、停用「嬰幼兒用品興趣」，並保留「學習教育興趣」與「類似受眾」。</li>
+        <li><b>不要同時加碼：</b>重疊高時一起加預算，只會讓成本一起飆。2610分割受眾後，先維持US$70／日觀察成效變化，再考慮單邊減碼／加碼。</li>
+      </ul>
+      <span style="display:inline-block;margin-top:8px;padding:5px 10px;border-radius:8px;background:#e0f2fe;color:#075985;font-weight:700;">受眾一致＋同時競價＝可能內耗；分工越清楚，1＋1越接近2。</span>
+    </div>
+
     <div class="campaign-next-step campaign-next-step-wide">
       <div class="campaign-next-step-title">下一步</div>
       <ol>
-        <li><b>自操第二檔：</b>下週上線「育兒大調查」第二檔，預計將預算提升至US$100／日。</li>
-        <li><b>廣代同步更新素材：</b>兩邊同步調整後，持續觀察BCL、CPB與月齡品質的差異變化。</li>
+        <li><b>進行差異化受眾測試：</b>調整雙方受眾、降低重疊；雙方維持相同的US$70／日預算，觀察BCL、CPB、SS+S及1＋1倍數的變化。</li>
       </ol>
     </div>
 
-    <div class="campaign-alert-insight"><b>完整週判讀｜第3週兩活動合計364 BCL，較上週356 BCL增加8人（+2.2%），但仍未出現1＋1大於2。</b><br>過往單一路線 W11–W24 平均為266.9 BCL／週，理論2倍為533.9；本週1＋1約為1.36，達成理論2倍的68.2%。自操211人，較上週增加18人（+9.3%），週預算CPB改善至$2.32，SS+S為151人（71.6%）；廣代153人，較上週減少10人（-6.1%），CPB為$3.20，SS+S為77人（50.3%）。自操比廣代多58人（+37.9%）。下週將以育兒大調查第二檔提高預算、廣代同步更新素材後的實際數據，觀察兩邊差異變化。</div>
+    <div class="campaign-alert-insight"><b>完整週判讀｜第4週兩活動合計337 BCL，較上週364 BCL減少27人（-7.4%），仍未出現1＋1大於2。</b><br>過往單一路線 W11–W24 平均為266.9 BCL／週，理論2倍為533.9；本週1＋1約為1.26，達成理論2倍的63.1%。自操214人，較上週增加3人（+1.4%），固定週預算口徑CPB為$2.29，SS+S為164人（76.6%）；廣代123人，較上週減少30人（-19.6%），CPB升至$3.98，SS+S為68人（55.3%）。自操比廣代多91人（+74.0%），本週總量下滑主要來自廣代。</div>
 
     <div id="campaignCompareWrap" class="campaign-compare-wrap">
       <div id="campaignLaunchCompare" class="campaign-launch-compare" aria-hidden="true">
@@ -602,7 +601,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
     </div>
 
-    <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx、260421DB數據1006.xlsx、8TDB。管道與月齡均採2026/10/6 10:58版DB完整七日逐筆資料；LINE好友採8TDB 2026/10/5資料。活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」；SS+S＝0–24M。本週 CPB 依既定口徑，以每邊週預算 US$490 ÷ 實際 BCL 計算；不等於 Meta 實際花費。</div>
+    <div class="campaign-alert-note">資料來源：2026年觀察用CUBE-1.xlsx、260421DB數據1012.xlsx。管道與月齡採10/12版DB完整七日逐筆資料；活動名稱「巧虎育兒大調查」對應 Excel 的「育兒大調查」。SS+S＝孕期～24M。本週 CPB 依既定口徑，以每邊週預算 US$490 ÷ 實際 BCL 計算；不等於 Meta 實際花費。</div>
   </div>
 </section>
 
@@ -2600,8 +2599,27 @@ var PW_GRADE_BARS=['rgba(14,122,110,.8)','rgba(30,111,184,.8)','rgba(185,28,28,.
 
 /* 週次選擇資料 */
 var PW_WEEKS = {
+  'W28': {
+    label: 'W28：10/5（一）– 10/11（日）', badge: 'W28 最新週', total: 651, ss: 453, ssPct: 69.6, prev: 'W27',
+    monthAccum: 1100, monthLabel: '10/1–10/11', monthDays: 31, daysPassed: 11, prevMonthAccum: 891, prevMonthLabel: '9/1–9/11',
+    btype: {自辦線上:343,自辦線下:5,主動:57,自動:4,異業:242},
+    btypeN: {all:651,selfOnline:343,selfOffline:5,active:57,shopline:4,partner:242},
+    chN: {'巧虎育兒大調查':214,'婦幼展':193,'健康寶貝知識王':123,'樂飛':35,'OA':34,'官網綁定':23,'明治':14,'育兒安全大作戰':4,'夏季舞台劇':4,'SHOPLINE':4,'BCL貼紙':2,'英語劇':1},
+    dailyLabels: ['10/5','10/6','10/7','10/8','10/9','10/10','10/11'],
+    daily: [76,82,68,260,65,47,55],
+    partner: {婦幼展:193,樂飛:35,明治:14},
+    chGradeOverride: {/* 2026/10/12版DB完整七日逐筆生日；排除SHOPLINE回補2筆 */
+      all:[17.5,18.7,16.9,16.4,18.1,3.1,9.2,0.0],// n=651，SS+S=69.6%，無生日0筆
+      selfOnline:[10.5,19.0,19.2,20.1,20.1,2.6,8.5,0.0],// n=343，SS+S=68.8%
+      selfOffline:[0.0,0.0,0.0,20.0,20.0,20.0,40.0,0.0],// n=5，夏季舞台劇4＋英語劇1
+      active:[15.8,10.5,8.8,19.3,33.3,5.3,7.0,0.0],// n=57，OA34＋官網23
+      shopline:[25.0,0.0,0.0,50.0,0.0,0.0,25.0,0.0],// n=4，排除回補2筆
+      partner:[28.1,21.1,16.1,9.9,12.0,2.9,9.9,0.0],// n=242，SS+S=75.2%
+    },
+    summary: '<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">W28 正式口徑651人，較上週減少42人（-6.1%）；婦幼展193人使本週月齡品質明顯提高。</p><p><span class="tag tag-info">管道拆分</span><br>• <b>自辦線上343人（52.7%）</b>：巧虎育兒大調查214、健康寶貝知識王123、育兒安全大作戰4、BCL貼紙2<br>• <b>自辦線下5人（0.8%）</b>：夏季舞台劇4、英語劇1<br>• <b>主動57人（8.8%）</b>：OA34、官網23<br>• <b>自動（SHOPLINE）4人（0.6%）</b><br>• <b>異業242人（37.2%）</b>：婦幼展193、樂飛35、明治14</p><p><span class="tag tag-ok">SS+S 453人（69.6%）</span> 較W27的46.3%上升23.3pt。婦幼展193人中SS+S為149人（77.2%），是本週品質提高的主要來源；全週無生日／月齡待補為0人。</p><p><span class="tag tag-warn">兩條路作戰第4週</span> 兩活動合計337人，較上週364人減少27人（-7.4%）。自操214人（+1.4%）、廣代123人（-19.6%）；以每邊週預算US$490計算，CPB為自操$2.29、廣代$3.98。1＋1約1.26，達理論2倍的63.1%。月齡品質方面，自操SS+S為76.6%，廣代為55.3%。</p><p><span class="tag tag-info">婦幼展</span> 10/8集中蒐集193人，占當日BCL 74.2%、占正式週BCL 29.6%；有效率85.5%，可辨識購買紀錄2人（1.0%）。</p><p><span class="tag tag-info">LINE好友</span> 10/5–10/11新增931人，較上週989人減少58人（-5.9%）；BCL／好友比為69.9%，與上週70.1%大致持平。</p><p><span class="tag tag-info">月累計</span> 10/1–10/11正式口徑1,100人，較9/1–9/11的891人增加209人（+23.5%）。</p><p style="font-size:11px;color:#888;">口徑說明：10/12版DB七日原始合計653人；正式週報排除SHOPLINE回補2筆，故為651人。每日折線保留原始數字；LINE好友採8TDB 2026/10/12資料；CPB採每邊週預算US$490計算。</p>',
+  },
   'W27': {
-    label: 'W27：9/28（一）– 10/4（日）', badge: 'W27 最新週', total: 693, ss: 321, ssPct: 46.3, prev: 'W26',
+    label: 'W27：9/28（一）– 10/4（日）', badge: 'W27 上週', total: 693, ss: 321, ssPct: 46.3, prev: 'W26',
     monthAccum: 453, monthLabel: '10/1–10/4', monthDays: 31, daysPassed: 4, prevMonthAccum: 403, prevMonthLabel: '9/1–9/4',
     btype: {自辦線上:370,自辦線下:85,主動:56,自動:4,異業:178},
     btypeN: {all:693,selfOnline:370,selfOffline:85,active:56,shopline:4,partner:178},
@@ -2959,7 +2977,18 @@ PW_TREND_DATA.partner.push(178);
 PW_TREND_DATA.ssPct.push(46.3);
 PW_TREND_DATA.ssN.push(321);
 PW_TREND_DATA.friend.push(989);
-PW_TREND_DATA.curIdx = 78;
+/* W28：10/5–10/11。10/12版DB原始653；正式口徑排除SHOPLINE回補2筆後為651。 */
+PW_TREND_DATA.labels.push('10/5–11');
+PW_TREND_DATA.total.push(651);
+PW_TREND_DATA.selfOnline.push(343);
+PW_TREND_DATA.selfOffline.push(5);
+PW_TREND_DATA.active.push(57);
+PW_TREND_DATA.shopline.push(4);
+PW_TREND_DATA.partner.push(242);
+PW_TREND_DATA.ssPct.push(69.6);
+PW_TREND_DATA.ssN.push(453);
+PW_TREND_DATA.friend.push(931);
+PW_TREND_DATA.curIdx = 79;
 
 /* 2026/09/16：8TDB 自辦線上改為「活動 → 細部來源」三級結構。
    口徑＝同一 LINE ID 的最新綁定日，對到同日、同活動的來源標籤後，各來源內去重。
@@ -3043,8 +3072,17 @@ Object.keys(PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources).forEach(
 Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(function(source){
   PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
 });
+PW_SELF_ONLINE_ACTIVITIES['育兒安全大作戰'].total.push(4);
+PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].total.push(214);
+PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].total.push(123);
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources[source].push(null);
+});
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
+});
 
-var _pwCurrentWeek = 'W27';
+var _pwCurrentWeek = 'W28';
 var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
@@ -3129,7 +3167,7 @@ function pwSelectWeek(wk) {
   var _friendVal = (_friendIdx>=0 && PW_TREND_DATA.friend && PW_TREND_DATA.friend[_friendIdx]!=null) ? PW_TREND_DATA.friend[_friendIdx] : null;
   var _friendPrevIdx = _friendIdx-1;
   var _friendPrevVal = (_friendPrevIdx>=0 && PW_TREND_DATA.friend && PW_TREND_DATA.friend[_friendPrevIdx]!=null) ? PW_TREND_DATA.friend[_friendPrevIdx] : null;
-  var friendNote = _friendVal!=null ? '<div class="friend-note-line" style="font-size:10px;margin-top:2px;">🟢 週新增好友數 '+_friendVal.toLocaleString()+' 人'+(_friendPrevVal!=null?'　前週 '+_friendPrevVal.toLocaleString():'')+'</div>' : '<div style="font-size:10px;color:#b45309;margin-top:2px;">LINE 週新增好友：資料更新中（目前僅到 9/21）</div>';
+  var friendNote = _friendVal!=null ? '<div class="friend-note-line" style="font-size:10px;margin-top:2px;">🟢 週新增好友數 '+_friendVal.toLocaleString()+' 人'+(_friendPrevVal!=null?'　前週 '+_friendPrevVal.toLocaleString():'')+'</div>' : '<div style="font-size:10px;color:#b45309;margin-top:2px;">LINE 週新增好友：資料尚待更新</div>';
   if (kpiRow) kpiRow.innerHTML =
     '<div class="kc" style="border-top:3px solid var(--pw-blue);"><div class="kl">週新增綁定</div><div class="kv" style="color:var(--pw-blue);">'+w.total+'</div><div class="kn">'+diffStr+'　'+(prev?'前週 '+prev.total:'')+'</div>'+friendNote+'</div>'+
     '<div class="kc" style="border-top:3px solid var(--pw-purple);"><div class="kl">每日平均</div><div class="kv" style="color:var(--pw-purple);">'+avg+'</div><div class="kn">'+avgStr+(prevAvg?'　前週 '+prevAvg:'')+'</div></div>'+
@@ -3295,7 +3333,7 @@ function pwDrawTrendTable() {
   var from = 0;
   if(_pwTrendRange==='4w') from=Math.max(0,n-4);
   else if(_pwTrendRange==='8w') from=Math.max(0,n-8);
-  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11',63:'W12',64:'W13',65:'W14',66:'W15',67:'W16',68:'W17',69:'W18',70:'W19',71:'W20',72:'W21',73:'W22',74:'W23',75:'W24',76:'W25',77:'W26'};
+  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11',63:'W12',64:'W13',65:'W14',66:'W15',67:'W16',68:'W17',69:'W18',70:'W19',71:'W20',72:'W21',73:'W22',74:'W23',75:'W24',76:'W25',77:'W26',78:'W27',79:'W28'};
 
   var rowDefs = [
     {label:'週BCL合計',   key:'total',      bg:'#f5f5f3', color:'#111', bold:true},
@@ -3968,7 +4006,7 @@ function pwInitCharts(){
   var wPanel=document.getElementById('pw-week');
   var mPanel=document.getElementById('pw-month');
   if(wPanel&&wPanel.classList.contains('active')){
-    pwSelectWeek('W27');
+    pwSelectWeek('W28');
   }
   if(mPanel&&mPanel.classList.contains('active')){
     pmUpdateGrade(1800,'all');
@@ -5661,7 +5699,7 @@ const META_IMGS={
 
 <div id="pw-page"><div class="pw">
   <h1>周月報告分析</h1>
-  <div class="sub">資料來源：CUBE 每日觀察報告、8TDB　　數據截至 2026/10/04</div>
+  <div class="sub">資料來源：CUBE 每日觀察報告、DB逐筆資料、8TDB　　數據截至 2026/10/11</div>
   <div class="mode-tabs">
     <button class="mode-tab active" onclick="pwMode('week',this)">📅 週報告</button>
     <button class="mode-tab" onclick="pwMode('month',this)">📆 月報告</button>
@@ -5675,7 +5713,8 @@ const META_IMGS={
       <span style="font-size:13px;font-weight:600;color:#444;">📅 選擇週次：</span>
       <select id="pw-week-select" onchange="pwSelectWeek(this.value)"
         style="font-size:13px;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;font-weight:500;">
-        <option value="W27" selected>W27：9/28（一）– 10/4（日）★最新</option>
+        <option value="W28" selected>W28：10/5（一）– 10/11（日）★最新</option>
+        <option value="W27">W27：9/28（一）– 10/4（日）</option>
         <option value="W26">W26：9/21（一）– 9/27（日）</option>
         <option value="W25">W25：9/14（一）– 9/20（日）</option>
         <option value="W24">W24：9/7（一）– 9/13（日）</option>
@@ -5703,7 +5742,7 @@ const META_IMGS={
         <option value="W2">W2：4/6（一）– 4/12（日）</option>
         <option value="W1">W1：3/30（一）– 4/5（日）</option>
       </select>
-      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W27 最新週</span>
+      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W28 最新週</span>
     </div>
 
     <!-- KPI 4格（動態） -->
@@ -5759,7 +5798,7 @@ const META_IMGS={
     <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->
     <div class="sc" style="margin-bottom:12px;">
       <div class="sh" style="color:var(--pw-blue);"><span class="sh-dot"></span>各週蒐集趨勢（近一年）
-        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/10/04（共 79 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/10/04</span>
+        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/10/11（共 80 週）｜FY26 W1=4/1當週 ｜ 資料截至 2026/10/11</span>
       </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <div style="display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;">
@@ -5771,7 +5810,7 @@ const META_IMGS={
           <button onclick="pwTrendRange('8w',this)"   id="pw-range-8w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:transparent;color:#666;">近8週</button>
           <button onclick="pwTrendRange('4w',this)"   id="pw-range-4w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:#fff;color:var(--pw-blue);box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:600;">近4週</button>
         </div>
-        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W27=最新週（9/28–10/4）｜資料截至 2026/10/04</span>
+        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W28=最新週（10/5–10/11）｜資料截至 2026/10/11</span>
       </div>
 
       <div id="pw-trend-legend" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;font-size:11.5px;"></div>
