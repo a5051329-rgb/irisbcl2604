@@ -3907,8 +3907,8 @@ function pmTargetCalc(source) {
     if(lbl) lbl.textContent='SS+S '+pct+'%';
     var vs='';
     if(pct>0&&total>0&&ssn>0){
-      var diffN=ssn-677; var diffT=total-1751;
-      vs='vs 4月實際：綁定 '+(diffT>=0?'+':'')+diffT+' 人，SS+S '+(diffN>=0?'+':'')+diffN+' 人（'+pct+'% vs 38.7%）';
+      var diffN=ssn-1076; var diffT=total-2330;
+      vs='vs 9月實際：綁定 '+(diffT>=0?'+':'')+diffT+' 人，SS+S '+(diffN>=0?'+':'')+diffN+' 人（'+pct+'% vs 46.2%）';
     }
     if(hint) hint.textContent=vs;
   }
@@ -3974,11 +3974,13 @@ function pmChannelFilter(ch){
     if(note) note.style.display='none';
     var ab=document.getElementById('pmgt-all');
     if(ab){ab.style.background='#2563eb';ab.style.color='#fff';ab.style.borderColor='#2563eb';ab.style.fontWeight='600';}
-    pmUpdateGrade(1800,'all');
+    var d=PM_MONTHS[_pmCurrentMonth];
+    pmUpdateGrade(d&&d.btypeN?d.btypeN.all:1800,'all');
     return;
   }
-  var n=PM_CH_N[ch]||0;
-  if(note){note.textContent='篩選：'+ch+'　4月 '+n+' 人';note.style.display='inline';}
+  var d=PM_MONTHS[_pmCurrentMonth];
+  var n=(d&&d.channelN&&d.channelN[ch])||PM_CH_N[ch]||0;
+  if(note){note.textContent='篩選：'+ch+'　'+(d?d.label:'')+' '+n+' 人';note.style.display='inline';}
   pmUpdateGrade(n,ch);
 }
 
@@ -4009,14 +4011,14 @@ function pwInitCharts(){
     pwSelectWeek('W28');
   }
   if(mPanel&&mPanel.classList.contains('active')){
-    pmUpdateGrade(1800,'all');
+    pmUpdateGrade(2480,'all');
     pmCalcA();
     pwInitMonthTrend();
     pmInitMonthlyTrend();
     pmDrawMonthTrendChart();
     pmDrawMonthTrendTable();
     pmInitSsCharts();
-    pmSelectMonth('M202608');
+    pmSelectMonth('M202609');
   }
 }
 function pmInitMonthlyTrend(){
@@ -4050,8 +4052,8 @@ function pmInitMonthlyTrend(){
    月報告：各月蒐集趨勢
 ═══════════════════════════════════════════ */
 var PM_TREND_DATA = {
-  labels:   ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8"],total:    [5221,1210,1672,2206,1693,1919,2758,2049,2613,2551,3271,5323,1800,2115,3082,2036,2306],selfOnline: [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082,1004,1359,1117],
-  selfOffline:[0,0,7,3,3,0,544,0,0,353,154,446,0,0,870,149,451],active:   [339,172,196,231,213,202,183,222,397,400,251,532,220,272,345,142,214],shopline: [0,0,0,0,0,17,126,162,95,130,927,684,332,288,452,19,19],partner:  [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478,411,367,505],ssPct:    [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4,31.3,41.6,30.4],ssN:      [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749,964,847,701],curIdx:   16
+  labels:   ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8","2026/9"],total:    [5221,1210,1672,2206,1693,1919,2758,2049,2613,2551,3271,5323,1800,2115,3082,2036,2306,2480],selfOnline: [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082,1004,1359,1117,1499],
+  selfOffline:[0,0,7,3,3,0,544,0,0,353,154,446,0,0,870,149,451,98],active:   [339,172,196,231,213,202,183,222,397,400,251,532,220,272,345,142,214,524],shopline: [0,0,0,0,0,17,126,162,95,130,927,684,332,288,452,19,19,23],partner:  [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478,411,367,505,336],ssPct:    [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4,31.3,41.6,30.4,46.1],ssN:      [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749,964,847,701,1144],curIdx:   17
 };
 
 var _pmTrendMode  = 'bar';
@@ -4125,7 +4127,7 @@ function pmDrawMonthTrendTable() {
   var from = 0;
   if(_pmTrendRange==='3m') from = Math.max(0,n-3);
   else if(_pmTrendRange==='6m') from = Math.max(0,n-6);
-  var days=[30,31,30,31,31,30,31,30,31,31,28,31,30,31,30,31,31];
+  var days=[30,31,30,31,31,30,31,30,31,31,28,31,30,31,30,31,31,30];
 
   var rowDefs = [
     {label:'自辦線上', key:'selfOnline',  bg:'#fff',    color:'#333', bold:false},
@@ -4224,6 +4226,49 @@ function pmDrawMonthTrendTable() {
    月報告：月份選擇器
 ═══════════════════════════════════════════ */
 var PM_MONTHS = {
+  'M202609': {
+    label: '2026年9月',badge: '9月最新',total: 2480,valid: 2330,invalid: 150,ss: 1144,ssPct: 46.1,dailyAvg: 82.7,prevTotal: 2306,prevLabel: '8月',
+    btypeN: {all:2480,selfOnline:1499,selfOffline:98,active:524,shopline:23,partner:336},
+    chPct: {/* 2026/10/15 依260421DB數據1012逐筆核對；排除SHOPLINE回補7筆與無管道殘值1筆 */
+      all:       [19.9,16.6,11.8,17.8,20.0,5.4,8.6,0.0],
+      selfOnline:[15.5,21.9,15.7,21.0,16.3,2.3,7.2,0.0],
+      selfOffline:[8.2,3.1,0.0,13.3,33.7,16.3,25.5,0.0],
+      active:    [7.8,8.2,8.0,16.8,38.2,13.5,7.4,0.0],
+      shopline:  [0.0,8.7,0.0,26.1,30.4,4.3,30.4,0.0],
+      partner:   [63.1,10.1,4.2,5.7,3.6,3.3,10.1,0.0],
+      '育兒安全大作戰':[27.6,24.4,17.0,16.7,10.0,0.7,3.6,0.0],
+      '巧虎育兒大調查':[7.0,25.6,16.9,24.1,20.0,2.5,3.9,0.0],
+      '健康寶貝知識王':[10.2,14.4,12.8,22.7,19.9,4.0,16.1,0.0],
+      '蝦皮BCL貼紙':[0.0,0.0,0.0,66.7,33.3,0.0,0.0,0.0],
+      '統一時代活動':[9.5,3.6,0.0,15.5,29.8,13.1,28.6,0.0],
+      '英語劇':[0.0,0.0,0.0,0.0,54.5,36.4,9.1,0.0],
+      '舞台劇':[0.0,0.0,0.0,0.0,66.7,33.3,0.0,0.0],
+      'OA':[9.0,5.9,7.9,15.5,38.6,14.8,8.3,0.0],
+      '官網':[6.6,10.1,7.5,18.9,37.9,12.3,6.6,0.0],
+      '客服':[0.0,42.9,28.6,0.0,28.6,0.0,0.0,0.0],
+      'SHOPLINE':[0.0,8.7,0.0,26.1,30.4,4.3,30.4,0.0],
+      '樂飛':[13.7,20.2,8.1,15.3,9.7,8.1,25.0,0.0],
+      '明治':[88.1,7.9,3.0,0.0,0.0,1.0,0.0,0.0],
+      '六甲村':[94.5,1.4,0.0,0.0,0.0,0.0,4.1,0.0],
+      '永生':[97.4,0.0,2.6,0.0,0.0,0.0,0.0,0.0]
+    },
+    channelN:{'育兒安全大作戰':558,'巧虎育兒大調查':515,'健康寶貝知識王':423,'蝦皮BCL貼紙':3,'統一時代活動':84,'英語劇':11,'舞台劇':3,'OA':290,'官網':227,'客服':7,'SHOPLINE':23,'樂飛':124,'明治':101,'六甲村':73,'永生':38},
+    ssTree: {
+      selfOnline:{n:1499,ss:880,S:329,SS:236,S1:315,channels:{'育兒安全大作戰':{n:558,ss:324,S:136,SS:95,S1:93},'巧虎育兒大調查':{n:515,ss:343,S:132,SS:87,S1:124},'健康寶貝知識王':{n:423,ss:211,S:61,SS:54,S1:96},'蝦皮BCL貼紙':{n:3,ss:2,S:0,SS:0,S1:2}}},
+      selfOffline:{n:98,ss:16,S:3,SS:0,S1:13,channels:{'統一時代活動':{n:84,ss:16,S:3,SS:0,S1:13},'英語劇':{n:11,ss:0,S:0,SS:0,S1:0},'舞台劇':{n:3,ss:0,S:0,SS:0,S1:0}}},
+      active:{n:524,ss:173,S:43,SS:42,S1:88,channels:{'OA':{n:290,ss:85,S:17,SS:23,S1:45},'官網':{n:227,ss:83,S:23,SS:17,S1:43},'客服':{n:7,ss:5,S:3,SS:2,S1:0}}},
+      shopline:{n:23,ss:8,S:2,SS:0,S1:6,channels:{SHOPLINE:{n:23,ss:8,S:2,SS:0,S1:6}}},
+      partner:{n:336,ss:67,S:34,SS:14,S1:19,channels:{樂飛:{n:124,ss:54,S:25,SS:10,S1:19},明治:{n:101,ss:11,S:8,SS:3,S1:0},六甲村:{n:73,ss:1,S:1,SS:0,S1:0},永生:{n:38,ss:1,S:0,SS:1,S1:0}}}
+    },
+    alert: '9/14起「巧虎育兒大調查」與「健康寶貝知識王」兩條路同時投放；9/26–9/27曾出現短時間簡訊異常；9/28統一時代活動集中帶入84 BCL。',
+    note: '',
+    banner: '',
+    gradeTitle: '月齡等級占比（9月 × 各管道月齡分布）',
+    ssTitle: 'SS+S 級細分（9月全員 2,480 人）',
+    ssKpi: [{label:'S（0–6M）',n:411,pct:'16.6%'},{label:'SS（7–12M）',n:292,pct:'11.8%'},{label:'S（13–24M）',n:441,pct:'17.8%'}],
+    ssBar: {total:2480,ss:1144,ssPct:'46.1%',S:411,SS:292,S1:441},
+    summary: '<div class="summary-box" style="font-size:14px;"><h3>📝 9月成效總結</h3><p><span class="tag tag-ok">總量成長</span> 9月正式BCL共 <b>2,480 人</b>，較8月（2,306人）增加 <b>174人（+7.5%）</b>，日均82.7人。</p><p><span class="tag tag-ok">SS+S 46.1%（1,144人）</span> 較8月30.4%上升15.7個百分點。主因自辦線上增至1,499人、SS+S達58.7%，同時自辦線下由451人降至98人，低月齡品質線下名單的稀釋效應明顯減少。</p><p><span class="tag tag-info">管道結構</span> 自辦線上1,499人（60.4%），較8月增加34.2%；主動524人（21.1%），由OA 290人與官網227人帶動。異業336人（13.5%）及自辦線下98人（4.0%）均較8月下降。</p><p><span class="tag tag-warn">特殊事件</span> 9/14起兩條路作戰同時上線；9/26–9/27曾出現短時間簡訊異常，但當日仍有部分客戶成功綁定；9/28統一時代活動貢獻84 BCL。</p><p style="font-size:11px;color:#888;">口徑：以260421DB數據1012逐筆計算，排除SHOPLINE回補7筆及無管道殘值1筆；SS+S為0–24M，不含孕期。</p></div>',
+  },
   'M202608': {
     label: '2026年8月',badge: '8月最新',total: 2306,valid: null,invalid: null,ss: 701,ssPct: 30.4,dailyAvg: 74.4,prevTotal: 2167,prevLabel: '7月',
     btypeN: {all:2306,selfOnline:1117,selfOffline:451,active:214,shopline:19,partner:505},
@@ -4327,7 +4372,7 @@ var PM_MONTHS = {
   }
 };
 
-var _pmCurrentMonth = 'M202608';
+var _pmCurrentMonth = 'M202609';
 
 function pmSelectMonth(m) {
   _pmCurrentMonth = m;
@@ -4337,7 +4382,17 @@ function pmSelectMonth(m) {
   /* Badge */
   var badge=document.getElementById('pm-month-badge'); if(badge) badge.textContent=d.badge;
 
-
+  /* 細部管道只顯示當月已有逐筆資料的選項，避免沿用舊月份數字 */
+  var chSel=document.getElementById('pm-ch-select');
+  if(chSel){
+    var opts=['<option value="all">— 全部 —</option>'];
+    Object.keys(d.channelN||{}).forEach(function(ch){
+      opts.push('<option value="'+ch+'">'+ch+'（'+d.channelN[ch].toLocaleString()+'）</option>');
+    });
+    chSel.innerHTML=opts.join('');
+    chSel.value='all';
+  }
+  var chNote=document.getElementById('pm-ch-note'); if(chNote) chNote.style.display='none';
 
   /* 特殊情況提示 */
   var alertEl=document.getElementById('pm-alert');
@@ -4403,7 +4458,8 @@ function pmSelectMonth(m) {
 
 function pmRenderKpi(d) {
   var diff=d.total-d.prevTotal; var diffStr=diff>=0?'▲'+diff:'▼'+Math.abs(diff);
-  var pctStr=diff>=0?'(+'+Math.round(diff/d.prevTotal*100)+'%)':'('+Math.round(diff/d.prevTotal*100)+'%)';
+  var diffPct=Math.round(diff/d.prevTotal*1000)/10;
+  var pctStr=diff>=0?'(+'+diffPct.toFixed(1)+'%)':'('+diffPct.toFixed(1)+'%)';
   var el=document.getElementById('pm-kpi-total'); if(el) el.textContent=d.total.toLocaleString();
   var el2=document.getElementById('pm-kpi-note');
   if(el2) el2.innerHTML=(d.valid!==null?'有效 '+d.valid.toLocaleString()+'｜無效 '+d.invalid+'（'+Math.round(d.invalid/d.total*100)+'%）<br>':'')
@@ -4483,16 +4539,16 @@ function pmInitSsGradeChart() {
   var el = document.getElementById('pmSsGradeChart');
   if(!el || typeof Chart==='undefined') return;
   var ex = Chart.getChart(el); if(ex) ex.destroy();
-  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8"];
+  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8","2026/9"];
   if(_pmSsChartView === 'channel') {
-    var selfOnline_d = [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082,1004,1359,1117];
-    var selfOffline_d = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,870,149,451];
+    var selfOnline_d = [3683,678,546,838,739,1183,1921,1172,1017,1389,1219,3637,1059,1082,1004,1359,1117,1499];
+    var selfOffline_d = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,870,149,451,98];
     var self_d = selfOnline_d;
-    var act_d  = [339,172,196,231,213,202,183,222,397,400,251,532,220,272,345,142,214];
-    var shop_d = [0,0,0,0,0,17,126,162,95,130,927,684,332,288,452,19,19];
-    var part_d = [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478,411,367,505];
+    var act_d  = [339,172,196,231,213,202,183,222,397,400,251,532,220,272,345,142,214,524];
+    var shop_d = [0,0,0,0,0,17,126,162,95,130,927,684,332,288,452,19,19,23];
+    var part_d = [1193,360,929,1132,741,517,527,493,1102,630,867,463,187,478,411,367,505,336];
     new Chart(el,{type:'bar',data:{labels:labels,datasets:[
-        {label:'自辦線上',data:selfOnline_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(37,99,235,.9)':'rgba(37,99,235,.7)';}),stack:'s',yAxisID:'y'},{label:'自辦線下',data:selfOffline_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(124,58,237,.9)':'rgba(124,58,237,.7)';}),stack:'s',yAxisID:'y'},{label:'主動',data:act_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(139,92,246,.95)':l==='2026/7'?'rgba(139,92,246,.75)':'rgba(139,92,246,.55)';}),stack:'s'},{label:'自動',data:shop_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(16,185,129,.95)':l==='2026/7'?'rgba(16,185,129,.75)':'rgba(16,185,129,.55)';}),stack:'s'},{label:'異業',data:part_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(245,158,11,1)':l==='2026/7'?'rgba(245,158,11,.85)':'rgba(245,158,11,.65)';}),stack:'s'}
+        {label:'自辦線上',data:selfOnline_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(37,99,235,.95)':'rgba(37,99,235,.7)';}),stack:'s',yAxisID:'y'},{label:'自辦線下',data:selfOffline_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(124,58,237,.95)':'rgba(124,58,237,.7)';}),stack:'s',yAxisID:'y'},{label:'主動',data:act_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(139,92,246,.95)':l==='2026/8'?'rgba(139,92,246,.75)':'rgba(139,92,246,.55)';}),stack:'s'},{label:'自動',data:shop_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(16,185,129,.95)':l==='2026/8'?'rgba(16,185,129,.75)':'rgba(16,185,129,.55)';}),stack:'s'},{label:'異業',data:part_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(245,158,11,1)':l==='2026/8'?'rgba(245,158,11,.85)':'rgba(245,158,11,.65)';}),stack:'s'}
       ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{
           afterBody:function(items){var t=items.reduce(function(a,b){return a+b.raw;},0);return['合計: '+t.toLocaleString()+' 人'];}
         }}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:9}},beginAtZero:true}}
@@ -4500,12 +4556,12 @@ function pmInitSsGradeChart() {
     });
   } else {
     /* 依月齡 — 16+1個月實際數據 */
-    var s_d  = [1064,131,140,223,143,178,213,183,255,259,310,645,178,98,197,301,288];
-    var ss_d = [800,162,152,345,162,224,261,193,374,172,264,629,147,145,234,183,168];
-    var s1_d = [1223,274,298,385,307,428,529,419,476,318,479,1094,362,147,533,362,244];
-    var preg = [293,197,241,474,362,284,384,385,651,677,728,604,353,234,304,561,741];
+    var s_d  = [1064,131,140,223,143,178,213,183,255,259,310,645,178,98,197,301,288,411];
+    var ss_d = [800,162,152,345,162,224,261,193,374,172,264,629,147,145,234,183,168,292];
+    var s1_d = [1223,274,298,385,307,428,529,419,476,318,479,1094,362,147,533,362,244,441];
+    var preg = [293,197,241,474,362,284,384,385,651,677,728,604,353,234,304,561,741,494];
     new Chart(el,{type:'bar',data:{labels:labels,datasets:[
-        {label:'S(0-6M)',data:s_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'#b91c1c':l==='2026/7'?'#dc2626':'rgba(220,38,38,.65)';}),stack:'s'},{label:'SS(7-12M)',data:ss_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'#ea580c':l==='2026/7'?'#f97316':'rgba(249,115,22,.65)';}),stack:'s'},{label:'S(13-24M)',data:s1_d,backgroundColor:labels.map(function(l){return l==='2026/8'?'#f97316':l==='2026/7'?'#fb923c':'rgba(251,146,60,.6)';}),stack:'s'},{label:'孕期',data:preg,backgroundColor:labels.map(function(l){return l==='2026/8'?'rgba(209,213,219,.95)':l==='2026/7'?'rgba(209,213,219,.85)':'rgba(209,213,219,.5)';}),stack:'s'}
+        {label:'S(0-6M)',data:s_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'#b91c1c':l==='2026/8'?'#dc2626':'rgba(220,38,38,.65)';}),stack:'s'},{label:'SS(7-12M)',data:ss_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'#ea580c':l==='2026/8'?'#f97316':'rgba(249,115,22,.65)';}),stack:'s'},{label:'S(13-24M)',data:s1_d,backgroundColor:labels.map(function(l){return l==='2026/9'?'#f97316':l==='2026/8'?'#fb923c':'rgba(251,146,60,.6)';}),stack:'s'},{label:'孕期',data:preg,backgroundColor:labels.map(function(l){return l==='2026/9'?'rgba(209,213,219,.95)':l==='2026/8'?'rgba(209,213,219,.85)':'rgba(209,213,219,.5)';}),stack:'s'}
       ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{
           afterBody:function(items){
             var ss=items.slice(0,3).reduce(function(a,b){return a+b.raw;},0);
@@ -4520,9 +4576,9 @@ function pmInitSsGradeChart() {
   var el = document.getElementById('pmSsTrendChart');
   if(!el || typeof Chart==='undefined') return;
   var ex = Chart.getChart(el); if(ex) ex.destroy();
-  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8"];
-  var ssPct = [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4,31.3,41.6,30.4];
-  var ssN   = [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749,964,847,701];
+  var labels = ["2025/4","2025/5","2025/6","2025/7","2025/8","2025/9","2025/10","2025/11","2025/12","2026/1","2026/2","2026/3","2026/4","2026/5","2026/6","2026/7","2026/8","2026/9"];
+  var ssPct = [59.1,46.9,35.3,43.2,36.1,43.3,36.4,38.8,42.3,29.4,32.2,44.5,38.2,35.4,31.3,41.6,30.4,46.1];
+  var ssN   = [3087,567,590,953,612,830,1003,795,1105,749,1053,2368,687,749,964,847,701,1144];
   var isN = _pmSsMode === 'n';
   var data = isN ? ssN : ssPct;
   var cur = '2026/'+_pmCurrentMonth.slice(-2).replace(/^0/,'');
@@ -5897,13 +5953,14 @@ const META_IMGS={
       <span style="font-size:13px;font-weight:600;color:#555;">📅 選擇月份：</span>
       <select id="pm-month-select" onchange="pmSelectMonth(this.value)"
         style="font-size:13px;font-weight:600;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#b91c1c;cursor:pointer;">
-        <option value="M202608">2026年 8月 ★最新</option>
+        <option value="M202609">2026年 9月 ★最新</option>
+        <option value="M202608">2026年 8月</option>
         <option value="M202607">2026年 7月</option>
         <option value="M202606">2026年 6月</option>
         <option value="M202605">2026年 5月</option>
         <option value="M202604">2026年 4月</option>
       </select>
-      <span id="pm-month-badge" style="font-size:11px;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:12px;font-weight:600;">6月最新</span>
+      <span id="pm-month-badge" style="font-size:11px;background:#fff3cd;color:#856404;padding:3px 10px;border-radius:12px;font-weight:600;">9月最新</span>
     </div>
 
     <!-- 月份特殊情況提示 -->
@@ -5913,18 +5970,18 @@ const META_IMGS={
     <div class="ks3">
       <div class="kc" style="border-top:3px solid var(--pw-blue);">
         <div class="kl">月新增綁定（全員）</div>
-        <div class="kv" style="color:var(--pw-blue);" id="pm-kpi-total">3,082</div>
-        <div class="kn" style="font-size:11px;" id="pm-kpi-note"><br><span style="color:#059669;">▲315（+17.5%） vs 3月</span></div>
+        <div class="kv" style="color:var(--pw-blue);" id="pm-kpi-total">2,480</div>
+        <div class="kn" style="font-size:11px;" id="pm-kpi-note">有效 2,330｜無效 150（6%）<br><span style="color:#059669;">▲174（+7.5%） vs 8月</span></div>
       </div>
       <div class="kc" style="border-top:3px solid var(--pw-purple);">
         <div class="kl">每日平均（全員/月天數）</div>
-        <div class="kv" style="color:var(--pw-purple);" id="pm-kpi-avg">102.7</div>
+        <div class="kv" style="color:var(--pw-purple);" id="pm-kpi-avg">82.7</div>
         <div class="kn">人/天</div>
       </div>
       <div class="kc" style="border-top:3px solid #b91c1c;">
         <div class="kl">SS+S 人數</div>
-        <div class="kv" style="color:#b91c1c;" id="pm-kpi-ss">814</div>
-        <div class="kn">佔全月 <span id="pm-kpi-sspct">38.2%</span></div>
+        <div class="kv" style="color:#b91c1c;" id="pm-kpi-ss">1,144</div>
+        <div class="kn">佔全月 <span id="pm-kpi-sspct">46.1%</span></div>
       </div>
     </div>
 
@@ -5938,21 +5995,21 @@ const META_IMGS={
 
         <!-- 現況區 -->
         <div style="margin-bottom:14px;padding:12px 16px;background:#f8faff;border:1px solid #dbeafe;border-radius:10px;">
-          <div style="font-size:12px;font-weight:700;color:#2563eb;margin-bottom:10px;">📊 最新月現況（2026年6月）</div>
+          <div style="font-size:12px;font-weight:700;color:#2563eb;margin-bottom:10px;">📊 最新月現況（2026年9月）</div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
             <div style="text-align:center;">
               <div style="font-size:10.5px;color:#666;margin-bottom:4px;">月有效綁定數</div>
-              <div style="font-size:24px;font-weight:700;color:#2563eb;">1,751</div>
+              <div style="font-size:24px;font-weight:700;color:#2563eb;">2,330</div>
               <div style="font-size:10px;color:#888;">人</div>
             </div>
             <div style="text-align:center;">
               <div style="font-size:10.5px;color:#666;margin-bottom:4px;">SS+S 人數（0–24M）</div>
-              <div style="font-size:24px;font-weight:700;color:#b91c1c;">677</div>
+              <div style="font-size:24px;font-weight:700;color:#b91c1c;">1,076</div>
               <div style="font-size:10px;color:#888;">人</div>
             </div>
             <div style="text-align:center;">
               <div style="font-size:10.5px;color:#666;margin-bottom:4px;">SS+S 比例</div>
-              <div style="font-size:24px;font-weight:700;color:#059669;">38.7%</div>
+              <div style="font-size:24px;font-weight:700;color:#059669;">46.2%</div>
               <div style="font-size:10px;color:#888;">實際計算值</div>
             </div>
           </div>
@@ -6008,14 +6065,14 @@ const META_IMGS={
           </div>
         </div>
 
-        <div style="font-size:10.5px;color:#888;margin-top:8px;">※ SS+S = S(0–6M) + SS(7–12M) + S(13–24M)。6月比例 26.1%；自辦線上 54.0%、線下 2.3%。</div>
+        <div style="font-size:10.5px;color:#888;margin-top:8px;">※ SS+S = S(0–6M) + SS(7–12M) + S(13–24M)。9月有效會員口徑為 1,076 / 2,330 = 46.2%；月報全員口徑為 1,144 / 2,480 = 46.1%。</div>
       </div>
     </details>
 
-    <!-- 各月蒐集趨勢（近一年）-->
+    <!-- 各月蒐集趨勢（近一年半）-->
     <div class="sc" style="margin-bottom:12px;">
-      <div class="sh"><span class="sh-dot"></span>各月蒐集趨勢（近一年）
-        <span style="float:right;font-size:10px;color:#888;font-weight:400;">2025/04–2026/08（共17個月）｜資料截至 2026/08/31</span>
+      <div class="sh"><span class="sh-dot"></span>各月蒐集趨勢（近一年半）
+        <span style="float:right;font-size:10px;color:#888;font-weight:400;">2025/04–2026/09（共18個月）｜資料截至 2026/09/30</span>
       </div>
 
       <!-- 折線/堆疊 + 區段切換 -->
@@ -6042,10 +6099,10 @@ const META_IMGS={
 
     <!-- 月齡等級占比 -->
     <div class="sc" style="margin-bottom:12px;">
-      <div class="sh" style="color:#b91c1c;" id="pm-grade-title"><span class="sh-dot"></span>月齡等級占比（6月 × 各管道月齡分布）</div>
+      <div class="sh" style="color:#b91c1c;" id="pm-grade-title"><span class="sh-dot"></span>月齡等級占比（9月 × 各管道月齡分布）</div>
       <div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap;align-items:center;">
         <span style="font-size:11px;color:#888;margin-right:2px;">管道類型：</span>
-        <button onclick="pmGradeTab('all',this)"      id="pmgt-all"      style="padding:3px 11px;border-radius:20px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-size:12px;cursor:pointer;font-weight:600;">全員 1,800</button>
+        <button onclick="pmGradeTab('all',this)"      id="pmgt-all"      style="padding:3px 11px;border-radius:20px;border:1px solid #2563eb;background:#2563eb;color:#fff;font-size:12px;cursor:pointer;font-weight:600;">全員 2,480</button>
         <button onclick="pmGradeTab('selfOnline',this)"  id="pmgt-selfOnline"  style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自辦線上</button>
         <button onclick="pmGradeTab('selfOffline',this)" id="pmgt-selfOffline" style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">自辦線下</button>
         <button onclick="pmGradeTab('active',this)"   id="pmgt-active"   style="padding:3px 11px;border-radius:20px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:12px;cursor:pointer;">主動 220</button>
@@ -6068,7 +6125,7 @@ const META_IMGS={
         <span id="pm-ch-note" style="font-size:11px;color:#059669;font-weight:600;display:none;"></span>
       </div>
       <div style="font-size:11px;background:#d1fae5;border:1px solid rgba(5,150,105,.25);border-radius:6px;padding:5px 9px;margin-bottom:10px;color:#065f46;">
-        ✅ 此頁月齡分布為<b>實際計算值</b>（來自 260421DB數據.xlsx）· 全員口徑（含無效 49 人 2.7%），非比例估算
+        ✅ 此頁月齡分布依各月份 DB 逐筆計算，為<b>實際值</b>、非比例估算；最新9月資料來自 260421DB數據1012.xlsx。
       </div>
       <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
         <div style="flex:1;min-width:260px;">
