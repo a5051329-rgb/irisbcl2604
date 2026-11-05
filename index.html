@@ -244,6 +244,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .campaign-spend-details .campaign-grade-table th,.campaign-spend-details .campaign-grade-table td{padding:4px 7px;}
 .campaign-missing{color:#b45309;font-weight:700;}
 .campaign-alert-insight{margin-top:11px;background:#fff8eb;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;line-height:1.7;color:#654b29;}
+.campaign-reason-conclusion{display:block;margin:5px 0 8px;padding:5px 9px;border-radius:6px;background:#ecfdf5;color:#047857;font-weight:700;line-height:1.6;}
 .campaign-alert-note{font-size:10.5px;color:#8a7d77;line-height:1.6;margin-top:9px;}
 .campaign-history-card{border-color:#dbe3ef;background:linear-gradient(145deg,#f7fbff,#eef5ff);display:flex;flex-direction:column;gap:10px;}
 .campaign-right-column{display:flex;flex-direction:column;gap:10px;min-width:0;}
@@ -622,11 +623,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <b style="font-size:15px;">為何本週數字嚴重下滑？｜Meta AI 推測</b>
       <p style="margin:7px 0 10px;line-height:1.7;"><b>結論：</b>近兩週自操與廣代兩檔活動皆走弱，並非只有單一活動下滑；較可能是「素材疲勞、預算分散、自動擴大受眾偏移、雙11競價」共同造成。現況可概括為 <b>1＋1＝1.1</b>。Meta端指標僅用來診斷，最終仍以BCL與CPB驗證。</p>
 
-      <b>主要推測原因（自操觀察）</b>
+      <b>主要推測原因（根據自操表現）</b>
       <ol style="margin:6px 0 0 20px;padding:0;line-height:1.72;">
-        <li><b>素材疲勞：</b>素材平均點擊率原本約3.33%，目前多數只剩0%～1.3%，顯示同一批素材重複曝光後，新鮮感與吸引力已明顯下降。</li>
-        <li><b>預算分散：</b>單一廣告組合同時放10個廣告，預算與學習量被切散，優勢素材難以取得足夠曝光。Meta建議每個廣告組合放3～5個廣告，讓系統有足夠素材可測試，又不會讓預算過度分散。</li>
-        <li><b>自動擴大受眾偏移：</b>我們曾開啟Meta「高效速成+受眾」（Advantage+ Audience），系統可突破原設定的22～45歲與興趣限制。當年輕爸媽的點擊率由每100人約3個降至1～2個後，系統轉向點擊率較高的55歲以上族群（2.33%～2.54%，高於25～34歲的1.66%）補量，造成受眾偏移；但這些點擊較難完成LINE綁定，反而稀釋核心客群。</li>
+        <li><b>素材疲勞：</b>素材平均點擊率原本約3.33%，目前多數只剩0%～1.3%，顯示同一批素材重複曝光後，新鮮感與吸引力已明顯下降。<span class="campaign-reason-conclusion">→ 結論：素材老化速度可能變快，活動進入第3週後效益便開始遞減。</span></li>
+        <li><b>預算分散：</b>單一廣告組合同時放10個廣告，預算與學習量被切散，優勢素材難以取得足夠曝光。<span class="campaign-reason-conclusion">→ 結論：Meta建議每個廣告組合只需放3～5個廣告，讓系統有足夠素材可測試，又不會讓預算過度分散。</span></li>
+        <li><b>自動擴大受眾偏移：</b>投放時曾開啟「高效速成+受眾」，系統可突破原設定的客群與興趣限制，投放給可能有興趣的類似對象。但數據顯示，系統轉向點擊率較高的55歲以上族群（2.33%～2.54%），高於核心目標25～34歲的1.66%，造成受眾偏移。這些族群不適用活動主題、也非BCL名單蒐集對象，點擊後較難完成LINE綁定，反而稀釋核心客群。<span class="campaign-reason-conclusion">→ 結論：建議關閉此功能，維持既有設定客群與興趣。</span></li>
         <li><b>雙11競價：</b>大檔期可能推升競價並壓縮曝光。去年真正的低點落在雙11暖身期，進入11月後則逐步恢復過往水準：
           <div style="max-width:560px;margin:8px auto 6px;padding:9px 10px 7px;border:1px solid #fed7aa;border-radius:9px;background:#fff;">
             <div style="font-weight:800;text-align:center;color:#7c2d12;margin-bottom:3px;">2025 去年自辦線上 BCL 趨勢</div>
@@ -867,31 +868,31 @@ document.addEventListener('keydown',function(e){
 
   <div class="sec">現況摘要</div>
   <div class="card" style="margin-bottom:4px;">
-    <p style="font-size:14px;color:var(--text2);line-height:1.9;">有效 BCL 共 <strong>178,789 人</strong>，有效率 66.0%。名單老化明顯，B（61M+）佔 59.1%，SS 黃金名單僅 2,820 人（1.6%）。保有率自 2023 年起下滑，近兩年出生組仍有大量未蒐集空間。巧連智停刊後，純新客比例快速提升，名單結構正健康轉型中。</p>
+    <p style="font-size:14px;color:var(--text2);line-height:1.9;">截至 <strong>2026/11/4</strong>，有效 BCL 共 <strong>176,309 人</strong>，有效率 63.1%。名單老化仍是主要課題，B（61M+）佔 61.6%；SS 黃金名單為 2,959 人（1.7%）。最近五個完整出生年中，2025 年出生組保有率僅 6.61%，但純新客已占 93.1%，顯示停刊後新客結構持續轉型。</p>
   </div>
 
   <div class="sec">關鍵指標</div>
   <div class="g4" style="margin-bottom:20px;">
     <div class="kpi">
       <div class="kpi-label">有效 BCL 總數</div>
-      <div class="kpi-val">178,789</div>
-      <div class="kpi-sub">含無效共 270,869 人</div>
+      <div class="kpi-val">176,309</div>
+      <div class="kpi-sub">含無效共 279,505 人｜截至 2026/11/4</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">整體有效率</div>
-      <div class="kpi-val">66.0%</div>
-      <div class="vbar"><div class="vbar-v" style="width:66.0%"></div><div class="vbar-i" style="width:34.0%"></div></div>
-      <div class="vbar-labels"><span style="color:var(--green);font-weight:500;">有效 178,789</span><span style="color:var(--text3);">無效 92,080</span></div>
+      <div class="kpi-val">63.1%</div>
+      <div class="vbar"><div class="vbar-v" style="width:63.1%"></div><div class="vbar-i" style="width:36.9%"></div></div>
+      <div class="vbar-labels"><span style="color:var(--green);font-weight:500;">有效 176,309</span><span style="color:var(--text3);">無效 103,196</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-label">無巧連智＋無周邊佔比</div>
-      <div class="kpi-val" style="color:var(--teal);">28.2%</div>
-      <div class="kpi-sub">共 50,368 人｜停刊後比例持續成長中</div>
+      <div class="kpi-val" style="color:var(--teal);">29.5%</div>
+      <div class="kpi-sub">共 51,991 人｜停刊後純新客持續增加</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">SS 黃金名單（現況）</div>
-      <div class="kpi-val" style="color:var(--ss);">2,820</div>
-      <div class="kpi-sub">7–12M，佔有效 1.6%</div>
+      <div class="kpi-val" style="color:var(--ss);">2,959</div>
+      <div class="kpi-sub">7–12M，佔有效 1.7%</div>
     </div>
   </div>
 
@@ -925,11 +926,11 @@ document.addEventListener('keydown',function(e){
         </tr>
       </thead>
       <tbody>
-        <tr><td>2025</td><td>107,812</td><td>6,329</td><td class="td-rate">5.87%</td><td>0.4%</td><td>1.2%</td><td>2.4%</td><td class="td-none">95.9%</td></tr>
-        <tr><td>2024</td><td>134,856</td><td>11,220</td><td class="td-rate">8.32%</td><td>2.7%</td><td>7.9%</td><td>5.3%</td><td class="td-none">84.1%</td></tr>
-        <tr><td>2023</td><td>135,571</td><td>12,204</td><td class="td-rate">9.0%</td><td>8.5%</td><td>23.4%</td><td>6.5%</td><td class="td-none">61.5%</td></tr>
-        <tr><td>2022</td><td>138,986</td><td>21,248</td><td class="td-rate">15.29%</td><td>17.3%</td><td>57.1%</td><td>1.1%</td><td class="td-none">24.4%</td></tr>
-        <tr><td>2021</td><td>153,820</td><td>23,997</td><td class="td-rate">15.6%</td><td>21.1%</td><td>63.8%</td><td>0.4%</td><td class="td-none">14.6%</td></tr>
+        <tr><td>2025</td><td>107,812</td><td>7,131</td><td class="td-rate">6.61%</td><td>0.6%</td><td>1.3%</td><td>5.0%</td><td class="td-none">93.1%</td></tr>
+        <tr><td>2024</td><td>134,856</td><td>11,960</td><td class="td-rate">8.87%</td><td>2.6%</td><td>7.0%</td><td>7.2%</td><td class="td-none">83.1%</td></tr>
+        <tr><td>2023</td><td>135,571</td><td>12,468</td><td class="td-rate">9.20%</td><td>8.5%</td><td>21.4%</td><td>7.1%</td><td class="td-none">63.0%</td></tr>
+        <tr><td>2022</td><td>138,986</td><td>20,378</td><td class="td-rate">14.66%</td><td>18.0%</td><td>55.2%</td><td>1.3%</td><td class="td-none">25.4%</td></tr>
+        <tr><td>2021</td><td>153,820</td><td>22,876</td><td class="td-rate">14.87%</td><td>21.6%</td><td>62.8%</td><td>0.5%</td><td class="td-none">15.1%</td></tr>
       </tbody>
     </table>
     <div class="notice">巧連智於 2024 年 1 月停刊。訂閱史佔比下降為結構性轉型，「純新客」比例上升代表新客開拓成效提升，是正向指標。</div>
@@ -941,7 +942,7 @@ document.addEventListener('keydown',function(e){
     <div class="card-head">
       <div>
         <div class="card-title">點選等級查看來源管道組成</div>
-        <div class="card-sub">月齡計算截至 2026 年 3 月</div>
+        <div class="card-sub">依最小出生年月計算，截至 2026/11/4</div>
       </div>
       <div class="legend">
         <div class="legend-item"><div class="ldot" style="background:var(--purple)"></div>自辦</div>
@@ -951,22 +952,22 @@ document.addEventListener('keydown',function(e){
       </div>
     </div>
     <div class="grade-row" style="grid-template-columns:repeat(9,minmax(0,1fr));">
-      <div class="gp active-grade" data-g="all" onclick="selGrade('all',this)"><div class="gp-label">全部</div><div class="gp-val">178,789</div><div class="gp-pct">100%</div></div>
-      <div class="gp" data-g="preg" onclick="selGrade('preg',this)"><div class="gp-label">A 孕期</div><div class="gp-val">2,026</div><div class="gp-pct">1.1%</div></div>
-      <div class="gp" data-g="s06" onclick="selGrade('s06',this)"><div class="gp-label">S 0–6M</div><div class="gp-val">3,207</div><div class="gp-pct">1.8%</div></div>
-      <div class="gp ss-grade" data-g="ss" onclick="selGrade('ss',this)"><div class="gp-label">★ SS 7–12M</div><div class="gp-val">2,820</div><div class="gp-pct">1.6%</div></div>
-      <div class="gp" data-g="s1324" onclick="selGrade('s1324',this)"><div class="gp-label">S 13–24M</div><div class="gp-val">10,978</div><div class="gp-pct">6.1%</div></div>
-      <div class="gp" data-g="aa" onclick="selGrade('aa',this)"><div class="gp-label">AA 25–36M</div><div class="gp-val">11,783</div><div class="gp-pct">6.6%</div></div>
-      <div class="gp" data-g="a" onclick="selGrade('a',this)"><div class="gp-label">A 37–60M</div><div class="gp-val">43,659</div><div class="gp-pct">24.3%</div></div>
-      <div class="gp" data-g="b" onclick="selGrade('b',this)"><div class="gp-label">B 61M+</div><div class="gp-val">98,590</div><div class="gp-pct">54.8%</div></div>
-      <div class="gp" data-g="nobd" onclick="selGrade('nobd',this)"><div class="gp-label">無生日</div><div class="gp-val">6,738</div><div class="gp-pct">3.7%</div></div>
+      <div class="gp active-grade" data-g="all" onclick="selGrade('all',this)"><div class="gp-label">全部</div><div class="gp-val">176,309</div><div class="gp-pct">100%</div></div>
+      <div class="gp" data-g="preg" onclick="selGrade('preg',this)"><div class="gp-label">A 孕期</div><div class="gp-val">312</div><div class="gp-pct">0.2%</div></div>
+      <div class="gp" data-g="s06" onclick="selGrade('s06',this)"><div class="gp-label">S 0–6M</div><div class="gp-val">2,545</div><div class="gp-pct">1.4%</div></div>
+      <div class="gp ss-grade" data-g="ss" onclick="selGrade('ss',this)"><div class="gp-label">★ SS 7–12M</div><div class="gp-val">2,959</div><div class="gp-pct">1.7%</div></div>
+      <div class="gp" data-g="s1324" onclick="selGrade('s1324',this)"><div class="gp-label">S 13–24M</div><div class="gp-val">8,291</div><div class="gp-pct">4.7%</div></div>
+      <div class="gp" data-g="aa" onclick="selGrade('aa',this)"><div class="gp-label">AA 25–36M</div><div class="gp-val">11,760</div><div class="gp-pct">6.7%</div></div>
+      <div class="gp" data-g="a" onclick="selGrade('a',this)"><div class="gp-label">A 37–60M</div><div class="gp-val">35,052</div><div class="gp-pct">19.9%</div></div>
+      <div class="gp" data-g="b" onclick="selGrade('b',this)"><div class="gp-label">B 61M+</div><div class="gp-val">108,677</div><div class="gp-pct">61.6%</div></div>
+      <div class="gp" data-g="nobd" onclick="selGrade('nobd',this)"><div class="gp-label">無生日</div><div class="gp-val">6,713</div><div class="gp-pct">3.8%</div></div>
     </div>
     <div class="g2">
       <div>
         <div style="font-size:11px;color:var(--text3);margin-bottom:10px;">等級分布總覽</div>
         <div class="donut-wrap" style="height:230px;">
           <canvas id="c2" role="img" aria-label="月齡等級分布圓餅圖"></canvas>
-          <div class="donut-center"><div class="dc-val" id="donutVal">178,789</div><div class="dc-sub" id="donutSub">有效會員</div></div>
+          <div class="donut-center"><div class="dc-val" id="donutVal">176,309</div><div class="dc-sub" id="donutSub">有效會員</div></div>
         </div>
       </div>
       <div>
@@ -1040,29 +1041,29 @@ document.addEventListener('keydown',function(e){
       <div style="display:flex;gap:10px;align-items:flex-start;">
         <span style="font-size:11px;font-weight:600;color:var(--accent);background:rgba(30,79,216,.08);border-radius:30px;padding:2px 9px;flex-shrink:0;margin-top:2px;">01</span>
         <div>
-          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">加強 2024–2025 出生組蒐集，提升保有率</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.7;">目前僅 8.3% 與 5.9%，距歷史高峰 15% 仍有差距，是最優先的蒐集目標。</div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">優先補強 2024–2025 出生組</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.7;">保有率分別為 8.87% 與 6.61%，仍明顯低於 2021–2022 出生組約 15% 的水準。</div>
         </div>
       </div>
       <div style="display:flex;gap:10px;align-items:flex-start;">
         <span style="font-size:11px;font-weight:600;color:var(--ss);background:rgba(201,48,48,.08);border-radius:30px;padding:2px 9px;flex-shrink:0;margin-top:2px;">02</span>
         <div>
-          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">強化孕期與新生兒蒐集，補充 SS 黃金名單</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.7;">很多名單進來時寶寶已超齡，應在 0–6M 以前就完成綁定，而非等到 13M 以後。</div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">提高孕期、新生兒與 SS 黃金段占比</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.7;">孕期、0–6M、7–12M 合計僅 5,816 人，占有效會員 3.3%；活動應更早接觸並完成綁定。</div>
         </div>
       </div>
       <div style="display:flex;gap:10px;align-items:flex-start;">
         <span style="font-size:11px;font-weight:600;color:var(--green);background:rgba(26,122,74,.08);border-radius:30px;padding:2px 9px;flex-shrink:0;margin-top:2px;">03</span>
         <div>
-          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">深化自辦策略，持續提升蒐集品質與有效率</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.7;">自辦路線品質穩定可控，應持續強化全管道與線上活動，並定期清洗名單。</div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">同步改善有效率與生日資料完整度</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.7;">目前無效會員 103,196 人、無生日 6,713 人；除擴量外，也要持續追蹤失效來源與補生日機制。</div>
         </div>
       </div>
       <div style="display:flex;gap:10px;align-items:flex-start;">
         <span style="font-size:11px;font-weight:600;color:var(--amber);background:rgba(160,92,16,.08);border-radius:30px;padding:2px 9px;flex-shrink:0;margin-top:2px;">04</span>
         <div>
-          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">未來若重啟異業合作，以月齡結構與有效率作為篩選標準</div>
-          <div style="font-size:13px;color:var(--text3);line-height:1.7;">優先選擇能帶來高黃金段且無效率可控的夥伴，如揆眾婦幼展類型的合作。</div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;">用來源品質決定資源配置</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.7;">自辦與異業均以有效率、孕期至 24M 占比及後續購買表現評估，不只看蒐集量。</div>
         </div>
       </div>
     </div>
@@ -2321,7 +2322,7 @@ function goTab(id,el){
 new Chart(document.getElementById('c1'),{
   type:'bar',data:{
     labels:['2025','2024','2023','2022','2021'],datasets:[
-      {label:'巧連智＋周邊',data:[0.4,2.7,8.5,17.3,21.1],backgroundColor:'rgba(82,56,176,.75)',stack:'s',borderRadius:3,borderSkipped:false},{label:'僅巧連智',data:[1.2,7.9,23.4,57.1,63.8],backgroundColor:P.coralA,stack:'s',borderSkipped:false},{label:'僅周邊商品',data:[2.4,5.3,6.5,1.1,0.4],backgroundColor:P.goldA,stack:'s',borderSkipped:false},{label:'純新客',data:[95.9,84.1,61.5,24.4,14.6],backgroundColor:P.tealA,stack:'s',borderSkipped:'start'},{type:'line',label:'保有率 %',data:[5.87,8.32,9.00,15.29,15.60],borderColor:P.green,backgroundColor:'transparent',pointRadius:6,pointBackgroundColor:P.green,pointBorderColor:'#fff',pointBorderWidth:2,tension:.3,yAxisID:'y2',borderWidth:2.5,z:10}
+      {label:'巧連智＋周邊',data:[0.6,2.6,8.5,18.0,21.6],backgroundColor:'rgba(82,56,176,.75)',stack:'s',borderRadius:3,borderSkipped:false},{label:'僅巧連智',data:[1.3,7.0,21.4,55.2,62.8],backgroundColor:P.coralA,stack:'s',borderSkipped:false},{label:'僅周邊商品',data:[5.0,7.2,7.1,1.3,0.5],backgroundColor:P.goldA,stack:'s',borderSkipped:false},{label:'純新客',data:[93.1,83.1,63.0,25.4,15.1],backgroundColor:P.tealA,stack:'s',borderSkipped:'start'},{type:'line',label:'保有率 %',data:[6.61,8.87,9.20,14.66,14.87],borderColor:P.green,backgroundColor:'transparent',pointRadius:6,pointBackgroundColor:P.green,pointBorderColor:'#fff',pointBorderWidth:2,tension:.3,yAxisID:'y2',borderWidth:2.5,z:10}
     ]
   },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.datasetIndex===4?'保有率: '+ctx.parsed.y.toFixed(2)+'%':ctx.dataset.label+': '+ctx.parsed.y.toFixed(1)+'%'}}},scales:{
       x:{stacked:true,grid:{display:false},ticks:{font:{size:13}}},y:{stacked:true,max:100,grid:{color:'rgba(0,0,0,.04)'},ticks:{callback:v=>v+'%',font:{size:11}},title:{display:true,text:'客戶樣貌佔比 %',font:{size:10},color:'#9c9c8c'}},y2:{position:'right',min:0,max:20,grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%',font:{size:11}},title:{display:true,text:'BCL 保有率 %',font:{size:10},color:P.green}}
@@ -2332,15 +2333,15 @@ new Chart(document.getElementById('c1'),{
 /* ═══ Chart 2 donut ═══ */
 const GCOL=['#1a7a4a','#1e6fb8',P.ss,'#6fa8d8','#c87a2e',P.amber,P.gray,'#aaa8a0'];
 const GLBL=['A 孕期','S 0–6M','SS 7–12M','S 13–24M','AA 25–36M','A 37–60M','B 61M+','無生日'];
-const GDAT=[2026,3207,2863,10978,11783,43659,98590,6738];
+const GDAT=[312,2545,2959,8291,11760,35052,108677,6713];
 new Chart(document.getElementById('c2'),{
-  type:'doughnut',data:{labels:GLBL,datasets:[{data:GDAT,backgroundColor:GCOL,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.label+': '+ctx.parsed.toLocaleString()+' ('+(ctx.parsed/179844*100).toFixed(1)+'%)'}}}
+  type:'doughnut',data:{labels:GLBL,datasets:[{data:GDAT,backgroundColor:GCOL,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.label+': '+ctx.parsed.toLocaleString()+' ('+(ctx.parsed/176309*100).toFixed(1)+'%)'}}}
   }
 });
 
 /* ═══ Chart 3 channel per grade ═══ */
 const CH3={
-  all:{z:[945,1411,1782,8116,9648,42090,96904,2970],y:[868,1527,753,1240,683,594,1055,1949],m:[213,269,328,1622,1452,975,631,1819]},preg:[945,868,213],s06:[1411,1527,269],ss:[1782,753,328],s1324:[8116,1240,1622],aa:[9648,683,1452],a:[42090,594,975],b:[96904,1055,631],nobd:[2970,1949,1819],};
+  all:{z:[181,1266,1450,5362,8978,32285,106617,2732],y:[95,1017,1241,1708,937,829,1173,1785],m:[33,240,242,896,1339,1550,706,664],a:[3,22,26,325,506,388,181,1532]},preg:[181,95,33,3],s06:[1266,1017,240,22],ss:[1450,1241,242,26],s1324:[5362,1708,896,325],aa:[8978,937,1339,506],a:[32285,829,1550,388],b:[106617,1173,706,181],nobd:[2732,1785,664,1532],};
 const CH3N={all:'全部等級',preg:'A 孕期',s06:'S 0–6M',ss:'SS 7–12M',s1324:'S 13–24M',aa:'AA 25–36M',a:'A 37–60M',b:'B 61M+',nobd:'無生日'};
 let c3c=null;
 function drawC3(k){
@@ -2349,15 +2350,15 @@ function drawC3(k){
   const ctx=document.getElementById('c3');
   if(k==='all'){
     c3c=new Chart(ctx,{type:'bar',data:{labels:['A孕期','S0-6M','SS7-12M','S13-24M','AA25-36M','A37-60M','B61M+','無生日'],datasets:[
-        {label:'自辦',data:CH3.all.z,backgroundColor:P.purpleA,borderColor:P.purple,borderWidth:.5,stack:'s',borderRadius:3,borderSkipped:false},{label:'異業',data:CH3.all.y,backgroundColor:P.ssA,borderColor:P.ss,borderWidth:.5,stack:'s'},{label:'主動',data:CH3.all.m,backgroundColor:P.amberA,borderColor:P.amber,borderWidth:.5,stack:'s'},{label:'自動',data:CH3.all.z||[],backgroundColor:'rgba(46,125,110,.7)',borderColor:'#2e7d6e',borderWidth:.5,stack:'s',borderSkipped:'start'},]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toLocaleString()}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:10},maxRotation:30}},y:{stacked:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v.toLocaleString()}}}
+        {label:'自辦',data:CH3.all.z,backgroundColor:P.purpleA,borderColor:P.purple,borderWidth:.5,stack:'s',borderRadius:3,borderSkipped:false},{label:'異業',data:CH3.all.y,backgroundColor:P.ssA,borderColor:P.ss,borderWidth:.5,stack:'s'},{label:'主動',data:CH3.all.m,backgroundColor:P.amberA,borderColor:P.amber,borderWidth:.5,stack:'s'},{label:'自動',data:CH3.all.a,backgroundColor:'rgba(46,125,110,.7)',borderColor:'#2e7d6e',borderWidth:.5,stack:'s',borderSkipped:'start'},]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toLocaleString()}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:10},maxRotation:30}},y:{stacked:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v.toLocaleString()}}}
       }
     });
   } else {
-    const d=CH3[k],tot=d[0]+d[1]+d[2];
+    const d=CH3[k],tot=d.reduce((sum,n)=>sum+n,0);
     document.getElementById('donutVal').textContent=tot.toLocaleString();
     document.getElementById('donutSub').textContent=CH3N[k];
     c3c=new Chart(ctx,{type:'doughnut',data:{labels:['自辦','異業','主動','自動'],datasets:[{data:d,backgroundColor:[P.purpleA,P.ssA,P.amberA,'rgba(46,125,110,.75)'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{
-          legend:{display:true,position:'right',labels:{font:{size:11},padding:14,generateLabels:_=>['自辦','異業','主動'].map((l,i)=>({text:l+': '+((d[i]/tot)*100).toFixed(1)+'%',fillStyle:[P.purple,P.ss,P.amber][i],strokeStyle:'transparent',index:i}))}},tooltip:{callbacks:{label:ctx=>ctx.label+': '+ctx.parsed.toLocaleString()+' ('+(ctx.parsed/(d[0]+d[1]+d[2])*100).toFixed(1)+'%)'}}
+          legend:{display:true,position:'right',labels:{font:{size:11},padding:14,generateLabels:_=>['自辦','異業','主動','自動'].map((l,i)=>({text:l+': '+((d[i]/tot)*100).toFixed(1)+'%',fillStyle:[P.purple,P.ss,P.amber,'#2e7d6e'][i],strokeStyle:'transparent',index:i}))}},tooltip:{callbacks:{label:ctx=>ctx.label+': '+ctx.parsed.toLocaleString()+' ('+(ctx.parsed/tot*100).toFixed(1)+'%)'}}
         }
       }
     });
@@ -2366,7 +2367,7 @@ function drawC3(k){
 function selGrade(k,el){
   document.querySelectorAll('.gp').forEach(g=>g.classList.remove('active-grade'));
   el.classList.add('active-grade');
-  if(k==='all'){document.getElementById('donutVal').textContent='178,789';document.getElementById('donutSub').textContent='有效會員';}
+  if(k==='all'){document.getElementById('donutVal').textContent='176,309';document.getElementById('donutSub').textContent='有效會員';}
   drawC3(k);
 }
 drawC3('all');
@@ -2374,10 +2375,33 @@ drawC3('all');
 /* ═══ Charts 4 & 5 — pipe × grade / subscription ═══ */
 const PIPE_DATA_ALL={
   '主動':{
-    'LineOA':      {grade:[1,40,75,726,804,615,1092,793],sub:[85,182,287,2799]},'官網-Welcome':{grade:[246,301,254,775,674,494,575,79],sub:[30,95,198,2996]},},'自動':{
-    'SHOPLINE':    {grade:[1,23,33,433,343,209,1467,1353],sub:[26,89,73,2321]},},'異業':{
-    '揆眾婦幼展':{grade:[254,379,255,579,195,117,118,11],sub:[4,30,14,1849]},'大樹':      {grade:[0,1,19,534,372,331,1795,1608],sub:[17,93,39,2903]},'樂飛發票':  {grade:[101,136,129,257,232,340,1295,111],sub:[11,43,2,2434]},'永生':      {grade:[70,646,392,98,16,19,496,449],sub:[3,11,1,1722]},'六甲村':    {grade:[116,446,212,119,13,24,269,219],sub:[0,17,5,1177]},'明治':      {grade:[374,414,27,19,1,6,68,2],sub:[3,10,0,896]},'聯盟網':    {grade:[0,14,35,109,73,54,29,16],sub:[2,7,9,296]},'芳茲':      {grade:[36,5,0,1,0,1,3,0],sub:[0,0,0,46]},'小村日和':  {grade:[0,1,31,4,1,3,2,0],sub:[0,1,0,41]},},'自辦':{
-    '全管道':    {grade:[1136,1486,1352,2457,1809,1012,1352,44],sub:[51,192,128,10233]},'線上活動':  {grade:[2,118,360,4104,3218,2019,1802,1267],sub:[90,376,486,13643]},'春季舞台劇':{grade:[0,3,2,49,168,399,299,2],sub:[39,63,8,860]},'英語劇':    {grade:[0,1,0,17,55,216,127,0],sub:[17,50,9,450]},'BCL導購':   {grade:[0,0,2,37,82,131,61,13],sub:[2,21,19,271]},'客服':      {grade:[0,17,15,59,44,27,9,0],sub:[20,9,117,25]},'Happy Go':  {grade:[1,10,7,18,15,11,10,0],sub:[0,2,1,69]},'酷必後台':  {grade:[1,18,101,1922,5299,48386,166787,2218],sub:[49370,145487,1612,26045]},},};
+    'OA':{grade:[4,5,21,268,649,808,272,601],sub:[82,138,295,2113]},
+    '官網':{grade:[29,233,203,448,399,379,279,35],sub:[17,48,116,1824]},
+    '官網/OA':{grade:[0,2,18,180,291,363,155,28],sub:[12,30,128,867]},
+  },'自動':{
+    'SHOPLINE':{grade:[3,22,26,325,506,388,181,1532],sub:[40,104,166,2673]},
+  },'異業':{
+    '大樹':{grade:[0,0,2,158,397,377,176,1241],sub:[13,64,48,2226]},
+    '揆眾婦幼展':{grade:[1,174,235,428,299,148,95,3],sub:[3,26,20,1334]},
+    '永生':{grade:[11,136,353,452,13,12,47,310],sub:[3,9,12,1310]},
+    '明治':{grade:[42,446,319,44,3,2,63,2],sub:[2,10,2,907]},
+    '六甲村':{grade:[15,151,260,267,11,21,36,149],sub:[0,14,7,889]},
+    '樂飛發票':{grade:[0,2,8,67,73,133,372,38],sub:[4,13,0,676]},
+    '樂飛':{grade:[26,75,48,62,48,57,340,28],sub:[3,10,3,668]},
+    '小村日和':{grade:[0,6,3,168,13,22,27,0],sub:[1,12,3,223]},
+    '聯盟網':{grade:[0,0,10,61,80,56,14,14],sub:[2,5,12,216]},
+    '芳茲':{grade:[0,27,3,1,0,1,3,0],sub:[0,0,0,35]},
+  },'自辦':{
+    '酷必':{grade:[0,1,16,482,2464,25764,103728,1505],sub:[34458,85316,1166,13020]},
+    '線上活動':{grade:[0,2,78,1960,3666,3510,683,1180],sub:[86,288,566,10139]},
+    '全管道':{grade:[175,823,1057,2342,2299,1753,1221,30],sub:[44,171,231,9254]},
+    '新BCL':{grade:[5,436,278,420,193,102,106,3],sub:[3,23,30,1487]},
+    '舞台劇/英語劇':{grade:[0,0,3,25,105,597,558,1],sub:[58,90,23,1118]},
+    'lalaport活動':{grade:[1,1,2,48,104,223,146,3],sub:[10,16,5,497]},
+    '舞台劇':{grade:[0,1,0,7,47,148,109,0],sub:[6,20,6,280]},
+    'BCL導購':{grade:[0,0,0,10,40,136,47,10],sub:[2,17,20,204]},
+    '客服':{grade:[0,2,16,68,60,52,19,0],sub:[32,9,145,31]},
+  },};
 const PIPE_DATA_2024={
   '主動':{'LineOA':{grade:[162,224,193,369,121,74,43,646],sub:[53,118,121,1540]},'官網-Welcome':{grade:[8,5,6,14,2,5,1,16],sub:[3,6,4,44]}},'異業':{'永生':{grade:[66,2,3,1,0,3,0,71],sub:[0,1,0,145]},'六甲村':{grade:[58,2,0,1,1,2,1,22],sub:[0,2,0,85]}},'自辦':{'線上活動':{grade:[942,1234,738,1290,173,104,59,1157],sub:[42,156,175,5324]},'全管道':{grade:[314,412,382,855,356,269,150,1280],sub:[249,474,288,3007]},'BCL導購':{grade:[1,2,0,4,2,41,3,10],sub:[1,6,3,53]}},};
 const PIPE_DATA_2025={
