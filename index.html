@@ -465,7 +465,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </ul></section>
         <section class="bcl-topic-section strategy"><span class="bcl-topic-label">目前作法</span><ul>
           <li><span class="bcl-status doing">進行中</span>代操＋自操兩條路同時跑，守住廣告基本盤。</li>
-          <li><span class="bcl-status planning">策畫中</span>工具箱、自辦投廣的新活動型態，和測驗、調查輪替。</li>
+          <li><span class="bcl-status planning">策畫中</span>(1) 育兒工具箱新BCL收集計畫（少琪）。</li>
+          <li><span class="bcl-status planning">策畫中</span>(2) 自辦投廣的新活動型態，和測驗、調查輪替。</li>
         </ul></section>
       </div></div>
     </details>
@@ -480,7 +481,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <li>廣告帶來的量＝固定預算×活動效率，天花板明確。</li>
           <li>要達每月2,500，另約1,400筆須靠其他來源。</li>
         </ul></section>
-        <section class="bcl-topic-section strategy"><span class="bcl-topic-label">目前作法</span><ul><li><span class="bcl-status planning">策畫中</span>B第三條路：不投廣的全新收集方式，方向研究中。</li></ul></section>
+        <section class="bcl-topic-section strategy"><span class="bcl-topic-label">目前作法</span><ul><li><span class="bcl-status planning">策畫中</span>(B) 第三條路—創建親子社群，進行新BCL收集計畫（Hannah）。</li></ul></section>
       </div></div>
     </details>
 
@@ -546,7 +547,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <button class="campaign-alert-close" type="button" aria-label="關閉活動速報" onclick="toggleCampaignAlert(false)">×</button>
     </div>
   </div>
-  <div class="campaign-alert-body">
+  <div id="campaignAlertBody" class="campaign-alert-body">
     <div class="campaign-alert-summary">
       <div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>235</strong><small>上週 265｜<b style="color:#b91c1c;">▼30（-11.3%）</b></small></div>
       <div class="campaign-alert-kpi"><span>自操週預算 CPB</span><strong>$3.04</strong><small>上週 $3.50｜改善 13.1%</small></div>
@@ -750,6 +751,89 @@ function renderEventPies(){
     pie.setAttribute('data-rendered','true');
   });
 }
+var CAMPAIGN_WEEK_HISTORY = {
+  W25:{week:1,range:'9/14–9/20',total:456,prev:null,score:'1.71',self:{n:248,cpb:'$1.93',spend:'實花 US$479.61',ss:'65.3%',daily:[32,43,42,42,26,33,30]},agency:{n:208,cpb:'$2.17',spend:'實花 US$451.01',ss:'53.6%',daily:[7,42,43,40,28,27,21]},dates:['9/14','9/15','9/16','9/17','9/18','9/19','9/20'],judgement:'兩活動合計456 BCL，為過往單一路線週均266.9 BCL的1.71倍、理論2倍的85.4%；自操量體與CPB均優於廣代。',observations:['兩條路同日正式上線，兩邊皆以每日US$70投放。','自操248人、廣代208人；自操多40人，CPB低約10.8%。','首週尚未出現1＋1大於2的加乘效果，先建立後續比較基準。'],next:['關閉自操表現較弱的「學習教育興趣 FB」與「LL已綁定5% IG」，讓預算集中於較佳組合。','測試單獨提高自操至每日US$80～100，比較與廣代的蒐集差異。']},
+  W26:{week:2,range:'9/21–9/27',total:356,prev:456,score:'1.33',self:{n:193,cpb:'$2.54',spend:'週預算 US$490',ss:'65.3%',daily:[39,33,37,23,17,23,21]},agency:{n:163,cpb:'$3.01',spend:'週預算 US$490',ss:'46.0%',daily:[36,21,30,17,16,17,26]},dates:['9/21','9/22','9/23','9/24','9/25','9/26','9/27'],judgement:'兩活動合計356 BCL，較首週減少100人（-21.9%）；1＋1由1.71降至1.33，為理論2倍的66.7%。',observations:['兩邊同期下滑約22%，較不支持單一操作失誤；9/25、9/26未花滿日預算，也可能壓低量體。','兩年自辦線上資料中，14段連假有12段下降；本次中秋／教師節連假日均由60.0降至40.3（-32.9%），連假可能有影響但不是唯一原因。','9/26、9/27曾出現短時間簡訊異常；當天仍有部分客戶成功綁定，因此影響範圍較小。'],next:['優先替換表現較弱的素材。','10/1～10/14提高每日預算至US$100，持續比較BCL、CPB與兩邊差異。']},
+  W27:{week:3,range:'9/28–10/4',total:364,prev:356,score:'1.36',self:{n:211,cpb:'$2.32',spend:'週預算 US$490',ss:'71.6%',daily:[21,25,28,37,26,40,34]},agency:{n:153,cpb:'$3.20',spend:'週預算 US$490',ss:'50.3%',daily:[18,17,18,18,20,28,34]},dates:['9/28','9/29','9/30','10/1','10/2','10/3','10/4'],judgement:'兩活動合計364 BCL，較上週增加8人（+2.2%）；自操增加、廣代下降，1＋1約1.36。',observations:['自操211人（+9.3%），廣代153人（-6.1%）；兩邊差距擴大至58人。','自操SS+S 71.6%，明顯高於廣代50.3%，量體與月齡品質皆較佳。','本週另有禾馨、統一時代等線下／異業高峰；兩條路判讀僅計兩個廣告活動。'],next:['下週育兒大調查第二檔預計提高至每日US$100。','同步請廣代更新素材，觀察素材與預算調整後的差異。']},
+  W28:{week:4,range:'10/5–10/11',total:337,prev:364,score:'1.26',self:{n:214,cpb:'$2.29',spend:'週預算 US$490',ss:'76.6%',daily:[33,30,41,37,29,18,26]},agency:{n:123,cpb:'$3.98',spend:'週預算 US$490',ss:'55.3%',daily:[30,24,14,8,11,19,17]},dates:['10/5','10/6','10/7','10/8','10/9','10/10','10/11'],judgement:'兩活動合計337 BCL，較上週減少27人（-7.4%）；自操持平、廣代下降，1＋1約1.26。',observations:['自操214人（+1.4%），廣代123人（-19.6%），本週下滑主要來自廣代。','自操SS+S 76.6%，廣代55.3%；自操持續維持較佳月齡品質。','兩邊都以相同週預算口徑比較，CPB差距擴大至US$1.69。'],next:['持續觀察自操第二檔與廣代素材更新後的量體差異。','比較兩邊受眾重疊與非重疊組合，準備後續差異化測試。']},
+  W29:{week:5,range:'10/12–10/18',total:416,prev:337,score:'1.56',self:{n:255,cpb:'$1.92',spend:'週預算 US$490',ss:'74.5%',daily:[26,49,59,45,29,19,28]},agency:{n:161,cpb:'$3.04',spend:'週預算 US$490',ss:'51.6%',daily:[12,32,29,30,19,21,18]},dates:['10/12','10/13','10/14','10/15','10/16','10/17','10/18'],judgement:'兩活動合計416 BCL，較上週增加79人（+23.4%）；兩邊同步回升，1＋1約1.56。',observations:['自操255人（+19.2%），廣代161人（+30.9%），兩邊都較上週改善。','自操CPB降至US$1.92，量體與效率仍優於廣代。','2610開始朝差異化受眾方向調整，後續需用相同預算持續觀察。'],next:['讓雙方受眾盡量不重疊，先維持每日US$70做公平比較。','自操保留學習教育、餐食與類似受眾；廣代保留嬰幼兒用品、優惠小測驗與粉專互動＋舊客。']},
+  W30:{week:6,range:'10/19–10/25',total:305,prev:416,score:'1.14',self:{n:177,cpb:'$2.77',spend:'週預算 US$490',ss:'73.4%',daily:[25,31,24,28,24,22,23]},agency:{n:128,cpb:'$3.83',spend:'週預算 US$490',ss:'53.1%',daily:[23,22,17,21,12,15,18]},dates:['10/19','10/20','10/21','10/22','10/23','10/24','10/25'],judgement:'兩活動合計305 BCL，較上週減少111人（-26.7%）；兩邊同步下滑，1＋1約1.14。',observations:['自操177人（-30.6%），廣代128人（-20.5%），兩檔活動同樣走弱。','去年自辦線上在雙11暖身期也曾下滑，但進入11月後逐步恢復；競價壓力列為短期因素之一。','本週數字為當週正式週報快照；後續回補不覆寫歷史判讀。'],next:['精簡單一廣告組合內的廣告數量，避免預算與學習量過度分散。','檢視素材更新頻率，逐步建立每週替換的素材輪替制度。']},
+  W31:{week:7,range:'10/26–11/1',total:265,prev:305,score:'1.1',self:{n:140,cpb:'$3.50',spend:'週預算 US$490',ss:'71.4%',daily:[24,17,25,30,17,15,12]},agency:{n:125,cpb:'$3.92',spend:'週預算 US$490',ss:'60.8%',daily:[20,14,20,20,22,14,15]},dates:['10/26','10/27','10/28','10/29','10/30','10/31','11/1'],judgement:'兩活動合計265 BCL，較上週減少40人（-13.1%）；兩檔活動連續走弱，現況以1＋1＝1.1概括加成不足。',observations:['自操140人（-20.9%），廣代125人（-2.3%），本週下滑主要來自自操。','素材平均點擊率由約3.33%降至多數0%～1.3%，顯示活動第三週後效益可能遞減。','雙11競價仍可能推升成本；需搭配實際花費、曝光與BCL共同驗證。'],next:['2611雙邊活動檔期改為1個月，並精簡廣告數量。','導入5＋5輪替：先上5個主打、保留5個備用，每週替換素材。']}
+};
+var CAMPAIGN_WEEK_32_HTML = null;
+var _pwReportMode = 'week';
+var CAMPAIGN_MONTH_HISTORY = {
+  M202609:{label:'2026年9月',period:'9/14–9/30｜兩條路上線17天',days:17,total:938,score:'1.45',self:{n:515,cpb:'$2.31',budget:'預算口徑 US$1,190',ss:'66.6%'},agency:{n:423,cpb:'$2.81',budget:'預算口徑 US$1,190',ss:'49.9%'},weeks:[
+    {range:'9/14–9/20',self:248,agency:208,total:456,issue:'首週建立基準；1＋1＝1.71，尚未達理論2倍。',action:'檢視各廣告組合，準備關閉弱勢組合並集中預算。'},
+    {range:'9/21–9/27',self:193,agency:163,total:356,issue:'兩邊同步下滑約22%；連假競價、未花滿預算及短時間簡訊異常需分開判讀。',action:'替換弱勢素材，規劃提高自操預算測試。'},
+    {range:'9/28–9/30',self:74,agency:52,total:126,issue:'僅3天的跨月週段，不宜直接與完整週比較。',action:'延續至10月觀察自操與廣代差距。'}
+  ],conclusion:'9/14正式啟動兩條路作戰，17天共938 BCL；自操量體與CPB皆優於廣代。首週效果最好，第二週兩邊同步走弱，確認後續不能只看總預算，還要同時拆解連假、實際花費、素材與系統異常。'},
+  M202610:{label:'2026年10月',period:'10/1–10/31｜完整31天',days:31,total:1533,score:'1.30',self:{n:912,cpb:'$2.38',budget:'預算口徑 US$2,170',ss:'65.1%'},agency:{n:621,cpb:'$3.49',budget:'預算口徑 US$2,170',ss:'41.9%'},weeks:[
+    {range:'10/1–10/4',self:138,agency:99,total:237,issue:'月初承接第3週，自操維持領先；此段僅4天。',action:'啟動自操預算與素材調整測試，持續觀察差距。'},
+    {range:'10/5–10/11',self:214,agency:123,total:337,issue:'自操大致持平，廣代下滑19.6%，本週下降主要來自廣代。',action:'比較兩邊受眾重疊與非重疊組合，準備差異化測試。'},
+    {range:'10/12–10/18',self:255,agency:161,total:416,issue:'兩邊同步回升，月內單週量體最高；自操CPB降至US$1.92。',action:'切開受眾池並先維持相同預算，確認差異化效果。'},
+    {range:'10/19–10/25',self:177,agency:128,total:305,issue:'兩檔活動同步下滑；雙11暖身競價、素材老化與預算分散列為主要假說。',action:'精簡廣告數量、汰弱留強，建立每週素材替換節奏。'},
+    {range:'10/26–10/31',self:128,agency:110,total:238,issue:'兩邊延續弱勢，顯示不是單一帳號操作失誤；月底競價壓力仍在。',action:'2611雙邊檔期改為1個月，導入5＋5素材輪替。'}
+  ],conclusion:'10月兩活動共1,533 BCL，自操912人、廣代621人；自操量體多291人，CPB也低US$1.11。月中10/12–10/18回升至416人，但後兩週連續走弱。綜合各週紀錄，問題從受眾重疊逐步轉向素材老化、預算分散與雙11競價；操作上則由提高預算測試，轉為受眾差異化、精簡廣告與5＋5素材輪替。'}
+};
+function campaignDeltaText(n,prev){
+  if(prev==null)return '首週基準';
+  var d=n-prev,p=prev?Math.abs(d/prev*100):0;
+  return (d>=0?'▲':'▼')+Math.abs(d)+'（'+(d>=0?'+':'-')+p.toFixed(1)+'%）';
+}
+function campaignDailyMarkup(dates,values){
+  return dates.map(function(d,i){return '<span>'+d+'：<b>'+values[i]+'</b></span>';}).join('');
+}
+function campaignPastCard(name,badge,c,w,prevN,isAgency){
+  return '<article class="campaign-mini-card'+(isAgency?' agency':'')+'"><div class="campaign-card-top"><div class="campaign-card-name">'+name+'</div><span class="campaign-badge">'+badge+'</span></div><div class="campaign-card-total">'+c.n+'<small>BCL</small></div><div class="campaign-daily">'+campaignDailyMarkup(w.dates,c.daily)+'</div><div class="campaign-quality"><b>'+campaignDeltaText(c.n,prevN)+'</b><br>SS+S '+c.ss+'｜'+c.spend+'｜CPB '+c.cpb+'</div><details class="campaign-spend-details"><summary>本週資料口徑</summary><div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">BCL逐日數字以8TDB為主；CPB沿用當週報告的實花或US$490週預算口徑。此頁保存當時正式週報快照，後續回補不追溯改寫。</div></details></article>';
+}
+function renderCampaignWeek(wk){
+  var body=document.getElementById('campaignAlertBody');
+  var title=document.getElementById('campaignAlertTitle');
+  var btn=document.getElementById('campaignAlertBtn');
+  if(!body||!title||!btn)return;
+  if(CAMPAIGN_WEEK_32_HTML===null)CAMPAIGN_WEEK_32_HTML=body.innerHTML;
+  if(wk==='W32'){
+    body.innerHTML=CAMPAIGN_WEEK_32_HTML;
+    title.textContent='兩條路作戰｜11/2–11/8 第 8 週';
+    btn.querySelector('span:last-child').textContent='本週｜11/2–11/8 廣告成效';
+    return;
+  }
+  var w=CAMPAIGN_WEEK_HISTORY[wk];
+  if(!w){
+    title.textContent='兩條路作戰｜尚未開始';
+    btn.querySelector('span:last-child').textContent='本週｜尚無廣告成效';
+    body.innerHTML='<div class="campaign-alert-insight"><b>本週尚未進入兩條路作戰。</b><br>兩個廣告活動自2026/9/14起同時投放；請選擇9/14之後的週次查看歷史廣告成效。</div>';
+    return;
+  }
+  var prev=CAMPAIGN_WEEK_HISTORY['W'+(parseInt(wk.slice(1),10)-1)];
+  var selfPrev=prev?prev.self.n:null,agencyPrev=prev?prev.agency.n:null;
+  var totalDelta=w.prev==null?'首週建立基準':campaignDeltaText(w.total,w.prev);
+  title.textContent='兩條路作戰｜'+w.range+' 第 '+w.week+' 週';
+  btn.querySelector('span:last-child').textContent='本週｜'+w.range+' 廣告成效';
+  var obs=w.observations.map(function(x,i){return '<li><b>'+(i+1)+'.</b> '+x+'</li>';}).join('');
+  var next=w.next.map(function(x){return '<li>'+x+'</li>';}).join('');
+  body.innerHTML='<div class="campaign-alert-summary"><div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>'+w.total+'</strong><small>'+totalDelta+'</small></div><div class="campaign-alert-kpi"><span>自操 CPB</span><strong>'+w.self.cpb+'</strong><small>'+w.self.spend+'</small></div><div class="campaign-alert-kpi"><span>廣代 CPB</span><strong>'+w.agency.cpb+'</strong><small>'+w.agency.spend+'</small></div></div><div class="campaign-cards">'+campaignPastCard('巧虎育兒大調查','自操',w.self,w,selfPrev,false)+campaignPastCard('健康寶貝知識王','廣代操作',w.agency,w,agencyPrev,true)+'<div class="campaign-right-column"><article class="campaign-mini-card campaign-history-card"><div class="campaign-card-top"><div class="campaign-card-name">第 '+w.week+' 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">'+w.range+'</span></div><ul class="campaign-judgement-list"><li><b>1＋1有大於2嗎？</b>沒有；本週<b>1＋1＝'+w.score+'</b>。</li><li>'+w.judgement+'</li></ul><div class="campaign-history-summary"><div><b>1＋1＝'+w.score+'</b><span>當週歷史判讀</span></div><div><b>'+w.total+'</b><span>兩活動BCL</span></div></div></article></div></div><div class="campaign-alert-insight" style="margin-bottom:12px;"><b style="font-size:15px;">本週投放觀察</b><ol style="margin:8px 0 0 20px;line-height:1.75;">'+obs+'</ol></div><div class="campaign-next-step campaign-next-step-wide"><div class="campaign-next-step-title">下一步</div><ol>'+next+'</ol></div><div class="campaign-alert-insight"><b>完整週判讀｜'+w.judgement+'</b><br>自操'+w.self.n+'人、廣代'+w.agency.n+'人；CPB分別為'+w.self.cpb+'與'+w.agency.cpb+'。此內容為該週報告的歷史快照，切換週次時不會再被最新一週覆寫。</div><div class="campaign-alert-note">資料來源：BCL逐日數字以8TDB為主；SS+S、花費與判讀沿用當週已確認週報。兩條路作戰自2026/9/14起計算。</div>';
+}
+function renderCampaignMonth(monthKey){
+  var body=document.getElementById('campaignAlertBody');
+  var title=document.getElementById('campaignAlertTitle');
+  var btn=document.getElementById('campaignAlertBtn');
+  if(!body||!title||!btn)return;
+  if(CAMPAIGN_WEEK_32_HTML===null)CAMPAIGN_WEEK_32_HTML=body.innerHTML;
+  var m=CAMPAIGN_MONTH_HISTORY[monthKey];
+  if(!m){
+    var label=(typeof PM_MONTHS!=='undefined'&&PM_MONTHS[monthKey])?PM_MONTHS[monthKey].label:'所選月份';
+    title.textContent='兩條路作戰｜'+label+'月總結';
+    btn.querySelector('span:last-child').textContent=label+'｜廣告成效';
+    body.innerHTML='<div class="campaign-alert-insight"><b>本月尚未進入兩條路作戰。</b><br>兩個廣告活動自2026/9/14起同時投放；9月以前沒有兩條路作戰的月度廣告總結。</div>';
+    return;
+  }
+  title.textContent='兩條路作戰｜'+m.label+'廣告成效總結';
+  btn.querySelector('span:last-child').textContent=m.label+'｜廣告成效';
+  var rows=m.weeks.map(function(w){return '<tr><td><b>'+w.range+'</b></td><td>'+w.self+'</td><td>'+w.agency+'</td><td><b>'+w.total+'</b></td><td>'+w.issue+'</td><td>'+w.action+'</td></tr>';}).join('');
+  body.innerHTML='<div class="campaign-alert-summary"><div class="campaign-alert-kpi"><span>兩活動月 BCL</span><strong>'+m.total.toLocaleString()+'</strong><small>'+m.period+'｜1＋1＝'+m.score+'</small></div><div class="campaign-alert-kpi"><span>自操月 CPB</span><strong>'+m.self.cpb+'</strong><small>'+m.self.budget+'</small></div><div class="campaign-alert-kpi"><span>廣代月 CPB</span><strong>'+m.agency.cpb+'</strong><small>'+m.agency.budget+'</small></div></div><div class="campaign-cards"><article class="campaign-mini-card"><div class="campaign-card-top"><div class="campaign-card-name">巧虎育兒大調查</div><span class="campaign-badge">自操</span></div><div class="campaign-card-total">'+m.self.n+'<small>BCL</small></div><div class="campaign-quality"><b>占兩活動 '+(m.self.n/m.total*100).toFixed(1)+'%</b><br>SS+S '+m.self.ss+'｜'+m.self.budget+'｜CPB '+m.self.cpb+'</div></article><article class="campaign-mini-card agency"><div class="campaign-card-top"><div class="campaign-card-name">健康寶貝知識王</div><span class="campaign-badge">廣代操作</span></div><div class="campaign-card-total">'+m.agency.n+'<small>BCL</small></div><div class="campaign-quality"><b>占兩活動 '+(m.agency.n/m.total*100).toFixed(1)+'%</b><br>SS+S '+m.agency.ss+'｜'+m.agency.budget+'｜CPB '+m.agency.cpb+'</div></article><div class="campaign-right-column"><article class="campaign-mini-card campaign-history-card"><div class="campaign-card-top"><div class="campaign-card-name">月度判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">'+m.label+'</span></div><ul class="campaign-judgement-list"><li><b>本月1＋1＝'+m.score+'</b>，仍未達兩倍蒐集量。</li><li>自操'+m.self.n+'人、廣代'+m.agency.n+'人，自操多'+(m.self.n-m.agency.n)+'人。</li><li>CPB相差US$'+(parseFloat(m.agency.cpb.slice(1))-parseFloat(m.self.cpb.slice(1))).toFixed(2)+'，自操效率較佳。</li></ul><div class="campaign-history-summary"><div><b>1＋1＝'+m.score+'</b><span>月度結果</span></div><div><b>'+m.total.toLocaleString()+'</b><span>兩活動BCL</span></div></div></article></div></div><div class="campaign-alert-insight" style="margin-bottom:12px;"><b style="font-size:15px;">'+m.label+'各週問題釐清與操作方式</b><div style="overflow-x:auto;margin-top:9px;"><table class="campaign-grade-table" style="min-width:900px;"><thead><tr><th>週段</th><th>自操</th><th>廣代</th><th>合計</th><th style="text-align:left;">遇到的問題／釐清</th><th style="text-align:left;">當週操作方式</th></tr></thead><tbody>'+rows+'</tbody></table></div></div><div class="campaign-next-step campaign-next-step-wide"><div class="campaign-next-step-title">月度總結</div><p style="margin:0;line-height:1.8;">'+m.conclusion+'</p></div><div class="campaign-alert-note">資料來源：BCL與月齡以8TDB月報正式口徑為主；CPB以每日US$70的預算上限計算，非Meta實際花費。1＋1＝兩活動月BCL ÷（過往單一路線週均266.9 × 投放天數 ÷ 7）。跨月週段依日曆月份拆分，避免把其他月份數字計入月總成績。</div>';
+}
 function toggleCampaignAlert(forceOpen){
   var panel=document.getElementById('campaignAlertPanel');
   var btn=document.getElementById('campaignAlertBtn');
@@ -758,7 +842,7 @@ function toggleCampaignAlert(forceOpen){
   panel.classList.toggle('open',open);
   panel.setAttribute('aria-hidden',String(!open));
   btn.setAttribute('aria-expanded',String(open));
-  if(open){toggleBclReminder(false);toggleEventProfile(false);}
+  if(open){if(_pwReportMode==='month')renderCampaignMonth(typeof _pmCurrentMonth==='string'?_pmCurrentMonth:'M202610');else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W32');toggleBclReminder(false);toggleEventProfile(false);}
   if(!open){
     panel.classList.remove('fullscreen');
     var fsBtn=document.getElementById('campaignFullscreenBtn');
@@ -2720,11 +2804,14 @@ document.addEventListener('click',function(e){
    Weekly Report Chart JS
 ═══════════════════════════════════ */
 function pwMode(mode,el){
+  _pwReportMode = mode;
   document.querySelectorAll('#pw-page .mode-tab').forEach(function(b){b.classList.remove('active');});
   el.classList.add('active');
   document.querySelectorAll('#pw-page .mode-panel').forEach(function(p){p.classList.remove('active');});
   var panel=document.getElementById('pw-'+mode);
   if(panel) panel.classList.add('active');
+  if(mode==='month') renderCampaignMonth(typeof _pmCurrentMonth==='string'?_pmCurrentMonth:'M202610');
+  else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W32');
   setTimeout(pwInitCharts,60);
 }
 
@@ -3502,6 +3589,7 @@ function pwSelectWeek(wk) {
   _pwCurrentWeek = wk;
   var w = PW_WEEKS[wk];
   if (!w) return;
+  renderCampaignWeek(wk);
   var badge = document.getElementById('pw-week-badge');
   if (badge) badge.textContent = w.badge;
   var prev = w.prev ? PW_WEEKS[w.prev] : null;
@@ -4784,6 +4872,7 @@ function pmSelectMonth(m) {
   _pmCurrentMonth = m;
   var sel=document.getElementById('pm-month-select'); if(sel) sel.value=m;
   var d=PM_MONTHS[m]; if(!d) return;
+  if(_pwReportMode==='month') renderCampaignMonth(m);
 
   /* Badge */
   var badge=document.getElementById('pm-month-badge'); if(badge) badge.textContent=d.badge;
