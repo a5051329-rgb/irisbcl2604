@@ -434,7 +434,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <button id="campaignAlertBtn" class="campaign-alert-btn" type="button" aria-controls="campaignAlertPanel" aria-expanded="false" onclick="toggleCampaignAlert()">
   <span class="campaign-alert-dot" aria-hidden="true"></span>
-  <span>本週｜11/2–11/8 廣告成效</span>
+  <span>本週｜11/9–11/15 廣告成效</span>
 </button>
 
 <button id="bclReminderBtn" class="bcl-reminder-btn" type="button" aria-controls="bclReminderPanel" aria-expanded="false" onclick="toggleBclReminder()">
@@ -652,15 +652,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span style="display:block;max-width:600px;margin:0 auto;font-size:10.5px;color:#8a5a32;line-height:1.6;"><b>比較口徑：</b>以2026上週11/2–11/8為中心，顯示前2週至本週。2025單一路線由155回升至上週同期197，本週同期207，顯示去年進入11月後持續恢復；2026兩條路則由305降至265、再降至上週235，本週尚未完成，因此紅線止於上週、不先推估。上週兩條路235人是2025單一路線同期197人的1.19倍，仍未達2倍。資料來源：8TDB；2025依當期主力活動「育兒小調查4-4／我的育兒四季」，2026依「育兒大調查＋健康寶貝知識王」，排除後台、回補及其他活動。</span>
       </div>
 
-      <figure style="max-width:760px;margin:12px auto 2px;padding:9px;border:1px solid #fdba74;border-radius:10px;background:#fff;">
-        <figcaption style="font-weight:800;text-align:center;color:#9a3412;margin:0 0 7px;">夜市套圈圈＝Meta競價</figcaption>
-        <img src="assets/meta-auction-ring-toss.png" alt="左側競價不激烈時人少且禮物近，一般圈圈即可套中；右側競價激烈時競爭者變多、禮物變遠，小圈圈難以套中" style="display:block;width:100%;height:auto;border-radius:8px;">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px;font-size:11px;line-height:1.55;">
-          <div style="padding:7px;background:#ecfdf5;border-radius:7px;"><b style="color:#047857;">平常</b><br>競爭少、取得成本約US$1，廣告較容易投出。</div>
-          <div style="padding:7px;background:#fff1f2;border-radius:7px;"><b style="color:#be123c;">競價激烈</b><br>搶同一群人的廣告變多，US$1上限可能投不出去。</div>
-          <div style="padding:7px;background:#eff6ff;border-radius:7px;"><b style="color:#1d4ed8;">調至US$1.2</b><br>像換大一點的圈圈，增加參與競價與取得量體的機會。</div>
-        </div>
-      </figure>
         </div>
       </details>
     </div>
@@ -756,6 +747,8 @@ function renderEventPies(){
   });
 }
 var CAMPAIGN_WEEK_HISTORY = {
+  W33:{week:9,range:'11/9–11/15',total:253,prev:235,score:'1.16',self:{n:174,cpb:'$2.82',spend:'實花 US$490（100%）',ss:'60.3%',ssN:105,pregN:27,missingN:11,daily:[26,17,9,29,31,32,30],ages:[['孕期',27,'15.5%'],['0–6M',27,'15.5%'],['7–12M',35,'20.1%'],['13–24M',43,'24.7%'],['25–36M',16,'9.2%'],['37–60M',12,'6.9%'],['61M+',3,'1.7%'],['生日／月齡待補',11,'6.3%']]},agency:{n:79,cpb:'$3.91',spend:'實花 US$309（63.1%）',ss:'49.4%',ssN:39,pregN:14,missingN:10,daily:[3,3,2,3,19,25,24],ages:[['孕期',14,'17.7%'],['0–6M',8,'10.1%'],['7–12M',16,'20.3%'],['13–24M',15,'19.0%'],['25–36M',10,'12.7%'],['37–60M',3,'3.8%'],['61M+',3,'3.8%'],['生日／月齡待補',10,'12.7%']]},dates:['11/9','11/10','11/11','11/12','11/13','11/14','11/15'],judgement:'兩活動合計253 BCL，較上週增加18人（+7.7%）。自操實花US$490、廣代實花US$309，總預算使用率81.5%；將未花滿因素按比例校正後，本週1＋1約為1.16。',observations:['雙11過後，自11/13起蒐集數日漸回增，顯示雙11的競價因素確實可能對廣告效益有影響，進而影響蒐集數量。','自操174人，較上週161人增加13人（+8.1%）；實花US$490，CPB為US$2.82。','廣代79人，較上週74人增加5人（+6.8%）；實花US$309、只使用63.1%預算，CPB為US$3.91。'],next:['延續2611雙邊一個月檔期與精簡廣告數量，持續觀察回升能否維持。','2612待2611結果確認後，測試單一活動集中US$140／日，比較BCL與CPB變化。']},
+  W32:{week:8,range:'11/2–11/8',total:235,prev:265,score:'1.1',self:{n:161,cpb:'$3.04',spend:'週預算 US$490',ss:'64.0%',daily:[22,19,16,27,27,30,20]},agency:{n:74,cpb:'$4.01',spend:'實花 US$296.54',ss:'50.0%',daily:[13,15,6,5,15,12,8]},dates:['11/2','11/3','11/4','11/5','11/6','11/7','11/8'],judgement:'兩活動合計235 BCL，較前週減少30人（-11.3%）；廣代僅使用60.5%預算，當週以1＋1＝1.1綜合評估。',observations:[],next:[]},
   W25:{week:1,range:'9/14–9/20',total:456,prev:null,score:'1.71',self:{n:248,cpb:'$1.93',spend:'實花 US$479.61',ss:'65.3%',daily:[32,43,42,42,26,33,30]},agency:{n:208,cpb:'$2.17',spend:'實花 US$451.01',ss:'53.6%',daily:[7,42,43,40,28,27,21]},dates:['9/14','9/15','9/16','9/17','9/18','9/19','9/20'],judgement:'兩活動合計456 BCL，為過往單一路線週均266.9 BCL的1.71倍、理論2倍的85.4%；自操量體與CPB均優於廣代。',observations:['兩條路同日正式上線，兩邊皆以每日US$70投放。','自操248人、廣代208人；自操多40人，CPB低約10.8%。','首週尚未出現1＋1大於2的加乘效果，先建立後續比較基準。'],next:['關閉自操表現較弱的「學習教育興趣 FB」與「LL已綁定5% IG」，讓預算集中於較佳組合。','測試單獨提高自操至每日US$80～100，比較與廣代的蒐集差異。']},
   W26:{week:2,range:'9/21–9/27',total:356,prev:456,score:'1.33',self:{n:193,cpb:'$2.54',spend:'週預算 US$490',ss:'65.3%',daily:[39,33,37,23,17,23,21]},agency:{n:163,cpb:'$3.01',spend:'週預算 US$490',ss:'46.0%',daily:[36,21,30,17,16,17,26]},dates:['9/21','9/22','9/23','9/24','9/25','9/26','9/27'],judgement:'兩活動合計356 BCL，較首週減少100人（-21.9%）；1＋1由1.71降至1.33，為理論2倍的66.7%。',observations:['兩邊同期下滑約22%，較不支持單一操作失誤；9/25、9/26未花滿日預算，也可能壓低量體。','兩年自辦線上資料中，14段連假有12段下降；本次中秋／教師節連假日均由60.0降至40.3（-32.9%），連假可能有影響但不是唯一原因。','9/26、9/27曾出現短時間簡訊異常；當天仍有部分客戶成功綁定，因此影響範圍較小。'],next:['優先替換表現較弱的素材。','10/1～10/14提高每日預算至US$100，持續比較BCL、CPB與兩邊差異。']},
   W27:{week:3,range:'9/28–10/4',total:364,prev:356,score:'1.36',self:{n:211,cpb:'$2.32',spend:'週預算 US$490',ss:'71.6%',daily:[21,25,28,37,26,40,34]},agency:{n:153,cpb:'$3.20',spend:'週預算 US$490',ss:'50.3%',daily:[18,17,18,18,20,28,34]},dates:['9/28','9/29','9/30','10/1','10/2','10/3','10/4'],judgement:'兩活動合計364 BCL，較上週增加8人（+2.2%）；自操增加、廣代下降，1＋1約1.36。',observations:['自操211人（+9.3%），廣代153人（-6.1%）；兩邊差距擴大至58人。','自操SS+S 71.6%，明顯高於廣代50.3%，量體與月齡品質皆較佳。','本週另有禾馨、統一時代等線下／異業高峰；兩條路判讀僅計兩個廣告活動。'],next:['下週育兒大調查第二檔預計提高至每日US$100。','同步請廣代更新素材，觀察素材與預算調整後的差異。']},
@@ -788,8 +781,18 @@ function campaignDeltaText(n,prev){
 function campaignDailyMarkup(dates,values){
   return dates.map(function(d,i){return '<span>'+d+'：<b>'+values[i]+'</b></span>';}).join('');
 }
+function campaignAgeMarkup(name,c){
+  if(!c.ages)return '';
+  var rows=c.ages.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');
+  return '<table class="campaign-grade-table" aria-label="'+name+'月齡級別"><thead><tr><th>綁定時級別</th><th>人數</th><th>占比</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
 function campaignPastCard(name,badge,c,w,prevN,isAgency){
-  return '<article class="campaign-mini-card'+(isAgency?' agency':'')+'"><div class="campaign-card-top"><div class="campaign-card-name">'+name+'</div><span class="campaign-badge">'+badge+'</span></div><div class="campaign-card-total">'+c.n+'<small>BCL</small></div><div class="campaign-daily">'+campaignDailyMarkup(w.dates,c.daily)+'</div><div class="campaign-quality"><b>'+campaignDeltaText(c.n,prevN)+'</b><br>SS+S '+c.ss+'｜'+c.spend+'｜CPB '+c.cpb+'</div><details class="campaign-spend-details"><summary>本週資料口徑</summary><div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">BCL逐日數字以8TDB為主；CPB沿用當週報告的實花或US$490週預算口徑。此頁保存當時正式週報快照，後續回補不追溯改寫。</div></details></article>';
+  var quality=c.ssN!=null?('SS+S '+c.ssN+'／'+c.n+'人（'+c.ss+'）｜孕期 '+c.pregN+'人｜生日／月齡待補 '+c.missingN+'人<br>'+c.spend+'｜CPB '+c.cpb):('SS+S '+c.ss+'｜'+c.spend+'｜CPB '+c.cpb);
+  return '<article class="campaign-mini-card'+(isAgency?' agency':'')+'"><div class="campaign-card-top"><div class="campaign-card-name">'+name+'</div><span class="campaign-badge">'+badge+'</span></div><div class="campaign-card-total">'+c.n+'<small>BCL</small></div><div class="campaign-daily">'+campaignDailyMarkup(w.dates,c.daily)+'</div><div class="campaign-quality"><b>'+campaignDeltaText(c.n,prevN)+'</b><br>'+quality+'</div>'+campaignAgeMarkup(name,c)+'<details class="campaign-spend-details"><summary>本週廣告花費口徑</summary><div style="padding:8px 10px;background:#fff;font-size:11.5px;line-height:1.65;color:#765b50;">BCL逐日數字以8TDB為主；CPB＝實際花費÷BCL。Lead與CPL僅用於診斷投遞，成果仍以BCL與CPB判讀。</div></details></article>';
+}
+function campaignCompetitionMarkup(wk){
+  if(wk!=='W33')return '';
+  return '<details style="margin:0 0 12px;border:1px solid #fdba74;border-radius:9px;background:#fff;overflow:hidden;"><summary style="cursor:pointer;padding:10px 12px;font-weight:800;color:#9a3412;">雙11競價觀察｜點擊展開同期數據</summary><div style="padding:11px;"><div style="font-weight:800;text-align:center;color:#7c2d12;margin-bottom:5px;">2025單一路線 vs 2026兩條路 BCL 趨勢</div><svg viewBox="0 0 640 270" style="display:block;width:100%;max-width:680px;height:auto;margin:auto;" role="img" aria-label="雙11前兩週、雙11當週及雙11後一週的2025與2026 BCL趨勢；2026雙11後一週資料尚未完整"><rect x="346" y="25" width="112" height="190" rx="8" fill="#fff3cd"/><text x="402" y="40" font-size="10" font-weight="800" text-anchor="middle" fill="#9a3412">★ 雙11當週</text><g stroke="#eadfd5"><line x1="60" y1="55" x2="590" y2="55"/><line x1="60" y1="100" x2="590" y2="100"/><line x1="60" y1="145" x2="590" y2="145"/><line x1="60" y1="190" x2="590" y2="190"/></g><g fill="#8a6a58" font-size="10" text-anchor="end"><text x="53" y="58">350</text><text x="53" y="103">250</text><text x="53" y="148">150</text><text x="53" y="193">50</text></g><polyline points="105,143 260,124 415,127 570,86" fill="none" stroke="#2563eb" stroke-width="4"/><polyline points="105,101 260,114 415,106" fill="none" stroke="#dc2626" stroke-width="4"/><g fill="#2563eb"><circle cx="105" cy="143" r="5"/><circle cx="260" cy="124" r="5"/><circle cx="415" cy="127" r="5"/><circle cx="570" cy="86" r="5"/></g><g fill="#dc2626"><circle cx="105" cy="101" r="5"/><circle cx="260" cy="114" r="5"/><circle cx="415" cy="106" r="5"/></g><g font-size="11" font-weight="800" text-anchor="middle"><text x="105" y="136" fill="#1d4ed8">155</text><text x="260" y="117" fill="#1d4ed8">197</text><text x="415" y="120" fill="#1d4ed8">207</text><text x="570" y="79" fill="#1d4ed8">296</text><text x="105" y="94" fill="#b91c1c">265</text><text x="260" y="107" fill="#b91c1c">235</text><text x="415" y="99" fill="#b91c1c">253</text><text x="570" y="132" fill="#9ca3af">資料未完整</text></g><g fill="#6b4e3d" font-size="10" text-anchor="middle"><text x="105" y="213">雙11前2週</text><text x="260" y="213">雙11前1週</text><text x="415" y="213" font-weight="800" fill="#9a3412">雙11當週</text><text x="570" y="213">雙11後1週</text></g><g font-size="10"><text x="190" y="245" fill="#2563eb">● 2025單一路線</text><text x="350" y="245" fill="#dc2626">● 2026兩條路</text></g></svg><div style="max-width:680px;margin:4px auto 0;overflow-x:auto;"><table class="campaign-grade-table" style="min-width:610px;"><thead><tr><th>年度／口徑</th><th>雙11前2週</th><th>雙11前1週</th><th style="background:#fff3cd;color:#9a3412;">★ 雙11當週</th><th>雙11後1週</th></tr></thead><tbody><tr><td><b>2025單一路線</b></td><td>155</td><td>197</td><td style="background:#fff8e1;"><b>207</b></td><td>296</td></tr><tr><td><b>2026兩條路</b></td><td>265</td><td>235</td><td style="background:#fff8e1;"><b>253</b></td><td style="color:#9ca3af;">資料未完整</td></tr></tbody></table></div><p style="max-width:680px;margin:8px auto 0;font-size:11.5px;line-height:1.7;color:#7c2d12;"><b>更新判讀：</b>2025在雙11當週為207人，隔週回升至296人（+43.0%）。2026在雙11當週為253人，且11/13起每日蒐集數逐步回升，與「雙11競價壓縮投放效益」的方向一致；但2026雙11後一週仍在進行中，暫不放入數字或推估。</p><p style="max-width:680px;margin:5px auto 0;font-size:10.5px;line-height:1.6;color:#8a5a32;"><b>比較口徑：</b>2025採當時單一路線主力活動「育兒小調查4-4／我的育兒四季」；2026採「巧虎育兒大調查＋健康寶貝知識王」。各年度皆依其週報週次排列。</p></div></details>';
 }
 function renderCampaignWeek(wk){
   var body=document.getElementById('campaignAlertBody');
@@ -817,7 +820,7 @@ function renderCampaignWeek(wk){
   btn.querySelector('span:last-child').textContent='本週｜'+w.range+' 廣告成效';
   var obs=w.observations.map(function(x,i){return '<li><b>'+(i+1)+'.</b> '+x+'</li>';}).join('');
   var next=w.next.map(function(x){return '<li>'+x+'</li>';}).join('');
-  body.innerHTML='<div class="campaign-alert-summary"><div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>'+w.total+'</strong><small>'+totalDelta+'</small></div><div class="campaign-alert-kpi"><span>自操 CPB</span><strong>'+w.self.cpb+'</strong><small>'+w.self.spend+'</small></div><div class="campaign-alert-kpi"><span>廣代 CPB</span><strong>'+w.agency.cpb+'</strong><small>'+w.agency.spend+'</small></div></div><div class="campaign-cards">'+campaignPastCard('巧虎育兒大調查','自操',w.self,w,selfPrev,false)+campaignPastCard('健康寶貝知識王','廣代操作',w.agency,w,agencyPrev,true)+'<div class="campaign-right-column"><article class="campaign-mini-card campaign-history-card"><div class="campaign-card-top"><div class="campaign-card-name">第 '+w.week+' 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">'+w.range+'</span></div><ul class="campaign-judgement-list"><li><b>1＋1有大於2嗎？</b>沒有；本週<b>1＋1＝'+w.score+'</b>。</li><li>'+w.judgement+'</li></ul><div class="campaign-history-summary"><div><b>1＋1＝'+w.score+'</b><span>當週歷史判讀</span></div><div><b>'+w.total+'</b><span>兩活動BCL</span></div></div></article></div></div><div class="campaign-alert-insight" style="margin-bottom:12px;"><b style="font-size:15px;">本週投放觀察</b><ol style="margin:8px 0 0 20px;line-height:1.75;">'+obs+'</ol></div><div class="campaign-next-step campaign-next-step-wide"><div class="campaign-next-step-title">下一步</div><ol>'+next+'</ol></div><div class="campaign-alert-insight"><b>完整週判讀｜'+w.judgement+'</b><br>自操'+w.self.n+'人、廣代'+w.agency.n+'人；CPB分別為'+w.self.cpb+'與'+w.agency.cpb+'。此內容為該週報告的歷史快照，切換週次時不會再被最新一週覆寫。</div><div class="campaign-alert-note">資料來源：BCL逐日數字以8TDB為主；SS+S、花費與判讀沿用當週已確認週報。兩條路作戰自2026/9/14起計算。</div>';
+  body.innerHTML='<div class="campaign-alert-summary"><div class="campaign-alert-kpi"><span>兩活動 BCL</span><strong>'+w.total+'</strong><small>'+totalDelta+'</small></div><div class="campaign-alert-kpi"><span>自操 CPB</span><strong>'+w.self.cpb+'</strong><small>'+w.self.spend+'</small></div><div class="campaign-alert-kpi"><span>廣代 CPB</span><strong>'+w.agency.cpb+'</strong><small>'+w.agency.spend+'</small></div></div><div class="campaign-cards">'+campaignPastCard('巧虎育兒大調查','自操',w.self,w,selfPrev,false)+campaignPastCard('健康寶貝知識王','廣代操作',w.agency,w,agencyPrev,true)+'<div class="campaign-right-column"><article class="campaign-mini-card campaign-history-card"><div class="campaign-card-top"><div class="campaign-card-name">第 '+w.week+' 週判讀</div><span class="campaign-badge" style="background:#dbeafe;color:#1d4ed8;">'+w.range+'</span></div><ul class="campaign-judgement-list"><li><b>1＋1有大於2嗎？</b>沒有；本週<b>1＋1＝'+w.score+'</b>。</li><li>'+w.judgement+'</li></ul><div class="campaign-history-summary"><div><b>1＋1＝'+w.score+'</b><span>實際花費校正</span></div><div><b>'+w.total+'</b><span>兩活動BCL</span></div></div></article></div></div><div class="campaign-alert-insight" style="margin-bottom:12px;"><b style="font-size:15px;">本週投放觀察</b><ol style="margin:8px 0 0 20px;line-height:1.75;">'+obs+'</ol></div>'+campaignCompetitionMarkup(wk)+'<div class="campaign-next-step campaign-next-step-wide"><div class="campaign-next-step-title">下一步</div><ol>'+next+'</ol></div><div class="campaign-alert-insight"><b>完整週判讀｜'+w.judgement+'</b><br>自操'+w.self.n+'人、廣代'+w.agency.n+'人；CPB分別為'+w.self.cpb+'與'+w.agency.cpb+'。此內容為該週報告的歷史快照，切換週次時不會再被最新一週覆寫。</div><div class="campaign-alert-note">資料來源：BCL與月齡級別以8TDB為主；第9週CPB以Meta實際花費計算。1＋1先以兩活動BCL相對單一路線週均266.9人計算，再依實際花費占預算比例校正。兩條路作戰自2026/9/14起計算。</div>';
 }
 function renderCampaignMonth(monthKey){
   var body=document.getElementById('campaignAlertBody');
@@ -846,7 +849,7 @@ function toggleCampaignAlert(forceOpen){
   panel.classList.toggle('open',open);
   panel.setAttribute('aria-hidden',String(!open));
   btn.setAttribute('aria-expanded',String(open));
-  if(open){if(_pwReportMode==='month')renderCampaignMonth(typeof _pmCurrentMonth==='string'?_pmCurrentMonth:'M202610');else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W32');toggleBclReminder(false);toggleEventProfile(false);}
+  if(open){if(_pwReportMode==='month')renderCampaignMonth(typeof _pmCurrentMonth==='string'?_pmCurrentMonth:'M202610');else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W33');toggleBclReminder(false);toggleEventProfile(false);}
   if(!open){
     panel.classList.remove('fullscreen');
     var fsBtn=document.getElementById('campaignFullscreenBtn');
@@ -2815,7 +2818,7 @@ function pwMode(mode,el){
   var panel=document.getElementById('pw-'+mode);
   if(panel) panel.classList.add('active');
   if(mode==='month') renderCampaignMonth(typeof _pmCurrentMonth==='string'?_pmCurrentMonth:'M202610');
-  else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W32');
+  else renderCampaignWeek(typeof _pwCurrentWeek==='string'?_pwCurrentWeek:'W33');
   setTimeout(pwInitCharts,60);
 }
 
@@ -2834,6 +2837,39 @@ var PW_GRADE_BARS=['rgba(14,122,110,.8)','rgba(30,111,184,.8)','rgba(185,28,28,.
 
 /* 週次選擇資料 */
 var PW_WEEKS = {
+  'W33': {
+    label: 'W33：11/9（一）– 11/15（日）', badge: 'W33 最新週｜8TDB完整至11/15', total: 628, ss: 221, ssPct: 35.2, prev: 'W32', friendAsOf:'11/15', gradeAsOf:'11/15',
+    monthAccum: 1194, monthLabel: '11/1–11/15', monthDays: 30, daysPassed: 15, prevMonthAccum: 1508, prevMonthLabel: '10/1–10/15',
+    btype: {自辦線上:257,自辦線下:97,主動:166,自動:1,異業:106,未分類:1},
+    btypeN: {all:628,selfOnline:257,selfOffline:97,active:166,shopline:1,partner:106},
+    gradeN: {all:628,selfOnline:257,selfOffline:97,active:166,shopline:1,partner:106,'巧虎育兒大調查':174,'健康寶貝知識王':79,'英語劇':97,'OA':85,'官網綁定':81,'明治':54,'樂飛':41,'六甲村':9,'BCL貼紙':3,'永生':2,'SHOPLINE':1,'SHOPLINE回補':1,'未分類':1},
+    chN: {'巧虎育兒大調查':174,'健康寶貝知識王':79,'英語劇':97,'OA':85,'官網綁定':81,'明治':54,'樂飛':41,'六甲村':9,'BCL貼紙':3,'永生':2,'SHOPLINE':1,'SHOPLINE回補':1,'未分類':1},
+    dailyLabels: ['11/9','11/10','11/11','11/12','11/13','11/14','11/15'],
+    daily: [43,37,46,88,93,185,136],
+    partner: {明治:54,樂飛:41,六甲村:9,永生:2},
+    chGradeOverride: {
+      all:[16.4,9.9,10.2,15.1,15.3,17.5,8.3,7.3],
+      selfOnline:[16.0,13.6,19.8,23.0,10.9,5.8,2.3,8.6],
+      selfOffline:[0.0,3.1,0.0,7.2,19.6,42.3,19.6,8.2],
+      active:[3.0,5.4,6.6,10.8,28.3,31.9,10.8,3.0],
+      shopline:[0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0],
+      partner:[53.8,14.2,1.9,8.5,1.9,0.9,8.5,10.4],
+      '巧虎育兒大調查':[15.5,15.5,20.1,24.7,9.2,6.9,1.7,6.3],
+      '健康寶貝知識王':[17.7,10.1,20.3,19.0,12.7,3.8,3.8,12.7],
+      '英語劇':[0.0,3.1,0.0,7.2,19.6,42.3,19.6,8.2],
+      'OA':[2.4,2.4,8.2,8.2,25.9,35.3,14.1,3.5],
+      '官網綁定':[3.7,8.6,4.9,13.6,30.9,28.4,7.4,2.5],
+      '明治':[81.5,11.1,3.7,0.0,0.0,0.0,0.0,3.7],
+      '樂飛':[7.3,22.0,0.0,22.0,4.9,2.4,22.0,19.5],
+      '六甲村':[88.9,0.0,0.0,0.0,0.0,0.0,0.0,11.1],
+      'BCL貼紙':[0.0,0.0,0.0,33.3,66.7,0.0,0.0,0.0],
+      '永生':[100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+      'SHOPLINE':[0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0],
+      'SHOPLINE回補':[0.0,0.0,0.0,0.0,0.0,0.0,0.0,100.0],
+      '未分類':[0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0]
+    },
+    summary: '<p style="font-size:16px;font-weight:700;padding:8px 12px;border-radius:8px;background:#eefbee;border-left:4px solid #16a34a;margin-bottom:10px;">W33完整7日8TDB正式口徑628人，較上週511人增加117人（+22.9%）。</p><p><span class="tag tag-info">管道拆分</span><br>• <b>自辦線上257人（40.9%）</b>：巧虎育兒大調查174、健康寶貝知識王79、BCL貼紙3、SHOPLINE回補1<br>• <b>自辦線下97人（15.4%）</b>：英語劇97<br>• <b>主動166人（26.4%）</b>：OA85、官網81<br>• <b>自動（SHOPLINE）1人（0.2%）</b><br>• <b>異業106人（16.9%）</b>：明治54、樂飛41、六甲村9、永生2<br>• 未分類1人（0.2%）</p><p><span class="tag tag-ok">SS+S 221／628人（35.2%）</span> 較上週305人減少84人，占比下降24.5個百分點；本週英語劇與主動來源增加，客群月齡較大。生日／月齡待補46人（7.3%）。</p><p><span class="tag tag-warn">兩條路作戰第9週｜1＋1＝1.16</span> 兩活動合計253人，較上週235人增加18人（+7.7%）。原始量體相當於過往單一路線週均266.9人的0.95倍；自操實花US$490、廣代實花US$309，總預算使用率81.5%，依未花滿比例校正後1＋1＝1.16。自操174人（+8.1%）、廣代79人（+6.8%），CPB分別為US$2.82與US$3.91。</p><p><span class="tag tag-info">LINE好友</span> 11/9–11/15新增860人，較上週697人增加163人（+23.4%）；BCL／好友比為73.0%，較上週73.3%微降0.3個百分點。</p><p><span class="tag tag-info">月累計</span> 11/1–11/15共1,194人，較10/1–10/15的1,508人減少314人（-20.8%）。</p><p style="font-size:11px;color:#888;">口徑說明：BCL、LINE好友、管道與月齡皆採8TDB完整11/9–11/15。第9週CPB以Meta實際花費計算；自操US$490、廣代US$309。原始資料另含SHOPLINE回補1人與未分類1人。</p>',
+  },
   'W32': {
     label: 'W32：11/2（一）– 11/8（日）', badge: 'W32 最新週｜8TDB完整至11/8', total: 511, ss: 305, ssPct: 59.7, prev: 'W31', friendAsOf:'11/8', gradeAsOf:'11/8',
     monthAccum: 566, monthLabel: '11/1–11/8', monthDays: 30, daysPassed: 8, prevMonthAccum: 934, prevMonthLabel: '10/1–10/8',
@@ -3396,8 +3432,19 @@ PW_TREND_DATA.partner.push(107);
 PW_TREND_DATA.ssPct.push(59.7);
 PW_TREND_DATA.ssN.push(305);
 PW_TREND_DATA.friend.push(697);
+/* W33：11/9–11/15；BCL、好友與月齡皆採8TDB完整7日。 */
+PW_TREND_DATA.labels.push('11/9–11/15');
+PW_TREND_DATA.total.push(628);
+PW_TREND_DATA.selfOnline.push(257);
+PW_TREND_DATA.selfOffline.push(97);
+PW_TREND_DATA.active.push(166);
+PW_TREND_DATA.shopline.push(1);
+PW_TREND_DATA.partner.push(106);
+PW_TREND_DATA.ssPct.push(35.2);
+PW_TREND_DATA.ssN.push(221);
+PW_TREND_DATA.friend.push(860);
 PW_TREND_DATA.friendComplete = new Array(PW_TREND_DATA.friend.length).fill(true);
-PW_TREND_DATA.curIdx = 83;
+PW_TREND_DATA.curIdx = 84;
 
 /* 2026/09/16：8TDB 自辦線上改為「活動 → 細部來源」三級結構。
    口徑＝同一 LINE ID 的最新綁定日，對到同日、同活動的來源標籤後，各來源內去重。
@@ -3530,7 +3577,17 @@ Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(
   PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
 });
 
-var _pwCurrentWeek = 'W32';
+PW_SELF_ONLINE_ACTIVITIES['育兒安全大作戰'].total.push(0);
+PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].total.push(174);
+PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].total.push(79);
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['巧虎育兒大調查'].sources[source].push(null);
+});
+Object.keys(PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources).forEach(function(source){
+  PW_SELF_ONLINE_ACTIVITIES['健康寶貝知識王'].sources[source].push(null);
+});
+
+var _pwCurrentWeek = 'W33';
 var _pwTrendMode = 'line';
 var _pwTrendChart = null;
 var _pwTrendRange = '4w';  /* 'all','8w','4w' */
@@ -3782,7 +3839,7 @@ function pwDrawTrendTable() {
   var from = 0;
   if(_pwTrendRange==='4w') from=Math.max(0,n-4);
   else if(_pwTrendRange==='8w') from=Math.max(0,n-8);
-  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11',63:'W12',64:'W13',65:'W14',66:'W15',67:'W16',68:'W17',69:'W18',70:'W19',71:'W20',72:'W21',73:'W22',74:'W23',75:'W24',76:'W25',77:'W26',78:'W27',79:'W28',80:'W29',81:'W30',82:'W31',83:'W32'};
+  var fyMap = {52:'W1',53:'W2',54:'W3',55:'W4',56:'W5',57:'W6',58:'W7',59:'W8',60:'W9',61:'W10',62:'W11',63:'W12',64:'W13',65:'W14',66:'W15',67:'W16',68:'W17',69:'W18',70:'W19',71:'W20',72:'W21',73:'W22',74:'W23',75:'W24',76:'W25',77:'W26',78:'W27',79:'W28',80:'W29',81:'W30',82:'W31',83:'W32',84:'W33'};
 
   var rowDefs = [
     {label:'週BCL合計',   key:'total',      bg:'#f5f5f3', color:'#111', bold:true},
@@ -4461,7 +4518,7 @@ function pwInitCharts(){
   var wPanel=document.getElementById('pw-week');
   var mPanel=document.getElementById('pw-month');
   if(wPanel&&wPanel.classList.contains('active')){
-    pwSelectWeek('W32');
+    pwSelectWeek('W33');
   }
   if(mPanel&&mPanel.classList.contains('active')){
     pmUpdateGrade(2561,'all');
@@ -6254,7 +6311,7 @@ const META_IMGS={
 
 <div id="pw-page"><div class="pw">
   <h1>周月報告分析</h1>
-  <div class="sub">資料來源：8TDB　　BCL、LINE好友與月齡皆截至 2026/11/8</div>
+  <div class="sub">資料來源：8TDB　　BCL、LINE好友與月齡皆截至 2026/11/15</div>
   <div class="mode-tabs">
     <button class="mode-tab active" onclick="pwMode('week',this)">📅 週報告</button>
     <button class="mode-tab" onclick="pwMode('month',this)">📆 月報告</button>
@@ -6268,7 +6325,8 @@ const META_IMGS={
       <span style="font-size:13px;font-weight:600;color:#444;">📅 選擇週次：</span>
       <select id="pw-week-select" onchange="pwSelectWeek(this.value)"
         style="font-size:13px;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#333;cursor:pointer;font-weight:500;">
-        <option value="W32" selected>W32：11/2（一）– 11/8（日）★最新</option>
+        <option value="W33" selected>W33：11/9（一）– 11/15（日）★最新</option>
+        <option value="W32">W32：11/2（一）– 11/8（日）</option>
         <option value="W31">W31：10/26（一）– 11/1（日）</option>
         <option value="W30">W30：10/19（一）– 10/25（日）</option>
         <option value="W29">W29：10/12（一）– 10/18（日）</option>
@@ -6301,7 +6359,7 @@ const META_IMGS={
         <option value="W2">W2：4/6（一）– 4/12（日）</option>
         <option value="W1">W1：3/30（一）– 4/5（日）</option>
       </select>
-      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W32 最新週｜8TDB完整至11/8</span>
+      <span id="pw-week-badge" style="font-size:12px;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:20px;font-weight:600;">W33 最新週｜8TDB完整至11/15</span>
     </div>
 
     <!-- KPI 4格（動態） -->
@@ -6357,7 +6415,7 @@ const META_IMGS={
     <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->    <!-- 各週蒐集趨勢（全寬） -->
     <div class="sc" style="margin-bottom:12px;">
       <div class="sh" style="color:var(--pw-blue);"><span class="sh-dot"></span>各週蒐集趨勢（近一年）
-        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/11/8（共 84 週）｜FY26 W1=4/1當週｜最新週8TDB完整至 2026/11/8</span>
+        <span style="font-size:10px;color:#888;font-weight:400;margin-left:8px;">資料期間：2025/04–2026/11/15（共 85 週）｜FY26 W1=4/1當週｜最新週8TDB完整至 2026/11/15</span>
       </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <div style="display:flex;background:#f0f0ee;border-radius:20px;padding:2px;gap:2px;">
@@ -6369,7 +6427,7 @@ const META_IMGS={
           <button onclick="pwTrendRange('8w',this)"   id="pw-range-8w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:transparent;color:#666;">近8週</button>
           <button onclick="pwTrendRange('4w',this)"   id="pw-range-4w"  style="font-size:11px;padding:3px 10px;border-radius:18px;border:none;cursor:pointer;background:#fff;color:var(--pw-blue);box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:600;">近4週</button>
         </div>
-        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W32=最新週（11/2–11/8）｜8TDB完整至 2026/11/8</span>
+        <span style="font-size:11px;color:#888;">FY26 W1–W2 停機期；W33=最新週（11/9–11/15）｜8TDB完整至 2026/11/15</span>
       </div>
 
       <div id="pw-trend-legend" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;font-size:11.5px;"></div>
